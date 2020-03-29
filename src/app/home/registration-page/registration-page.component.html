@@ -3,25 +3,40 @@
         <h1>holagraph</h1><br>
         <p class="txt">Register now to find out what the mass is seeking and providing</p><br>
         <div id="form">
+            <form  [formGroup]='registerForm'>
             <h3>Name</h3>
-            <input type="text" class="form-control left" id="exampleInputEmail1" placeholder="First">
-            <input type="text" class="form-control left" id="exampleInputEmail1" placeholder="Last">
+            <input type="text" class="form-control left" id="exampleInputEmail1" placeholder="First"  formControlName="first_name"
+            [ngClass]="{'is-invalid':registerForm.get('first_name').touched && registerForm.get('first_name').invalid}">
+            <input type="text" class="form-control left" id="exampleInputEmail1" placeholder="Last" formControlName="last_name" >
+
+            <div class="invalid-feedback">
+                <p class="error">This field is required</p>
+             </div> 
 
             <h3>Email ID</h3>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Email ID">
+                placeholder="Email ID"  formControlName="email"
+                [ngClass]="{'is-invalid':registerForm.get('email').touched && registerForm.get('email').invalid}">
+                <div class="invalid-feedback">
+                    <p class="error">This field is required</p>
+                 </div> 
             <h3>Password(8 or more characters)</h3>
             <div class="form-group pass_show">
-                <input type="password" class="form-control password" placeholder="Password">
+                <input type="password" class="form-control password" placeholder="Password"  formControlName="password"
+                [ngClass]="{'is-invalid':registerForm.get('password').touched && registerForm.get('password').invalid}">
+                <div class="invalid-feedback">
+                    <p class="error">This field is required</p>
+                 </div> 
                 <small id="emailHelp" class="form-text text-muted">Must contain a lowercase, a uppercase, number and a
                     special character</small>
 
             </div>
+        </form>
         </div>
         <div class="agreement">
             <a>**</a>You agree to the HolaGraph<a href=""> Use Agreement</a>, <a href="">Privacy Policy</a> and <a
                 href="">Cookie Policy</a><br></div>
-        <button class="btn btn-primary">Register</button><br>
+        <button class="btn btn-primary" (click)="submit()">Register</button><br>
         <span id="forpass" routerLink="/forgot-password"><span id="forgot_password_text">forgot password?</span><span class="space">click here to <a routerLink="/register">register now</a></span></span>
     </div>
 

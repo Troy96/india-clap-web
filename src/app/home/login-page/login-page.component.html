@@ -4,14 +4,24 @@
         <h2>Welcome Back</h2>
         <p class="txt">log in to stay updated with your seekers and providers</p><br>
         <div id="form">
+            <form  [formGroup]='loginForm'>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Email ID">
+                placeholder="Email ID"  formControlName="email"
+                [ngClass]="{'is-invalid':loginForm.get('email').touched && loginForm.get('email').invalid}">
+                <div class="invalid-feedback">
+                    <p class="error">This field is required</p>
+                 </div> 
 
             <div class="form-group pass_show">
-                <input type="password" class="form-control" placeholder="Password"><span class="ptxt">Show</span>
+                <input type="password" class="form-control" placeholder="Password"  formControlName="password"
+                [ngClass]="{'is-invalid':loginForm.get('password').touched && loginForm.get('password').invalid}">
+                <div class="invalid-feedback">
+                    <p class="error">This field is required</p>
+                 </div> <span class="ptxt">Show</span>
             </div>
+        </form>
         </div>
-        <button class="btn btn-primary">Log in</button><br>
+        <button class="btn btn-primary" (click)="submit()">Log in</button><br>
         <span id="forpass" routerLink="/forgot-password"><span id="forgot_password_text">forgot password?</span><span class="space"></span>click here to <a routerLink="/register">register now</a></span>
     </div>
 

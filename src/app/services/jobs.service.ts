@@ -72,5 +72,10 @@ export class JobsService {
     return this.http.post(`${config.base_url}/JobMarket/jobs/`, formData)
 
   }
+  myJobPostings($data){
+   // JobMarket/jobs/myJobPostings
+   return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings`, { headers: this.headers })
+
+  }
 
 }

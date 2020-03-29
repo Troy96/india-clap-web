@@ -18,7 +18,12 @@ export class JobPostingsComponent implements OnInit {
        this.day = today.getDate();
     this.jService.get_jobList().subscribe((data:any)=>{
       this.jobList = data.results;
-      console.log(this.jobList)
+     // console.log(this.jobList)
+    })
+
+
+    this.jService.myJobPostings(17).subscribe((data)=>{
+      console.log(data);
     })
   }
 
