@@ -32,7 +32,7 @@ const routes: Routes = [
       { path: 'post-job', component: PostJobComponent },
       { path: 'job-postings', component: JobPostingsComponent },
       { path: 'edit-jobs', component: JobPostEditComponent },
-      { path: 'view-candidates', component: ViewCandidatesComponent },
+      { path: 'candidates/:jobId', component: ViewCandidatesComponent },
       { path: 'view-shortlisted', component: ViewShortlistTabComponent },
       { path: 'user-account', component: UserAccountComponent },
       { path: 'jobs-card', component: JobCardComponent },
@@ -44,7 +44,7 @@ const routes: Routes = [
       { path: 'description/:jobId', component: JobDescriptionComponent },
       { path: 'upload-resume/:jobId', component: UploadResumeComponent },
       { path: 'archive-job-search', component: ArchiveJobSearchComponent },
-      { path: 'skills-test',component:SkillTestComponent}
+      { path: 'skills-test', component: SkillTestComponent }
     ]
   },
 ];

@@ -85,4 +85,8 @@ export class JobsService {
     return this.http.get(`${config.base_url}/JobMarket/jobs/applied`);
   }
 
+  get_job_candidates(jobId: number) {
+    return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/candidates`);
+  }
+
 }
