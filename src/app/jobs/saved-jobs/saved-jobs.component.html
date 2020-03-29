@@ -2,7 +2,7 @@
     <div class="header">
         <h2>Jobs you have saved</h2>
     </div>
-    <div class="place" *ngIf="savedJobList?.length > 0">
+    <div class="place" *ngIf="savedJobList?.length">
         <div class="card" style="width: 100%;">
             <div class="card-body">
                 <div id="symbols">
@@ -80,5 +80,5 @@
             </div>
         </div>
     </div>
-    <div *ngIf="savedJobList?.length == 0" class="no-jobs">No saved jobs!</div>
+    <div *ngIf="!savedJobList?.length" class="no-jobs">No saved jobs!</div>
 </div>

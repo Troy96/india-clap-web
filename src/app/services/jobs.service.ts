@@ -12,16 +12,16 @@ export class JobsService {
   }
 
   skill_test($data: any) {
-    return this.http.post(`${config.base_url}/JobMarket/skilltest/`, $data, );
+    return this.http.post(`${config.base_url}/JobMarket/skilltest/`, $data);
   }
   create_job($data: any) {
     // console.log($data)
-    return this.http.post(`${config.base_url}/JobMarket/jobs/create/`, $data, );
+    return this.http.post(`${config.base_url}/JobMarket/jobs/create/`, $data);
 
   }
   get_companies() {
     //JobMarket/companies
-    return this.http.get(`${config.base_url}/JobMarket/companies`, );
+    return this.http.get(`${config.base_url}/JobMarket/companies`);
   }
   get_jobList() {
     return this.http.get(`${config.base_url}/JobMarket/jobs/`);
@@ -79,6 +79,10 @@ export class JobsService {
 
   get_saved_jobs() {
     return this.http.get(`${config.base_url}/JobMarket/jobs/saved`);
+  }
+
+  get_applied_jobs() {
+    return this.http.get(`${config.base_url}/JobMarket/jobs/applied`);
   }
 
 }
