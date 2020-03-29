@@ -42,12 +42,6 @@
       color: gray;
   
   }
-  .no-jobs {
-      display: flex;
-      justify-content: center;
-      font-size: x-large;
-      margin: 20px;
-  }
   .card{
       border: none;
   }

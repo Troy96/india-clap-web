@@ -1,0 +1,6 @@
+.no-data {
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
+    margin: 20px;
+}
