@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 //  import { HttpModule } from '@angular/http';
 
 
@@ -31,6 +31,7 @@ import { FavSaveApplyComponent } from './fav-save-apply/fav-save-apply.component
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JobsService } from '../services/jobs.service';
+import { JwtTokenIntercelptor } from '../interceptors/jwt-token.interceptor';
 
 
 
@@ -68,6 +69,8 @@ import { JobsService } from '../services/jobs.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers:[JobsService]
+  providers: [JobsService, {
+    provide: HTTP_INTERCEPTORS, useClass: JwtTokenIntercelptor, multi: true
+  }]
 })
 export class JobsModule { }

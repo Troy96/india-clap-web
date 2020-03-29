@@ -2,13 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {
   ReactiveFormsModule,
-  FormsModule,
-  FormGroup,
-  FormControl,
-  FormArray,
-  Validators,
-  FormBuilder,
-  ValidatorFn
+  FormsModule
 } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
