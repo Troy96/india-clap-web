@@ -89,4 +89,8 @@ export class JobsService {
     return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/candidates`);
   }
 
+  get_shorlisted_candidates(jobId: number){
+    return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/shortlistedCandidates`);
+  }
+
 }

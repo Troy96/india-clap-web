@@ -1,71 +1,77 @@
 .header{
-    background-color: teal;
-    height: 63px;
-    color: white;
-    
-    display: flex;
-    
-    align-items: center;
-    padding-left: 30px;
-  }
-.hbtn{
-    background-color: oldlace;
-    color: teal;
-    border: none;
-  }
-  .hbtn:hover{
-    background-color: wheat;
-  }
-  .place{
-    margin-left: 30px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-  }
-  #des1{
-    margin-top: 30px;
-    margin-bottom: 30px;
-    background-color: lightgray;
-    border-radius: 5px;
-    padding-left: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-right: 20px;
-  }
-  #button2{
-    margin-left: 8%;
-    margin-bottom: 8%;
-    margin-top: 8%;
-  }
-  .hbtn2{
-    height: 40px;
-    background-color: teal;
-  }
-  .hbtn3{
-    height: 40px;
-    float: right;
-    background-color: teal;
+  background-color: teal;
+  height: 63px;
+  color: white;
   
-  }
-  .active{
-    background-color: white !important;
-    color: teal !important;
-  }
+  display: flex;
+  
+  align-items: center;
+  padding-left: 30px;
+}
+h2{
+  font-size: 19px;
+  font-weight: normal;
+  
 
-  @media (min-width: 406px) {
+}
+.hbtn{
+  background-color: oldlace;
+  color: teal;
+  border: none;
+}
+.hbtn:hover{
+  background-color: wheat;
+}
+.place{
+  margin-left: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+#des1{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: lightgray;
+  border-radius: 5px;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+}
+#button2{
+  margin-left: 30px;
+  margin-bottom: 30px;
+
+}
+.hbtn2{
+  height: 40px;
+  background-color: teal;
+}
+.hbtn3{
+  height: 40px;
+  float: right;
+  background-color: teal;
+
+}
+.active{
+  background-color: white !important;
+  color: teal !important;
+}  
+
+@media (min-width: 406px) {
     #button{
-        float: right;
-        margin-left: 5px;
-        margin-top: -5px;
-        
-      }
-      .hbtn{
-        font-size: 7px;
-        
-        padding-left: 0px;
-        padding-right: 0px;
-        width: 70px;
-        height: 20px;
-      }
+      float: right;
+      margin-left: 5px;
+      margin-top: -5px;
+      
+    }
+    .hbtn{
+      font-size: 7px;
+      
+      padding-left: 0px;
+      padding-right: 0px;
+      width: 70px;
+      height: 20px;
+    }
 }
 @media (min-width: 1200px) {
     #button{

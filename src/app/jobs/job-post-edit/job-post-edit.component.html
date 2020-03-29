@@ -3,9 +3,9 @@
 
         <h2>Your job posting details</h2>
         <div id="button">
-            <button type="submit" class="btn btn-primary hbtn active">View and edit post</button>
-            <button type="submit" class="btn btn-primary hbtn">View candidates</button>
-            <button type="submit" class="btn btn-primary hbtn">Shortlist tab</button>
+            <button class="btn btn-primary hbtn active">View and edit post</button>
+            <button routerLink="/jobs/candidates/{{jobId}}" class="btn btn-primary hbtn">View candidates</button>
+            <button routerLink="/jobs/shortlisted/{{jobId}}" class="btn btn-primary hbtn">Shortlist tab</button>
 
         </div>
 

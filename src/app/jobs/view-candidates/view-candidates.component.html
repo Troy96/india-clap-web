@@ -2,10 +2,10 @@
     <div class="header">
         <h2>Your job posting details</h2>
         <div id="button">
-            <button type="submit" class="btn btn-primary hbtn">View and edit post</button>
-            <button type="submit" class="btn btn-primary hbtn active">View candidates</button>
-            <button type="submit" class="btn btn-primary hbtn">Shortlist tab</button>
-
+            <button routerLink="/jobs/edit-job/{{jobId}}" class="btn btn-primary hbtn">View and edit post</button>
+            <button class="btn btn-primary hbtn active">View candidates</button>
+            <button routerLink="/jobs/shortlisted/{{jobId}}" class="btn btn-primary hbtn">Shortlist tab</button>
+      
         </div>
     </div>
     <div class="place" *ngIf="candidateList?.length">

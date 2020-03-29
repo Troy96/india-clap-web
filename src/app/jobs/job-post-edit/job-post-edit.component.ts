@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-job-post-edit',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JobPostEditComponent implements OnInit {
 
-  constructor() { }
+  jobId: number;
+
+  constructor(
+    private router: ActivatedRoute
+  ) {
+    this.jobId = +this.router.snapshot.paramMap.get('jobId');
+  }
 
   ngOnInit() {
   }
