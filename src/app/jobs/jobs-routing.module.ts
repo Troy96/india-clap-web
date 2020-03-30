@@ -44,6 +44,7 @@ const routes: Routes = [
       { path: 'description/:jobId', component: JobDescriptionComponent },
       { path: 'upload-resume/:jobId', component: UploadResumeComponent },
       { path: 'archive-job-search', component: ArchiveJobSearchComponent },
+      { path: 'no-archive', component: ArchiveJobsAlertComponent },
       { path: 'skills-test', component: SkillTestComponent }
     ]
   },

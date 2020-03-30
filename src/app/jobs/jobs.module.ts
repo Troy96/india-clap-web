@@ -32,6 +32,7 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JobsService } from '../services/jobs.service';
 import { JwtTokenIntercelptor } from '../interceptors/jwt-token.interceptor';
+import { CommunicateService } from '../services/communicate.service';
 
 
 
@@ -69,7 +70,7 @@ import { JwtTokenIntercelptor } from '../interceptors/jwt-token.interceptor';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [JobsService, {
+  providers: [JobsService, CommunicateService, {
     provide: HTTP_INTERCEPTORS, useClass: JwtTokenIntercelptor, multi: true
   }]
 })

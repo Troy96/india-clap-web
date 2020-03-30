@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { JobsService } from 'src/app/services/jobs.service';
+import { CommunicateService } from 'src/app/services/communicate.service';
 
 @Component({
   selector: 'app-instant-apply-search',
@@ -11,7 +12,8 @@ export class InstantApplySearchComponent implements OnInit {
 
   instantApplyForm: FormGroup;
   constructor(
-    private jobService: JobsService
+    private jobService: JobsService,
+    private communicateService: CommunicateService
   ) {
     this.instantApplyForm = new FormGroup({
       salary: new FormControl("", Validators.required),
@@ -30,7 +32,7 @@ export class InstantApplySearchComponent implements OnInit {
     if (!this.instantApplyForm.valid) return;
     this.jobService.search_job(this.instantApplyForm.value)
       .subscribe(respObj => {
-        console.log(respObj)
+        this.communicateService.jobList = [...respObj['results']];
       })
   }
 

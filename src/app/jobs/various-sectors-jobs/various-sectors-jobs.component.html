@@ -1,26 +1,27 @@
 <div class="mainbody">
     <div class="header">
-          
+
         <h2>Job across various sectors </h2>
         <div id="button1">
-          <button type="submit" class="btn btn-primary hbtn" (click)="onSelectAllAndApply()">Select all and apply</button>
+            <button type="submit" class="btn btn-primary hbtn" (click)="onSelectAllAndApply()">Select all and
+                apply</button>
 
         </div>
-        <div id="button">
-          <button type="submit" class="btn btn-primary hbtn">Instant Apply Jobs</button>
+        <div id="button" (click)="onInstantApply()">
+            <button type="submit" class="btn btn-primary hbtn">Instant Apply Jobs</button>
 
         </div>
-        
-        <div id="filter">
-          <button type="button" class="btn ">
 
-          <img src="/assets/icons/1x/Filter.png" alt="" width="22" height="25">
+        <div id="filter" (click)="displayJobFilters()">
+            <button type="button" class="btn ">
 
-          </button>
+                <img src="/assets/icons/1x/Filter.png" alt="" width="22" height="25">
+
+            </button>
         </div>
-        
-      </div>
-    <div class="place">
+
+    </div>
+    <div class="place" *ngIf="jobList.length">
         <div class="card" style="width: 100%;" *ngFor="let job of jobList">
             <div class="card-body">
                 <div id="symbols">
@@ -44,10 +45,12 @@
             </div>
         </div>
     </div>
+
+    <div class="no-data" *ngIf="!jobList.length">No jobs!</div>
 </div>
 <div id="filter-data" style="display: none;" #filters>
-    <p>Alphabetical Order</p>
+    <p (click)="getJobsByTitle()">Job title order</p>
     <hr>
-    <p>Time since job was posted</p>
+    <p (click)="getJobsByOpenings()">Number of openings order</p>
 
 </div>

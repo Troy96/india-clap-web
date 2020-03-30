@@ -64,13 +64,17 @@ h5{
 }
 #filter-data{
   float: right;
-  position: relative;
-  bottom: 580px;
+  position: absolute;
+  top: 50%;
   right: 15px;
  background-color: white;
  border: 1px gray solid;
  padding-left: 5px;
  padding-top: 5px;
+}
+
+#filter-data > p {
+  cursor: pointer;
 }
 
 #button1, .hbtn{
