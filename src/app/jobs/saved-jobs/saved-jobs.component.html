@@ -3,7 +3,7 @@
         <h2>Jobs you have saved</h2>
     </div>
     <div class="place" *ngIf="savedJobList?.length">
-        <div class="card" style="width: 100%;">
+        <div class="card" style="width: 100%;" *ngFor="let job of jobDetailList">
             <div class="card-body">
                 <div id="symbols">
                     <img src="/assets/icons/1x/star.png" alt="" width="14px" height="14px">
@@ -13,72 +13,14 @@
                 <img class="card-img" src="/assets/icons/1x/bulb.png" alt="Card image cap">
                 <div id="crdtxt">
                     <a href="">
-                        <h4 class="card-title">Accounting</h4>
-                        <span class="card-text">Gurgao, India</span><br>
-                        <span class="card-text">Creative Head</span>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-        <div class="card" style="width: 100%;">
-            <div class="card-body">
-                <div id="symbols">
-                    <img src="/assets/icons/1x/star.png" alt="" width="14px" height="14px">
-                    <span id="space"></span>
-                    <img src="/assets/icons/cross.png" alt="" width="10px" height="12">
-                </div>
-                <img class="card-img" src="/assets/icons/1x/logo1.png" alt="Card image cap">
-                <div id="crdtxt">
-                    <a href="">
-                        <h4 class="card-title">Magmaven Industries</h4>
-                        <span class="card-text">California, USA</span><br>
-                        <span class="card-text">UI Designer</span>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-        <div class="card" style="width: 100%;">
-            <div class="card-body">
-                <div id="symbols">
-                    <img src="/assets/icons/1x/star.png" alt="" width="14px" height="14px">
-                    <span id="space"></span>
-                    <img src="/assets/icons/cross.png" alt="" width="10px" height="12">
-                </div>
-                <img class="card-img" src="/assets/icons/1x/logo3.png" alt="Card image cap">
-                <div id="crdtxt">
-                    <a href="">
-                        <h4 class="card-title">Crifford Grace</h4>
-                        <span class="card-text">Gurgao, India</span><br>
-                        <span class="card-text">Creative Head</span>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-        <div class="card" style="width: 100%;">
-            <div class="card-body">
-                <div id="symbols">
-                    <a href="">
-                        <img src="/assets/icons/1x/star.png" alt="" width="14px" height="14px">
-                    </a>
-                    <span id="space"></span>
-                    <a href="">
-                        <img src="/assets/icons/cross.png" alt="" width="10px" height="12">
-                    </a>
-                </div>
-                <img class="card-img" src="/assets/icons/1x/Logo4.png" alt="Card image cap">
-                <div id="crdtxt">
-                    <a href="">
-                        <h4 class="card-title">Gajendra Telecomunication</h4>
-                        <span class="card-text">Gurgao, India</span><br>
-                        <span class="card-text">Creative Head</span>
+                        <h4 class="card-title" routerLink="/jobs/description/{{job?.id}}">{{job?.name}}</h4>
+                        <span class="card-text">{{job?.location_District}} {{job?.location_State}}</span><br>
+                        <span class="card-text">{{job?.job_role}}</span>
                     </a>
                 </div>
 
             </div>
         </div>
     </div>
-    <div *ngIf="!savedJobList?.length" class="no-data">No saved jobs!</div>
+    <div *ngIf="!jobDetailList?.length" class="no-data">No saved jobs!</div>
 </div>

@@ -56,7 +56,7 @@ export class JobsService {
   }
 
   save_job(jobId: number) {
-    return this.http.get(`${config.base_url}/JobMarket/jobs/${jobId}/save`)
+    return this.http.post(`${config.base_url}/JobMarket/jobs/${jobId}/save/`, { id: jobId })
   }
 
   search_job($data) {
@@ -89,7 +89,7 @@ export class JobsService {
     return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/candidates`);
   }
 
-  get_shorlisted_candidates(jobId: number){
+  get_shorlisted_candidates(jobId: number) {
     return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/shortlistedCandidates`);
   }
 
