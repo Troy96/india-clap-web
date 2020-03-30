@@ -11,11 +11,18 @@
 
     </div>
     <div class="place">
+        <form  [formGroup]='jobEditForm'>
+
         <div class="heading1">
             <h3>Post Description</h3>
         </div>
         <div id="des1">
-            Art and design enthusiast. Always observing the space around me and finding things that interest and
+            <input type="text" class="form-control left" id="exampleInputEmail1"   formControlName="job_desc"
+            [ngClass]="{'is-invalid':jobEditForm.get('job_desc').touched && jobEditForm.get('job_desc').invalid}">
+            <div class="invalid-feedback">
+                <p class="error">This field is required</p>
+             </div>
+            <!-- Art and design enthusiast. Always observing the space around me and finding things that interest and
             intrigue me. Anything creative draws me in. I have a passion for people, stories, the environment and the
             visual media! Art and design enthusiast. Always observing the space around me and finding things that
             interest and intrigue me. Anything creative draws me in. Anything creative draws me in. I have a passion for
@@ -23,22 +30,24 @@
             around me and finding things that interest and intrigue me. Anything creative draws me in. I have a passion
             for people, stories, the environment and the visual media! Art and design enthusiast. Anything creative
             draws me in. I have a passion for people, stories, the environment and the visual media! Art and design
-            enthusiast. Always observing .
+            enthusiast. Always observing . -->
         </div>
 
         <div class="heading1">
             <h3>Job Title</h3>
         </div>
         <div id="des1">
-            Art and design enthusiast. Always observing the space around me and finding things that interest and
-            intrigue me. Anything creative draws me in. I have a passion for people, stories, the environment and the
-            visual media! Art and design enthusiast. Always observing the space around me and finding things that
-            interest and intrigue me.
+            <input type="text" class="form-control left" id="exampleInputEmail1"   formControlName="job_title"
+            [ngClass]="{'is-invalid':jobEditForm.get('job_title').touched && jobEditForm.get('job_title').invalid}">
+            <div class="invalid-feedback">
+                <p class="error">This field is required</p>
+             </div>
         </div>
+        </form>
     </div>
     <div id="button2">
-        <button type="submit" class="btn btn-primary hbtn2">Save and repost</button>
-        <button type="submit" class="btn btn-danger hbtn3">Remove Post</button>
+        <button type="submit" class="btn btn-primary hbtn2" (click)="edit()">Save and repost</button>
+        <button type="submit" class="btn btn-danger hbtn3" (click)="delete()">Remove Post</button>
 
     </div>
 

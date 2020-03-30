@@ -20,7 +20,7 @@ export class VariousSectorsJobsComponent implements OnInit {
   }
 
   jobList: any[];
-
+  obj:any={};
   ngOnInit() {
     this.getVariousSectorsJobs();
   }
@@ -38,7 +38,8 @@ export class VariousSectorsJobsComponent implements OnInit {
 
   onFavouriteJob(event, jobId) {
     event.target.src = `${this._document.location.origin}/assets/icons/1x/filled-star.png`;
-    this.jobService.save_job(jobId)
+    this.obj.id = jobId;
+    this.jobService.save_job(jobId,this.obj)
       .subscribe(respObj => console.log(respObj))
   }
 

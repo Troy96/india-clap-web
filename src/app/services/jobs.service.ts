@@ -35,8 +35,8 @@ export class JobsService {
     return this.http.get(`${config.base_url}/JobMarket/jobs/${$data}`)
   }
 
-  apply_to_job(jobId, $data: any) {
-    return this.http.post(`${config.base_url}/JobMarket/jobs/${jobId}/apply`, $data)
+  apply_to_job(jobId,$data) {
+    return this.http.post(`${config.base_url}/JobMarket/jobs/${jobId}/apply`,$data )
   }
 
   get_company_details(companyId: number) {
@@ -55,8 +55,8 @@ export class JobsService {
     return this.http.get(`${config.base_url}/JobMarket/jobs/instantApply`);
   }
 
-  save_job(jobId: number) {
-    return this.http.get(`${config.base_url}/JobMarket/jobs/${jobId}/save`)
+  save_job(jobId: number,$data) {
+    return this.http.post(`${config.base_url}/JobMarket/jobs/${jobId}/save`,$data);
   }
 
   search_job($data) {
@@ -71,7 +71,7 @@ export class JobsService {
     return this.http.post(`${config.base_url}/JobMarket/jobs/`, formData)
 
   }
-  myJobPostings($data) {
+  myJobPostings() {
     // JobMarket/jobs/myJobPostings
     return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings`)
 
@@ -92,5 +92,19 @@ export class JobsService {
   get_shorlisted_candidates(jobId: number){
     return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/shortlistedCandidates`);
   }
+  // myJobPosting(jobId:number){
+  //   return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/shortlistedCandidates`);
 
+  // }
+  get_job_byId(jobId: number){
+    return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}`);
+  }
+  edit_job_post($data:any,jobId: number){
+    return this.http.put(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/`,$data);
+  }
+  delete_job_post(jobId: number)
+  {
+    return this.http.delete(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/`);
+
+  }
 }

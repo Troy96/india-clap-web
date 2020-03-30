@@ -11,7 +11,7 @@ export class JobDescriptionComponent implements OnInit {
 
   jobId: number;
   jobObj: any;
-
+  obj:any={};
   @ViewChild('profileShare', { static: false }) profileShareRef: ElementRef;
   constructor(
     private route: ActivatedRoute,
@@ -34,6 +34,10 @@ export class JobDescriptionComponent implements OnInit {
 
   apply() {
     this.renderer.setStyle(this.profileShareRef.nativeElement, 'display', 'block');
+    this.obj.id = this.jobId;
+    this.jobService.apply_to_job(this.jobId,this.obj).subscribe((data:any)=>{
+    console.log(data);
+    })
   }
 
 

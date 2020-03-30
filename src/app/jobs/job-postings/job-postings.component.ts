@@ -16,14 +16,15 @@ export class JobPostingsComponent implements OnInit {
     var today = new Date();
        this.month = (today.getMonth()+1);
        this.day = today.getDate();
-    this.jService.get_jobList().subscribe((data:any)=>{
-      this.jobList = data.results;
-     // console.log(this.jobList)
-    })
+    // this.jService.get_jobList().subscribe((data:any)=>{
+    //   this.jobList = data.results;
+    //  // console.log(this.jobList)
+    // })
 
 
-    this.jService.myJobPostings(17).subscribe((data)=>{
+    this.jService.myJobPostings().subscribe((data:any)=>{
       console.log(data);
+      this.jobList = data.results;
     })
   }
 

@@ -22,6 +22,7 @@ export class SavedJobsComponent implements OnInit {
     this.jobService.get_saved_jobs()
       .subscribe(respObj => {
         this.savedJobList = [...respObj['results']];
+        console.log(this.savedJobList);
       })
   }
 
