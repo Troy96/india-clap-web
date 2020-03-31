@@ -96,7 +96,11 @@ export class JobsService {
     return this.http.get(`${config.base_url}/JobMarket/jobs?is_instantjob=${isInstantJob}`);
   }
 
-  get_job_status(jobId: number) {
-    return this.http.get(`${config.base_url}/JobMarket/jobApplicationState/${jobId}`)
+  get_job_status(applicationId: number) {
+    return this.http.get(`${config.base_url}/JobMarket/jobApplicationState/${applicationId}`)
   }
+
+    change_job_application_state(state){
+      //return this.http.get()
+    }
 }

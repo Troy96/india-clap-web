@@ -6,7 +6,7 @@
         <div class="card" style="width: 100%;" *ngFor="let job of appliedJobDetailList">
             <div class="card-body">
                 <div id="symbols">
-                    <h5>Accepted</h5>
+                    <h5>{{job?.status}}</h5>
                 </div>
                 <img class="card-img" src="/assets/icons/1x/bulb.png" alt="Card image cap" width="14px" height="14px">
                 <div id="crdtxt">

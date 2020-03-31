@@ -26,20 +26,22 @@ export class AppliedJobsComponent implements OnInit {
       .subscribe(respObj => {
         this.appliedJobList = [...respObj['results']];
         this.appliedJobList.forEach(obj => {
-          this.setJobDetails(obj['applied_job']);
+          this.setJobDetails(obj['applied_job'], obj['id']);
         })
-        setTimeout(() => {
-          console.log(this.appliedJobDetailList);
-        }, 0);
       })
   }
 
-  setJobDetails(job) {
+  setJobDetails(job, appId) {
     this.http.get(job)
       .subscribe(respObj => {
-        this.appliedJobDetailList.push(respObj);
-        // this.jobService.get_job_status(respObj['id'])
-        //   .subscribe(respObj => console.log(respObj))
+        let jobDetail = { ...respObj };
+        this.jobService.get_job_status(appId)
+          .subscribe(respObj => {
+            this.appliedJobDetailList.push({
+              status: respObj['company_action'],
+              ...jobDetail
+            })
+          })
       })
   }
 
