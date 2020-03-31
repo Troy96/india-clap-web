@@ -1,8 +1,6 @@
 import { Component, OnInit, Renderer2, ElementRef, ViewChild, Inject } from '@angular/core';
 import { JobsService } from 'src/app/services/jobs.service';
-import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
-import { CommunicateService } from 'src/app/services/communicate.service';
 
 @Component({
   selector: 'app-various-sectors-jobs',
@@ -16,9 +14,7 @@ export class VariousSectorsJobsComponent implements OnInit {
     @Inject(DOCUMENT) private _document: Document,
 
     private jobService: JobsService,
-    private communicateService: CommunicateService,
     private renderer: Renderer2,
-    private router: Router
 
   ) {
   }
@@ -28,8 +24,6 @@ export class VariousSectorsJobsComponent implements OnInit {
   toggleInstantJobs: boolean = false;
 
   ngOnInit() {
-    console.log(this.communicateService.jobList);
-
     this.getVariousSectorsJobs();
   }
 
@@ -41,7 +35,6 @@ export class VariousSectorsJobsComponent implements OnInit {
   }
 
   displayJobFilters() {
-    console.log('filter');
     this.renderer.setStyle(this.filtersRef.nativeElement, 'display', 'block');
   }
 

@@ -83,6 +83,8 @@ export class JobsService {
   get_shorlisted_candidates(jobId: number) {
     return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/shortlistedCandidates`);
   }
+  // myJobPosting(jobId:number){
+  //   return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/shortlistedCandidates`);
 
   get_jobs_by_titles() {
     return this.http.get(`${config.base_url}/JobMarket/jobs?ordering=job_title`);
@@ -103,4 +105,16 @@ export class JobsService {
     change_job_application_state(state){
       //return this.http.get()
     }
+  // }
+  get_job_byId(jobId: number){
+    return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}`);
+  }
+  edit_job_post($data:any,jobId: number){
+    return this.http.put(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/`,$data);
+  }
+  delete_job_post(jobId: number)
+  {
+    return this.http.delete(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/`);
+
+  }
 }
