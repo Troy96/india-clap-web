@@ -15,6 +15,7 @@ import { CreateCompanyComponent } from './create-company/create-company.componen
 import { CompanyAdminViewComponent } from './company-admin-view/company-admin-view.component';
 import { CompanyUserViewComponent } from './company-user-view/company-user-view.component';
 import { MoreTabComponent } from './more-tab/more-tab.component';
+import {AcceptDeclineRequestComponent} from './accept-decline-request/accept-decline-request.component';
 
 const routes: Routes = [
   {
@@ -32,7 +33,8 @@ const routes: Routes = [
       { path: 'create-company', component: CreateCompanyComponent },
       { path: 'company-admin-view', component: CompanyAdminViewComponent },
       { path: 'company-user-view', component: CompanyUserViewComponent },
-      { path: 'more-tabs', component: MoreTabComponent }
+      { path: 'more-tabs', component: MoreTabComponent },
+      { path: 'accept-decline', component: AcceptDeclineRequestComponent }
     ]
   },
 ];

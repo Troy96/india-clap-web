@@ -19,7 +19,7 @@ export class LoginPageComponent implements OnInit {
    }
   ngOnInit() {
   }
-  
+
   submit()
   {
     this.loginForm.controls["email"].markAsTouched();
