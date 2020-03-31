@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2, ElementRef, ViewChild, Inject } from '@an
 import { JobsService } from 'src/app/services/jobs.service';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
+import { CommunicateService } from 'src/app/services/communicate.service';
 
 @Component({
   selector: 'app-various-sectors-jobs',
@@ -13,15 +14,22 @@ export class VariousSectorsJobsComponent implements OnInit {
   @ViewChild('filters', { static: false }) filtersRef: ElementRef
   constructor(
     @Inject(DOCUMENT) private _document: Document,
+
     private jobService: JobsService,
+    private communicateService: CommunicateService,
     private renderer: Renderer2,
     private router: Router
+
   ) {
   }
 
   jobList: any[];
+  toggleFilter: boolean = false;
+  toggleInstantJobs: boolean = false;
 
   ngOnInit() {
+    console.log(this.communicateService.jobList);
+
     this.getVariousSectorsJobs();
   }
 
@@ -33,6 +41,7 @@ export class VariousSectorsJobsComponent implements OnInit {
   }
 
   displayJobFilters() {
+    console.log('filter');
     this.renderer.setStyle(this.filtersRef.nativeElement, 'display', 'block');
   }
 
@@ -45,6 +54,31 @@ export class VariousSectorsJobsComponent implements OnInit {
   onSelectAllAndApply() {
     this.jobService.select_all_jobs()
       .subscribe(respObj => console.log(respObj))
+  }
+
+  onInstantApply() {
+    this.toggleInstantJobs = !this.toggleInstantJobs;
+    this.jobService.instant_apply_jobs(this.toggleInstantJobs)
+      .subscribe(respObj => {
+        this.jobList = [...respObj['results']];
+      })
+  }
+
+  getJobsByTitle() {
+    this.jobService.get_jobs_by_titles()
+      .subscribe(respObj => {
+        this.jobList = [...respObj['results']];
+      })
+  }
+
+  getJobsByOpenings() {
+    let filter = '';
+    this.toggleFilter = !this.toggleFilter;
+    (this.toggleFilter) ? filter = 'numOfOpenings' : filter = '-numOfOpenings';
+    this.jobService.get_jobs_by_openings(filter)
+      .subscribe(respObj => {
+        this.jobList = [...respObj['results']];
+      })
   }
 
 }

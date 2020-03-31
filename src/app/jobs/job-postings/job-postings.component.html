@@ -2,24 +2,25 @@
     <div class="header">
         <h2>Your job posting</h2>
     </div>
-    <div class="place">
-        <div *ngFor="let item of jobList">
-        <div class="card" style="width: 100%;">
-            <div class="card-body">
-                <div id="symbols">
-                    <img src="icons/1x/star.png" alt="" width="14px" height="14px">
-                    <span id="space">{{(((item.date_posted.split("-")[1])-month))}} months </span>
-                    <img src="icons/1x/cross.png" alt="" width="14px" height="12">
-                </div>
-                <div id="crdtxt">
-                    <a routerLink="/jobs/edit-job/{{item.id}}">
-                        <h4 class="card-title">{{item.job_title}}</h4>
-                        <span class="card-text">{{item.location_District}},{{item.location_State}}</span><br>
-                        <span class="card-text">{{item.job_role}}</span>
-                    </a>
+    <div class="place" *ngIf="jobPostsList.length">
+        <div *ngFor="let item of jobPostsList">
+            <div class="card" style="width: 100%;">
+                <div class="card-body">
+                    <div id="symbols">
+                        <img src="icons/1x/star.png" alt="" width="14px" height="14px">
+                        <span id="space">{{item?.date_posted}} </span>
+                        <img src="icons/1x/cross.png" alt="" width="14px" height="12">
+                    </div>
+                    <div id="crdtxt">
+                        <a routerLink="/jobs/edit-job/{{item.id}}">
+                            <h4 class="card-title">{{item?.job_title}}</h4>
+                            <span class="card-text">{{item?.location_District}},{{item.location_State}}</span><br>
+                            <span class="card-text">{{item?.job_role}}</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+    <div class="no-data" *ngIf="!jobPostsList.length">No job postings!</div>
 </div>

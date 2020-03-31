@@ -36,7 +36,7 @@ export class JobsService {
   }
 
   apply_to_job(jobId, $data: any) {
-    return this.http.post(`${config.base_url}/JobMarket/jobs/${jobId}/apply`, $data)
+    return this.http.post(`${config.base_url}/JobMarket/jobs/${jobId}/apply/`, $data)
   }
 
   get_company_details(companyId: number) {
@@ -44,7 +44,7 @@ export class JobsService {
   }
 
   upload_resume(jobId: number, $data: any) {
-    return this.http.post(`${config.base_url}/JobMarket/jobs/${jobId}/apply`, $data);
+    return this.http.post(`${config.base_url}/JobMarket/jobs/${jobId}/apply/`, $data);
   }
 
   archive_job_search($data: any) {
@@ -56,23 +56,14 @@ export class JobsService {
   }
 
   save_job(jobId: number) {
-    return this.http.get(`${config.base_url}/JobMarket/jobs/${jobId}/save`)
+    return this.http.get(`${config.base_url}/JobMarket/jobs/${jobId}/save/`)
   }
 
   search_job($data) {
-
-    const formData = new FormData();
-    formData.append('salary', $data['salary']);
-    formData.append('location_District', $data['location_District']);
-    formData.append('location_State', $data['location_State']);
-    formData.append('starting_date', $data['starting_date']);
-    formData.append('end_date', $data['end_date']);
-
-    return this.http.post(`${config.base_url}/JobMarket/jobs/`, formData)
-
+    return this.http.get(`${config.base_url}/JobMarket/jobs/job?salary=${$data['salary']}&location_District=${$data['location_District']}&location_State=${$data['location_State']}&starting_time=${$data['starting_time']}&end_time=${$data['end_time']}`)
   }
-  myJobPostings($data) {
-    // JobMarket/jobs/myJobPostings
+
+  get_job_postings() {
     return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings`)
 
   }
@@ -89,8 +80,27 @@ export class JobsService {
     return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/candidates`);
   }
 
-  get_shorlisted_candidates(jobId: number){
+  get_shorlisted_candidates(jobId: number) {
     return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/shortlistedCandidates`);
   }
 
+  get_jobs_by_titles() {
+    return this.http.get(`${config.base_url}/JobMarket/jobs?ordering=job_title`);
+  }
+
+  get_jobs_by_openings(order) {
+    return this.http.get(`${config.base_url}/JobMarket/jobs?ordering=${order}`);
+  }
+
+  instant_apply_jobs(isInstantJob: boolean) {
+    return this.http.get(`${config.base_url}/JobMarket/jobs?is_instantjob=${isInstantJob}`);
+  }
+
+  get_job_status(applicationId: number) {
+    return this.http.get(`${config.base_url}/JobMarket/jobApplicationState/${applicationId}`)
+  }
+
+    change_job_application_state(state){
+      //return this.http.get()
+    }
 }

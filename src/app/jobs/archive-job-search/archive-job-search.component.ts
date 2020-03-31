@@ -30,7 +30,7 @@ export class ArchiveJobSearchComponent implements OnInit {
 
     this.jobService.archive_job_search(this.archiveJobSearchForm.value)
       .subscribe(respObj => {
-        console.log(respObj);
+        this.router.navigateByUrl('/jobs/description/' + respObj['results'][0]['id']);
       })
 
   }
