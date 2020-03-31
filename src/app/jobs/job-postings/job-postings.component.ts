@@ -7,24 +7,20 @@ import { JobsService } from 'src/app/services/jobs.service';
   styleUrls: ['./job-postings.component.css']
 })
 export class JobPostingsComponent implements OnInit {
-  month:any;
-  day:any;
-  jobList:any=[];
-  constructor(private jService:JobsService) { }
+
+  jobPostsList: any = [];
+  constructor(private jobService: JobsService) { }
 
   ngOnInit() {
-    var today = new Date();
-       this.month = (today.getMonth()+1);
-       this.day = today.getDate();
-    this.jService.get_jobList().subscribe((data:any)=>{
-      this.jobList = data.results;
-     // console.log(this.jobList)
-    })
+    this.getJobPostings();
+  }
 
-
-    this.jService.myJobPostings(17).subscribe((data)=>{
-      console.log(data);
-    })
+  getJobPostings() {
+    this.jobService.get_job_postings()
+      .subscribe(respObj => {
+        console.log(respObj);
+        this.jobPostsList = [...respObj['results']];
+      })
   }
 
 }

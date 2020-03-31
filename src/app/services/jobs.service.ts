@@ -56,15 +56,14 @@ export class JobsService {
   }
 
   save_job(jobId: number) {
-    return this.http.post(`${config.base_url}/JobMarket/jobs/${jobId}/save/`, { id: jobId })
+    return this.http.get(`${config.base_url}/JobMarket/jobs/${jobId}/save/`)
   }
 
   search_job($data) {
     return this.http.get(`${config.base_url}/JobMarket/jobs/job?salary=${$data['salary']}&location_District=${$data['location_District']}&location_State=${$data['location_State']}&starting_time=${$data['starting_time']}&end_time=${$data['end_time']}`)
   }
 
-  myJobPostings($data) {
-    // JobMarket/jobs/myJobPostings
+  get_job_postings() {
     return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings`)
 
   }

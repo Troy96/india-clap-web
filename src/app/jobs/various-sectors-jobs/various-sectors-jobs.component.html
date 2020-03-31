@@ -21,7 +21,7 @@
         </div>
 
     </div>
-    <div class="place" *ngIf="jobList.length">
+    <div class="place" *ngIf="jobList?.length">
         <div class="card" style="width: 100%;" *ngFor="let job of jobList">
             <div class="card-body">
                 <div id="symbols">
@@ -46,7 +46,7 @@
         </div>
     </div>
 
-    <div class="no-data" *ngIf="!jobList.length">No jobs!</div>
+    <div class="no-data" *ngIf="!jobList?.length">No jobs!</div>
 </div>
 <div id="filter-data" style="display: none;" #filters>
     <p (click)="getJobsByTitle()">Job title order</p>
