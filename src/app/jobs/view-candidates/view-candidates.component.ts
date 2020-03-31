@@ -44,4 +44,12 @@ export class ViewCandidatesComponent implements OnInit {
       })
   }
 
+  changeJobStatus(state) {
+    let postId = 0, candidateId = 0
+    this.jobService.change_job_application_state(postId, candidateId, state)
+      .subscribe(respObj => {
+        console.log(respObj);
+      })
+  }
+
 }

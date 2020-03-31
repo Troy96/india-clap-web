@@ -5,7 +5,7 @@
             <button routerLink="/jobs/edit-job/{{jobId}}" class="btn btn-primary hbtn">View and edit post</button>
             <button class="btn btn-primary hbtn active">View candidates</button>
             <button routerLink="/jobs/shortlisted/{{jobId}}" class="btn btn-primary hbtn">Shortlist tab</button>
-      
+
         </div>
     </div>
     <div class="place" *ngIf="candidateList?.length">
@@ -13,13 +13,13 @@
             <div class="card-body">
 
                 <div id="symbols">
-                    <a href="">
+                    <a (click)="changeJobStatus('shortlist')">
                         <h5>Shortlist &nbsp;</h5>
                     </a>
-                    <a href="">
+                    <a (click)="changeJobStatus('accept')">
                         <h5>Accept &nbsp;</h5>
                     </a>
-                    <a href="">
+                    <a (click)="changeJobStatus('reject')">
                         <h5>Reject &nbsp;</h5>
                     </a>
                 </div>

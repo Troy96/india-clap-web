@@ -102,18 +102,17 @@ export class JobsService {
     return this.http.get(`${config.base_url}/JobMarket/jobApplicationState/${applicationId}`)
   }
 
-    change_job_application_state(state){
-      //return this.http.get()
-    }
-  // }
-  get_job_byId(jobId: number){
+  change_job_application_state(postId: number, candidateId: number, state: string) {
+    return this.http.get(`${config.base_url}/JobMarket/myJobsPostings/${postId}/candidates/${candidateId}/${state}`)
+  }
+
+  get_job_byId(jobId: number) {
     return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}`);
   }
-  edit_job_post($data:any,jobId: number){
-    return this.http.put(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/`,$data);
+  edit_job_post($data: any, jobId: number) {
+    return this.http.put(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/`, $data);
   }
-  delete_job_post(jobId: number)
-  {
+  delete_job_post(jobId: number) {
     return this.http.delete(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/`);
 
   }
