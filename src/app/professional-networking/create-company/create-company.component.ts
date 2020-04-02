@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-company',
@@ -7,7 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateCompanyComponent implements OnInit {
 
-  constructor() { }
+  companyForm: FormGroup;
+
+  constructor() {
+    this.companyForm = new FormGroup({
+      name: new FormControl("", Validators.required),
+      industry: new FormControl("", Validators.required),
+      logo: new FormControl(""),
+      company_size: new FormControl("", Validators.required)
+    })
+  }
 
   ngOnInit() {
   }

@@ -24,6 +24,7 @@ import { MoreTabComponent } from './more-tab/more-tab.component';
 import { NetworkingService } from '../services/networking.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtTokenIntercelptor } from '../interceptors/jwt-token.interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { JwtTokenIntercelptor } from '../interceptors/jwt-token.interceptor';
   imports: [
     CommonModule,
     ProfessionalNetworkingRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule, ReactiveFormsModule
   ],
   providers: [NetworkingService, {
     provide: HTTP_INTERCEPTORS, useClass: JwtTokenIntercelptor, multi: true
