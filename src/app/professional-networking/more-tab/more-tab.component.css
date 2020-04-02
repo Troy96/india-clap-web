@@ -135,6 +135,14 @@
     color: gray;
   
   }
+  .more-opt li{
+    text-decoration: none;
+  }
+  .more-opt li a{
+    text-decoration: none;
+    color: grey;
+  }
+
   body{
     background-color: lightgray;
   }
