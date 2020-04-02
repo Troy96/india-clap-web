@@ -9,7 +9,7 @@
             <h2>Create a company page and let the mass know about you</h2>
         </div>
         <div class="place">
-            <form [formGroup]="companyForm">
+            <form [formGroup]="companyForm" (ngSubmit)="onSubmit();">
                 <h3>Name of company</h3>
                 <div class="form-group">
                     <input class="form-control" id="frm2" placeholder="Abc Exam, XYZ test" formControlName="name"
