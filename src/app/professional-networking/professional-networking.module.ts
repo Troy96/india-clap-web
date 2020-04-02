@@ -20,7 +20,11 @@ import { CompanyManagementComponent } from './company-management/company-managem
 import { CreateCompanyComponent } from './create-company/create-company.component';
 import { CompanyAdminViewComponent } from './company-admin-view/company-admin-view.component';
 import { CompanyUserViewComponent } from './company-user-view/company-user-view.component';
-import { MoreTabComponent } from './more-tab/more-tab.component'
+import { MoreTabComponent } from './more-tab/more-tab.component';
+import { NetworkingService } from '../services/networking.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtTokenIntercelptor } from '../interceptors/jwt-token.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -46,6 +50,9 @@ import { MoreTabComponent } from './more-tab/more-tab.component'
     CommonModule,
     ProfessionalNetworkingRoutingModule,
     SharedModule
-  ]
+  ],
+  providers: [NetworkingService, {
+    provide: HTTP_INTERCEPTORS, useClass: JwtTokenIntercelptor, multi: true
+  }]
 })
 export class ProfessionalNetworkingModule { }

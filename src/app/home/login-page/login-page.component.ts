@@ -26,7 +26,7 @@ export class LoginPageComponent implements OnInit {
     this.loginForm.controls["password"].markAsTouched();
     if(this.loginForm.valid)
     {
-      this.obj.username = this.loginForm.get('email').value;
+      this.obj.email = this.loginForm.get('email').value;
       this.obj.password = this.loginForm.get('password').value;
       this.authService.login(this.obj).subscribe((data:any)=>{
         console.log(data);
