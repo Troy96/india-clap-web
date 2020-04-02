@@ -23,7 +23,7 @@
         <div class="header">
             <h2>Companies pages you manage</h2>
         </div>
-        <div class="place" *ngIf="companyList.length">
+        <div class="place" *ngIf="companyList?.length">
             <div class="card" style="width: 100%;">
                 <div class="card-body">
 
@@ -83,6 +83,6 @@
 
 
         </div>
-        <div class="no-data" *ngIf="!company.length">No companies to manage!</div>
+        <div class="no-data" *ngIf="!company?.length">No companies to manage!</div>
     </div>
 </div>
