@@ -1,14 +1,30 @@
-.navbar-icon-top .navbar-nav .nav-link > .fa {
+.navbar-icon-top .navbar-nav .nav-link .link > .fa {
   position: relative;
   width: 36px;
   font-size: 24px;
 }
-
-.nav-item :hover{
-  background-color: white;
+.nav-link{
+  background-color: teal;
+  border: none;
 }
-.nav-link:hover{
-  color: #008080;
+.link{
+  text-decoration: none;
+  color: white;
+}
+
+#filter-data{
+  float: right;
+  position: absolute;
+  top: 15%;
+  right: 15px;
+ background-color: white;
+ border: 1px gray solid;
+ padding-left: 5px;
+ padding-top: 5px;
+}
+
+#filter-data > p {
+  cursor: pointer;
 }
 
 

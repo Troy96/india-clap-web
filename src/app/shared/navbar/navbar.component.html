@@ -66,16 +66,36 @@
           My Profile
         </a>
       </li>
+    <div id="filters" (click)="displayJobFilters()" style="display: block;">
       <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="fa fa-envelope-o">
-            <img src="/assets/icons/1x/Asset 9.png " width="20px">
-          </i>
-          More
-        </a>
+        <button class="nav-link" >
+          <a class="link" href="#">
+            <i class="fa fa-envelope-o">
+              <img class="img1" src="/assets/icons/1x/Asset 9.png " width="20px">
+            </i>
+            <br>
+            More
+          </a>
+        </button>
       </li>
-    </ul>
+    </div>
+  </ul>
 
 
   </div>
 </nav>
+<div  id="filter-data" style="display: none;" #filters>
+    <p>Register as a Holograph Micro Loan provider Partner</p>
+    <hr>
+    <p>Register as a Holograph Traning Partner</p>
+    <hr>
+    <p>Post a job</p>
+    <hr>
+    <p>Create a company page</p>
+    <hr>
+    <p>My job postings</p>
+    <hr>
+    <p>View my loan application</p>
+    <hr>
+    <p>Loan provider Tab</p>
+</div>
