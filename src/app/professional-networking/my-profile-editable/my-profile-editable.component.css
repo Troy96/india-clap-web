@@ -1,350 +1,404 @@
+.input-group-btn{
+  border-left: none;
+  background-color: white;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.jumbotron{
+  background-color: white;
+}
+.input-group-btn:hover{
+  box-shadow: none;
+}
+.form-control{
+  border-right: none;
+  border: none;
+  color: white;
+}
+.form-control:hover{
+  box-shadow: none;
+}
 .header{
-    background-color: teal;
-    height: 63px;
-    color: white;
-    
-    display: flex;
-    
-    align-items: center;
-    padding-left: 30px;
-  }
-  h2{
-    font-size: 19px;
-    font-weight: normal;
+  background-color: teal;
+  height: 63px;
+  color: white;
   
-  }
-  .jumbotron{
-    background-color: white;
-  }
+  display: flex;
   
-  #jumbotron-text{
-    border: 1px gray solid;
-    background-color: white;
-    height: 120px;
-    -webkit-box-shadow: 0 8px 6px -6px gray;
-         -moz-box-shadow: 0 8px 6px -6px gray;
-              box-shadow: 0 8px 6px -6px gray;
-    
-  }
-  #j-icons{ /*Apply button*/
-    margin-top: 20px;
-    padding-bottom: 10px;
-    
-  }
-  
-  .place{
-    
-    margin-top: 0px;
-    margin-bottom: 30px;
-    border: 1px gray solid;
-    
-  }
-  
-  #frm2{
-    background-color: lightgray;
-    
-  }
-  .jbtn{
-    background-color: teal;
-  }
-  
-  h4{
-    font-size: 20px;
-  }
-  
-  
-  
-  h3{
-    color: grey;
-    font-size: 20px;
-    text-decoration: none;
-  }
-  
-  ex-img{
-    float: left;
-  }
-  .teal{
-    color: teal !important;
-    font-weight: bold;
-  }
-  .heading{
-    background-color: teal;
-    color: white;
-    padding-left: 30px;
-    padding-top: 10px;
-    padding-bottom: 8px;
-  }
-  
-  
-  
-  
-  
-  .sect{
-    float: right;
-    
-    width: 55px;
-    height: 20px;
-    
-  }
-  .sect:active{
-    background-color: teal;
-  }
+  align-items: center;
+  padding-left: 30px;
+}
+h2{
+  font-size: 19px;
+  font-weight: normal;
 
-  @media(min-width: 252px){
-    .jmb-img{/*image of jumbotron*/
-        width: 90px;
-        margin-top: 120px;
-        border-radius: 50%;
-        margin-left: 10px;
-      }
-      #name{
-        float: left;
-        margin-left: 100px;
-        margin-top: 30px;
-        margin-right: 7px;
+}
+#jumbotron-text{
+  border: 1px gray solid;
+  background-color: white;
+  height: 120px;
+  -webkit-box-shadow: 0 8px 6px -6px gray;
+       -moz-box-shadow: 0 8px 6px -6px gray;
+            box-shadow: 0 8px 6px -6px gray;
+  
+}
+#j-icons{ /*Apply button*/
+  margin-top: 20px;
+  padding-bottom: 10px;
+  
+}
+
+.place{
+  
+  margin-top: 0px;
+  margin-bottom: 30px;
+  
+}
+.more-opt{/*more icon*/
+  float: right;
+  margin-right: 20px;
+  
+}
+#des1{  /*All descriptions */
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: lightgray;
+  border-radius: 5px;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+}
+#frm2{
+  background-color: lightgray;
+  
+}
+.jbtn{
+  background-color: teal;
+}
+
+h4{
+  font-size: 20px;
+}
+.text{
+  font-size: 14px;
+  float: left;
+  margin-left: 10px;
+  color: gray;
+}
+.sug-dp{
+  float: left;
+}
+
+#sug-body{
+  padding-left: 10px;
+
+}
+.teal{
+  color: teal !important;
+  font-weight: bolder !important;
+}
+#sug-head{
+  background-color: #DCDCDC;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: teal;
+  -webkit-box-shadow: 0 8px 6px -6px gray;
+    -moz-box-shadow: 0 8px 6px -6px gray;
+    box-shadow: 0 8px 6px -6px gray;
+  margin-bottom: 20px;
+ 
+        
+}
+h3{
+  color: grey;
+  font-size: 20px;
+  text-decoration: none;
+}
+.txt{
+  font-size: 15px;
+  color: gray;
+}
+#txt-exp{
+  font-size: 15px;
+  color: gray;
+  margin-left: 10px; 
+  margin-bottom: 20px;
+  
+}
+#headline{
+  border: 1px gray solid;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 10px 6px -6px gray;
+    -moz-box-shadow: 0 10px 6px -6px gray;
+    box-shadow: 0 10px 6px -6px gray;
+  margin-bottom: 30px;
+}
+.exp-img{
+  float: left;
+  margin-right: 20px;
+}
+.teal{
+  color: teal !important;
+  font-weight: bold;
+  
+}
+#experience{
+  margin-top: 30px;
+}
+
+.plus-icon1{
+  margin-left: 10px;
+  
+}
+.edit-icon{
+  float: right;
+}
+.project-img{
+  float: left;
+  margin-right: 20px;
+
+}
+.project-details{
+  margin-left: 70px;
+}
+.project-description{
+  margin-left: 20px;
+  color: gray;
+  font-size: 15px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.edit-icon1{
+  margin-left: 10px;
+  margin-bottom: 5px;
+  
+}
+#skill{
+  margin-bottom: 10px;
+}
+.resume{
+  color: gray;
+  
+}
+.close{
+  float: right;
+  margin-left: 10px;
+}
+
+@media(min-width: 252px){
+  .jumbotron-image{
+      background-image: url("/assets/icons/1x/Asset 2.png");
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      height: 170px;
+    }
+  .jmb-img{/*image of jumbotron*/
+      width: 90px;
+      margin-top: 120px;
+      border-radius: 50%;
+      margin-left: 10px;
+    }
+    #name{
+      float: left;
+      margin-left: 100px;
+      margin-top: 30px;
+      margin-right: 5px;
+    
+    }
+    .jbtn{
+      font-size: 5px;
+      margin-bottom: 2px;
+      border-color: teal;
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 1px;
+      padding-bottom: 1px;
       
-      }
-      .jbtn{
-        font-size: 8px;
-        margin-bottom: 2px;
-        border-color: teal;
-        padding-left: 0px;
-        padding-right: 0px;
-      }
+    }
 }
 
 @media(min-width: 300px){
-    #sug-pro{
-        margin-top: 10px;
-        margin-bottom: 10px;
-        float: left;
-        margin-left: 10px;
-       
-      }
-      .jbtn{
-        font-size: 8px;
-        margin-bottom: 2px;
-        border-color: teal;
-      }
-      .sections{
-        margin-left: 30px;
-        margin-top: 30px;
-        background-color: lightgray;
-        padding-left: 20px;
-        padding-top: 10px;
-        width: 300px;
-        padding-right: 10px;
-        border-radius: 5px;
-        color: #696969;
-      }
-      .change-password{
-        text-align: center;
-        background-color: lightgray;
-        color: gray;
-        margin-top: 30px;
-        height: 40px;
-        width: 300px;
-        padding-top: 5px;
-        margin-left: 30px;
-        border-radius: 5px;
-      }
-      .select-section{
-        text-align: center;
-        color: teal;
-        margin-top: 30px;
-        height: 50px;
-        width: 300px;
-        padding-top: 5px;
-        margin-left: 30px;
-        border: 1.5px gray solid;
-        border-radius: 5px;
-        font-weight: bold;
-      }    
+  #sug-pro{
+      margin-top: 10px;
+      margin-bottom: 10px;
+      float: left;
+      margin-left: 0px;
+     
+    }
+    .jbtn{
+      font-size: 8px;
+      margin-bottom: 2px;
+      border-color: teal;
+    }
+    #sug-head{
+      margin-top: 20px;
+    }    
 }
-
 @media (min-width: 406px) {
-    .jmb-img{/*image of jumbotron*/
-        width: 120px;
-        margin-top: 100px;
-        border-radius: 50%;
-        margin-left: 10px;
-      }
-      #name{
-        float: left;
-        margin-left: 130px;
-        margin-top: 30px;
-        margin-right: 70px;
-      
-      }
-      #sug-pro{
-        margin-top: 10px;
-        margin-bottom: 20px;
-        float: left;
-        margin-left: 10px;
-       
-      }
-      .jbtn{
-        font-size: 10px;
-        margin-bottom: 2px;
-        border-color: teal;
-        padding-left: 0px;
-        padding-right: 0px;
-      }
-      .sections{
-        margin-left: 30px;
-        margin-top: 30px;
-        background-color: lightgray;
-        padding-left: 20px;
-        padding-top: 10px;
-        width: 300px;
-        padding-right: 10px;
-        border-radius: 5px;
-        color: #696969;
-      }
-      .change-password{
-        text-align: center;
-        background-color: lightgray;
-        color: gray;
-        margin-top: 30px;
-        height: 40px;
-        width: 300px;
-        padding-top: 5px;
-        margin-left: 30px;
-        border-radius: 5px;
-      }
-      .select-section{
-        text-align: center;
-        color: teal;
-        margin-top: 30px;
-        height: 55px;
-        width: 300px;
-        padding-top: 5px;
-        margin-left: 30px;
-        border: 1.5px gray solid;
-        border-radius: 5px;
-        font-weight: bold;
-      }
+  .jumbotron-image{
+      background-image: url("/assets/icons/1x/Asset 2.png");
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      height: 170px;
+    }
+  .jmb-img{/*image of jumbotron*/
+      width: 120px;
+      margin-top: 100px;
+      border-radius: 50%;
+      margin-left: 10px;
+    }
+    #name{
+      float: left;
+      margin-left: 130px;
+      margin-top: 30px;
+      margin-right: 10px;
+    
+    }
+    #sug-pro{
+      margin-top: 10px;
+      margin-bottom: 20px;
+      float: left;
+      margin-left: 2px;
+     
+    }
+    .jbtn{
+      font-size: 10px;
+      margin-bottom: 2px;
+      border-color: teal;
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    #sug-head{
+      margin-top: 20px;
+    }
 }
 
 @media (min-width: 768px) {
-    .jumbotron-image{
-        background-image: url("/assets/icons/1x/Asset 2.png");
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        height: 170px;
-      
-      }
-      #name{/*name div in jumbotron*/
-        float: left;
-        margin-left: 200px;
-        margin-top: 30px;
-        margin-right: 250px;
-      }
-      .jbtn{
-        font-size: 8px;
-        margin-bottom: 2px;
-        border-color: teal;
-      }
+  .jumbotron-image{
+      background-image: url("/assets/icons/1x/Asset 2.png");
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      height: 170px;
+    
+    }
+  #name{/*name div in jumbotron*/
+      float: left;
+      margin-left: 200px;
+      margin-top: 30px;
+      margin-right: 250px;
+    }
+    .jbtn{
+      font-size: 12px;
+      margin-bottom: 2px;
+      border-color: teal;
+    }
+    .edit-icon{
+      margin-right: 200px;
+    }
+    #sug-head{
+      margin-top: 20px;
+    }
 }
 
 @media (min-width: 992px) {
-    .jumbotron-image{
-        background-image: url("/assets/icons/1x/Asset 2.png");
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        height: 170px;
-      
-      }
-      .jbtn{
-        font-size: 8px;
-        margin-bottom: 2px;
-        border-color: teal;
-        padding-left: 0px;
-        padding-right: 0px;
-      }
+  .jumbotron-image{
+      background-image: url("/assets/icons/1x/Asset 2.png");
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      height: 170px;
+    
+    }
+  .jbtn{
+      font-size: 12px;
+      margin-bottom: 2px;
+      border-color: teal;
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    .edit-icon{
+      margin-right: 500px;
+    }
+    #sug-head{
+      margin-top: 20px;
+    }
+    
 }
 
 @media (min-width: 1200px) {
-    .jumbotron-image{
-        background-image: url("/assets/icons/1x/Asset 2.png");
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        height: 170px;
-        
-      }
-      .navbar-brand{
-        margin-left: 20px;
-        margin-right: 20px;
-        color: white;
-      }
-      .jmb-img{/*image of jumbotron*/
-        width: 150px;
-        margin-top: 100px;
-        border-radius: 50%;
-        margin-left: 30px;
-      }
-      #name{/*name div in jumbotron*/
-        float: left;
-        margin-left: 200px;
-        margin-top: 30px;
-        margin-right: 500px;
-      }
-      #frm2{
-        background-color: lightgray;
-        margin-top: 15px;
-        margin-bottom: 15px;
-        width: 570px;
-      }
+  .jumbotron-image{
+      background-image: url("/assets/icons/1x/Asset 2.png");
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      height: 170px;
       
-      .jbtn{
-        font-size: 15px;
-        margin-bottom: 0px;
-        border-color: teal;
-        padding-left: 5px;
-        padding-right: 5px;
-      }
-      .more-opt{/*more icon*/
-        margin-left: 180px;
-        margin-bottom: 20px;
-      }
-      .sections{
-        margin-left: 30px;
-        margin-top: 30px;
-        background-color: lightgray;
-        padding-left: 20px;
-        padding-top: 10px;
-        width: 500px;
-        padding-right: 10px;
-        border-radius: 5px;
-        color: #696969;
-      }
-      .change-password{
-        text-align: center;
-        background-color: lightgray;
-        color: gray;
-        margin-top: 30px;
-        height: 40px;
-        width: 500px;
-        padding-top: 5px;
-        margin-left: 30px;
-        border-radius: 5px;
-      }
-      .select-section{
-        text-align: center;
-        color: teal;
-        margin-top: 30px;
-        height: 40px;
-        width: 500px;
-        padding-top: 5px;
-        margin-left: 30px;
-        border: 1.5px gray solid;
-        border-radius: 5px;
-        font-weight: bold;
-      }
+    }
+  .jmb-img{/*image of jumbotron*/
+      width: 150px;
+      margin-top: 100px;
+      border-radius: 50%;
+      margin-left: 30px;
+    }
+    #name{/*name div in jumbotron*/
+      float: left;
+      margin-left: 200px;
+      margin-top: 30px;
+      margin-right: 400px;
+    }
+    #frm2{
+      background-color: lightgray;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      width: 570px;
+    }
+    .float{ /*main body*/
+      float: left;
+      margin-left: 60px;
+    }
+    .suggestion{
+      width: 250px;
+      
+    
+      float: left;
+      margin-top: 63px;
+      margin-left: 20px;
+      border-radius: 5px;
+      
+    }
+    #sug-pro{
+      margin-top: 10px;
+      margin-bottom: 15px;
+      float: left;
+      margin-left: 0px;
+     
+    }
+    .jbtn{
+      font-size: 15px;
+      margin-bottom: 0px;
+      border-color: teal;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    
+    .edit-icon{
+      margin-right: 800px;
+    }
+    #sug-head{
+      margin-top: 110px;
+    }
 }
