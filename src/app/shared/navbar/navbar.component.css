@@ -26,6 +26,9 @@
 #filter-data > p {
   cursor: pointer;
 }
+.imgp{
+  text-align: center;
+}
 
 
 .navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
