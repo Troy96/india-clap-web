@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NetworkingService } from 'src/app/services/networking.service';
 
 @Component({
   selector: 'app-company-admin-view',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyAdminViewComponent implements OnInit {
 
-  constructor() { }
+  companyId = 1;
+  companyDetails: any = {};
+
+  constructor(
+    private netService: NetworkingService
+  ) {
+    this.getCompanyDetails();
+   }
 
   ngOnInit() {
+    
+  }
+
+  getCompanyDetails() {
+    this.netService.get_company_details(this.companyId)
+      .subscribe(respObj => {
+        this.companyDetails = { ...respObj };
+      })
   }
 
 }

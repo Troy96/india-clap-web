@@ -16,4 +16,8 @@ export class NetworkingService {
   create_company($data) {
     return this.http.post(`${config.base_url}/JobMarket/companies/create`, $data);
   }
+
+  get_company_details(id: number) {
+    return this.http.get(`${config.base_url}/JobMarket/companies/${id}`)
+  }
 }
