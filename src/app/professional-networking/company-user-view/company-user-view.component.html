@@ -1,12 +1,12 @@
 <div class="container">
     <div class="jumbotron jumbotron-fluid">
         <div class="jumbotron-image">
-            <img class="jmb-img" src="/assets/icons/1x/bulb.png" alt="">
+            <img class="jmb-img" src="{{companyDetails?.logo}}" alt="">
         </div>
         <div id="jumbotron-text">
             <div id="name">
-                <h2><span class="teal">Sustain Design</span></h2>
-                <span>Kolkata, India</span><br>
+                <h2><span class="teal">{{ companyDetails?.name }}</span></h2>
+                <span>{{ companyDetails?.location }}</span><br>
 
             </div>
 
@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" *ngIf="companyDetails?.company_posts?.length">
 
         <div class="post">
             <div class="post-image">
@@ -87,4 +87,5 @@
         </div>
 
     </div>
+    <div class="no-data" *ngIf="!companyDetails?.company_posts?.length">No posts!</div>
 </div>

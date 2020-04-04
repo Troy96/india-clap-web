@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { NetworkingService } from 'src/app/services/networking.service';
 
 @Component({
   selector: 'app-company-user-view',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyUserViewComponent implements OnInit {
 
-  constructor() { }
+  companyId: number;
+  companyDetails: any = {};
+
+  constructor(
+    private router: ActivatedRoute,
+    private netService: NetworkingService
+  ) {
+    this.companyId = +this.router.snapshot.paramMap.get('id');
+    this.getCompanyDetails();
+  }
 
   ngOnInit() {
+  }
+
+  getCompanyDetails() {
+    this.netService.get_company_details(this.companyId)
+      .subscribe(respObj => {
+        this.companyDetails = { ...respObj };
+      })
   }
 
 }

@@ -31,7 +31,7 @@ const routes: Routes = [
       { path: 'company-management', component: CompanyManagementComponent },
       { path: 'create-company', component: CreateCompanyComponent },
       { path: 'company-admin-view', component: CompanyAdminViewComponent },
-      { path: 'company-user-view', component: CompanyUserViewComponent },
+      { path: 'companies/:id', component: CompanyUserViewComponent },
       { path: 'more-tabs', component: MoreTabComponent }
     ]
   },
