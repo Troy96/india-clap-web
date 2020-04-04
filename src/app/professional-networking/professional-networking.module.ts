@@ -25,6 +25,7 @@ import { NetworkingService } from '../services/networking.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtTokenIntercelptor } from '../interceptors/jwt-token.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { JobsService } from '../services/jobs.service';
 
 
 @NgModule({
@@ -53,7 +54,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     FormsModule, ReactiveFormsModule
   ],
-  providers: [NetworkingService, {
+  providers: [NetworkingService, JobsService, {
     provide: HTTP_INTERCEPTORS, useClass: JwtTokenIntercelptor, multi: true
   }]
 })
