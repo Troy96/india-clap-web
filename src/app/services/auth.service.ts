@@ -11,7 +11,7 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<any>;
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
- 
+
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
   }
@@ -20,13 +20,23 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  register($data)
-  {
+  register($data) {
     return this.http.post(`${config.base_url}/accounts/register/`, $data, { headers: this.headers });
   }
 
-  login($data)
-  {
+  login($data) {
     return this.http.post(`${config.base_url}/accounts/login/`, $data, { headers: this.headers });
+  }
+
+  get_user_profiles() {
+    return this.http.get(`${config.base_url}/Users/profiles/`);
+  }
+
+  get_user_details(id: number) {
+    return this.http.get(`${config.base_url}/Users/profiles/${id}`);
+  }
+
+  get_privacy_details() {
+    return this.http.get(`${config.base_url}?Users/privacy`);
   }
 }
