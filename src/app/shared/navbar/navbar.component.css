@@ -29,6 +29,9 @@
 .imgp{
   text-align: center;
 }
+.imgs{
+	vertical-align: middle;
+}
 
 
 .navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
