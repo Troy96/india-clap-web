@@ -14,22 +14,43 @@
              </div> 
 
             <h3>Email ID</h3>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Email ID"  formControlName="email"
-                [ngClass]="{'is-invalid':registerForm.get('email').touched && registerForm.get('email').invalid}">
-                <div class="invalid-feedback">
+            <input type="email" class="form-control" aria-describedby="emailHelp"
+                placeholder="Email ID"  formControlName="email" 
+                [ngClass]="{'is-invalid':registerForm.get('email').touched && registerForm.get('email').invalid}">                
+                <!-- <div class="invalid-feedback">
                     <p class="error">This field is required</p>
-                 </div> 
+                 </div>  -->
+                 <div *ngIf="(primEmail.invalid && primEmail.touched) || primEmail.dirty">
+                    <small *ngIf="primEmail.errors?.required" class="text-danger"> Email is required</small>
+                    <!--question mark(?) is a safe navigation operator-->
+                    <small *ngIf="primEmail.errors?.pattern" class="text-danger">Please provide a valid email address</small>
+                  </div>
+                 <!-- <div *ngIf="email.errors?.email">
+                     Email not valid.
+               </div>  -->
+               <!-- <div *ngIf=" f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div> -->
+                <!-- <div *ngIf="(f.invalid && f.touched) || f.dirty">
+                    <small *ngIf="f.errors?.required" class="text-danger">Primary email is required</small> -->
+                    <!--question mark(?) is a safe navigation operator-->
+                    <!-- <small *ngIf="f.errors?.pattern" class="text-danger">Please provide a valid email address</small>
+                  </div> -->
+                <!-- <div *ngIf="f.email.errors.email">Email must be a valid email address</div> -->
+            <!-- </div> -->
             <h3>Password(8 or more characters)</h3>
             <div class="form-group pass_show">
                 <input type="password" class="form-control password" placeholder="Password"  formControlName="password"
                 [ngClass]="{'is-invalid':registerForm.get('password').touched && registerForm.get('password').invalid}">
-                <div class="invalid-feedback">
+                <!-- <div class="invalid-feedback">
                     <p class="error">This field is required</p>
-                 </div> 
+                 </div>  -->
                 <small id="emailHelp" class="form-text text-muted">Must contain a lowercase, a uppercase, number and a
                     special character</small>
-
+                    <div *ngIf="(pass.invalid && pass.touched) || pass.dirty">
+                        <small *ngIf="pass.errors?.required" class="text-danger"> Password is required</small>
+                        <!--question mark(?) is a safe navigation operator-->
+                        <small *ngIf="pass.errors?.pattern" class="text-danger">Please follow the given pattern for password </small>
+                      </div>
             </div>
         </form>
         </div>

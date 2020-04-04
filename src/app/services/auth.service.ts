@@ -7,6 +7,7 @@ import { config } from '../config';
   providedIn: 'root'
 })
 export class AuthService {
+  
 
   private currentUserSubject: BehaviorSubject<any>;
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -28,5 +29,13 @@ export class AuthService {
   login($data)
   {
     return this.http.post(`${config.base_url}/accounts/login/`, $data, { headers: this.headers });
+  }
+  forgot_password($data) {
+    return this.http.post(`${config.base_url}/accounts/password_reset/reset_password`, $data, { headers: this.headers });
+  }
+  reset_password($data)
+  {
+    return this.http.post(`${config.base_url}/accounts/password_reset/confirm/`, $data, { headers: this.headers });
+
   }
 }
