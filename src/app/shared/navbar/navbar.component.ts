@@ -8,7 +8,10 @@ import { DOCUMENT } from '@angular/common';
 })
 export class NavbarComponent implements OnInit {
 
-  @ViewChild('filters', { static: false }) filtersRef: ElementRef
+  
+  @ViewChild('notification', { static: false }) moreRef2: ElementRef
+  @ViewChild('myprofile', { static: false }) moreRef1: ElementRef
+  @ViewChild('more', { static: false }) moreRef: ElementRef
   constructor(
     @Inject(DOCUMENT) private _document: Document,
 
@@ -19,8 +22,13 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  
-  displayJobFilters() {
-    this.renderer.setStyle(this.filtersRef.nativeElement, 'display', 'block');
+  displaynotification() {
+    this.renderer.setStyle(this.moreRef2.nativeElement, 'display', 'block');
+  }
+  displaymyprofile() {
+    this.renderer.setStyle(this.moreRef1.nativeElement, 'display', 'block');
+  }
+  displaymore() {
+    this.renderer.setStyle(this.moreRef.nativeElement, 'display', 'block');
   }
 }

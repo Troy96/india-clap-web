@@ -34,14 +34,18 @@
           Jobs
         </a>
       </li>
+      <div id="notification" (click)="displaynotification()" style="display: block;">
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <button class="nav-link">
+        <a class="link" href="#">
           <i class="fa fa-envelope-o">
             <img src="/assets/icons/1x/Asset 5.png " width="20px">
-          </i>
+          </i><br>
           Notification
         </a>
+      </button>
       </li>
+      </div>
       <li class="nav-item">
         <a class="nav-link" href="#">
           <i class="fa fa-envelope-o">
@@ -58,15 +62,19 @@
           Micro Projects
         </a>
       </li>
+      <div id="myprofile" (click)="displaymyprofile()" style="display: block;">
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <button class="nav-link">
+        <a class="link" href="#">
           <i class="fa fa-envelope-o">
             <img src="/assets/icons/1x/Asset 8.png " width="20px">
-          </i>
+          </i><br>
           My Profile
         </a>
+      </button>
       </li>
-    <div id="filters" (click)="displayJobFilters()" style="display: block;">
+      </div>
+      <div id="more" (click)="displaymore()" style="display: block;">
       <li class="nav-item">
         <button class="nav-link" >
           <a class="link" href="#">
@@ -78,13 +86,13 @@
           </a>
         </button>
       </li>
-    </div>
+      </div>
   </ul>
 
 
   </div>
 </nav>
-<div  id="filter-data" style="display: none;" #filters>
+<div  id="filter-data" style="display: none;" #more>
     <p>Register as a Holograph Micro Loan provider Partner</p>
     <hr>
     <p>Register as a Holograph Traning Partner</p>
@@ -98,4 +106,34 @@
     <p>View my loan application</p>
     <hr>
     <p>Loan provider Tab</p>
+</div>
+<div  id="filter-data" style="display: none;" #myprofile>
+  <p>Register as a Holograph Micro Loan provider Partner</p>
+  <hr>
+  <p>Register as a Holograph Traning Partner</p>
+  <hr>
+  <p>Post a job</p>
+  <hr>
+  <p>Create a company page</p>
+  <hr>
+  <p>My job postings</p>
+  <hr>
+  <p>View my loan application</p>
+  <hr>
+  <p>Loan provider Tab</p>
+</div>
+<div  id="filter-data" style="display: none;" #notification>
+  <p>Register as a Holograph Micro Loan provider Partner</p>
+  <hr>
+  <p>Register as a Holograph Traning Partner</p>
+  <hr>
+  <p>Post a job</p>
+  <hr>
+  <p>Create a company page</p>
+  <hr>
+  <p>My job postings</p>
+  <hr>
+  <p>View my loan application</p>
+  <hr>
+  <p>Loan provider Tab</p>
 </div>
