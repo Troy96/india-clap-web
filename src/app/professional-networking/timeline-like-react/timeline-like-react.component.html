@@ -6,12 +6,15 @@
         <div class="status-area">
             <div id="txtarea">
                 <img src="/assets/icons/1x/Edit.png" alt="" width="15px" class="status-edit">
-                <input type="text" class="form-control statustxt" placeholder="Update your status">
+                <input [(ngModel)]="statusText" type="text" class="form-control statustxt" placeholder="Update your status">
             </div>
-            <div>
+            <!-- <div>
                 <img src="/assets/icons/1x/insert.png" alt="" width="22" height="22" id="status-icons">
                 <img src="/assets/icons/1x/Image.png" alt="" width="25" height="26" id="status-icons">
                 <img src="/assets/icons/1x/video.png" alt="" width="26" height="24" id="status-icons">
+            </div> -->
+            <div>
+                <button class="btn btn-success right" (click)="createStatus()">Create</button>
             </div>
         </div>
     </div>
@@ -22,7 +25,7 @@
             </div>
             <div class="post-text">
                 <p class="teal">{{post.author_company}}</p><br>
-                <p> {{post?.created_on | 'date'}}</p>
+                <p> {{post?.created_on | date}}</p>
                 <p> {{post?.text}}</p>
             </div>
             <small>{{post?.likes_count}} likes.{{post?.reactions?.length}} reacts.{{post?.comments_count}}

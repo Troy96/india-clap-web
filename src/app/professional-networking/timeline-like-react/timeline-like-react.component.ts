@@ -10,11 +10,12 @@ export class TimelineLikeReactComponent implements OnInit {
 
   currentUser: any;
   postList: any[];
+  statusText: string;
 
   constructor(
     private netService: NetworkingService
   ) {
-    this.currentUser = localStorage.getItem('currentUser')['user_id'];
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
     this.getUserPosts();
   }
 
@@ -24,9 +25,19 @@ export class TimelineLikeReactComponent implements OnInit {
   getUserPosts() {
     this.netService.get_posts()
       .subscribe(respObj => {
-        console.log(respObj)
         this.postList = [...respObj['results']];
       })
+  }
+
+  createStatus() {
+    let data = {
+      author_user: this.currentUser,
+      text: this.statusText,
+      slug: 'post' + Math.floor(Math.random())
+    }
+    this.netService.create_post(data).subscribe(respObj => {
+      console.log(respObj)
+    })
   }
 
 }

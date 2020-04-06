@@ -54,8 +54,18 @@
        box-shadow: 0 8px 8px -6px gray;
   }
   .status-area{
+    display: flex;
+    justify-content: space-between;
     margin-left: 20px;
+
+   
   
+  }
+
+  .status-area  button {
+    background-color: #358080;
+    position: relative;
+    right: 10px;
   }
   .post{
     margin-top: 30px;
