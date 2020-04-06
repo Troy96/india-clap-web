@@ -10,29 +10,30 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginPageComponent implements OnInit {
   loginForm: FormGroup;
 
-  obj:any={};
-  constructor(private authService:AuthService) {
+  obj: any = {};
+  constructor(private authService: AuthService) {
     this.loginForm = new FormGroup({
       email: new FormControl("", Validators.required),
       password: new FormControl("", Validators.required),
     });
-   }
+  }
   ngOnInit() {
   }
-  
-  submit()
-  {
+
+  submit() {
     this.loginForm.controls["email"].markAsTouched();
     this.loginForm.controls["password"].markAsTouched();
-    if(this.loginForm.valid)
-    {
+    if (this.loginForm.valid) {
       this.obj.email = this.loginForm.get('email').value;
       this.obj.password = this.loginForm.get('password').value;
-      this.authService.login(this.obj).subscribe((data:any)=>{
-        console.log(data);
-        //            localStorage.setItem("adminBaseUrl",JSON.stringify(_url))
-
-        localStorage.setItem('currentUser',JSON.stringify(data));
+      this.authService.login(this.obj).subscribe((data: any) => {
+        localStorage.setItem('currentUser', JSON.stringify(data));
+        this.authService.get_user_profiles()
+          .subscribe(respObj => {
+            const userList: any[] = respObj['results'];
+            const user = userList.find(obj => obj['user'] == data.user_id);
+            localStorage.setItem('isCompanyAdmin', user['company_admin']);
+          })
       })
     }
   }
