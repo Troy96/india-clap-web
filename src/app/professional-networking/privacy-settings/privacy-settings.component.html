@@ -1,11 +1,11 @@
 <div class="container">
     <div class="jumbotron jumbotron-fluid">
         <div class="jumbotron-image">
-            <img class="jmb-img" src="/assets/icons/1x/dp.png" alt="">
+            <img class="jmb-img" src="{{userDetails?.photo}}" alt="">
         </div>
         <div id="jumbotron-text">
             <div id="name">
-                <h2><span class="teal">Abesh Chatterjee</span></h2>
+                <h2><span class="teal">{{userDetails?.first_name}} {{userDetails?.last_name}}</span></h2>
                 Kolkata, India<br>
                 Graphic Designer
             </div>

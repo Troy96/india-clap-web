@@ -11,6 +11,7 @@ export class CompanyUserViewComponent implements OnInit {
 
   companyId: number;
   companyDetails: any = {};
+  companyPosts: any[];
 
   constructor(
     private router: ActivatedRoute,
@@ -27,6 +28,7 @@ export class CompanyUserViewComponent implements OnInit {
     this.netService.get_company_details(this.companyId)
       .subscribe(respObj => {
         this.companyDetails = { ...respObj };
+        this.companyPosts = [...respObj['company_posts']];
       })
   }
 

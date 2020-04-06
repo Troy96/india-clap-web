@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-privacy-settings',
@@ -7,15 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivacySettingsComponent implements OnInit {
 
-  userId : number= 1 //remove this
+  userId: number = 7 //remove this
+  userDetails = {};
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { 
+    this.getUserDetails();
+  }
 
   ngOnInit() {
   }
 
-  getUserDetails(){
-    
+  getUserDetails() {
+    this.authService.get_user_details(this.userId)
+      .subscribe(respObj => {
+        this.userDetails = { ...respObj };
+      })
   }
 
 }
