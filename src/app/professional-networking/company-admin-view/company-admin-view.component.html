@@ -35,15 +35,15 @@
                     </div>
                 </div>
             </div>
-            <ng-container *ngIf="companyDetails?.company_posts.length">
-                <div class="post">
+            <ng-container *ngIf="companyPosts.length">
+                <div class="post" *ngFor="let post of companyPosts">
                     <div class="post-image">
                         <img src="/assets/icons/1x/bulb.png" width="47px">
                     </div>
                     <div class="post-text">
-                        <div id="teal">Sustain Design</div>
-                        Gurgaon India<br>
-                        <p> Now</p>
+                        <div id="teal">{{companyDetails?.name}}</div>
+                        {{companyDetails?.location}}<br>
+                        <p> {{post?.created_on | date}}</p>
                         <p><img src="/assets/icons/1x/Annotation 2020-03-21 170127.png" class="img-post">&nbsp
                             <img src="/assets/icons/1x/Annotation 2020-03-21 170213.png" class="img-post">
                         </p>
@@ -76,7 +76,7 @@
 
                 </div>
             </ng-container>
-            <div class="no-data" *ngIf="!companyDetails?.company_posts.length">No posts!</div>
+            <div class="no-data" *ngIf="!companyPosts?.length">No posts!</div>
 
             <!-- <div class="post-notification">
                 <div class="time">

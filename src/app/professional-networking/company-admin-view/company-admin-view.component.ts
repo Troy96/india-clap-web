@@ -10,21 +10,23 @@ export class CompanyAdminViewComponent implements OnInit {
 
   companyId = 1;
   companyDetails: any = {};
+  companyPosts: any[];
 
   constructor(
     private netService: NetworkingService
   ) {
     this.getCompanyDetails();
-   }
+  }
 
   ngOnInit() {
-    
+
   }
 
   getCompanyDetails() {
     this.netService.get_company_details(this.companyId)
       .subscribe(respObj => {
         this.companyDetails = { ...respObj };
+        this.companyPosts = [...this.companyDetails['company_posts']];
       })
   }
 

@@ -30,7 +30,7 @@ const routes: Routes = [
       { path: 'privacy-settings', component: PrivacySettingsComponent },
       { path: 'company-management', component: CompanyManagementComponent },
       { path: 'create-company', component: CreateCompanyComponent },
-      { path: 'company-admin-view', component: CompanyAdminViewComponent },
+      { path: 'companies/me', component: CompanyAdminViewComponent },
       { path: 'companies/:id', component: CompanyUserViewComponent },
       { path: 'more-tabs', component: MoreTabComponent }
     ]
