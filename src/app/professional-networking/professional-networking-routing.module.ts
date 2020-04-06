@@ -20,7 +20,7 @@ const routes: Routes = [
   {
     path: '', component: ProfessionalNetworkingComponent,
     children: [
-      { path: 'profiles', component: SomeoneElseProfileComponent },
+      { path: 'users/:id', component: SomeoneElseProfileComponent },
       { path: 'my-profile', component: MyProfileDropdownComponent },
       { path: 'timeline-like-react', component: TimelineLikeReactComponent },
       { path: 'notification-dropdown', component: NotificationDropdownComponent },
