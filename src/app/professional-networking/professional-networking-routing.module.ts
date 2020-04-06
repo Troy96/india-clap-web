@@ -22,7 +22,7 @@ const routes: Routes = [
     children: [
       { path: 'users/:id', component: SomeoneElseProfileComponent },
       { path: 'my-profile', component: MyProfileDropdownComponent },
-      { path: 'timeline-like-react', component: TimelineLikeReactComponent },
+      { path: 'me', component: TimelineLikeReactComponent },
       { path: 'notification-dropdown', component: NotificationDropdownComponent },
       { path: 'timeline-comment', component: TimelineCommentComponent },
       { path: 'timelime-react', component: TimelineReactEmojiComponent },

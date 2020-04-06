@@ -20,4 +20,8 @@ export class NetworkingService {
   get_company_details(id: number) {
     return this.http.get(`${config.base_url}/JobMarket/companies/${id}`)
   }
+
+  get_posts() {
+    return this.http.get(`${config.base_url}/Networking/timelinePosts`);
+  }
 }
