@@ -6,7 +6,8 @@
         <div class="status-area">
             <div id="txtarea">
                 <img src="/assets/icons/1x/Edit.png" alt="" width="15px" class="status-edit">
-                <input [(ngModel)]="statusText" type="text" class="form-control statustxt" placeholder="Update your status">
+                <input [(ngModel)]="statusText" type="text" class="form-control statustxt"
+                    placeholder="Update your status">
             </div>
             <!-- <div>
                 <img src="/assets/icons/1x/insert.png" alt="" width="22" height="22" id="status-icons">
@@ -24,7 +25,8 @@
                 <img src="/assets/icons/1x/bulb.png" width="47px">
             </div>
             <div class="post-text">
-                <p class="teal">{{post.author_company}}</p><br>
+                <p class="teal" *ngIf="post.author_user">{{post.author_user.first_name}}</p>
+                <p class="teal" *ngIf="post.author_company">{{post.author_company.name}}</p><br>
                 <p> {{post?.created_on | date}}</p>
                 <p> {{post?.text}}</p>
             </div>
@@ -32,15 +34,50 @@
                 comments</small>
             <hr color="#A9A9A9      ">
             <div class="icons-div">
-                <div id="icons"> <img src="/assets/icons/1x/like.png" width="19px" height="22px"
-                        class="like-comment-icon"><br><small class="icon-txt">Like</small></div>
-                <div id="icons"> <img src="/assets/icons/1x/smiley.png" width="22px" height="22px"
-                        class="like-comment-icon"><small class="icon-txt">React</small></div>
-                <div id="icons"> <img src="/assets/icons/1x/Comment.png" width="25px" height="22px"
+                <div *ngIf="!post?.isLiked" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/like.png"
+                        width="19px" height="22px" class="like-comment-icon" (click)="likePost(post.id);"><br><small
+                        class="icon-txt">Like</small></div>
+                <div *ngIf="post?.isLiked" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/like.png"
+                        width="19px" height="22px" class="like-comment-icon"><br><small class="icon-txt">Liked</small>
+                </div>
+                <!-- <div id="icons"> <img src="/assets/icons/1x/smiley.png" width="22px" height="22px"
+                        class="like-comment-icon"><small class="icon-txt">React</small></div> -->
+                <div id="icons" style="cursor: pointer;" (click)="commentOnPost(post.id)"> <img
+                        src="/assets/icons/1x/Comment.png" width="25px" height="22px"
                         class="like-comment-icon report-img"><small class="icon-txt">Comment</small></div>
-                <div id="icons" class="report"><img src="/assets/icons/1x/Report.png" width="7px" height="22px"
-                        class="like-comment-icon report-img"><small class="icon-txt">Report</small></div>
+                <!-- <div id="icons" class="report"><img src="/assets/icons/1x/Report.png" width="7px" height="22px"
+                        class="like-comment-icon report-img"><small class="icon-txt">Report</small></div> -->
             </div>
+            <div class="comment" #comment>
+                <img src="/assets/icons/1x/dp.png" alt="" width="50px" class="comm-pro">
+                <input type="text" class="form-control comment-box" placeholder="Write a comment...">
+                <div class="input-group-btn">
+                    <button class="btn btn-default comm-icons" (click)="postComment(post.id)">
+                        <i class="glyphicon glyphicon-search comm-cam"><img src="/assets/icons/1x/Image.png"
+                                width="17px"></i>
+                        <i class="glyphicon glyphicon-search comm-cam"><img src="/assets/icons/1x/video.png"
+                                width="17px"></i>
+
+                    </button>
+                </div>
+            </div>
+            <ng-container *ngFor="let comment of post?.reactions">
+                <div class="post-notification" *ngIf="comment?.comment">
+                    <!-- <div class="time">
+                        25min &nbsp
+                        <img src="/assets/icons/1x/more-opt.png" width="12px">
+                    </div> -->
+                    <!-- <div class="post-image">
+                        <img src="/assets/icons/1x/sdp.png" width="47px">
+                    </div> -->
+                    <div class="post-text">
+                        <span id="teal">{{comment?.user.first_name}} {{comment?.user.last_name}}</span><br>
+                        <!-- Kolkata, India<br> -->
+
+                        <p>{{comment?.comment}}</p>
+                    </div>
+                </div>
+            </ng-container>
         </div>
     </ng-container>
 

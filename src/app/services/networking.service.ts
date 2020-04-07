@@ -25,7 +25,21 @@ export class NetworkingService {
     return this.http.get(`${config.base_url}/Networking/timelinePosts`);
   }
 
-  create_post($data){
+  create_post($data) {
     return this.http.post(`${config.base_url}/Networking/timelinePosts/`, $data);
+  }
+
+  like_post(postId: number) {
+    return this.http.get(`${config.base_url}/Networking/timelinePosts/${postId}/like`)
+  }
+
+  get_reactions_count(postId: number) {
+    return this.http.get(`${config.base_url}/Networking/timelinePostReactions/${postId}/`);
+  }
+
+  comment_on_post(postId: number, comment: string) {
+    const formData = new FormData();
+    formData.append('comment', comment);
+    return this.http.post(`${config.base_url}/Networking/timelinePosts/${postId}/comment`, formData)
   }
 }
