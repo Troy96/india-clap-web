@@ -116,25 +116,40 @@
   .report-img{
     margin-left: 15px;
   }
+  items
   .container{
     margin-bottom: 20px;
   }
+  .bl{
+    list-style-type: none;
+  }
   .more{
-    width: 300px;
+    display: block;
+    width: 450px;
     background-color: white;
     padding-top: 5px;
     float: right;
     position: relative;
-    top: -820px;
-    height: 210px;
+    top: -960px;
+    height: 330px;
   }
   .more-opt{
     border-bottom: 1px gray solid;
     margin-bottom: 5px;
     padding-left: 5px;
     color: gray;
+    
+    text-align: left;
   
   }
+  .ull{
+    padding-left: 0%;
+  }
+  .more-opt li a{
+    text-decoration: none;
+    color: grey;
+  }
+
   body{
     background-color: lightgray;
   }

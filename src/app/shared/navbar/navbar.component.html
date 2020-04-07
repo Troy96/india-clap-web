@@ -34,14 +34,18 @@
           Jobs
         </a>
       </li>
+      <div id="notification" (click)="displaynotification()" style="display: block;">
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <button class="nav-link">
+        <a class="link" href="#">
           <i class="fa fa-envelope-o">
             <img src="/assets/icons/1x/Asset 5.png " width="20px">
-          </i>
+          </i><br>
           Notification
         </a>
+      </button>
       </li>
+      </div>
       <li class="nav-item">
         <a class="nav-link" href="#">
           <i class="fa fa-envelope-o">
@@ -58,24 +62,81 @@
           Micro Projects
         </a>
       </li>
+      <div id="myprofile" (click)="displaymyprofile()" style="display: block;">
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <button class="nav-link">
+        <a class="link" href="#">
           <i class="fa fa-envelope-o">
             <img src="/assets/icons/1x/Asset 8.png " width="20px">
-          </i>
+          </i><br>
           My Profile
         </a>
+      </button>
       </li>
+      </div>
+      <div id="more" (click)="displaymore()" style="display: block;">
       <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="fa fa-envelope-o">
-            <img src="/assets/icons/1x/Asset 9.png " width="20px">
-          </i>
-          More
-        </a>
+        <button class="nav-link" >
+          <a class="link" href="#">
+            <i class="fa fa-envelope-o">
+              <img class="img1" src="/assets/icons/1x/Asset 9.png " width="20px">
+            </i>
+            <br>
+            More
+          </a>
+        </button>
       </li>
-    </ul>
+      </div>
+  </ul>
 
 
   </div>
 </nav>
+<div  id="filter-data" style="display: none;" #more>
+    <p>Register as a Holograph Micro Loan provider Partner</p>
+    <hr>
+    <p>Register as a Holograph Traning Partner</p>
+    <hr>
+    <p>Post a job</p>
+    <hr>
+    <p>Create a company page</p>
+    <hr>
+    <p>My job postings</p>
+    <hr>
+    <p>View my loan application</p>
+    <hr>
+    <p>Loan provider Tab</p>
+</div>
+<div  id="filter-data" style="display: none;" #myprofile>
+  <div class="imgp">
+    <img src="/assets/icons/1x/sdp.png"><br><h3>Natasha kulkarni</h3><br><p>Luckhnow,India</p>
+  </div>
+<hr>
+<p>View your Profile</p>
+<hr>
+<p>Company Pages Managed</p>
+<hr>
+<p>View Saved Jobes</p>
+<hr>
+<p>View Applied Jobs</p>
+<hr>
+<p>Take a Holograph Skill Test</p>
+<hr>
+<p>Privacy Settings</p>
+<hr>
+<p>Log Out</p>
+</div>
+<div  id="filter-data" style="display: none;" #notification>
+  <div class="imgp">
+    <p><img style="vertical-align: middle;" src="/assets/icons/1x/dp3.png">
+    <strong>Sanjana Chokorborty</strong>sent you a connection request.5m</p>
+  </div>
+  <div class="imgp">
+    <p><img style="vertical-align: middle;" src="/assets/icons/1x/dp3.png">
+    <strong>Sanjana Chokorborty</strong>sent you a connection request.5m</p>
+  </div>
+  <div class="imgp">
+    <p><img style="vertical-align: middle;" src="/assets/icons/1x/dp3.png">
+    <strong>Sanjana Chokorborty</strong>sent you a connection request.5m</p>
+  </div>
+</div>
