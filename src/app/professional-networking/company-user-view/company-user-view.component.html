@@ -33,22 +33,35 @@
                 <p> {{post?.created_on | date}}</p>
                 <p> {{post?.text}}
             </div>
-            <small>5 likes.2 reacts.5 comments</small>
+            <small>{{post?.likes_count}} likes.{{post?.emoji_count}} reacts.{{post?.comments_count}} comments</small>
             <hr color="#A9A9A9      ">
             <div class="icons-div">
-                <div id="icons"> <img src="/assets/icons/1x/like.png" width="19px" height="22px"
-                        class="like-comment-icon"><br><small class="icon-txt">Like</small></div>
-                <div id="icons"> <img src="/assets/icons/1x/smiley.png" width="22px" height="22px"
-                        class="like-comment-icon"><small class="icon-txt">React</small></div>
-                <div id="icons"> <img src="/assets/icons/1x/Comment.png" width="25px" height="22px"
-                        class="like-comment-icon report-img"><small class="icon-txt">Comment</small></div>
-                <div id="icons" class="report"><img src="/assets/icons/1x/Report.png" width="7px" height="22px"
-                        class="like-comment-icon report-img"><small class="icon-txt">Report</small></div>
+                <div *ngIf="!post?.isLiked" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/like.png"
+                    width="19px" height="22px" class="like-comment-icon" (click)="likePost(post.id);"><br><small
+                    class="icon-txt">Like</small></div>
+            <div *ngIf="post?.isLiked" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/like.png"
+                    width="19px" height="22px" class="like-comment-icon"><br><small class="icon-txt">Liked</small>
+             <!-- <div id="icons" style="cursor: pointer;"> <img src="/assets/icons/1x/smiley.png" width="22px" height="22px"
+                        class="like-comment-icon"><small class="icon-txt">React</small></div> -->
+                <div id="icons" style="cursor: pointer;"> <img src="/assets/icons/1x/Comment.png" width="25px"
+                        height="22px" class="like-comment-icon report-img"><small class="icon-txt">Comment</small></div>
+                <!-- <div id="icons" class="report"><img src="/assets/icons/1x/Report.png" width="7px" height="22px"
+                        class="like-comment-icon report-img"><small class="icon-txt">Report</small></div> -->
             </div>
-
-
         </div>
+        <div class="comment" #comment>
+            <img src="/assets/icons/1x/dp.png" alt="" width="50px" class="comm-pro">
+            <input type="text" class="form-control comment-box" placeholder="Write a comment...">
+            <div class="input-group-btn">
+                <button class="btn btn-default comm-icons" (click)="postComment(post.id)">
+                    <i class="glyphicon glyphicon-search comm-cam"><img src="/assets/icons/1x/Image.png"
+                            width="17px"></i>
+                    <i class="glyphicon glyphicon-search comm-cam"><img src="/assets/icons/1x/video.png"
+                            width="17px"></i>
 
+                </button>
+            </div>
+        </div>
     </div>
     <div class="no-data" *ngIf="!companyDetails?.company_posts?.length">No posts!</div>
 </div>

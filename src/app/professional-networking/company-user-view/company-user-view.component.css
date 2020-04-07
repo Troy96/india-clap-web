@@ -21,6 +21,31 @@
     height: 1em;
   }
 
+  .comm-pro{ /*comment profile image*/
+    float: left;
+    margin-top: -7px;
+    margin-bottom: 5px;
+  }
+  .comment{
+    margin-top: 80px;
+  }
+  
+  .img-post{
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    max-height: 250px;
+    
+  
+  }
+  .comm-cam{
+    height: 40px;
+  }
+  .comment-box{
+    border-right: none;
+  }
+  
+
 
 
   h3 {
@@ -281,6 +306,27 @@
       .upload-image {
         margin-left: 80px;
       }
+
+      .comm-icons{
+        height: 40px;
+        margin-left: -5px;
+        border-right: 1px gray solid;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border-top: 1px gray solid;
+        border-bottom: 1px gray solid;
+      }
+      .comment-box{
+        width: 50%;
+        margin-left: 5px;
+        float: left;
+        border: none;
+        height: 40px;
+        border-top: 1px gray solid;
+        border-bottom: 1px gray solid;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+      }
   
 }
 
@@ -312,6 +358,26 @@
       .upload-image {
         margin-left: 0px;
       }
+      .comm-icons{
+        height: 40px;
+        margin-left: -5px;
+        border-right: 1px gray solid;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border-top: 1px gray solid;
+        border-bottom: 1px gray solid;
+      }
+      .comment-box{
+        width: 80%;
+        margin-left: 5px;
+        float: left;
+        border: none;
+        height: 40px;
+        border-top: 1px gray solid;
+        border-bottom: 1px gray solid;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+      }
     }
 
 
@@ -332,6 +398,26 @@
         border-color: teal;
         padding-left: 0px;
         padding-right: 0px;
+      }
+      .comm-icons{
+        height: 40px;
+        margin-left: -5px;
+        border-right: 1px gray solid;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border-top: 1px gray solid;
+        border-bottom: 1px gray solid;
+      }
+      .comment-box{
+        width: 80%;
+        margin-left: 5px;
+        float: left;
+        border: none;
+        height: 40px;
+        border-top: 1px gray solid;
+        border-bottom: 1px gray solid;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
       }
 }
 
@@ -395,5 +481,25 @@
   
       .upload-image {
         margin-left: 240px;
+      }
+      .comm-icons{
+        height: 40px;
+        margin-left: -5px;
+        border-right: 1px gray solid;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border-top: 1px gray solid;
+        border-bottom: 1px gray solid;
+      }
+      .comment-box{
+        width: 80%;
+        margin-left: 5px;
+        float: left;
+        border: none;
+        height: 40px;
+        border-top: 1px gray solid;
+        border-bottom: 1px gray solid;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
       }
 }
