@@ -12,6 +12,7 @@ export class CompanyUserViewComponent implements OnInit {
   companyId: number;
   companyDetails: any = {};
   companyPosts: any[];
+  commentTxt: string;
 
   constructor(
     private router: ActivatedRoute,
@@ -29,6 +30,21 @@ export class CompanyUserViewComponent implements OnInit {
       .subscribe(respObj => {
         this.companyDetails = { ...respObj };
         this.companyPosts = [...respObj['company_posts']];
+      })
+  }
+
+  likePost(postId) {
+    this.netService.like_post(postId)
+      .subscribe(respObj => {
+        let post = this.companyPosts.find(post => post.id == postId);
+        post['isLiked'] = true;
+      })
+  }
+
+  postComment(postId: number) {
+    this.netService.comment_on_post(postId, this.commentTxt)
+      .subscribe(respObj => {
+        console.log(respObj);
       })
   }
 

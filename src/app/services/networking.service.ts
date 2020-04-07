@@ -40,6 +40,6 @@ export class NetworkingService {
   comment_on_post(postId: number, comment: string) {
     const formData = new FormData();
     formData.append('comment', comment);
-    return this.http.post(`${config.base_url}/Networking/timelinePosts/${postId}/comment`, formData)
+    return this.http.post(`${config.base_url}/Networking/timelinePosts/${postId}/comment`, formData);
   }
 }
