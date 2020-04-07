@@ -11,6 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { LayoutModule } from './layout/layout.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtTokenIntercelptor } from './interceptors/jwt-token.interceptor';
+import { AuthGuard } from './guards/Auth.guard';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { JwtTokenIntercelptor } from './interceptors/jwt-token.interceptor';
     HttpClientModule,
 
   ],
-  providers: [{
+  providers: [AuthGuard,{
     provide: HTTP_INTERCEPTORS, useClass: JwtTokenIntercelptor, multi: true
   }],
   bootstrap: [AppComponent]
