@@ -20,7 +20,8 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
   }
 
-  submit() {
+  submit()
+  {
     this.loginForm.controls["email"].markAsTouched();
     this.loginForm.controls["password"].markAsTouched();
     if (this.loginForm.valid) {

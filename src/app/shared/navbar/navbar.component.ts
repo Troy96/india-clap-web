@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef, ViewChild, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  
+  @ViewChild('notification', { static: false }) moreRef2: ElementRef
+  @ViewChild('myprofile', { static: false }) moreRef1: ElementRef
+  @ViewChild('more', { static: false }) moreRef: ElementRef
+  constructor(
+    @Inject(DOCUMENT) private _document: Document,
 
+    private renderer: Renderer2,
+
+  ) {
+  }
   ngOnInit() {
   }
 
+  displaynotification() {
+    this.renderer.setStyle(this.moreRef2.nativeElement, 'display', 'block');
+  }
+  displaymyprofile() {
+    this.renderer.setStyle(this.moreRef1.nativeElement, 'display', 'block');
+  }
+  displaymore() {
+    this.renderer.setStyle(this.moreRef.nativeElement, 'display', 'block');
+  }
 }
