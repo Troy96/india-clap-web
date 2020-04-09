@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class PrivacySettingsComponent implements OnInit {
 
   userId: number = 7 //remove this
-  userDetails = {};
+  userDetails : any;
 
   constructor(
     private authService: AuthService
