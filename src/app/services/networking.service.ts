@@ -42,4 +42,24 @@ export class NetworkingService {
     formData.append('comment', comment);
     return this.http.post(`${config.base_url}/Networking/timelinePosts/${postId}/comment`, formData);
   }
+
+  follow_request(userId: number) {
+    return this.http.get(`${config.base_url}/Networking/connection-request/send/${userId}/`)
+  }
+
+  cancel_request(userId: number) {
+    return this.http.get(`${config.base_url}/Networking/connection-request/cancel/${userId}`);
+  }
+
+  accept_request(userId: number) {
+    return this.http.get(`${config.base_url}/Networking/connection-request/accept/${userId}`);
+  }
+
+  delete_request(userId: number) {
+    return this.http.get(`${config.base_url}/Networking/connection-request/delete/${userId}`);
+  }
+
+  get_contacts() {
+    return this.http.get(`${config.base_url}/Networking/contacts/`)
+  }
 }
