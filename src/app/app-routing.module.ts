@@ -8,7 +8,7 @@ import { AuthGuard } from './guards/Auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '', component: LayoutComponent, loadChildren: () => import('./home/home.module').then(m => m.HomeModule),canActivate: [AuthGuard] },
+  { path: '', component: LayoutComponent, loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
   { path: 'professional-networking', loadChildren: () => import('./professional-networking/professional-networking.module').then(m => m.ProfessionalNetworkingModule),canActivate: [AuthGuard] },
   { path: 'jobs', loadChildren: () => import('./jobs/jobs.module').then(m => m.JobsModule) },
   { path: 'online-learning', loadChildren: () => import('./online-learning/online-learning.module').then(m => m.OnlineLearningModule),canActivate: [AuthGuard] },
