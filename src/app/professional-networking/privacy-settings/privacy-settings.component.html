@@ -11,7 +11,7 @@
             </div>
 
             <div id="j-icons"><a>
-                    <img class="more-opt" src="/assets/icons/1x/more-opt.png" alt=""><br>
+                    <img class="more-opt" src="./../../../assets/icons/1x/more-opt.png" alt=""><br>
                 </a>
             </div>
         </div>
@@ -32,46 +32,50 @@
             </div>
             <div class="sections">
                 <form action="#">
+                    <div *ngFor="let Item of privacy_menu; let i=index">
+
                     <p>
-                        <label for="test1" class="label">Location</label>
-                        <input type="radio" class="sect" name="radio-group" checked>
+                        <label for="test1" class="label">{{Item}}</label>
+                        <input type="checkbox" class="sect" name="radio-group"   (change)="getmenuCheckboxValues($event,i)"  [checked]="checkifmatchmenu(i)">
 
                     </p>
-                    <p>
+                    </div>
+                    <!-- <p>
                         <label for="test2" class="label">Headline</label>
-                        <input type="radio" class="sect" name="radio-group">
+                        <input type="checkbox" class="sect" name="radio-group" (change)="getmenuCheckboxValues($event,2)">
 
                     </p>
                     <p>
                         <label for="test3" class="label">Experience</label>
-                        <input type="radio" class="sect" name="radio-group">
+                        <input type="checkbox" class="sect" name="radio-group" (change)="getmenuCheckboxValues($event,3)">
 
                     </p>
                     <p>
                         <label for="test3" class="label">Projects</label>
-                        <input type="radio" class="sect" name="radio-group">
+                        <input type="checkbox" class="sect" name="radio-group" (change)="getmenuCheckboxValues($event,4)">
 
                     </p>
                     <p>
                         <label for="test3" class="label">Project Descriptions</label>
-                        <input type="radio" class="sect" name="radio-group">
+                        <input type="checkbox" class="sect" name="radio-group" (change)="getmenuCheckboxValues($event,5)">
 
                     </p>
                     <p>
                         <label for="test3" class="label">Certificates</label>
-                        <input type="radio" class="sect" name="radio-group">
+                        <input type="checkbox" class="sect" name="radio-group" (change)="getmenuCheckboxValues($event,6)">
 
                     </p>
                     <p>
                         <label for="test3" class="label">Skills</label>
-                        <input type="radio" class="sect" name="radio-group">
+                        <input type="checkbox" class="sect" name="radio-group" (change)="getmenuCheckboxValues($event,7)">
 
                     </p>
                     <p>
                         <label for="test3" class="label">Resume</label>
-                        <input type="radio" class="sect" name="radio-group">
+                        <input type="checkbox" class="sect" name="radio-group" (change)="getmenuCheckboxValues($event,8)">
 
-                    </p>
+                    </p> -->
+                    <button type="submit" (click)="submit()">Submit</button>
                 </form>
             </div>
         </div>

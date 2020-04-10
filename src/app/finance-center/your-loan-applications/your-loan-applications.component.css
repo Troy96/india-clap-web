@@ -1,0 +1,161 @@
+.bg-green-color{
+    background-color: #11868C;
+}
+
+.color-green{
+    color: #11868C !important;
+}
+
+.bg-light-color{
+    background-color: #6BCBB9;
+}
+
+.bg-gray-color{
+    background-color: #E6E1E7;
+}
+
+.navicon{
+    height: 20px;
+    width: 20px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.navheight{
+    height: 60px !important;
+    z-index: 2;
+}
+
+@font-face {
+    font-family: "proximaregular";
+    src: url("./../../../assets/fonts/proximaregular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    }
+
+@font-face {
+    font-family: "proximalight";
+    src: url("./../../../assets/fonts/proximalight.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    }
+
+@font-face {
+    font-family: "proximathin";
+    src: url("./../../../assets/fonts/proximathin.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    }
+
+    .proreg{
+        font-family: "proximaregular";
+        font-size: 15px;
+        color: #000000;
+    }
+
+    .prolight{
+        font-family: "proximalight";
+        font-size: large;
+        color: #000000;;
+    }
+    
+
+    .prothin{
+        font-family: "proximathin";
+        font-size: large;
+        color: #000000;;
+    }
+
+    .whtcol{
+        color: #fff !important;
+    }
+
+    .blkcol{
+        color: #fff !important;
+    }
+
+    .navlogo{
+        font-size: 25px;
+        margin-left: 0px;
+    }
+
+    .search-button{
+        background: transparent;
+        position: relative;
+        float: left;
+    }
+
+    .nav-item-width{
+        width: 100px;
+        background-color: violet;
+
+    }
+
+    .nav-img{
+        height: 20px;
+        width: 20px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .loan-search-div{
+        margin-top: 3%;
+        height: 60%;
+        /* width: 70%; */
+    }
+
+    .search-width{
+        width: 100px !important;
+    }
+
+    .button-size{
+        border: none;
+        height: 60px;
+        width: 60px;
+        margin: 0px 45% !important;
+    }
+
+    .button-img{
+        height: 50px;
+        width: 40px;
+    }
+
+    .user-img-div{
+        margin-top: 3%;
+        height: 30%;
+        width: 70%;
+        background: cover;
+    }
+
+    .inner-form-div{
+        margin: 10% auto !important;
+    }
+
+    .user-display{
+        height: 100px;
+        width: 100px;
+        border-radius: 60px;
+        padding: 5px;
+        border: 2.5px solid #11868C;
+    }
+
+    .user-name{
+        font-size: 20px;
+        float: left;
+    }
+
+    .user-place{
+        color: #878484;
+        font-size: 15px;
+    }
+    
+    .apply-btn{
+
+        float: right;
+    }
+
+    .approve-btn{
+        background: transparent;
+        color: #878484;
+    }
+    

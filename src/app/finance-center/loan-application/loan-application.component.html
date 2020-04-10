@@ -1,0 +1,95 @@
+<div class="card loan-search-div mx-auto border">
+    <div class="card-header bg-green-color">
+      <h5 class="mt-1 whtcol proreg">Apply For Micro loan</h5>
+    </div>
+    <div class="card-body">
+        
+          <form class=""  [formGroup]='loanApplicationForm'>
+            <div class="form-group">
+              <label class="color-green proreg">Name of the Applicant</label>
+              <input type="text" class="form-control" placeholder="Ramesh etc"  formControlName="name"
+              [ngClass]="{'is-invalid':loanApplicationForm.get('name').touched && loanApplicationForm.get('name').invalid}">
+              <div class="invalid-feedback">
+                <p class="error">This field is required</p>
+             </div>
+            </div>
+            
+            
+            <div class="form-group">
+              <label class="color-green proreg">Micro Loan provider</label>
+              <input type="text" class="form-control" placeholder="Select the Provider from Dropdown"  formControlName="loan_provider"
+              [ngClass]="{'is-invalid':loanApplicationForm.get('loan_provider').touched && loanApplicationForm.get('loan_provider').invalid}">
+              <div class="invalid-feedback">
+                <p class="error">This field is required</p>
+             </div>
+            </div>
+
+            <div class="form-group">
+              <label class="color-green proreg">Name of the Bank</label>
+              <input type="text" class="form-control" placeholder="Bandhan Bank, ICICI Bank etc." formControlName="bank_name"
+              [ngClass]="{'is-invalid':loanApplicationForm.get('bank_name').touched && loanApplicationForm.get('bank_name').invalid}">
+              <div class="invalid-feedback">
+                <p class="error">This field is required</p>
+             </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="color-green proreg">Account Number</label>
+              <input type="text" class="form-control" placeholder="XXXX XXXX XXXX"  formControlName="account_number"
+              [ngClass]="{'is-invalid':loanApplicationForm.get('account_number').touched && loanApplicationForm.get('account_number').invalid}">
+              <div class="invalid-feedback">
+                <p class="error">This field is required</p>
+             </div>
+            </div>
+
+            <div class="form-group">
+              <label class="color-green proreg">Contact Number</label>
+              <input type="text" class="form-control" placeholder="XXXXXXXXXX"  formControlName="contact_number"
+              [ngClass]="{'is-invalid':loanApplicationForm.get('contact_number').touched && loanApplicationForm.get('contact_number').invalid}">
+              <div class="invalid-feedback">
+                <p class="error">This field is required</p>
+             </div>
+            </div>
+
+            <div class="form-group">
+              <label class="color-green proreg">Purpose of Loan</label>
+              <input type="text" class="form-control" placeholder="Write the purpose for taking the loan"  formControlName="loan_purpose"
+              [ngClass]="{'is-invalid':loanApplicationForm.get('loan_purpose').touched && loanApplicationForm.get('loan_purpose').invalid}">
+              <div class="invalid-feedback">
+                <p class="error">This field is required</p>
+             </div>
+            </div>
+
+            <div class="form-group">
+              <label class="color-green proreg">Address proof</label>
+              <input type="text" class="form-control" placeholder="Your Curret address"  formControlName="address_proof"
+              [ngClass]="{'is-invalid':loanApplicationForm.get('address_proof').touched && loanApplicationForm.get('address_proof').invalid}">
+              <div class="invalid-feedback">
+                <p class="error">This field is required</p>
+             </div>
+            </div>
+
+            <div class="form-group">
+              <label class="color-green proreg">Identity proof</label>
+              <input type="text" class="form-control" placeholder="Aadhar, Pan Card, etc."  formControlName="id_proof"
+              [ngClass]="{'is-invalid':loanApplicationForm.get('id_proof').touched && loanApplicationForm.get('id_proof').invalid}">
+              <div class="invalid-feedback">
+                <p class="error">This field is required</p>
+             </div>
+            </div>
+
+            <div class="form-group">
+              <label class="color-green proreg">Reference</label>
+              <input type="text" class="form-control" placeholder="Provide five refrees for the social collateral"  formControlName="reference"
+              [ngClass]="{'is-invalid':loanApplicationForm.get('reference').touched && loanApplicationForm.get('reference').invalid}">
+              <div class="invalid-feedback">
+                <p class="error">This field is required</p>
+             </div>
+            </div>
+
+            <button type="submit" class=" btn bg-green-color whtcol mx-auto" (click)="submit()"> Submit</button>
+                
+          </form>
+    </div>
+  </div>
+

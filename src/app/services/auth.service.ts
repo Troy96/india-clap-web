@@ -7,6 +7,7 @@ import { config } from '../config';
   providedIn: 'root'
 })
 export class AuthService {
+ 
 
 
   private currentUserSubject: BehaviorSubject<any>;
@@ -38,7 +39,7 @@ export class AuthService {
   }
 
   get_privacy_details() {
-    return this.http.get(`${config.base_url}?Users/privacy`);
+    return this.http.get(`${config.base_url}/Users/privacy`);
   }
   forgot_password($data) {
     return this.http.post(`${config.base_url}/accounts/password_reset/reset_password`, $data, { headers: this.headers });
@@ -46,5 +47,8 @@ export class AuthService {
   reset_password($data) {
     return this.http.post(`${config.base_url}/accounts/password_reset/confirm/`, $data, { headers: this.headers });
 
+  }
+  edit_privacy_details($data) {
+    return this.http.post(`${config.base_url}/Users/privacy/setting/save`, $data, { headers: this.headers });
   }
 }
