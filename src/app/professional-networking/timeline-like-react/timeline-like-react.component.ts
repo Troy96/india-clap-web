@@ -67,6 +67,12 @@ export class TimelineLikeReactComponent implements OnInit {
       })
   }
 
+  commentOnPost(postId: number) {
+    this.netService.comment_on_post(postId, this.commentTxt)
+      .subscribe(respObj => {
+        console.log(respObj);
+      })
+  }
 
 
 }
