@@ -14,14 +14,20 @@
                 </a>
                 <div style="display: flex;
                 height: 35px;">
-                    <button (click)="onCancelRequest()" class="btn btn-primary jbtn">
+                    <button *ngIf="connectionStatus === 'pending'" (click)="onCancelRequest()"
+                        class="btn btn-primary jbtn">
                         Cancel</button>
-                    <button (click)="onFollowRequest();" class="btn btn-primary jbtn">
+                    <button *ngIf="connectionStatus === 'none'" (click)="onFollowRequest();"
+                        class="btn btn-primary jbtn">
                         Follow</button>
-                    <button (click)="onDeleteRequest()" class="btn btn-primary jbtn">
+                    <button *ngIf="connectionStatus === 'approval needed'" (click)="onDeleteRequest()"
+                        class="btn btn-primary jbtn">
                         Delete</button>
-                    <button (click)="onAcceptRequest()" class="btn btn-primary jbtn">
+                    <button *ngIf="connectionStatus === 'approval needed'" (click)="onAcceptRequest()"
+                        class="btn btn-primary jbtn">
                         Accept</button>
+                    <button *ngIf="connectionStatus === 'connected'" class="btn btn-primary jbtn">
+                        Following</button>
                     <!-- <button class="btn btn-primary jbtn">
                         Message</button> -->
                 </div>

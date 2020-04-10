@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { NetworkingService } from 'src/app/services/networking.service';
+import { Observable, observable } from 'rxjs';
 
 @Component({
   selector: 'app-someone-else-profile',
@@ -12,6 +13,9 @@ export class SomeoneElseProfileComponent implements OnInit {
 
   userId: any;
   userDetails: any;
+  userList = [];
+  contactList: any[];
+  connectionStatus: any;
   isLoading: boolean = true;
 
   constructor(
@@ -30,20 +34,22 @@ export class SomeoneElseProfileComponent implements OnInit {
   getUserDetails() {
     this.authService.get_user_profiles()
       .subscribe(respObj => {
-        const userList: any[] = respObj['results'];
-        this.userDetails = userList.find(obj => obj['user'] == this.userId);
+        this.userList = respObj['results'];
+        this.userDetails = this.userList.find(obj => obj['user'] == this.userId);
+        this.userList = this.userList.filter(obj => obj['id'] != 5);
       })
   }
 
   getUserContacts() {
     this.netService.get_contacts()
       .subscribe(respObj => {
-        console.log(respObj);
+        this.contactList = [...respObj['results']];
+        this.getConnectionStatus();
       })
   }
 
   isCurrentUserProfile() {
-    return this.userId === localStorage.getItem('currentUser')['user_id'];
+    return this.userId === this.currentUser['user_id'];
   }
 
   onFollowRequest() {
@@ -53,6 +59,53 @@ export class SomeoneElseProfileComponent implements OnInit {
       });
   }
 
-  
+  onRejectRequest() {
+    this.netService.cancel_request(this.userId)
+      .subscribe(respObj => {
+        console.log(respObj);
+      })
+  }
+
+  onAcceptRequest() {
+    this.netService.accept_request(this.userId)
+      .subscribe(respObj => {
+        console.log(respObj);
+      })
+  }
+
+  onDeleteRequest() {
+    this.netService.delete_request(this.userId)
+      .subscribe(respObj => {
+        console.log(respObj)
+      })
+  }
+
+  isUserConnection() {
+    const user = this.userList.find(user => user['id'] === this.userId);
+    if (user) return true;
+    return false;
+  }
+
+  getConnectionStatus() {
+    this.contactList.forEach(user => {
+      if ((user['user_from']['id'] === this.currentUser['user_id']) && (user['user_to']['id'] === this.userId)) {
+        return this.connectionStatus = 'pending';
+      }
+      else if ((user['user_from']['id'] === this.userId) && (user['user_to']['id'] === this.currentUser['user_id'])) {
+        return this.connectionStatus = 'approval needed';
+      }
+    })
+    if (!!this.isUserConnection()) {
+      this.connectionStatus = 'connected';
+    }
+    else if ((!this.isUserConnection()) && ((this.connectionStatus != 'pending') || (this.connectionStatus != 'approval needed'))) {
+      this.connectionStatus = 'none';
+    }
+  }
+
+  get currentUser() {
+    return JSON.parse(localStorage.getItem('currentUser'));
+  }
+
 
 }
