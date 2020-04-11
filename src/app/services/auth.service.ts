@@ -45,6 +45,5 @@ export class AuthService {
   }
   reset_password($data) {
     return this.http.post(`${config.base_url}/accounts/password_reset/confirm/`, $data, { headers: this.headers });
-
   }
 }
