@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class PrivacySettingsComponent implements OnInit {
 
   userId: number = 9 //remove this
-  userDetails = {};
+  userDetails: any = {};
   name:any=[];
   privacy_menu = ['Location','Headline','Experience','Projects','Project Descriptions','Certificates','Skills','Resume'];
   selected_menu:any=[];

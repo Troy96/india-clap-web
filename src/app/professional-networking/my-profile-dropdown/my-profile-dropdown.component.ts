@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class MyProfileDropdownComponent implements OnInit {
 
-  constructor( private auth: AuthService ) { }
+  constructor( public auth: AuthService ) { }
 
   ngOnInit() {
   }
