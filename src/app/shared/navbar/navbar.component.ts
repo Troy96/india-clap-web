@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NavbarComponent implements OnInit {
 
   userDetails: any;
+  notifList: string[];
 
   @ViewChild('notification', { static: false }) moreRef2: ElementRef
   @ViewChild('myprofile', { static: false }) moreRef1: ElementRef
@@ -20,6 +21,7 @@ export class NavbarComponent implements OnInit {
     private renderer: Renderer2,
     private authService: AuthService
   ) {
+    this.getNotifications();
   }
   ngOnInit() {
     this.getUserDetails();
@@ -40,6 +42,13 @@ export class NavbarComponent implements OnInit {
       .subscribe(respObj => {
         this.userDetails = respObj['results'].find(obj => obj['user'] === JSON.parse(localStorage.getItem('currentUser'))['user_id']);
         console.log(this.userDetails);
+      })
+  }
+
+  getNotifications() {
+    this.authService.get_user_notifications()
+      .subscribe(respObj => {
+        this.notifList = [...respObj['results']];
       })
   }
 }

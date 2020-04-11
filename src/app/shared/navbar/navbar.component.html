@@ -128,16 +128,10 @@
   <p (click)="onLogout();">Log Out</p>
 </div>
 <div id="filter-data" style="display: none;" #notification>
-  <div class="imgp">
-    <p><img style="vertical-align: middle;" src="/assets/icons/1x/dp3.png">
-      <strong>Sanjana Chokorborty</strong>sent you a connection request.5m</p>
-  </div>
-  <div class="imgp">
-    <p><img style="vertical-align: middle;" src="/assets/icons/1x/dp3.png">
-      <strong>Sanjana Chokorborty</strong>sent you a connection request.5m</p>
-  </div>
-  <div class="imgp">
-    <p><img style="vertical-align: middle;" src="/assets/icons/1x/dp3.png">
-      <strong>Sanjana Chokorborty</strong>sent you a connection request.5m</p>
-  </div>
+  <ng-container *ngFor="let data of notifList">
+    <div class="imgp">
+      <p><img style="vertical-align: middle;" src="/assets/icons/1x/dp3.png">
+        {{data?.text}}</p>
+    </div>
+  </ng-container>
 </div>

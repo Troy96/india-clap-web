@@ -7,7 +7,7 @@ import { config } from '../config';
   providedIn: 'root'
 })
 export class AuthService {
- 
+
 
 
   private currentUserSubject: BehaviorSubject<any>;
@@ -49,5 +49,9 @@ export class AuthService {
   }
   edit_privacy_details($data) {
     return this.http.post(`${config.base_url}/Users/privacy/setting/save`, $data, { headers: this.headers });
+  }
+
+  get_user_notifications() {
+    return this.http.get(`${config.base_url}/Notifications/notifications`);
   }
 }
