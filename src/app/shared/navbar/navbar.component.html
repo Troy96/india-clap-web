@@ -18,7 +18,7 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
+      <li class="nav-item active" [routerLink]="['/']">
         <a class="nav-link">
           <i class="fa fa-home"><img src="/assets/icons/1x/Asset 3.png" height="20px" width="20px"></i>
           Home
@@ -26,7 +26,7 @@
         </a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" [routerLink]="['/jobs/various-sectors']">
         <a class="nav-link">
           <i class="fa fa-envelope-o">
             <img src="/assets/icons/1x/Asset 4.png " width="20px">
@@ -93,19 +93,19 @@
   </div>
 </nav>
 <div id="filter-data" style="display: none;" #more>
-  <p>Register as a Holograph Micro Loan provider Partner</p>
+  <!-- <p>Register as a Holograph Micro Loan provider Partner</p>
+  <hr> -->
+  <!-- <p>Register as a Holograph Traning Partner</p>
+  <hr> -->
+  <p [routerLink]="['/jobs/post-job']">Post a job</p>
   <hr>
-  <p>Register as a Holograph Traning Partner</p>
+  <p [routerLink]="['/professional-networking/create-company']">Create a company page</p>
   <hr>
-  <p>Post a job</p>
+  <p [routerLink]="['/jobs/job-postings']">My job postings</p>
   <hr>
-  <p>Create a company page</p>
+  <!-- <p>View my loan application</p>
   <hr>
-  <p>My job postings</p>
-  <hr>
-  <p>View my loan application</p>
-  <hr>
-  <p>Loan provider Tab</p>
+  <p>Loan provider Tab</p> -->
 </div>
 <div id="filter-data" style="display: none;" #myprofile>
   <div class="imgp">
@@ -115,7 +115,7 @@
   <hr>
   <p [routerLink]="['/professional-networking/myprofile-editable']">View your Profile</p>
   <hr>
-  <p>Company Pages Managed</p>
+  <p [routerLink]="['/professional-networking/company-management']">Company Pages Managed</p>
   <hr>
   <p [routerLink]="['/jobs/saved-jobs']">View Saved Jobes</p>
   <hr>
@@ -130,7 +130,7 @@
 <div id="filter-data" style="display: none;" #notification>
   <ng-container *ngFor="let data of notifList">
     <div class="imgp">
-      <p><img style="vertical-align: middle;" src="/assets/icons/1x/dp3.png">
+      <p>>
         {{data?.text}}</p>
     </div>
   </ng-container>

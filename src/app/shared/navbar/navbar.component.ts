@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2, ElementRef, ViewChild, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -19,7 +20,8 @@ export class NavbarComponent implements OnInit {
     @Inject(DOCUMENT) private _document: Document,
 
     private renderer: Renderer2,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.getNotifications();
   }
@@ -50,5 +52,10 @@ export class NavbarComponent implements OnInit {
       .subscribe(respObj => {
         this.notifList = [...respObj['results']];
       })
+  }
+
+  onLogout() {
+    this.authService.logout();
+    this.router.navigateByUrl('/login');
   }
 }

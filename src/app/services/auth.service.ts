@@ -14,7 +14,9 @@ export class AuthService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient
+  ) {
     this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
   }
 
@@ -53,5 +55,9 @@ export class AuthService {
 
   get_user_notifications() {
     return this.http.get(`${config.base_url}/Notifications/notifications`);
+  }
+
+  logout() {
+    return localStorage.removeItem('currentUser');
   }
 }
