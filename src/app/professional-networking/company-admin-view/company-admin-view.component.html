@@ -1,24 +1,24 @@
 <div class="container">
     <div class="jumbotron jumbotron-fluid">
         <div class="jumbotron-image">
-            <img class="jmb-img" src="/assets/icons/1x/bulb.png" alt="">
+            <img class="jmb-img" src="{{companyDetails?.logo}}" alt="">
         </div>
         <div id="jumbotron-text">
             <div id="name">
-                <h2><span class="teal">Sustain Design</span></h2>
-                <span>Kolkata, India</span><br>
+                <h2><span class="teal">{{ companyDetails?.name }}</span></h2>
+                <span>{{companyDetails?.location}}</span><br>
 
             </div>
 
             <div id="j-icons"><a>
-                    <img class="more-opt" src="/assets/icons/1x/more-opt.png" alt=""><br>
+                    <img class="more-opt" src="" alt=""><br>
                 </a>
             </div>
             <div class="jumbo-btn">
                 <button class="btn btn-primary jbtn upload-image">Upload photo</button>
-                <button class="btn btn-primary jbtn">Edit Admin</button>
+                <!-- <button class="btn btn-primary jbtn">Edit Admin</button> -->
             </div>
-        </div>
+        </div>  
 
         <div class="container">
             <div class="status">
@@ -35,46 +35,50 @@
                     </div>
                 </div>
             </div>
-            <div class="post">
-                <div class="post-image">
-                    <img src="/assets/icons/1x/bulb.png" width="47px">
-                </div>
-                <div class="post-text">
-                    <div id="teal">Sustain Design</div>
-                    Gurgaon India<br>
-                    <p> Now</p>
-                    <p><img src="/assets/icons/1x/Annotation 2020-03-21 170127.png" class="img-post">&nbsp
-                        <img src="/assets/icons/1x/Annotation 2020-03-21 170213.png" class="img-post">
-                    </p>
-                </div>
-                <small>5 likes.2 reacts.5 comments</small>
-                <hr color="#A9A9A9      ">
-                <div class="icons-div">
-                    <div id="icons"> <img src="/assets/icons/1x/like.png" width="19px" height="22px"
-                            class="like-comment-icon"><br><small class="icon-txt">Like</small></div>
-                    <div id="icons"> <img src="/assets/icons/1x/smiley.png" width="22px" height="22px"
-                            class="like-comment-icon"><small class="icon-txt">React</small></div>
-                    <div id="icons"> <img src="/assets/icons/1x/Comment.png" width="25px" height="22px"
-                            class="like-comment-icon report-img"><small class="icon-txt">Comment</small></div>
-                    <div id="icons" class="report"><img src="/assets/icons/1x/Report.png" width="7px" height="22px"
-                            class="like-comment-icon report-img"><small class="icon-txt">Report</small></div>
-                </div>
-                <div class="comment">
-                    <img src="/assets/icons/1x/dp.png" alt="" width="50px" class="comm-pro">
-                    <input type="text" class="form-control comment-box" placeholder="Write a comment...">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default comm-icons" type="submit">
-                            <i class="glyphicon glyphicon-search comm-cam"><img src="/assets/icons/1x/Image.png"
-                                    width="17px"></i>
-                            <i class="glyphicon glyphicon-search comm-cam"><img src="/assets/icons/1x/video.png"
-                                    width="17px"></i>
-
-                        </button>
+            <ng-container *ngIf="companyPosts.length">
+                <div class="post" *ngFor="let post of companyPosts">
+                    <div class="post-image">
+                        <img src="/assets/icons/1x/bulb.png" width="47px">
                     </div>
-                </div>
+                    <div class="post-text">
+                        <div id="teal">{{companyDetails?.name}}</div>
+                        {{companyDetails?.location}}<br>
+                        <p> {{post?.created_on | date}}</p>
+                        <p><img src="/assets/icons/1x/Annotation 2020-03-21 170127.png" class="img-post">&nbsp
+                            <img src="/assets/icons/1x/Annotation 2020-03-21 170213.png" class="img-post">
+                        </p>
+                    </div>
+                    <small>5 likes.2 reacts.5 comments</small>
+                    <hr color="#A9A9A9      ">
+                    <div class="icons-div">
+                        <div id="icons"> <img src="/assets/icons/1x/like.png" width="19px" height="22px"
+                                class="like-comment-icon"><br><small class="icon-txt">Like</small></div>
+                        <div id="icons"> <img src="/assets/icons/1x/smiley.png" width="22px" height="22px"
+                                class="like-comment-icon"><small class="icon-txt">React</small></div>
+                        <div id="icons"> <img src="/assets/icons/1x/Comment.png" width="25px" height="22px"
+                                class="like-comment-icon report-img"><small class="icon-txt">Comment</small></div>
+                        <div id="icons" class="report"><img src="/assets/icons/1x/Report.png" width="7px" height="22px"
+                                class="like-comment-icon report-img"><small class="icon-txt">Report</small></div>
+                    </div>
+                    <div class="comment">
+                        <img src="/assets/icons/1x/dp.png" alt="" width="50px" class="comm-pro">
+                        <input type="text" class="form-control comment-box" placeholder="Write a comment...">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default comm-icons" type="submit">
+                                <i class="glyphicon glyphicon-search comm-cam"><img src="/assets/icons/1x/Image.png"
+                                        width="17px"></i>
+                                <i class="glyphicon glyphicon-search comm-cam"><img src="/assets/icons/1x/video.png"
+                                        width="17px"></i>
 
-            </div>
-            <div class="post-notification">
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </ng-container>
+            <div class="no-data" *ngIf="!companyPosts?.length">No posts!</div>
+
+            <!-- <div class="post-notification">
                 <div class="time">
                     25min &nbsp
                     <img src="/assets/icons/1x/more-opt.png" width="12px">
@@ -91,7 +95,7 @@
                         environment and the visual media! Art and design enthusiast. Always observing the space ... <a
                             href="">more</a></p>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>

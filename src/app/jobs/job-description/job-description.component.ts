@@ -39,6 +39,9 @@ export class JobDescriptionComponent implements OnInit {
     console.log(data);
     })
   }
+  displayProfileShareAlert(){
+    
+  }
 
 
   ngOnInit() {

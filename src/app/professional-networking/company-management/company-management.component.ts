@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NetworkingService } from 'src/app/services/networking.service';
 
 @Component({
   selector: 'app-company-management',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyManagementComponent implements OnInit {
 
-  constructor() { }
+  companyList: any[];
+
+  constructor(
+    private netService: NetworkingService
+  ) { }
 
   ngOnInit() {
+    this.getCompaniesManaged();
   }
 
+  getCompaniesManaged() {
+    this.netService.get_companies()
+      .subscribe(respObj => {
+        this.companyList = [...respObj['results']];
+      })
+  }
 }

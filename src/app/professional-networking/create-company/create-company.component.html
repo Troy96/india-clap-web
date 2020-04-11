@@ -9,32 +9,47 @@
             <h2>Create a company page and let the mass know about you</h2>
         </div>
         <div class="place">
-            <h3>Name of Test</h3>
-            <div>
-
-                <input class="form-control" id="frm2" placeholder="Abc Exam, XYZ test">
-            </div>
-            <h3>Size of company <img src="/assets/icons/1x/down-arrow.png" width="20px" class="down"></h3>
-            <div>
-
-                <input class="form-control" id="frm2" placeholder="number of employees the company has">
-            </div>
-            <h3>Industry <img src="/assets/icons/1x/down-arrow.png" width="20px" class="down"></h3>
-            <div>
-
-                <input class="form-control" id="frm2" placeholder="Sector the company belongs to">
-            </div>
-            <h3>Logo</h3>
-            <div>
-
-                <input class="form-control" id="frm2" placeholder="Upload a logo for the company">
-            </div>
+            <form [formGroup]="companyForm" (ngSubmit)="onSubmit();">
+                <h3>Name of company</h3>
+                <div class="form-group">
+                    <input class="form-control" id="frm2" placeholder="Abc Exam, XYZ test" formControlName="name"
+                        [ngClass]="{'is-invalid': companyForm.get('name').touched && companyForm.get('name').invalid}">
+                    <div class="invalid-feedback">
+                        <p class="error">This field is required</p>
+                    </div>
+                </div>
 
 
+                <h3>Size of company <img src="/assets/icons/1x/down-arrow.png" width="20px" class="down"></h3>
+                <div class="form-group">
+                    <input class="form-control" id="frm2" placeholder="number of employees the company has"
+                        formControlName="company_size"
+                        [ngClass]="{'is-invalid': companyForm.get('company_size').touched && companyForm.get('company_size').invalid}">
+                    <div class="invalid-feedback">
+                        <p class="error">This field is required</p>
+                    </div>
+                </div>
 
-            <button class="btn btn-default btnplc" type="submit">
-                Submit
-            </button>
+                <h3>Industry <img src="/assets/icons/1x/down-arrow.png" width="20px" class="down"></h3>
+                <div class="form-group">
+                    <input class="form-control" id="frm2" placeholder="Sector the company belongs to"
+                        formControlName="industry"
+                        [ngClass]="{'is-invalid': companyForm.get('industry').touched && companyForm.get('industry').invalid}">
+                    <div class="invalid-feedback">
+                        <p class="error">This field is required</p>
+                    </div>
+                </div>
+
+                <h3>Logo</h3>
+                <div class="form-group">
+                    <input class="form-control" id="frm2" placeholder="Upload a logo for the company"
+                        formControlName="logo">
+                </div>
+
+                <button class="btn btn-default btnplc" type="submit">
+                    Submit
+                </button>
+            </form>
         </div>
     </div>
 </div>

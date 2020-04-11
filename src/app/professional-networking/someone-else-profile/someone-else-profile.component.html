@@ -1,18 +1,38 @@
 <div class="container float">
     <div class="jumbotron jumbotron-fluid">
         <div class="jumbotron-image">
-            <img class="jmb-img" src="/assets/icons/1x/dp.png" alt="">
+            <img class="jmb-img" src="{{userDetails?.photo}}" alt="">
         </div>
         <div id="jumbotron-text">
             <div id="name">
-                <h2>Abesh Chatterjee</h2>
-                <span>Kolkata, India</span>
+                <h2>{{userDetails?.first_name}} {{userDetails?.last_name}}</h2>
+                <!-- <span>Kolkata, India</span> -->
             </div>
 
             <div id="j-icons"><a>
                     <img class="more-opt" src="/assets/icons/1x/more-opt.png" alt=""><br>
                 </a>
+                <div style="display: flex;
+                height: 35px;">
+                    <button *ngIf="connectionStatus === 'pending'" (click)="onRejectRequest()"
+                        class="btn btn-primary jbtn">
+                        Cancel</button>
+                    <button *ngIf="connectionStatus === 'none'" (click)="onFollowRequest();"
+                        class="btn btn-primary jbtn">
+                        Follow</button>
+                    <button *ngIf="connectionStatus === 'approval needed'" (click)="onDeleteRequest()"
+                        class="btn btn-primary jbtn">
+                        Delete</button>
+                    <button *ngIf="connectionStatus === 'approval needed'" (click)="onAcceptRequest()"
+                        class="btn btn-primary jbtn">
+                        Accept</button>
+                    <button *ngIf="connectionStatus === 'connected'" class="btn btn-primary jbtn">
+                        Following</button>
+                    <!-- <button class="btn btn-primary jbtn">
+                        Message</button> -->
+                </div>
             </div>
+
         </div>
 
     </div>
@@ -21,14 +41,7 @@
         <div class="place">
             <div id="headline">
                 <h3>Headline</h3>
-                <p class="txt">Art and design enthusiast. Always observing the space around me and finding things that interest
-                    and intrigue me. Anything creative draws me in. I have a passion for people, stories, the
-                    environment and the visual media! Art and design enthusiast. Always observing the space around me
-                    and finding things that interest and intrigue me. Anything creative draws me in. I have a passion
-                    for people, stories, the environment and the visual media! Art and design enthusiast. Always
-                    observing the space around me and finding things that interest and intrigue me. Anything creative
-                    draws me in. I have a passion for people, stories, the environment and the visual media! Art and
-                    design enthusiast. </p>
+                <p class="txt">{{userDetails?.brief_Desc}}</p>
             </div>
             <div id="headline">
                 <h3>Experience</h3>
@@ -45,7 +58,7 @@
 
     </div>
 </div>
-<div class="suggestion container">
+<!-- <div class="suggestion container">
     <div id="sug-head">
         <h4>Suggestions for you</h4>
     </div>
@@ -100,4 +113,4 @@
         </div>
 
     </div>
-</div>
+</div> -->

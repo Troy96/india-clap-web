@@ -23,65 +23,22 @@
         <div class="header">
             <h2>Companies pages you manage</h2>
         </div>
-        <div class="place">
-            <div class="card" style="width: 100%;">
+        <div class="place" *ngIf="companyList?.length">
+            <div class="card" style="width: 100%;" *ngFor="let company of companyList">
                 <div class="card-body">
 
-                    <img class="card-img" src="/assets/icons/1x/logo3.png" alt="Card image cap">
+                    <img class="card-img" src="{{company.logo}}" alt="Card image cap">
                     <div id="crdtxt">
                         <a href="">
-                            <h4 class="card-title">Accounting</h4>
-                            <span class="card-text">Gurgao, India</span><br>
-                            <span class="card-text">Creative Head</span>
+                            <h4 class="card-title">{{company?.name}}</h4>
+                            <!-- <span class="card-text">Gurgao, India</span><br>
+                            <span class="card-text">Creative Head</span> -->
                         </a>
                     </div>
 
                 </div>
             </div>
-            <div class="card" style="width: 100%;">
-                <div class="card-body">
-
-                    <img class="card-img" src="/assets/icons/1x/logo1.png" alt="Card image cap">
-                    <div id="crdtxt">
-                        <a href="">
-                            <h4 class="card-title">Magmaven Industries</h4>
-                            <span class="card-text">California, USA</span><br>
-                            <span class="card-text">UI Designer</span>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="card" style="width: 100%;">
-                <div class="card-body">
-
-                    <img class="card-img" src="/assets/icons/1x/logo3.png" alt="Card image cap">
-                    <div id="crdtxt">
-                        <a href="">
-                            <h4 class="card-title">Crifford Grace</h4>
-                            <span class="card-text">Gurgao, India</span><br>
-                            <span class="card-text">Creative Head</span>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="card" style="width: 100%;">
-                <div class="card-body">
-
-                    <img class="card-img" src="/assets/icons/1x/Logo4.png" alt="Card image cap">
-                    <div id="crdtxt">
-                        <a href="">
-                            <h4 class="card-title">Gajendra Telecomunication</h4>
-                            <span class="card-text">Gurgao, India</span><br>
-                            <span class="card-text">Creative Head</span>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-
-
         </div>
+        <div class="no-data" *ngIf="!companyList?.length">No companies to manage!</div>
     </div>
 </div>

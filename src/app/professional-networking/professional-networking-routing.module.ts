@@ -21,9 +21,9 @@ const routes: Routes = [
   {
     path: '', component: ProfessionalNetworkingComponent,
     children: [
-      { path: 'profiles', component: SomeoneElseProfileComponent },
+      { path: 'users/:id', component: SomeoneElseProfileComponent },
       { path: 'my-profile', component: MyProfileDropdownComponent },
-      { path: 'timeline-like-react', component: TimelineLikeReactComponent },
+      { path: 'me', component: TimelineLikeReactComponent, },
       { path: 'notification-dropdown', component: NotificationDropdownComponent },
       { path: 'timeline-comment', component: TimelineCommentComponent },
       { path: 'timelime-react', component: TimelineReactEmojiComponent },
@@ -31,6 +31,9 @@ const routes: Routes = [
       { path: 'privacy-settings', component: PrivacySettingsComponent },
       { path: 'company-management', component: CompanyManagementComponent },
       { path: 'create-company', component: CreateCompanyComponent },
+      { path: 'companies/me', component: CompanyAdminViewComponent },
+      { path: 'companies/:id', component: CompanyUserViewComponent },
+      { path: 'more-tabs', component: MoreTabComponent },
       { path: 'company-admin-view', component: CompanyAdminViewComponent },
       { path: 'company-user-view', component: CompanyUserViewComponent },
       { path: 'more-tabs', component: MoreTabComponent },

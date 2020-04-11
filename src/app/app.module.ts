@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 
 import { SharedModule } from './shared/shared.module';
 import { LayoutModule } from './layout/layout.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtTokenIntercelptor } from './interceptors/jwt-token.interceptor';
+import { AuthGuard } from './guards/Auth.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
-     
-    
+
+
   ],
   imports: [
     BrowserModule,
@@ -25,9 +27,11 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     LayoutModule,
     HttpClientModule,
-     
+
   ],
-  providers: [],
+  providers: [AuthGuard,{
+    provide: HTTP_INTERCEPTORS, useClass: JwtTokenIntercelptor, multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
