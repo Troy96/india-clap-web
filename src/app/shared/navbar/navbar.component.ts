@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2, ElementRef, ViewChild, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,8 @@ import { DOCUMENT } from '@angular/common';
 })
 export class NavbarComponent implements OnInit {
 
-  
+  userDetails: any;
+
   @ViewChild('notification', { static: false }) moreRef2: ElementRef
   @ViewChild('myprofile', { static: false }) moreRef1: ElementRef
   @ViewChild('more', { static: false }) moreRef: ElementRef
@@ -16,10 +18,11 @@ export class NavbarComponent implements OnInit {
     @Inject(DOCUMENT) private _document: Document,
 
     private renderer: Renderer2,
-
+    private authService: AuthService
   ) {
   }
   ngOnInit() {
+    this.getUserDetails();
   }
 
   displaynotification() {
@@ -30,5 +33,13 @@ export class NavbarComponent implements OnInit {
   }
   displaymore() {
     this.renderer.setStyle(this.moreRef.nativeElement, 'display', 'block');
+  }
+
+  getUserDetails() {
+    this.authService.get_user_profiles()
+      .subscribe(respObj => {
+        this.userDetails = respObj['results'].find(obj => obj['user'] === JSON.parse(localStorage.getItem('currentUser'))['user_id']);
+        console.log(this.userDetails);
+      })
   }
 }

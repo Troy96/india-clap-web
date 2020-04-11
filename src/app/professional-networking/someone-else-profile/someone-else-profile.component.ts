@@ -36,7 +36,6 @@ export class SomeoneElseProfileComponent implements OnInit {
       .subscribe(respObj => {
         this.userList = respObj['results'];
         this.userDetails = this.userList.find(obj => obj['user'] == this.userId);
-        this.userList = this.userList.filter(obj => obj['id'] != 5);
       })
   }
 
