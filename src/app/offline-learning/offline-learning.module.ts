@@ -7,6 +7,8 @@ import { SkillCoursesResultsComponent } from './skill-courses-results/skill-cour
 import { RegisterSkilledCoursesComponent } from './register-skilled-courses/register-skilled-courses.component';
 import { SharedModule } from '../shared/shared.module';
 import { SkillCoursesPaymentComponent } from './skill-courses-payment/skill-courses-payment.component';
+import { SearchSkilledCourseComponent } from './search-skilled-course/search-skilled-course.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,11 +17,14 @@ import { SkillCoursesPaymentComponent } from './skill-courses-payment/skill-cour
     RegisterSkilledCoursesComponent,
     SkillCoursesResultsComponent,
     SkillCoursesPaymentComponent,
+    SearchSkilledCourseComponent,
   ],
   imports: [
     CommonModule,
     OfflineLearningRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class OfflineLearningModule { }

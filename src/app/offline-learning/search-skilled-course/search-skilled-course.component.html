@@ -1,0 +1,68 @@
+ <div class="card loan-search-div mx-auto border">
+        <div class="card-header bg-green-color">
+          <h5 class="mt-1 whtcol proreg">Search for Skill Courses</h5>
+        </div>
+        <div class="card-body">
+            <form class=""  [formGroup]='searchSkilledCourseForm'>
+              
+                <div class="form-group">
+                  <label class="color-green proreg">Name of type of the Course</label>
+                  <input type="text" class="form-control" placeholder="Engineer, Graphcis Designer, Mechanic, Accounting, Tally, etc."  formControlName="name"
+                  [ngClass]="{'is-invalid':searchSkilledCourseForm.get('name').touched && searchSkilledCourseForm.get('name').invalid}">
+                  <div class="invalid-feedback">
+                    <p class="error">This field is required</p>
+                 </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="color-green proreg">State</label>
+                  <input type="text" class="form-control" placeholder="West Bengal, Haryana, etc."  formControlName="state"
+                  [ngClass]="{'is-invalid':searchSkilledCourseForm.get('state').touched && searchSkilledCourseForm.get('state').invalid}">
+                  <div class="invalid-feedback">
+                    <p class="error">This field is required</p>
+                 </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="color-green proreg">District</label>
+                  <input type="text" class="form-control" placeholder="North 24 pargans, etc."  formControlName="district"
+                  [ngClass]="{'is-invalid':searchSkilledCourseForm.get('district').touched && searchSkilledCourseForm.get('district').invalid}">
+                  <div class="invalid-feedback">
+                    <p class="error">This field is required</p>
+                 </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="color-green proreg">From</label>
+                  <input type="date" class="form-control" placeholder="26.07.2019"  formControlName="from"
+                  [ngClass]="{'is-invalid':searchSkilledCourseForm.get('from').touched && searchSkilledCourseForm.get('from').invalid}">
+                  <div class="invalid-feedback">
+                    <p class="error">This field is required</p>
+                 </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="color-green proreg">To</label>
+                  <input type="date" class="form-control" placeholder="29.07.2019"  formControlName="to"
+                  [ngClass]="{'is-invalid':searchSkilledCourseForm.get('to').touched && searchSkilledCourseForm.get('to').invalid}">
+                  <div class="invalid-feedback">
+                    <p class="error">This field is required</p>
+                 </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="color-green proreg">Fee Range</label>
+                  <input type="range" min="500" max="2000" value="900" class="form-control slider"  formControlName="fee"
+                  [ngClass]="{'is-invalid':searchSkilledCourseForm.get('fee').touched && searchSkilledCourseForm.get('fee').invalid}">
+                  <div class="invalid-feedback">
+                    <p class="error">This field is required</p>
+                 </div>
+                </div>
+    
+                <div class="mx-auto">
+                  <button type="submit" class="bg-green-color button-size mx-auto" (click)="submit()"><img class="bg-green-color button-img" src="./../../../assets/icons/1x/search.png" alt=""></button>
+                </div>
+                    
+              </form>
+        </div>
+      </div>
