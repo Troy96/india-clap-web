@@ -43,7 +43,6 @@ export class NavbarComponent implements OnInit {
     this.authService.get_user_profiles()
       .subscribe(respObj => {
         this.userDetails = respObj['results'].find(obj => obj['user'] === JSON.parse(localStorage.getItem('currentUser'))['user_id']);
-        console.log(this.userDetails);
       })
   }
 
