@@ -113,19 +113,19 @@
     <h3>{{userDetails?.first_name}} {{userDetails?.last_name}}</h3><br>
   </div>
   <hr>
-  <p>View your Profile</p>
+  <p [routerLink]="['/professional-networking/myprofile-editable']">View your Profile</p>
   <hr>
   <p>Company Pages Managed</p>
   <hr>
-  <p>View Saved Jobes</p>
+  <p [routerLink]="['/jobs/saved-jobs']">View Saved Jobes</p>
   <hr>
-  <p>View Applied Jobs</p>
+  <p [routerLink]="['/jobs/applied-jobs']">View Applied Jobs</p>
   <hr>
-  <p>Take a Holograph Skill Test</p>
+  <p [routerLink]="['/jobs/skills-test']">Take a Holograph Skill Test</p>
   <hr>
-  <p>Privacy Settings</p>
+  <p [routerLink]="['/jobs/privacy-settings']">Privacy Settings</p>
   <hr>
-  <p>Log Out</p>
+  <p (click)="onLogout();">Log Out</p>
 </div>
 <div id="filter-data" style="display: none;" #notification>
   <div class="imgp">
