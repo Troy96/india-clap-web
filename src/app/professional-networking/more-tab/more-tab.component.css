@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-#more{
-  background-color: black;
-  border-color: none;
-  height: 100px;
-=======
 .header{
     background-color: teal;
     height: 63px;
@@ -209,10 +203,46 @@
         margin-top: 20px;
         height: 200px;
       }
->>>>>>> a3fe2f78a7fbde86c341de89f25722325e3d5093
 }
 
-#items{
- color: grey;
+@media (min-width: 992px) {
+    .jumbotron{
+        background-image: url("/assets/icons/1x/Asset 2.png");
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        margin-top: 20px;
+        height: 200px;
+      }
 }
 
+@media (min-width: 1200px) {
+    .jumbotron{
+        background-image: url("/assets/icons/1x/Asset 2.png");
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        margin-top: 20px;
+        height: 200px;
+      }
+      #frm2{
+        
+        width: 468px;
+      }
+      #lvl{
+        border: 1.5px #ebebeb solid;
+        width: 468px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+      .navbar-brand{
+        margin-left: 20px;
+        margin-right: 20px;
+        color: white;
+      }
+      #status-icons{
+        margin-left: 20px;
+      }
+}
