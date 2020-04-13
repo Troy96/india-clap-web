@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-registration-page',
@@ -16,7 +17,8 @@ export class RegistrationPageComponent implements OnInit {
   obj:any={};
   emailValidation: boolean = false;
   passwordValidation: boolean = false;
-  constructor(private authService:AuthService) {
+
+  constructor(private authService:AuthService,private notifyService : NotificationService) {
     this.registerForm = new FormGroup({
       first_name: new FormControl("", Validators.required),
       email: new FormControl("",[
@@ -60,6 +62,7 @@ export class RegistrationPageComponent implements OnInit {
     err=>{
       try{
         console.log(err.error.password[0]);
+        console.log(err.error.email[0]);
 
         if(err.error.email[0])
         this.emailValidation = true
@@ -77,4 +80,20 @@ export class RegistrationPageComponent implements OnInit {
     })
     }
   }
+  showToasterSuccess(){
+    console.log(this.notifyService);
+    this.notifyService.showSuccess("Data shown successfully !!", "ItSolutionStuff.com")
+}
+
+showToasterError(){
+    this.notifyService.showError("Something is wrong", "ItSolutionStuff.com")
+}
+
+showToasterInfo(){
+    this.notifyService.showInfo("This is info", "ItSolutionStuff.com")
+}
+
+showToasterWarning(){
+    this.notifyService.showWarning("This is warning", "ItSolutionStuff.com")
+}
 }

@@ -9,6 +9,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { NotificationService } from '../services/notification.service';
 
 
 @NgModule({
@@ -24,7 +26,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     HomeRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
+
+  ],
+  providers: [
+   
   ]
 })
 export class HomeModule { }

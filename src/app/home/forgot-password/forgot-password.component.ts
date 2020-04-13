@@ -29,6 +29,8 @@ export class ForgotPasswordComponent implements OnInit {
 
       this.authService.forgot_password(this.obj).subscribe((data)=>{
         console.log(data);
+      },err=>{
+        console.log(err);
       })
     }
   
