@@ -11,6 +11,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { NotificationService } from '../services/notification.service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { JwtTokenIntercelptor } from '../interceptors/jwt-token.interceptor';
 
 
 @NgModule({
@@ -27,11 +29,11 @@ import { NotificationService } from '../services/notification.service';
     HomeRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    
+    HttpClientModule
 
   ],
   providers: [
-   
+    { provide: HTTP_INTERCEPTORS, useClass: JwtTokenIntercelptor, multi: true }
   ]
 })
 export class HomeModule { }

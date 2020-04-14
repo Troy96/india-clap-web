@@ -22,7 +22,7 @@ import { CompanyAdminViewComponent } from './company-admin-view/company-admin-vi
 import { CompanyUserViewComponent } from './company-user-view/company-user-view.component';
 import { MoreTabComponent } from './more-tab/more-tab.component';
 import { NetworkingService } from '../services/networking.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtTokenIntercelptor } from '../interceptors/jwt-token.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JobsService } from '../services/jobs.service';
@@ -52,7 +52,8 @@ import { JobsService } from '../services/jobs.service';
     CommonModule,
     ProfessionalNetworkingRoutingModule,
     SharedModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule, ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [NetworkingService, JobsService, {
     provide: HTTP_INTERCEPTORS, useClass: JwtTokenIntercelptor, multi: true

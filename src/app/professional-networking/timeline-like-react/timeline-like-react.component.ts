@@ -18,6 +18,7 @@ export class TimelineLikeReactComponent implements OnInit {
     private netService: NetworkingService
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
+    console.log(this.currentUser);
     this.getUserPosts();
   }
 
