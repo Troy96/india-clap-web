@@ -42,8 +42,8 @@ export class LoginPageComponent implements OnInit {
       this.obj.email = this.loginForm.get('email').value;
       this.obj.password = this.loginForm.get('password').value;
       this.obj.confirm_password = this.obj.password;
-      this.authService.login(this.obj).subscribe((data: any) => {
-        localStorage.setItem('currentUser', JSON.stringify(data));
+      this.authService.login(this.obj).subscribe(async (data: any) => {
+        await localStorage.setItem('currentUser', JSON.stringify(data));
         this.router.navigateByUrl('/professional-networking/me');
       },
       err=>{
