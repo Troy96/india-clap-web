@@ -153,8 +153,58 @@
     margin-right: 20px;
     color: white;
   }
+  .placement{
+    margin-top: -27px;
+    margin-right: -25px;
+    margin-left: 25px;
+  }
+  .placement2{
+    display: inline-block;
+    position: relative;
+    top: 12px;
+    left: -30px;
+  }
+  .placement3{
+    margin-top: -20px;
+    margin-right: -5px;
+    margin-left: 16px;
+  }
+  .placement4{
+    display: none;
+  }
+  .toLeft{
+    margin-left: -25px;
+  }
+  .img1{
+    margin-top: -20px;
+  }
+  .toLeft1{
+    margin-left: -20px;
+  }
 }
 
 nav{
   background-color: teal;
+}
+.input-group-btn{
+  border-left: none !important;
+  background-color: white;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  margin-top: 20px;
+
+}
+.input-group-btn:hover{
+  box-shadow: none;
+}
+.form-control{
+  border-right: none;
+  border: none;
+  /* color: white; */
+  border-radius: 15px;
+  margin-top: 20px;
+
+}
+.form-control:hover{
+  box-shadow: none;
 }

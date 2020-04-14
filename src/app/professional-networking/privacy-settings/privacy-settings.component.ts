@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class PrivacySettingsComponent implements OnInit {
 
-  userId: number = 9 //remove this
+  userId: number ; //remove this
   userDetails: any = {};
   name:any=[];
   privacy_menu = ['Location','Headline','Experience','Projects','Project Descriptions','Certificates','Skills','Resume'];
@@ -43,13 +43,17 @@ export class PrivacySettingsComponent implements OnInit {
   
 
   getUserDetails() {
+      this.userId = ((JSON.parse(localStorage.getItem('currentUser')).user_id));
+    //console.log(this.userId);
     this.authService.get_user_details(this.userId)
       .subscribe(respObj => {
         this.userDetails = { ...respObj };
+        
       })
       this.authService.get_privacy_details()
       .subscribe((respObj:any) => {
        this.received_data = respObj.results[0];
+      console.log(this.received_data);
       //  for(let i = 0;i<this.received_data.length;i++)
       //  {
       //    if(this.received_data[i]=='location'||this.received_data[i]=='headline'||this.received_data[i]=='experience'||this.received_data[i]=='projects'||this.received_data[i]=='project_desc'||this.received_data[i]=='certificates'||this.received_data[i]=='skills'||this.received_data[i]=='resume')
