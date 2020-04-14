@@ -46,13 +46,16 @@ export class PrivacySettingsComponent implements OnInit {
   
 
   getUserDetails() {
-      this.userId = ((JSON.parse(localStorage.getItem('currentUser')).user_id));
+      this.userId = ((JSON.parse(localStorage.getItem('currentUser')).profile_id));
     //console.log(this.userId);
     this.authService.get_user_details(this.userId)
       .subscribe(respObj => {
         this.userDetails = { ...respObj };
         
       })
+      // this.authService.get_user_profiles().subscribe((data:any)=>{
+      // console.log(data);
+      // })
       this.authService.get_privacy_details()
       .subscribe((respObj:any) => {
        this.received_data = respObj.results[0];
