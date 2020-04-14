@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-registration-page',
@@ -16,7 +17,8 @@ export class RegistrationPageComponent implements OnInit {
   obj:any={};
   emailValidation: boolean = false;
   passwordValidation: boolean = false;
-  constructor(private authService:AuthService) {
+
+  constructor(private authService:AuthService,private notifyService : NotificationService) {
     this.registerForm = new FormGroup({
       first_name: new FormControl("", Validators.required),
       email: new FormControl("",[
@@ -58,23 +60,59 @@ export class RegistrationPageComponent implements OnInit {
     console.log(data);
     },
     err=>{
+      console.log(err)
       try{
-        console.log(err.error.password[0]);
-
-        if(err.error.email[0])
-        this.emailValidation = true
-        else
-        this.emailValidation = false;
-        if(err.error.email[0])
-        this.passwordValidation = true;
-        else
-        this.passwordValidation = false;
+        
+        // console.log(err.error.email[0]);
         console.log(err.error.email[0]);
+        this.showToasterError("Email already taken")
+
+        // if(err.error.email[0])
+        // this.emailValidation = true
+        // else
+        // this.emailValidation = false;
+        // if(err.error.email[0])
+        // this.passwordValidation = true;
+        // else
+        // this.passwordValidation = false;
+        // console.log(err.error.email[0]);
       }
+     
       catch(e){
       console.log(e);
       }
+      try{
+        console.log(err.error.password[0]);
+        this.showToasterError("Password incorrect")
+      }
+      catch(e){
+        console.log(e);
+        }
+        try{
+          console.log(err.error.last_name[0]);
+          this.showToasterError("last name must be atleast 4 letters")
+
+        }
+        catch(e){
+          console.log(e);
+          }
     })
     }
   }
+  showToasterSuccess(){
+    console.log(this.notifyService);
+    this.notifyService.showSuccess("Data shown successfully !!", "ItSolutionStuff.com")
+}
+
+showToasterError(str:any){
+    this.notifyService.showError("Something is wrong", str)
+}
+
+showToasterInfo(){
+    this.notifyService.showInfo("This is info", "ItSolutionStuff.com")
+}
+
+showToasterWarning(){
+    this.notifyService.showWarning("This is warning", "ItSolutionStuff.com")
+}
 }

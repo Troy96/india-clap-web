@@ -9,6 +9,10 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { NotificationService } from '../services/notification.service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { JwtTokenIntercelptor } from '../interceptors/jwt-token.interceptor';
 
 
 @NgModule({
@@ -24,7 +28,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     HomeRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
+
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtTokenIntercelptor, multi: true }
   ]
 })
 export class HomeModule { }

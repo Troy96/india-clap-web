@@ -12,6 +12,9 @@ import { LayoutModule } from './layout/layout.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtTokenIntercelptor } from './interceptors/jwt-token.interceptor';
 import { AuthGuard } from './guards/Auth.guard';
+import { ToastrService, ToastrModule } from 'ngx-toastr';
+import { NotificationService } from './services/notification.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,11 +30,15 @@ import { AuthGuard } from './guards/Auth.guard';
     SharedModule,
     LayoutModule,
     HttpClientModule,
-
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [AuthGuard,{
     provide: HTTP_INTERCEPTORS, useClass: JwtTokenIntercelptor, multi: true
-  }],
+  },
+  
+],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

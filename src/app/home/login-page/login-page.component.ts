@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-login-page',
@@ -14,7 +15,7 @@ export class LoginPageComponent implements OnInit {
   obj: any = {};
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,private notifyService : NotificationService
   ) {
     if (!!JSON.parse(localStorage.getItem('currentUser'))) {
       this.router.navigateByUrl('/professional-networking/me');
@@ -44,10 +45,30 @@ export class LoginPageComponent implements OnInit {
       this.authService.login(this.obj).subscribe((data: any) => {
         localStorage.setItem('currentUser', JSON.stringify(data));
         this.router.navigateByUrl('/professional-networking/me');
+      },
+      err=>{
+        if(err.error.error=="Invalid Credentials")
+          this.showToasterError("Invalid Credentials")
+      
       })
     }
   }
+  showToasterSuccess(){
+    console.log(this.notifyService);
+    this.notifyService.showSuccess("Data shown successfully !!", "ItSolutionStuff.com")
+}
 
+showToasterError(str:any){
+    this.notifyService.showError("Something is wrong", str)
+}
+
+showToasterInfo(){
+    this.notifyService.showInfo("This is info", "ItSolutionStuff.com")
+}
+
+showToasterWarning(){
+    this.notifyService.showWarning("This is warning", "ItSolutionStuff.com")
+}
   togglepass(event: any) {
     let _el = document.querySelector(".signin-pass-view-btn");
     let _parentEl = _el.parentNode;
