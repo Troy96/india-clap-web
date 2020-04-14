@@ -3,44 +3,16 @@
   width: 36px;
   font-size: 24px;
 }
-.nav-link{
-  background-color: teal;
-  border: none;
-}
-.link{
-  text-decoration: none;
-  color: white;
-}
-
-#filter-data{
-  float: right;
-  position: absolute;
-  top: 15%;
-  right: 15px;
- background-color: white;
- border: 1px gray solid;
- padding-left: 5px;
- padding-top: 5px;
-}
-
-#filter-data > p {
-  cursor: pointer;
-}
-.imgp{
-  text-align: center;
-}
-.imgs{
-	vertical-align: middle;
-}
-
-
 .navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
   font-size: 0.75rem;
   position: absolute;
   right: 0;
   font-family: sans-serif;
 }
-
+.imgp{
+  text-align: center;
+}
+img
 .nav-link, .navbar-brand {
   color: white;
 }
@@ -157,4 +129,30 @@
 
 nav{
   background-color: teal;
+}
+.nav-item{
+  color: white;
+}
+.nav-item:hover{
+  background-color: white;
+  color: black;
+}
+.drop-items{
+  display:none;
+  position: relative;
+  width: fit-content;
+  background-color:white;
+  border: black solid 1px;
+  
+}
+.nav-item:hover>.drop-items{
+  display: block;
+  position: absolute;
+}
+.navbar-nav{
+  padding-right: 120px;
+}
+.drop-items>p{
+  padding-left: 10px;
+  padding-right: 30px;
 }
