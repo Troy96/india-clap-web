@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-icon-top navbar-expand-lg navbar ">
   <a class="navbar-brand" routerLink="professional-networking/me">HOLOGRAPH</a>
   <form id="frm">
@@ -16,73 +17,74 @@
   </button>
 
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse " id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item active" [routerLink]="['/']">
+      <li class="nav-item active"  [routerLink]="['/']">
         <a class="nav-link">
-          <i class="fa fa-home"><img src="/assets/icons/1x/Asset 3.png" height="20px" width="20px"></i>
+          <i class="fa fa-home" ><img src="/assets/icons/1x/Asset 3.png" height="22px" width="20px"></i>
           Home
           <span class="sr-only">(current)</span>
         </a>
       </li>
 
-      <li class="nav-item" [routerLink]="['/jobs/various-sectors']">
+      <li class="nav-item"  [routerLink]="['/jobs/various-sectors']">
         <a class="nav-link">
           <i class="fa fa-envelope-o">
-            <img src="/assets/icons/1x/Asset 4.png " width="20px">
+            <img src="/assets/icons/1x/Asset 4.png " width="20px" height="23px">
           </i>
           Jobs
         </a>
       </li>
-      <div id="notification" (click)="displaynotification()" style="display: block;">
-        <li class="nav-item">
+      <div id="notification" (click)="displaynotification()" style="display: block;" >
+        <li class="nav-item" >
           <button class="nav-link">
             <a class="link">
-              <i class="fa fa-envelope-o">
-                <img src="/assets/icons/1x/Asset 5.png " width="20px">
-              </i><br>
-              Notification
+              <i class="fa fa-envelope-o" >
+                <img src="/assets/icons/1x/Asset 5.png "  width="20px" class="placement">
+              </i>
+              
+              <span class="placement2">Notification</span>
             </a>
           </button>
         </li>
       </div>
-      <li class="nav-item">
+      <li class="nav-item toLeft" >
         <a class="nav-link">
           <i class="fa fa-envelope-o">
-            <img src="/assets/icons/1x/Asset 10.png " width="20px">
+            <img src="/assets/icons/1x/Asset 10.png " width="20px" height="25px" >
           </i>
           Learning Centre
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" >
         <a class="nav-link">
           <i class="fa fa-envelope-o">
-            <img src="/assets/icons/1x/Asset 7.png " width="20px">
+            <img src="/assets/icons/1x/Asset 7.png " width="20px" height="25px">
           </i>
           Micro Projects
         </a>
       </li>
-      <div id="myprofile" (click)="displaymyprofile()" style="display: block;">
+      <div id="myprofile"  (click)="displaymyprofile()" style="display: block;">
         <li class="nav-item">
           <button class="nav-link">
             <a class="link">
-              <i class="fa fa-envelope-o">
-                <img src="/assets/icons/1x/Asset 8.png " width="20px">
-              </i><br>
-              My Profile
+              <i class="fa fa-envelope-o" >
+                <img src="/assets/icons/1x/Asset 8.png " width="20px" height="20px" class="placement3">
+              </i>
+              <span class="placement2"> Profile </span> 
             </a>
           </button>
         </li>
       </div>
-      <div id="more" (click)="displaymore()" style="display: block;">
-        <li class="nav-item">
+      <div id="more"  (click)="displaymore()" style="display: block;">
+        <li class="nav-item toLeft1" >
           <button class="nav-link">
             <a class="link">
-              <i class="fa fa-envelope-o">
-                <img class="img1" src="/assets/icons/1x/Asset 9.png " width="20px">
+              <i class="fa fa-envelope-o" >
+                <img class="img1" src="/assets/icons/1x/Asset 9.png "  width="20px" >
               </i>
-              <br>
-              More
+              
+              <span class="placement2"> More  </span>
             </a>
           </button>
         </li>
