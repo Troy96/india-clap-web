@@ -156,10 +156,12 @@ export class PrivacySettingsComponent implements OnInit {
         if(this.selected_menu[i].id==7)
         this.name.push('resume');
        // let obj:any={};
-        this.menuObj.name=this.name;
-        
         
     }
+    this.menuObj.name=this.name;
+
+    console.log(this.menuObj)
+
     this.authService.edit_privacy_details(this.menuObj).subscribe((data:any)=>{
       console.log(data);
       // this.router.navigate(['professional-networking/privacy-settings'])
