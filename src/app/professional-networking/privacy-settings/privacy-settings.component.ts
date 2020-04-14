@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-privacy-settings',
@@ -15,8 +17,9 @@ export class PrivacySettingsComponent implements OnInit {
   selected_menu:any=[];
   menuValidation:Boolean=false;
   received_data:any=[];
+  menuObj:any={};
   constructor(
-    private authService: AuthService
+    private authService: AuthService,private router:Router,private notifyService : NotificationService
   ) { 
     this.getUserDetails();
   }
@@ -125,8 +128,15 @@ export class PrivacySettingsComponent implements OnInit {
       //  privacy_menu = ['Location','Headline','Experience','Projects','Project Descriptions','Certificates','Skills','Resume'];
 
   }
+  showToasterSuccess(){
+    console.log(this.notifyService);
+    this.notifyService.showSuccess("Successful", "Privacy settings changed !")
+  }
   submit()
   {
+    console.log(this.selected_menu)
+    this.menuObj={};
+    this.name=[];
     for(let i = 0;i<this.selected_menu.length;i++)
     {
       if(this.selected_menu[i].id==0)
@@ -145,12 +155,17 @@ export class PrivacySettingsComponent implements OnInit {
         this.name.push('skills');
         if(this.selected_menu[i].id==7)
         this.name.push('resume');
-        let obj:any={};
-        obj.name=this.name;
-        this.authService.edit_privacy_details(obj).subscribe((data:any)=>{
-          console.log(data);
-        })
+       // let obj:any={};
+        this.menuObj.name=this.name;
+        
+        
     }
+    this.authService.edit_privacy_details(this.menuObj).subscribe((data:any)=>{
+      console.log(data);
+      // this.router.navigate(['professional-networking/privacy-settings'])
+      this.showToasterSuccess()
+
+    })
   }
 
 }
