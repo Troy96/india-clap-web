@@ -47,7 +47,7 @@ export class AuthService {
     return this.http.post(`${config.base_url}/accounts/password-reset/reset_password/`, $data, { headers: this.headers });
   }
   reset_password($data) {
-    return this.http.post(`${config.base_url}/accounts/password_reset/confirm/`, $data, { headers: this.headers });
+    return this.http.post(`${config.base_url}/accounts/password-reset/confirm/`, $data, { headers: this.headers });
   }
   edit_privacy_details($data) {
     return this.http.post(`${config.base_url}/Users/privacy/setting/save`, $data, { headers: this.headers });

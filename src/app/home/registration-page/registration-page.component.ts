@@ -60,23 +60,42 @@ export class RegistrationPageComponent implements OnInit {
     console.log(data);
     },
     err=>{
+      console.log(err)
       try{
-        console.log(err.error.password[0]);
+        
+        // console.log(err.error.email[0]);
         console.log(err.error.email[0]);
+        this.showToasterError("Email already taken")
 
-        if(err.error.email[0])
-        this.emailValidation = true
-        else
-        this.emailValidation = false;
-        if(err.error.email[0])
-        this.passwordValidation = true;
-        else
-        this.passwordValidation = false;
-        console.log(err.error.email[0]);
+        // if(err.error.email[0])
+        // this.emailValidation = true
+        // else
+        // this.emailValidation = false;
+        // if(err.error.email[0])
+        // this.passwordValidation = true;
+        // else
+        // this.passwordValidation = false;
+        // console.log(err.error.email[0]);
       }
+     
       catch(e){
       console.log(e);
       }
+      try{
+        console.log(err.error.password[0]);
+        this.showToasterError("Password incorrect")
+      }
+      catch(e){
+        console.log(e);
+        }
+        try{
+          console.log(err.error.last_name[0]);
+          this.showToasterError("last name must be atleast 4 letters")
+
+        }
+        catch(e){
+          console.log(e);
+          }
     })
     }
   }
@@ -85,8 +104,8 @@ export class RegistrationPageComponent implements OnInit {
     this.notifyService.showSuccess("Data shown successfully !!", "ItSolutionStuff.com")
 }
 
-showToasterError(){
-    this.notifyService.showError("Something is wrong", "ItSolutionStuff.com")
+showToasterError(str:any){
+    this.notifyService.showError("Something is wrong", str)
 }
 
 showToasterInfo(){
