@@ -9,7 +9,6 @@ export class JwtTokenIntercelptor implements HttpInterceptor {
     constructor(private authService: AuthService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log('tokennnn');
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (currentUser && currentUser.token) {
             request = request.clone({

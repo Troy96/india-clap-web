@@ -83,7 +83,7 @@ export class ResetPasswordComponent implements OnInit {
 }
 showToasterSuccess(){
   console.log(this.notifyService);
-  this.notifyService.showSuccess("Successful", "Passwoord Changed !")
+  this.notifyService.showSuccess("Successful", "Password Changed !")
 }
   ngOnInit() {
   }

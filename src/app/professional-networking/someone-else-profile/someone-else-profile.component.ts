@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { NetworkingService } from 'src/app/services/networking.service';
 import { Observable, observable } from 'rxjs';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-someone-else-profile',
@@ -21,7 +22,8 @@ export class SomeoneElseProfileComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
     private authService: AuthService,
-    private netService: NetworkingService
+    private netService: NetworkingService,
+    private notifyService: NotificationService
   ) {
     this.userId = +this.router.snapshot.paramMap.get('id');
     this.getUserDetails();
@@ -54,13 +56,14 @@ export class SomeoneElseProfileComponent implements OnInit {
   onFollowRequest() {
     this.netService.follow_request(this.userId)
       .subscribe(respObj => {
-        console.log(respObj)
+        this.notifyService.showSuccess('Your request has been sent to the user', 'Connection Alert');
       });
   }
 
   onRejectRequest() {
     this.netService.cancel_request(this.userId)
       .subscribe(respObj => {
+        this.notifyService.showInfo('Connection request rejected!', 'Connection Alert');
         console.log(respObj);
       })
   }
@@ -68,6 +71,7 @@ export class SomeoneElseProfileComponent implements OnInit {
   onAcceptRequest() {
     this.netService.accept_request(this.userId)
       .subscribe(respObj => {
+        this.notifyService.showInfo('Connection request accepted!', 'Connection Alert');
         console.log(respObj);
       })
   }
@@ -75,6 +79,7 @@ export class SomeoneElseProfileComponent implements OnInit {
   onDeleteRequest() {
     this.netService.delete_request(this.userId)
       .subscribe(respObj => {
+        this.notifyService.showInfo('Connection request deleted!', 'Connection Alert');
         console.log(respObj)
       })
   }
@@ -88,16 +93,18 @@ export class SomeoneElseProfileComponent implements OnInit {
   getConnectionStatus() {
     this.contactList.forEach(user => {
       if ((user['user_from']['id'] === this.currentUser['user_id']) && (user['user_to']['id'] === this.userId)) {
+        console.log('pending');
         return this.connectionStatus = 'pending';
       }
       else if ((user['user_from']['id'] === this.userId) && (user['user_to']['id'] === this.currentUser['user_id'])) {
+        console.log('approval needed');
         return this.connectionStatus = 'approval needed';
       }
     })
     if (!!this.isUserConnection()) {
       this.connectionStatus = 'connected';
     }
-    else if ((!this.isUserConnection()) && ((this.connectionStatus != 'pending') || (this.connectionStatus != 'approval needed'))) {
+    else if ((!this.isUserConnection()) && ((this.connectionStatus != 'pending') && (this.connectionStatus != 'approval needed'))) {
       this.connectionStatus = 'none';
     }
   }
