@@ -120,4 +120,13 @@ export class JobsService {
     return this.http.delete(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/`);
 
   }
+  update_status($data: any) {
+    const formData = new FormData();
+    formData.append('text', $data.text);
+    formData.append('photo',$data.photo);
+    formData.append('video',$data.video);
+    formData.append('slug',$data.slug);
+    console.log(formData)
+    return this.http.post(`${config.base_url}/Networking/timelinePosts/`, formData);
+  }
 }

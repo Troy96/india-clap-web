@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { NetworkingService } from 'src/app/services/networking.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { JobsService } from 'src/app/services/jobs.service';
 
 @Component({
   selector: 'app-timeline-like-react',
@@ -12,14 +14,22 @@ export class TimelineLikeReactComponent implements OnInit {
   postList: any[];
   statusText: string;
   commentTxt: string;
+  timelineUpdateForm: FormGroup;
 
   @ViewChild('comment', { static: false }) commentRef: ElementRef
   constructor(
-    private netService: NetworkingService
+    private netService: NetworkingService,private cd: ChangeDetectorRef,private jobService:JobsService
+
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
     console.log(this.currentUser);
     this.getUserPosts();
+    this.timelineUpdateForm = new FormGroup({
+      text: new FormControl(""),
+      video: new FormControl(null),
+      photo: new FormControl(null),
+      slug: new FormControl('postStatus' + Math.floor(Math.random()*10))
+    })
   }
 
   ngOnInit() {
@@ -74,6 +84,46 @@ export class TimelineLikeReactComponent implements OnInit {
         console.log(respObj);
       })
   }
+  onVideoUpload(event) {
+    const reader = new FileReader();
 
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        this.timelineUpdateForm.patchValue({
+          video: reader.result
+        });
+
+        this.cd.markForCheck();
+      };
+    }
+  }
+  onPhotoUpload(event) {
+    const reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        this.timelineUpdateForm.patchValue({
+          photo: reader.result
+        });
+
+        this.cd.markForCheck();
+      };
+    }
+  }
+  onSubmit() {
+    if (!this.timelineUpdateForm.valid) return;
+    this.timelineUpdateForm.patchValue({text:this.statusText});
+       console.log(this.timelineUpdateForm.value)
+    this.jobService.update_status(this.timelineUpdateForm.value)
+      .subscribe(respObj => {
+        console.log(respObj);
+      })
+  }
 
 }

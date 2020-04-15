@@ -16,6 +16,7 @@ import { CompanyAdminViewComponent } from './company-admin-view/company-admin-vi
 import { CompanyUserViewComponent } from './company-user-view/company-user-view.component';
 import { MoreTabComponent } from './more-tab/more-tab.component';
 import {AcceptDeclineRequestComponent} from './accept-decline-request/accept-decline-request.component';
+import { ResetPasswordPageComponent } from './reset-password-page/reset-password-page.component';
 
 const routes: Routes = [
   {
@@ -37,7 +38,8 @@ const routes: Routes = [
       { path: 'company-admin-view', component: CompanyAdminViewComponent },
       { path: 'company-user-view', component: CompanyUserViewComponent },
       { path: 'more-tabs', component: MoreTabComponent },
-      { path: 'accept-decline', component: AcceptDeclineRequestComponent }
+      { path: 'accept-decline', component: AcceptDeclineRequestComponent },
+      { path: 'change-password', component:ResetPasswordPageComponent}
     ]
   },
 ];
