@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NetworkingService } from 'src/app/services/networking.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-timeline-like-react',
@@ -15,7 +16,8 @@ export class TimelineLikeReactComponent implements OnInit {
 
   @ViewChild('comment', { static: false }) commentRef: ElementRef
   constructor(
-    private netService: NetworkingService
+    private netService: NetworkingService,
+    private notService: NotificationService
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
     console.log(this.currentUser);
@@ -37,10 +39,12 @@ export class TimelineLikeReactComponent implements OnInit {
     let data = {
       author_user: this.currentUser,
       text: this.statusText,
-      slug: 'post' + Math.floor(Math.random())
+      slug: 'hell' + Math.floor(Math.random())
     }
     this.netService.create_post(data).subscribe(respObj => {
-      console.log(respObj)
+      console.log(respObj),
+      this.notService.showSuccess("Posted Successfully","success")
+      this.getUserPosts()
     })
   }
 
