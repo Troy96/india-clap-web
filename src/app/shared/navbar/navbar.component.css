@@ -158,7 +158,6 @@ img
 nav{
   background-color: teal;
 }
-<<<<<<< HEAD
 .nav-item{
   color: white;
 }
@@ -185,27 +184,3 @@ nav{
   padding-left: 10px;
   padding-right: 30px;
 }
-=======
-.input-group-btn{
-  border-left: none !important;
-  background-color: white;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  margin-top: 20px;
-
-}
-.input-group-btn:hover{
-  box-shadow: none;
-}
-.form-control{
-  border-right: none;
-  border: none;
-  /* color: white; */
-  border-radius: 15px;
-  margin-top: 20px;
-
-}
-.form-control:hover{
-  box-shadow: none;
-}
->>>>>>> bc586ecc1aab1d7ccf671fc5aec7699e0003271a
