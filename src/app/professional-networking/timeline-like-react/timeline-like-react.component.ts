@@ -40,7 +40,7 @@ export class TimelineLikeReactComponent implements OnInit {
   getUserPosts() {
     this.netService.get_posts()
       .subscribe(respObj => {
-        this.postList = [...respObj['results']];
+        this.postList = [...respObj];
         this.getPostsReactions();
       })
   }

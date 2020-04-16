@@ -34,8 +34,7 @@ export class NavbarComponent implements OnInit {
     this.getUserDetails();
     this.authService.get_user_profiles().subscribe(
       data =>{
-        this.userlist = data['results'];
-        console.log(this.userlist);
+        this.userlist = data;
       }
     )
   }
@@ -61,14 +60,14 @@ export class NavbarComponent implements OnInit {
   getUserDetails() {
     this.authService.get_user_profiles()
       .subscribe(respObj => {
-        this.userDetails = respObj['results'].find(obj => obj['user'] === JSON.parse(localStorage.getItem('currentUser'))['user_id']);
+        this.userDetails = respObj.find(obj => obj['user'] === JSON.parse(localStorage.getItem('currentUser'))['user_id']);
       })
   }
 
   getNotifications() {
     this.authService.get_user_notifications()
       .subscribe(respObj => {
-        this.notifList = [...respObj['results']];
+        this.notifList = respObj;
       })
   }
 

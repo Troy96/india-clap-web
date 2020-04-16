@@ -40,7 +40,11 @@
                 <p class="teal" *ngIf="post.author_user">{{post.author_user.first_name}}</p>
                 <p class="teal" *ngIf="post.author_company">{{post.author_company.name}}</p><br>
                 <p> {{post?.created_on | date}}</p>
-                <p> {{post?.text}}</p>
+                <p *ngIf="post?.text"> {{post?.text}}</p>
+                <p *ngIf="post?.photo"> <img src="{{post?.photo}}"></p>
+                <p *ngIf="post?.video"> <video src="{{post?.video}}"></video></p>
+
+
             </div>
             <small>{{post?.likes_count}} likes.{{post?.reactions?.length}} reacts.{{post?.comments_count}}
                 comments</small>

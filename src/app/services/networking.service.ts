@@ -22,7 +22,7 @@ export class NetworkingService {
   }
 
   get_posts() {
-    return this.http.get(`${config.base_url}/Networking/timelinePosts`);
+    return this.http.get<any>(`${config.base_url}/Networking/timelinePosts`);
   }
 
   create_post($data, userId) {
