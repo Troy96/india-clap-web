@@ -16,7 +16,8 @@ export class TimelineLikeReactComponent implements OnInit {
   statusText: string="";
   commentTxt: string;
   timelineUpdateForm: FormGroup;
-
+  photoVal:boolean = true;
+  videoval:boolean= true;
   @ViewChild('comment', { static: false }) commentRef: ElementRef
   constructor(
     private netService: NetworkingService,private cd: ChangeDetectorRef,private jobService:JobsService
@@ -29,7 +30,7 @@ export class TimelineLikeReactComponent implements OnInit {
       text: new FormControl(""),
       video: new FormControl(""),
       photo: new FormControl(""),
-      slug: new FormControl('postStatus' + Math.floor(Math.random() * 230) + 90)
+      // slug: new FormControl('postStatus' + Math.floor(Math.random() * 230) + 90)
     })
   }
 
@@ -53,18 +54,35 @@ export class TimelineLikeReactComponent implements OnInit {
     // this.netService.create_post(data).subscribe(respObj => {
     //   console.log(respObj)
     // })
-    if (!this.timelineUpdateForm.valid) return;
+    
     this.timelineUpdateForm.patchValue({text:this.statusText});
        console.log(this.timelineUpdateForm.value)
+       if (!this.timelineUpdateForm.valid || (this.timelineUpdateForm.get('text').value==""&&this.timelineUpdateForm.get('photo').value==""&&this.timelineUpdateForm.get('video').value==""))
+    {
+      this.showToasterError("Please add a text,photo or video first!");
+      return;
+    } 
        this.netService.create_post(this.timelineUpdateForm.value)
       .subscribe(respObj => {
         console.log(respObj);
         this.statusText="";
         this.showToasterSuccess()
-        this.ngOnInit();
+       // this.ngOnInit();
+      //  location.reload();
+        this.timelineUpdateForm.patchValue({
+          text:"",
+          photo:"",
+          video:""
+        })
+        this.statusText=""
       },
       err=>{
         this.showToasterError("Please Select another image or video")
+        this.timelineUpdateForm.patchValue({
+          text:"",
+          photo:"",
+          video:""
+        })
       }
       )
   }
@@ -101,7 +119,6 @@ export class TimelineLikeReactComponent implements OnInit {
   }
   onVideoUpload(event) {
     const reader = new FileReader();
-
     if (event.target.files && event.target.files.length) {
       // const [file] = event.target.files;
       // reader.readAsDataURL(file);

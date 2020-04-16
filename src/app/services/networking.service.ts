@@ -30,7 +30,7 @@ export class NetworkingService {
     formData.append('text', $data.text);
     formData.append('photo',$data.photo);
     formData.append('video',$data.video);
-    formData.append('slug',$data.slug);
+    // formData.append('slug',$data.slug);
     console.log(formData)
     return this.http.post(`${config.base_url}/Networking/timelinePosts/`, formData);  }
 
