@@ -65,7 +65,7 @@ export class NetworkingService {
   }
 
   get_contacts() {
-    return this.http.get(`${config.base_url}/Networking/contacts/`)
+    return this.http.get<any>(`${config.base_url}/Networking/contacts/`)
   }
   change_password($data) {
     return this.http.put(`${config.base_url}/accounts/change-password/`, $data);

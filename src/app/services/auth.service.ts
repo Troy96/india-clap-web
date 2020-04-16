@@ -36,6 +36,10 @@ export class AuthService {
     return this.http.get<any>(`${config.base_url}/Users/users`);
   }
 
+  search_user(searchKey) {
+    return this.http.get<any>(`${config.base_url}/Users/users?search=` + searchKey);
+  }
+
   get_user_details(id: number) {
     return this.http.get<any>(`${config.base_url}/Users/profiles/${id}`);
   }

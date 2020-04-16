@@ -33,29 +33,27 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.getUserDetails();
     this.authService.get_user_profiles().subscribe(
-      data =>{
+      data => {
         this.userlist = data;
       }
     )
   }
   displaysearch() {
 
-    const user = this.userlist.find(user=>{
-      if(user.first_name==this.searchKey){
-        return user;
-      }
-    })
-    if(!user){
-        return this.notificationService.showInfo('No User Found', 'Search Alert');
-    }
-    else{
-      this.router.navigateByUrl('/professional-networking/users/' + user.id); 
-    }
+    this.authService.search_user(this.searchKey)
+      .subscribe(respObj => {
+        if (!respObj.length) {
+          return this.notificationService.showInfo('No User Found', 'Search Alert');
+        }
+        else {
+          this.router.navigateByUrl('/professional-networking/users/' + respObj[0].id);
+        }
+      })
   }
   displaynotification() {
     this.renderer.setStyle(this.moreRef2.nativeElement, 'display', 'block');
   }
- 
+
 
   getUserDetails() {
     this.authService.get_user_profiles()
@@ -76,5 +74,5 @@ export class NavbarComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
-  
+
 }
