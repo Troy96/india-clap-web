@@ -50,12 +50,7 @@ export class MyProfileEditableComponent implements OnInit {
   }
 
   openEditModal(description) {
-    switch (description) {
-      case 'headline': {
-        this.inputModal.setInputModal(description, [{ test: 'a' }])
-        break;
-      }
-    }
+    this.inputModal.setInputModal(description, [{ test: 'a' }])
   }
 
 }

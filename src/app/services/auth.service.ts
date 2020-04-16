@@ -48,6 +48,10 @@ export class AuthService {
     return this.http.patch(`${config.base_url}/Users/profiles/${userId}/`, data)
   }
 
+  add_certificate($data) {
+    return this.http.post(`${config.base_url}/Users/certifications/`, $data)
+  }
+
   get_privacy_details() {
     return this.http.get(`${config.base_url}/Users/privacy`);
   }

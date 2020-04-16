@@ -23,7 +23,7 @@
 
         <div class="place">
             <div id="headline">
-                <h3>Headline <img src="/assets/icons/1x/Edit.png" (click)="openEditModal('headline')" width="22px"
+                <h3>Headline <img src="/assets/icons/1x/Edit.png" (click)="openEditModal('Headline')" width="22px"
                         style="cursor: pointer;" class="edit-icon1"></h3>
                 <span class="txt">{{userDetails?.brief_Desc}}</span>
             </div>
@@ -88,7 +88,14 @@
                 </div>
             </div>
             <div id="headline">
-                <h3>Certificates<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"></h3>
+                <h3>Certificates<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
+                        (click)="openEditModal('Certifications')" style="cursor: pointer;"></h3>
+                <div class="project-description" *ngIf="userDetails?.certifications.length">
+
+                    <div id="skill" *ngFor="let certification of userDetails?.certifications">
+                        {{certification?.certification_name}}
+                    </div>
+                </div>
 
 
             </div>

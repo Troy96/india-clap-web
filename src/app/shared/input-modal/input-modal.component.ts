@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class InputModalComponent implements OnInit {
 
   inputForm: FormGroup;
-
+  currentUserId: number;
   inputData: MyProfile
 
   constructor(
@@ -24,6 +24,7 @@ export class InputModalComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.currentUserId = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
     this.myProfileService.inputModal$.subscribe(inputData => {
       this.inputData = { ...inputData };
       this.createDynamicFormControls()
@@ -32,7 +33,15 @@ export class InputModalComponent implements OnInit {
 
   createDynamicFormControls() {
     switch (this.inputData.description) {
-      case 'headline': {
+      case 'Headline': {
+        this.inputForm = this.fb.group({
+          profile: this.fb.array([
+            this.fb.control('')
+          ])
+        });
+      }
+        break;
+      case 'Certifications': {
         this.inputForm = this.fb.group({
           profile: this.fb.array([
             this.fb.control('')
@@ -45,12 +54,20 @@ export class InputModalComponent implements OnInit {
 
   onSave(description) {
     switch (description) {
-      case 'headline': {
-        this.authService.update_user_details(JSON.parse(localStorage.getItem('currentUser'))['user_id'], { brief_Desc: this.inputForm.get('profile').value[0] })
+      case 'Headline': {
+        this.authService.update_user_details(this.currentUserId, { brief_Desc: this.inputForm.get('profile').value[0] })
           .subscribe(_ => {
             this.closeInputModal();
-            this.authService.get_user_details(JSON.parse(localStorage.getItem('currentUser'))['user_id'])
           })
+      }
+        break;
+      case 'Certifications': {
+        this.authService.add_certificate({
+          certification_name: this.inputForm.get('profile').value[0],
+          user: this.currentUserId
+        }).subscribe(_ => {
+          this.closeInputModal();
+        })
         break;
       }
     }
