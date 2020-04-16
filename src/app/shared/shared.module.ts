@@ -5,6 +5,7 @@ import { BannerComponent } from './banner/banner.component';
 import { RouterModule } from '@angular/router';
 import { InputModalComponent } from './input-modal/input-modal.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import { InputModalComponent } from './input-modal/input-modal.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     NavbarComponent,
