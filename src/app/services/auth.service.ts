@@ -44,6 +44,10 @@ export class AuthService {
     return this.http.get<any>(`${config.base_url}/Users/profiles/${id}`);
   }
 
+  update_user_details(userId, data) {
+    return this.http.patch(`${config.base_url}/Users/profiles/${userId}/`, data)
+  }
+
   get_privacy_details() {
     return this.http.get(`${config.base_url}/Users/privacy`);
   }
