@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { NetworkingService } from 'src/app/services/networking.service';
+import { MyprofileEditableService } from './myprofile-editable.service';
 
 @Component({
   selector: 'app-my-profile-editable',
@@ -15,7 +16,8 @@ export class MyProfileEditableComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private netService: NetworkingService
+    private netService: NetworkingService,
+    private inputModal: MyprofileEditableService
   ) { }
 
   ngOnInit() {
@@ -45,6 +47,15 @@ export class MyProfileEditableComponent implements OnInit {
       .subscribe(respobj => {
         this.getUserDetails();
       })
+  }
+
+  openEditModal(description) {
+    switch (description) {
+      case 'headline': {
+        this.inputModal.setInputModal(description, [{ test: 'a' }])
+        break;
+      }
+    }
   }
 
 }

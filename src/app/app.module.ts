@@ -15,12 +15,12 @@ import { AuthGuard } from './guards/Auth.guard';
 import { ToastrService, ToastrModule } from 'ngx-toastr';
 import { NotificationService } from './services/notification.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-
-
+    TestComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,12 +33,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
-  providers: [AuthGuard,{
+  providers: [AuthGuard, {
     provide: HTTP_INTERCEPTORS, useClass: JwtTokenIntercelptor, multi: true
   },
-  
-],
-  
+
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

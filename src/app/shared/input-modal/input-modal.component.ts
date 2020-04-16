@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MyprofileEditableService } from 'src/app/professional-networking/my-profile-editable/myprofile-editable.service';
+import { MyProfile } from 'src/app/professional-networking/my-profile-editable/myprofle';
 
 @Component({
   selector: 'app-input-modal',
@@ -7,10 +9,20 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class InputModalComponent implements OnInit {
 
-  @Input() formInputs: any[];
-  constructor() { }
+  inputData: MyProfile
+
+  constructor(
+    private myProfileService: MyprofileEditableService
+  ) { }
 
   ngOnInit() {
+    this.myProfileService.inputModal$.subscribe(inputData => {
+      this.inputData = { ...inputData };
+    })
+  }
+
+  closeInputModal() {
+    this.myProfileService.closeModal();
   }
 
 }

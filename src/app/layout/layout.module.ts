@@ -6,7 +6,6 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 
 
-
 @NgModule({
   declarations: [LayoutComponent, MainNavbarComponent, FooterComponent],
   imports: [
