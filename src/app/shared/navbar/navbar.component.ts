@@ -32,12 +32,7 @@ export class NavbarComponent implements OnInit {
   displaynotification() {
     this.renderer.setStyle(this.moreRef2.nativeElement, 'display', 'block');
   }
-  displaymyprofile() {
-    this.renderer.setStyle(this.moreRef1.nativeElement, 'display', 'block');
-  }
-  displaymore() {
-    this.renderer.setStyle(this.moreRef.nativeElement, 'display', 'block');
-  }
+ 
 
   getUserDetails() {
     this.authService.get_user_profiles()
