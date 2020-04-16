@@ -9,29 +9,11 @@
                 <input [(ngModel)]="statusText" type="text" class="form-control statustxt"
                     placeholder="Update your status">
             </div>
-<<<<<<< HEAD
             <!-- <div>
                 <img src="/assets/icons/1x/insert.png" alt="" width="22" height="22" id="status-icons">
                 <img src="/assets/icons/1x/Image.png" alt="" width="25" height="26" id="status-icons">
                 <img src="/assets/icons/1x/video.png" alt="" width="26" height="24" id="status-icons">
             </div> -->
-=======
-            <div>
-               
-                <!-- <img src="/assets/icons/1x/insert.png" alt=""  id="status-icons"> -->
-                <!-- <img src="/assets/icons/1x/insert.png" alt="" width="26" height="24" id="status-icons"> -->
-
-                <!-- <img src="/assets/icons/1x/Image.png" alt="" width="25" height="26" id="status-icons"> -->
-                <label for="image">
-                    <input type="file" name="image" id="image" style="display:none;"  (change)="onPhotoUpload($event);"/>
-                    <img src="/assets/icons/1x/Image.png" width="25" height="26" hspace="10"/>
-                 </label>
-                <label for="video">
-                    <input type="file" name="video" id="video" style="display:none;"  (change)="onVideoUpload($event);"/>
-                    <img src="/assets/icons/1x/video.png" width="26" height="24" />
-                 </label>
-            </div>
->>>>>>> 52e41f24c930bdfdf439bdbbebb04521af0461d9
             <div>
                 <button class="btn btn-success right" (click)="createStatus()">Create</button>
             </div>
@@ -46,11 +28,7 @@
                 <p class="teal" *ngIf="post.author_user">{{post.author_user.first_name}}</p>
                 <p class="teal" *ngIf="post.author_company">{{post.author_company.name}}</p><br>
                 <p> {{post?.created_on | date}}</p>
-                <p *ngIf="post?.text"> {{post?.text}}</p>
-                <p *ngIf="post?.photo"> <img src="{{post?.photo}}"></p>
-                <p *ngIf="post?.video"> <video src="{{post?.video}}"></video></p>
-
-
+                <p> {{post?.text}}</p>
             </div>
             <small>{{post?.likes_count}} likes.{{post?.reactions?.length}} reacts.{{post?.comments_count}}
                 comments</small>
@@ -62,25 +40,24 @@
                 <div *ngIf="post?.isLiked" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/like.png"
                         width="19px" height="22px" class="like-comment-icon"><br><small class="icon-txt">Liked</small>
                 </div>
-                <div *ngIf="!post?.isReacted" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/smiley.png"
-                    width="19px" height="22px" class="like-comment-icon" (click)="ReactPost(post.id);"><br><small
+                <div *ngIf="!post?.isLiked" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/smiley.png"
+                    width="19px" height="22px" class="like-comment-icon" (click)="getPostsReactions(post.id);"><br><small
                     class="icon-txt">React</small>
                         <div id="like-options">
-                            <div id="react"><img src="/assets/icons/1x/smiley.png" alt="" width="15px"></div>
-                            <div id="react"><img src="/assets/icons/1x/smiley.png" alt="" width="15px"></div>
-                            <div id="react"><img src="/assets/icons/1x/smiley.png" alt="" width="15px"></div>
-                            <div id="react"><img src="/assets/icons/1x/smiley.png" alt="" width="15px"></div>
+                            <div id="react"><img src="/assets/icons/1x/smiley.png" alt="" width="15px" (click)="getPostsReactions(post.id);"></div>
+                            <div id="react"><img src="/assets/icons/1x/smiley.png" alt="" width="15px" (click)="getPostsReactions(post.id);"></div>
+                            <div id="react"><img src="/assets/icons/1x/smiley.png" alt="" width="15px" (click)="getPostsReactions(post.id);"></div>
+                            <div id="react"><img src="/assets/icons/1x/smiley.png" alt="" width="15px" (click)="getPostsReactions(post.id);"></div>
                         </div>
                 </div>
-            
-            <div *ngIf="post?.isReacted" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/like.png"
+            <div *ngIf="post?.isLiked" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/like.png"
                     width="19px" height="22px" class="like-comment-icon"><br><small class="icon-txt">Reacted</small>
             </div>
                 <div id="icons" style="cursor: pointer;" (click)="commentOnPost(post.id)"> <img
                         src="/assets/icons/1x/Comment.png" width="25px" height="22px"
                         class="like-comment-icon report-img"><small class="icon-txt">Comment</small></div>
-                <div id="icons" style="cursor: pointer;" (click)="commentOnPost(post.id)"><img src="/assets/icons/1x/Report.png" width="7px" height="22px"
-                        class="like-comment-icon report-img"><small class="icon-txt">Report</small></div>
+                <!-- <div id="icons" class="report"><img src="/assets/icons/1x/Report.png" width="7px" height="22px"
+                        class="like-comment-icon report-img"><small class="icon-txt">Report</small></div> -->
             </div>
             <div class="comment" #comment>
                 <img src="/assets/icons/1x/dp.png" alt="" width="50px" class="comm-pro">
