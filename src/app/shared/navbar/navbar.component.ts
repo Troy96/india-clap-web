@@ -40,10 +40,11 @@ export class NavbarComponent implements OnInit {
     )
   }
   displaysearch() {
-
+  
     const user = this.userlist.find(user=>{
       if(user.first_name==this.searchKey){
         return user;
+        console.log(user);
       }
     })
     if(!user){
