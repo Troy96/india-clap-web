@@ -62,4 +62,5 @@ export class NetworkingService {
   get_contacts() {
     return this.http.get(`${config.base_url}/Networking/contacts/`)
   }
+  
 }

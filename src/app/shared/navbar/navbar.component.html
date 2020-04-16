@@ -3,9 +3,9 @@
   <a class="navbar-brand" routerLink="professional-networking/me">HOLOGRAPH</a>
   <form id="frm">
     <div class="input-group">
-      <input type="text" class="form-control frm1" placeholder="Search">
+      <input type="text" name="search" class="form-control frm1" placeholder="Search" [(ngModel)]="searchKey">
       <div class="input-group-btn">
-        <button class="btn btn-default" type="submit">
+        <button class="btn btn-default" type="submit" (click)="displaysearch()">
           <i class="glyphicon glyphicon-search"><img src="/assets/icons/1x/Asset 1.png" width="17px"></i>
         </button>
       </div>
@@ -134,6 +134,14 @@
     <div class="imgp">
       <p>>
         {{data?.text}}</p>
+    </div>
+  </ng-container>
+</div>
+<div id="user_search" style="display: none;" #networking>
+  <ng-container *ngFor="let user of userlist">
+    <div class="imgp">
+      <p>>
+        {{user.name}}</p>
     </div>
   </ng-container>
 </div>
