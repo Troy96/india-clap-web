@@ -18,6 +18,7 @@ export class TimelineLikeReactComponent implements OnInit {
   timelineUpdateForm: FormGroup;
   photoVal:boolean = true;
   videoval:boolean= true;
+  isReacted:boolean=true;
   @ViewChild('comment', { static: false }) commentRef: ElementRef
   constructor(
     private netService: NetworkingService,private cd: ChangeDetectorRef,private jobService:JobsService
@@ -30,6 +31,7 @@ export class TimelineLikeReactComponent implements OnInit {
       text: new FormControl(""),
       video: new FormControl(""),
       photo: new FormControl(""),
+      
       // slug: new FormControl('postStatus' + Math.floor(Math.random() * 230) + 90)
     })
   }
@@ -43,6 +45,9 @@ export class TimelineLikeReactComponent implements OnInit {
         this.postList = [...respObj];
         this.getPostsReactions();
       })
+  }
+  IsReacted(){
+    this.isReacted =!this.isReacted;
   }
 
   createStatus() {
