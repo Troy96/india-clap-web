@@ -7,6 +7,12 @@
             <h2>Headline <span class="teal">*</span> </h2>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div> -->
-        <button class="btn btn-primary save-btn">Save</button>
+        <div [formGroup]="inputForm" class="experience-section">
+            <div formArrayName="profile">
+                <div *ngFor="let control of inputForm.get('profile')?.controls; let i=index">
+                    <input type="text" [formControlName]="i" class="form-control">
+                </div>
+            </div>
+            <button class="btn btn-primary save-btn">Save</button>
+        </div>
     </div>
-</div>
