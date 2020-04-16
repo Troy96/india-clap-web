@@ -33,9 +33,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.getUserDetails();
     this.authService.get_user_profiles().subscribe(
-      data =>{
-        this.userlist = data['results'];
-        console.log(this.userlist);
+      data => {
+        this.userlist = data;
       }
     )
   }
@@ -53,23 +52,33 @@ export class NavbarComponent implements OnInit {
     else{
       this.router.navigateByUrl('/professional-networking/users/' + user.id); 
     }
+
+    this.authService.search_user(this.searchKey)
+      .subscribe(respObj => {
+        if (!respObj.length) {
+          return this.notificationService.showInfo('No User Found', 'Search Alert');
+        }
+        else {
+          this.router.navigateByUrl('/professional-networking/users/' + respObj[0].id);
+        }
+      })
   }
   displaynotification() {
     this.renderer.setStyle(this.moreRef2.nativeElement, 'display', 'block');
   }
- 
+
 
   getUserDetails() {
     this.authService.get_user_profiles()
       .subscribe(respObj => {
-        this.userDetails = respObj['results'].find(obj => obj['user'] === JSON.parse(localStorage.getItem('currentUser'))['user_id']);
+        this.userDetails = respObj.find(obj => obj['user'] === JSON.parse(localStorage.getItem('currentUser'))['user_id']);
       })
   }
 
   getNotifications() {
     this.authService.get_user_notifications()
       .subscribe(respObj => {
-        this.notifList = [...respObj['results']];
+        this.notifList = respObj;
       })
   }
 
@@ -78,5 +87,5 @@ export class NavbarComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
-  
+
 }

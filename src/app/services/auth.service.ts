@@ -33,7 +33,11 @@ export class AuthService {
   }
 
   get_user_profiles() {
-    return this.http.get(`${config.base_url}/Users/users`);
+    return this.http.get<any>(`${config.base_url}/Users/users`);
+  }
+
+  search_user(searchKey) {
+    return this.http.get<any>(`${config.base_url}/Users/users?search=` + searchKey);
   }
 
   get_user_details(id: number) {
@@ -54,7 +58,7 @@ export class AuthService {
   }
 
   get_user_notifications() {
-    return this.http.get(`${config.base_url}/Notifications/notifications`);
+    return this.http.get<any>(`${config.base_url}/Notifications/notifications`);
   }
 
   logout() {

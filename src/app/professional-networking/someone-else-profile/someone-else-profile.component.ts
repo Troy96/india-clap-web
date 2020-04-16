@@ -36,7 +36,7 @@ export class SomeoneElseProfileComponent implements OnInit {
   getUserDetails() {
     this.authService.get_user_profiles()
       .subscribe(respObj => {
-        this.userList = respObj['results'];
+        this.userList = [...respObj];
         this.userDetails = this.userList.find(obj => obj['user'] == this.userId);
       })
   }
@@ -44,7 +44,7 @@ export class SomeoneElseProfileComponent implements OnInit {
   getUserContacts() {
     this.netService.get_contacts()
       .subscribe(respObj => {
-        this.contactList = [...respObj['results']];
+        this.contactList = [...respObj];
         this.getConnectionStatus();
       })
   }
