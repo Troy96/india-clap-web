@@ -33,11 +33,11 @@ export class AuthService {
   }
 
   get_user_profiles() {
-    return this.http.get(`${config.base_url}/Users/profiles/`);
+    return this.http.get(`${config.base_url}/Users/users`);
   }
 
   get_user_details(id: number) {
-    return this.http.get(`${config.base_url}/Users/profiles/${id}`);
+    return this.http.get<any>(`${config.base_url}/Users/profiles/${id}`);
   }
 
   get_privacy_details() {

@@ -22,7 +22,7 @@ export class TimelineLikeReactComponent implements OnInit {
     private netService: NetworkingService,
     private notService: NotificationService,
     private cd: ChangeDetectorRef,
-    private jobService:JobsService
+    private jobService: JobsService
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
     console.log(this.currentUser);
@@ -31,7 +31,7 @@ export class TimelineLikeReactComponent implements OnInit {
       text: new FormControl(""),
       video: new FormControl(null),
       photo: new FormControl(null),
-      slug: new FormControl('postStatus' + Math.floor(Math.random()*10))
+      slug: new FormControl('postStatus' + Math.floor(Math.random() * 10))
     })
   }
 
@@ -54,7 +54,7 @@ export class TimelineLikeReactComponent implements OnInit {
     }
     this.netService.create_post(data).subscribe(respObj => {
       console.log(respObj),
-      this.notService.showSuccess("Posted Successfully","success")
+        this.notService.showSuccess("Posted Successfully", "success")
       this.getUserPosts()
     })
   }
@@ -123,8 +123,8 @@ export class TimelineLikeReactComponent implements OnInit {
   }
   onSubmit() {
     if (!this.timelineUpdateForm.valid) return;
-    this.timelineUpdateForm.patchValue({text:this.statusText});
-       console.log(this.timelineUpdateForm.value)
+    this.timelineUpdateForm.patchValue({ text: this.statusText });
+    console.log(this.timelineUpdateForm.value)
     this.jobService.update_status(this.timelineUpdateForm.value)
       .subscribe(respObj => {
         console.log(respObj);
