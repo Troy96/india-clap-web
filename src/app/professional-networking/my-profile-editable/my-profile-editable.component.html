@@ -133,12 +133,14 @@
     <div id="sug-head">
         <h4>Your Connections</h4>
     </div>
-    <div id="sug-body">
+    <div id="sug-body" *ngIf="userConnections.length">
         <div id="sug-pro" *ngFor="let connection of userConnections">
-            <img src="/assets/icons/1x/close.png" width="10px" class="close">
+            <img src="/assets/icons/1x/close.png" width="10px" class="close" (click)="removeConnection(connection.id)">
             <img src="{{connection?.photo}}" class="sug-dp" alt="" width="55px" height="55px">
-            <div class="text"><span class="teal">{{connection?.first_name}} {{connection?.last_name}}</span><br></div><br>
+            <div class="text"><span class="teal">{{connection?.first_name}} {{connection?.last_name}}</span><br></div>
+            <br>
         </div>
 
     </div>
+    <div class="no-data" *ngIf="!userConnections.length">No connections!</div>
 </div>
