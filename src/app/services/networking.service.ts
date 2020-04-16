@@ -25,9 +25,15 @@ export class NetworkingService {
     return this.http.get(`${config.base_url}/Networking/timelinePosts`);
   }
 
-  create_post($data) {
-    return this.http.post(`${config.base_url}/Networking/timelinePosts/`, $data);
-  }
+  create_post($data, userId) {
+    const formData = new FormData();
+    formData.append('text', $data.text);
+    formData.append('photo',$data.photo);
+    formData.append('video',$data.video);
+    formData.append('slug',$data.slug);
+    formData.append('author_user', userId);
+    console.log(formData)
+    return this.http.post(`${config.base_url}/Networking/timelinePosts/`, formData);  }
 
   like_post(postId: number) {
     return this.http.get(`${config.base_url}/Networking/timelinePosts/${postId}/like`)
