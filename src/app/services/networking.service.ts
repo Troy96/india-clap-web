@@ -30,9 +30,8 @@ export class NetworkingService {
     formData.append('text', $data.text);
     formData.append('photo',$data.photo);
     formData.append('video',$data.video);
-    formData.append('slug',$data.slug);
     formData.append('author_user', userId);
-    console.log(formData)
+    // formData.append('slug',$data.slug);
     return this.http.post(`${config.base_url}/Networking/timelinePosts/`, formData);  }
 
   like_post(postId: number) {
