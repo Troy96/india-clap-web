@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef } from '@an
 import { NetworkingService } from 'src/app/services/networking.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { JobsService } from 'src/app/services/jobs.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-timeline-like-react',
@@ -12,23 +13,23 @@ export class TimelineLikeReactComponent implements OnInit {
 
   currentUser: any;
   postList: any[];
-  statusText: string;
+  statusText: string="";
   commentTxt: string;
   timelineUpdateForm: FormGroup;
 
   @ViewChild('comment', { static: false }) commentRef: ElementRef
   constructor(
     private netService: NetworkingService,private cd: ChangeDetectorRef,private jobService:JobsService
-
+,private notifyService : NotificationService
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
     console.log(this.currentUser);
     this.getUserPosts();
     this.timelineUpdateForm = new FormGroup({
       text: new FormControl(""),
-      video: new FormControl(null),
-      photo: new FormControl(null),
-      slug: new FormControl('postStatus' + Math.floor(Math.random()*10))
+      video: new FormControl(""),
+      photo: new FormControl(""),
+      slug: new FormControl('postStatus' + Math.floor(Math.random() * 230) + 90)
     })
   }
 
@@ -44,14 +45,28 @@ export class TimelineLikeReactComponent implements OnInit {
   }
 
   createStatus() {
-    let data = {
-      author_user: this.currentUser,
-      text: this.statusText,
-      slug: 'post' + Math.floor(Math.random())
-    }
-    this.netService.create_post(data).subscribe(respObj => {
-      console.log(respObj)
-    })
+    // let data = {
+    //   author_user: this.currentUser,
+    //   text: this.statusText,
+    //   slug: 'post' + Math.floor(Math.random())
+    // }
+    // this.netService.create_post(data).subscribe(respObj => {
+    //   console.log(respObj)
+    // })
+    if (!this.timelineUpdateForm.valid) return;
+    this.timelineUpdateForm.patchValue({text:this.statusText});
+       console.log(this.timelineUpdateForm.value)
+       this.netService.create_post(this.timelineUpdateForm.value)
+      .subscribe(respObj => {
+        console.log(respObj);
+        this.statusText="";
+        this.showToasterSuccess()
+        this.ngOnInit();
+      },
+      err=>{
+        this.showToasterError("Please Select another image or video")
+      }
+      )
   }
 
   async getPostsReactions() {
@@ -88,42 +103,54 @@ export class TimelineLikeReactComponent implements OnInit {
     const reader = new FileReader();
 
     if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      reader.readAsDataURL(file);
+      // const [file] = event.target.files;
+      // reader.readAsDataURL(file);
 
-      reader.onload = () => {
-        this.timelineUpdateForm.patchValue({
-          video: reader.result
-        });
+      // reader.onload = () => {
+      //   this.timelineUpdateForm.patchValue({
+      //     video: reader.result
+      //   });
 
-        this.cd.markForCheck();
-      };
+      //   this.cd.markForCheck();
+      // };
+      let selectedFiles = event.target.files;
+      // console.log(event.target.result);
+      let _file = selectedFiles[0];
+      console.log(_file)
+      this.timelineUpdateForm.patchValue({
+        video:_file
+      })
+     
     }
   }
   onPhotoUpload(event) {
     const reader = new FileReader();
 
     if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      reader.readAsDataURL(file);
+      // const [file] = event.target.files;
+      // reader.readAsDataURL(file);
 
-      reader.onload = () => {
-        this.timelineUpdateForm.patchValue({
-          photo: reader.result
-        });
+      // reader.onload = () => {
+      //   this.timelineUpdateForm.patchValue({
+      //     photo: reader.result
+      //   });
 
-        this.cd.markForCheck();
-      };
-    }
-  }
-  onSubmit() {
-    if (!this.timelineUpdateForm.valid) return;
-    this.timelineUpdateForm.patchValue({text:this.statusText});
-       console.log(this.timelineUpdateForm.value)
-    this.jobService.update_status(this.timelineUpdateForm.value)
-      .subscribe(respObj => {
-        console.log(respObj);
+      //   this.cd.markForCheck();
+      // };
+      let selectedFiles = event.target.files;
+      // console.log(event.target.result);
+      let _file = selectedFiles[0];
+      this.timelineUpdateForm.patchValue({
+        photo:_file
       })
+    }
+    
   }
-
+ 
+  showToasterSuccess(){
+    this.notifyService.showSuccess("Successful", "Your Status has been updated !")
+  }
+  showToasterError(str:any){
+    this.notifyService.showError("Something is wrong", str)
+}
 }
