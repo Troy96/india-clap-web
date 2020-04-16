@@ -9,27 +9,15 @@
                 <input [(ngModel)]="statusText" type="text" class="form-control statustxt"
                     placeholder="Update your status">
             </div>
-            <div>
-               
-                <!-- <img src="/assets/icons/1x/insert.png" alt=""  id="status-icons"> -->
-                <img src="/assets/icons/1x/insert.png" alt="" width="26" height="24" id="status-icons">
-
-                <!-- <img src="/assets/icons/1x/Image.png" alt="" width="25" height="26" id="status-icons"> -->
-                <label for="image">
-                    <input type="file" name="image" id="image" style="display:none;" (change)="onPhotoUpload($event);"/>
-                    <img src="/assets/icons/1x/Image.png" width="25" height="26"/>
-                 </label>
-                <label for="video">
-                    <input type="file" name="video" id="video" style="display:none;" (change)="onVideoUpload($event);"/>
-                    <img src="/assets/icons/1x/video.png" width="22" height="22"/>
-                 </label>
-            </div>
+            <!-- <div>
+                <img src="/assets/icons/1x/insert.png" alt="" width="22" height="22" id="status-icons">
+                <img src="/assets/icons/1x/Image.png" alt="" width="25" height="26" id="status-icons">
+                <img src="/assets/icons/1x/video.png" alt="" width="26" height="24" id="status-icons">
+            </div> -->
             <div>
                 <button class="btn btn-success right" (click)="createStatus()">Create</button>
             </div>
         </div>
-        <button class="btn btn-success right" (click)="onSubmit()">onSubmit</button>
-
     </div>
     <ng-container *ngFor="let post of postList">
         <div class="post">
@@ -52,13 +40,25 @@
                 <div *ngIf="post?.isLiked" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/like.png"
                         width="19px" height="22px" class="like-comment-icon"><br><small class="icon-txt">Liked</small>
                 </div>
-                <!-- <div id="icons"> <img src="/assets/icons/1x/smiley.png" width="22px" height="22px"
-                        class="like-comment-icon"><small class="icon-txt">React</small></div> -->
+                <div *ngIf="!post?.isReacted" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/smiley.png"
+                    width="19px" height="22px" class="like-comment-icon" (click)="ReactPost(post.id);"><br><small
+                    class="icon-txt">React</small>
+                        <div id="like-options">
+                            <div id="react"><img src="/assets/icons/1x/smiley.png" alt="" width="15px"></div>
+                            <div id="react"><img src="/assets/icons/1x/smiley.png" alt="" width="15px"></div>
+                            <div id="react"><img src="/assets/icons/1x/smiley.png" alt="" width="15px"></div>
+                            <div id="react"><img src="/assets/icons/1x/smiley.png" alt="" width="15px"></div>
+                        </div>
+                </div>
+            
+            <div *ngIf="post?.isReacted" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/like.png"
+                    width="19px" height="22px" class="like-comment-icon"><br><small class="icon-txt">Reacted</small>
+            </div>
                 <div id="icons" style="cursor: pointer;" (click)="commentOnPost(post.id)"> <img
                         src="/assets/icons/1x/Comment.png" width="25px" height="22px"
                         class="like-comment-icon report-img"><small class="icon-txt">Comment</small></div>
-                <!-- <div id="icons" class="report"><img src="/assets/icons/1x/Report.png" width="7px" height="22px"
-                        class="like-comment-icon report-img"><small class="icon-txt">Report</small></div> -->
+                <div id="icons" style="cursor: pointer;" (click)="commentOnPost(post.id)"><img src="/assets/icons/1x/Report.png" width="7px" height="22px"
+                        class="like-comment-icon report-img"><small class="icon-txt">Report</small></div>
             </div>
             <div class="comment" #comment>
                 <img src="/assets/icons/1x/dp.png" alt="" width="50px" class="comm-pro">

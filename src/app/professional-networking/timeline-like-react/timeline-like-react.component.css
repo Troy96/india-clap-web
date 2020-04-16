@@ -286,3 +286,24 @@ hr{
       border-bottom-left-radius: 20px;
     }
 }
+#like-options{
+  display: none;
+  width: 80px;
+  background-color: lightgrey;
+  margin-left: 25px;
+  -webkit-box-shadow: 0 8px 8px -6px gray;
+    -moz-box-shadow: 0 8px 8px -6px gray;
+     box-shadow: 0 8px 8px -6px gray;
+     top: -50px;
+     position: relative;
+}
+#icons:hover>#like-options{
+  display: block;
+  position: relative;
+
+}
+#like-options:hover>#like-options{
+  display: block;
+  position: relative;
+
+}

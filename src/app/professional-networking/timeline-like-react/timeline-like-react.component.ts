@@ -75,6 +75,13 @@ export class TimelineLikeReactComponent implements OnInit {
         post['isLiked'] = true;
       })
   }
+  ReactPost(postId) {
+    this.netService.like_post(postId)
+      .subscribe(respObj => {
+        let post = this.postList.find(post => post.id == postId);
+        post['isReacted'] = true;
+      })
+  }
 
   postComment(postId: number) {
     this.netService.comment_on_post(postId, this.commentTxt)
