@@ -10,6 +10,7 @@ export class MyProfileEditableComponent implements OnInit {
 
   userId: number;
   userDetails: object;
+  userConnections: any[] = [];
 
   constructor(
     private authService: AuthService
@@ -23,9 +24,18 @@ export class MyProfileEditableComponent implements OnInit {
   getUserDetails() {
     this.authService.get_user_details(this.userId)
       .subscribe(respObj => {
-        this.userDetails = {...respObj}
-        console.log(this.userDetails);
+        this.userDetails = { ...respObj }
+        this.getConnectionDetailList();
       })
+  }
+
+  getConnectionDetailList() {
+    for (let user of this.userDetails['connections']) {
+      this.authService.get_user_details(5)
+        .subscribe(respObj => {
+          this.userConnections.push(respObj)
+        })
+    }
   }
 
 }
