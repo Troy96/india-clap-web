@@ -9,15 +9,38 @@
                 <input [(ngModel)]="statusText" type="text" class="form-control statustxt"
                     placeholder="Update your status">
             </div>
+<<<<<<< HEAD
             <!-- <div>
                 <img src="/assets/icons/1x/insert.png" alt="" width="22" height="22" id="status-icons">
                 <img src="/assets/icons/1x/Image.png" alt="" width="25" height="26" id="status-icons">
                 <img src="/assets/icons/1x/video.png" alt="" width="26" height="24" id="status-icons">
             </div> -->
+=======
+            <div>
+               
+                <!-- <img src="/assets/icons/1x/insert.png" alt=""  id="status-icons"> -->
+                <!-- <img src="/assets/icons/1x/insert.png" alt="" width="26" height="24" id="status-icons"> -->
+
+                <!-- <img src="/assets/icons/1x/Image.png" alt="" width="25" height="26" id="status-icons"> -->
+                <label for="image">
+                    <input type="file" name="image" id="image" style="display:none;"  (change)="onPhotoUpload($event);"/>
+                    <img src="/assets/icons/1x/Image.png" width="25" height="26" hspace="10"/>
+                 </label>
+                <label for="video">
+                    <input type="file" name="video" id="video" style="display:none;"  (change)="onVideoUpload($event);"/>
+                    <img src="/assets/icons/1x/video.png" width="26" height="24" />
+                 </label>
+            </div>
+>>>>>>> 52e41f24c930bdfdf439bdbbebb04521af0461d9
             <div>
                 <button class="btn btn-success right" (click)="createStatus()">Create</button>
             </div>
         </div>
+<<<<<<< HEAD
+=======
+        <!-- <button class="btn btn-success right" (click)="onSubmit()">onSubmit</button> -->
+
+>>>>>>> 52e41f24c930bdfdf439bdbbebb04521af0461d9
     </div>
     <ng-container *ngFor="let post of postList">
         <div class="post">
@@ -28,7 +51,11 @@
                 <p class="teal" *ngIf="post.author_user">{{post.author_user.first_name}}</p>
                 <p class="teal" *ngIf="post.author_company">{{post.author_company.name}}</p><br>
                 <p> {{post?.created_on | date}}</p>
-                <p> {{post?.text}}</p>
+                <p *ngIf="post?.text"> {{post?.text}}</p>
+                <p *ngIf="post?.photo"> <img src="{{post?.photo}}"></p>
+                <p *ngIf="post?.video"> <video src="{{post?.video}}"></video></p>
+
+
             </div>
             <small>{{post?.likes_count}} likes.{{post?.reactions?.length}} reacts.{{post?.comments_count}}
                 comments</small>

@@ -1,0 +1,68 @@
+.experience {
+    position: fixed;
+    /* Sit on top of the page content */
+    width: 100%;
+    /* Full width (cover the whole page) */
+    height: 100%;
+    /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Black background with opacity */
+    z-index: 2;
+    /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer;
+    padding-top: 10%;
+
+}
+
+.experience-body {
+    background-color: white !important;
+    border: 1px gray solid;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+}
+
+h1 {
+    color: teal;
+    font-size: 25px;
+}
+
+h2 {
+    color: gray;
+    font-size: 20px;
+}
+
+.month,
+.year {
+    max-width: 200px;
+    display: inline;
+}
+
+.save-btn {
+    background-color: teal;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.save-btn:hover {
+    background-color: teal;
+
+}
+
+.experience-section {
+    margin-bottom: 10px;
+}
+
+.teal {
+    color: teal;
+}
+
+.cancel-icon {
+    float: right;
+    margin-top: -30px;
+}

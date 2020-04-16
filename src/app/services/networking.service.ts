@@ -22,12 +22,17 @@ export class NetworkingService {
   }
 
   get_posts() {
-    return this.http.get(`${config.base_url}/Networking/timelinePosts`);
+    return this.http.get<any>(`${config.base_url}/Networking/timelinePosts`);
   }
 
-  create_post($data) {
-    return this.http.post(`${config.base_url}/Networking/timelinePosts/`, $data);
-  }
+  create_post($data, userId) {
+    const formData = new FormData();
+    formData.append('text', $data.text);
+    formData.append('photo',$data.photo);
+    formData.append('video',$data.video);
+    formData.append('author_user', userId);
+    // formData.append('slug',$data.slug);
+    return this.http.post(`${config.base_url}/Networking/timelinePosts/`, formData);  }
 
   like_post(postId: number) {
     return this.http.get(`${config.base_url}/Networking/timelinePosts/${postId}/like`)
@@ -60,12 +65,15 @@ export class NetworkingService {
   }
 
   get_contacts() {
-    return this.http.get(`${config.base_url}/Networking/contacts/`)
+    return this.http.get<any>(`${config.base_url}/Networking/contacts/`)
   }
-  change_password($data)
-  {
-    return this.http.put(`${config.base_url}/accounts/change-password/`,$data);
-
+  change_password($data) {
+    return this.http.put(`${config.base_url}/accounts/change-password/`, $data);
   }
 
+  remove_user_connection(userId) {
+    return this.http.get<any>(`${config.base_url}/Networking/connection/remove/${userId}`)
+  }
+
+  
 }

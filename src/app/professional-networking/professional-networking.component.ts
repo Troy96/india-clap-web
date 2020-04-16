@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
+
 @Component({
   selector: 'app-professional-networking',
   templateUrl: './professional-networking.component.html',
@@ -9,7 +10,7 @@ import { Title } from '@angular/platform-browser';
 export class ProfessionalNetworkingComponent implements OnInit {
 
   constructor(
-    private title: Title
+    private title: Title,
   ) { }
 
   ngOnInit() {
