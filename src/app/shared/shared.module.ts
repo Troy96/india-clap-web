@@ -22,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   exports: [
     NavbarComponent,
-    BannerComponent
+    BannerComponent,
+    InputModalComponent
   ]
 })
 export class SharedModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { MyprofileEditableService } from './my-profile-editable/myprofile-editable.service';
 
 
 @Component({
@@ -11,6 +12,7 @@ export class ProfessionalNetworkingComponent implements OnInit {
 
   constructor(
     private title: Title,
+    public myProfile: MyprofileEditableService
   ) { }
 
   ngOnInit() {
