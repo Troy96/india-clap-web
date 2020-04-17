@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   userDetails: any;
   notifList: string[];
   searchKey: string;
+  isCollapsed:boolean=true;
   @ViewChild('notification', { static: false }) moreRef1: ElementRef
   @ViewChild('more', { static: false }) moreRef: ElementRef
   constructor(
@@ -49,7 +50,7 @@ export class NavbarComponent implements OnInit {
       })
   }
   displaynotification() {
-    this.renderer.setStyle(this.moreRef1.nativeElement, 'display', 'block');
+    this.isCollapsed=!this.isCollapsed;
   }
 
 

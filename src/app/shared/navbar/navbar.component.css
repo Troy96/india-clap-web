@@ -184,3 +184,11 @@ nav{
   padding-left: 10px;
   padding-right: 30px;
 }
+.notifi{
+  display: block;
+  position: absolute;
+  background-color: white;
+  width: 400px;
+  margin-left: 700px;
+  border: black solid 1px;
+}

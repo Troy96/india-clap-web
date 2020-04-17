@@ -31,11 +31,11 @@
         <a class="nav-link">
           <i class="fa fa-envelope-o">
             <img src="/assets/icons/1x/Asset 4.png " width="20px" height="23px">
-          </i>
+          </i>  
           Jobs
         </a>
       </li>
-      <div id="notification" (click)="displaynotification()" style="display: block;">
+      <div (click)="displaynotification()" style="padding-right: 20px;">
         <li class="nav-item">
             <a class="nav-link">
               <i class="fa fa-envelope-o">
@@ -117,9 +117,9 @@
 </nav>
 
 
-<div id="filter-data" style="display: none;" #notification>
+<div class="notifi">
   <ng-container *ngFor="let data of notifList">
-    <div class="imgp">
+    <div *ngIf="!isCollapsed" style="border-bottom: black solid 1px;">
       <p>
         {{data?.text}}</p>
     </div>
