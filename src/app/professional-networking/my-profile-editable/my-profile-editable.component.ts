@@ -13,7 +13,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 export class MyProfileEditableComponent implements OnInit {
 
   userId: number;
-  userDetails: object;
+  userDetails: any;
   userConnections: any[] = [];
 
   videoFile: any;
