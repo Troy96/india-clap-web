@@ -35,6 +35,7 @@ export class NavbarComponent implements OnInit {
     this.authService.get_user_profiles().subscribe(
       data => {
         this.userlist = data;
+        console.log(this.userlist);
       }
     )
   }
@@ -42,15 +43,16 @@ export class NavbarComponent implements OnInit {
   
     const user = this.userlist.find(user=>{
       if(user.first_name==this.searchKey){
-        return user;
         console.log(user);
+        return user;
+      
       }
     })
     if(!user){
         return this.notificationService.showInfo('No User Found', 'Search Alert');
     }
     else{
-      this.router.navigateByUrl('/professional-networking/users/' + user.id); 
+      this.router.navigateByUrl('/professional-networking/users/' + user.user); 
     }
 
     this.authService.search_user(this.searchKey)
@@ -59,7 +61,7 @@ export class NavbarComponent implements OnInit {
           return this.notificationService.showInfo('No User Found', 'Search Alert');
         }
         else {
-          this.router.navigateByUrl('/professional-networking/users/' + respObj[0].id);
+          this.router.navigateByUrl('/professional-networking/users/' + respObj[0].user);
         }
       })
   }
