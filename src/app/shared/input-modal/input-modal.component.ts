@@ -15,6 +15,7 @@ export class InputModalComponent implements OnInit {
   currentUserId: number;
   inputData: MyProfile
   labels: string[];
+  placeholders: string[];
 
   constructor(
     private myProfileService: MyprofileEditableService,
@@ -36,6 +37,7 @@ export class InputModalComponent implements OnInit {
     switch (this.inputData.description) {
       case 'Profile': {
         this.labels = ['Enter your first name', 'Enter your last name'];
+        this.placeholders = ['first name','last name']
         console.log(this.labels);
         this.inputForm = this.fb.group({
           profile: this.fb.array([
@@ -46,6 +48,8 @@ export class InputModalComponent implements OnInit {
         break;
       }
       case 'Headline': {
+        this.labels = ['Headline']
+        this.placeholders = ['headline']
         this.inputForm = this.fb.group({
           profile: this.fb.array([
             this.fb.control('')
@@ -53,7 +57,23 @@ export class InputModalComponent implements OnInit {
         });
       }
         break;
+      case 'Experience': {
+        this.labels = ['Name of the company/corporation', 'Start date', 'End date', 'Name of Role', 'Job Responibilities'];
+        this.placeholders = ['','YYYY-MM-DD','YYYY-MM-DD','','']
+        this.inputForm = this.fb.group({
+          profile: this.fb.array([
+            this.fb.control(''),
+            this.fb.control(''),
+            this.fb.control(''),
+            this.fb.control(''),
+            this.fb.control(''),
+          ])
+        });
+      }
+        break;
       case 'Certifications': {
+        this.labels = ['Certification'];
+        this.placeholders = ['Certifications'];
         this.inputForm = this.fb.group({
           profile: this.fb.array([
             this.fb.control('')
@@ -63,6 +83,7 @@ export class InputModalComponent implements OnInit {
       }
       case 'Skills': {
         this.labels = ['Skill', 'Level']
+        this.placeholders = ['Enter skill name', 'Enter skill level (1-10)']
         this.inputForm = this.fb.group({
           profile: this.fb.array([
             this.fb.control(''),
@@ -95,6 +116,20 @@ export class InputModalComponent implements OnInit {
           })
       }
         break;
+
+      case 'Experience': {
+        this.authService.add_experience({
+          company_name: this.inputForm.get('profile').value[0],
+          start_date: this.inputForm.get('profile').value[1],
+          end_date: this.inputForm.get('profile').value[2],
+          title: this.inputForm.get('profile').value[3],
+          responsibilities: this.inputForm.get('profile').value[4],
+          user: this.currentUserId,
+        }).subscribe(_ => {
+          this.closeInputModal();
+        })
+        break;
+      }
       case 'Certifications': {
         this.authService.add_certificate({
           certification_name: this.inputForm.get('profile').value[0],

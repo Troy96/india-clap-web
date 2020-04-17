@@ -54,7 +54,7 @@ export class AuthService {
     return this.http.patch(`${config.base_url}/Users/profiles/${userId}/`, formData)
   }
 
-  upload_user_photo(userId, data){
+  upload_user_photo(userId, data) {
     const formData = new FormData();
     formData.append('photo', data);
     return this.http.patch(`${config.base_url}/Users/profiles/${userId}/`, formData)
@@ -66,6 +66,10 @@ export class AuthService {
 
   add_skill($data) {
     return this.http.post(`${config.base_url}/Users/skills/`, $data);
+  }
+
+  add_experience($data) {
+    return this.http.post(`${config.base_url}/Users/experiences/`, $data);
   }
 
   get_privacy_details() {

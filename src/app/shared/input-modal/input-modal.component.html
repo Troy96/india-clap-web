@@ -11,7 +11,7 @@
             <div formArrayName="profile">
                 <div *ngFor="let control of inputForm.get('profile')?.controls; let i=index">
                         {{labels[i]}}
-                        <input type="text" [formControlName]="i" class="form-control" style="margin-top: 20px;">
+                        <input type="text" placeholder="{{placeholders[i]}}" [formControlName]="i" class="form-control" style="margin-top: 20px;">
                 </div>
             </div>
             <button class="btn btn-primary save-btn" (click)="onSave(inputData.description)">Save</button>

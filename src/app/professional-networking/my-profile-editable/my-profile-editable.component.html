@@ -9,8 +9,9 @@
         </div>
         <div id="jumbotron-text">
             <div id="name">
-                <h2><span class="teal">{{userDetails?.first_name}} {{userDetails?.last_name}} <img src="/assets/icons/1x/Edit.png" (click)="openEditModal('Profile')" width="22px"
-                    style="cursor: pointer;" class="edit-icon1"></span></h2>
+                <h2><span class="teal">{{userDetails?.first_name}} {{userDetails?.last_name}} <img
+                            src="/assets/icons/1x/Edit.png" (click)="openEditModal('Profile')" width="22px"
+                            style="cursor: pointer;" class="edit-icon1"></span></h2>
                 <!-- <span>Kolkata, India</span><br> -->
                 <!-- Graphic Designer -->
             </div>
@@ -33,29 +34,19 @@
                 <span class="txt">{{userDetails?.brief_Desc}}</span>
             </div>
             <div id="headline">
-                <h3>Experience<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"></h3>
+                <h3>Experience<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
+                        (click)="openEditModal('Experience')" style="cursor: pointer;"></h3>
 
                 <div id="experience">
-                    <div id="txt-exp">
+                    <div id="txt-exp" *ngFor="let exp of userDetails?.experiences">
                         <img src="/assets/icons/1x/logo1.png" width="50px" class="exp-img">
                         <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon">
 
-                        <span class="teal">Creative Head</span><br>
-                        Sustain Design<br>
-                        Jan 2015-present. 4years
+                        <span class="teal">{{exp.company_name}}</span><br>
+                        {{exp.title}}<br>
+                        {{exp.responsibilities}}<br>
+                        <p style="position: relative; left: 25px;">{{exp?.start_date}} -- {{exp?.end_date}}</p>
                     </div>
-                    <div id="txt-exp">
-
-                        <img src="/assets/icons/1x/logo1.png" width="50px" class="exp-img">
-                        <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon">
-
-                        <span class="teal">Creative Head</span><br>
-
-                        Sustain Design<br>
-                        Jan 2015-present. 4years
-                    </div>
-
-
                 </div>
             </div>
             <div id="headline">
@@ -88,8 +79,6 @@
                             environment and the visual media! Art and design enthusiast
                         </div>
                     </div>
-
-
                 </div>
             </div>
             <div id="headline">
@@ -101,15 +90,11 @@
                         {{certification?.certification_name}}
                     </div>
                 </div>
-
-
             </div>
             <div id="headline">
                 <h3>Skills <img src="/assets/icons/1x/plus.png" width="22px" class="edit-icon1"
                         (click)="openEditModal('Skills')" style="cursor: pointer;"></h3>
                 <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
-
-
 
                 <div class="project-description">
 
@@ -117,7 +102,6 @@
                         {{skill.skill}} ({{skill.level}})
                     </div>
                 </div>
-
             </div>
             <div id="headline">
                 <h3>Upload Resume
@@ -129,10 +113,6 @@
                 <video #video style="display: none;" *ngIf="videoUrl" width="320" height="240" controls
                     [attr.src]="videoUrl" (loadedmetadata)="validateVideoDuration($event)">
                 </video>
-
-
-
-
             </div>
         </div>
 
