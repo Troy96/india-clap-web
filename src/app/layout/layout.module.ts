@@ -4,6 +4,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { MainNavbarComponent } from './main-navbar/main-navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+im
 
 
 @NgModule({
