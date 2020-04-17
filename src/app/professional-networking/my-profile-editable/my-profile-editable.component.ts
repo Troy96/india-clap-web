@@ -15,8 +15,11 @@ export class MyProfileEditableComponent implements OnInit {
   userId: number;
   userDetails: object;
   userConnections: any[] = [];
+
+  videoFile: any;
   videoUrl: SafeUrl;
   videoSizeError: any;
+
 
   constructor(
     private authService: AuthService,
@@ -62,15 +65,22 @@ export class MyProfileEditableComponent implements OnInit {
   onVideoResumeUpload(event) {
     if (event.target.files && event.target.files.length) {
       let selectedFiles = event.target.files;
-      let _file = selectedFiles[0];
-      this.videoUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(_file));
+      this.videoFile = selectedFiles[0];
+      this.videoUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(this.videoFile));
     }
   }
 
-  getVideoDuration(event) {
+  validateVideoDuration(event) {
     const duration = event.target.duration;
-    console.log(duration);
     if (duration > 30) this.notifService.showWarning('Video size larger than 30s', 'Try again');
+    this.uploadVideoResume();
+  }
+
+  uploadVideoResume() {
+    this.authService.upload_user_video_resume(this.userId, this.videoFile)
+      .subscribe(_ => {
+        this.notifService.showSuccess('Video uploaded successfully', 'profile Alert');
+      })
   }
 
 }
