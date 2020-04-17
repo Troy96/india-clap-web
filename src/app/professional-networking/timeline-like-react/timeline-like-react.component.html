@@ -59,8 +59,13 @@
                 <div id="icons" style="cursor: pointer;" (click)="commentOnPost(post.id)"> <img
                         src="/assets/icons/1x/Comment.png" width="25px" height="22px"
                         class="like-comment-icon report-img"><small class="icon-txt">Comment</small></div>
-                <!-- <div id="icons" class="report"><img src="/assets/icons/1x/Report.png" width="7px" height="22px"
-                        class="like-comment-icon report-img"><small class="icon-txt">Report</small></div> -->
+                <div (click)="IsReported();" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/Report.png"
+                            width="19px" height="22px" class="like-comment-icon" ><br><small
+                            class="icon-txt">Report</small>
+                        </div>
+                <div *ngIf="!isReacted" style="cursor: pointer;position : absolute; padding-left: 50px;" id="icons" (click)="IsReported();"> <img src="/assets/icons/1x/Report.png"
+                            width="19px" height="22px" class="like-comment-icon"><br><small class="icon-txt">Reported</small>
+                </div>
             </div>
             <div class="comment" #comment>
                 <img src="/assets/icons/1x/dp.png" alt="" width="50px" class="comm-pro">

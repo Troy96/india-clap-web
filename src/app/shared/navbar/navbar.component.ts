@@ -16,9 +16,7 @@ export class NavbarComponent implements OnInit {
   userDetails: any;
   notifList: string[];
   searchKey: string;
-  @ViewChild('more', { static: false }) moreRef3: ElementRef
-  @ViewChild('notification', { static: false }) moreRef2: ElementRef
-  @ViewChild('myprofile', { static: false }) moreRef1: ElementRef
+  @ViewChild('notification', { static: false }) moreRef1: ElementRef
   @ViewChild('more', { static: false }) moreRef: ElementRef
   constructor(
     @Inject(DOCUMENT) private _document: Document,
@@ -51,7 +49,7 @@ export class NavbarComponent implements OnInit {
       })
   }
   displaynotification() {
-    this.renderer.setStyle(this.moreRef2.nativeElement, 'display', 'block');
+    this.renderer.setStyle(this.moreRef1.nativeElement, 'display', 'block');
   }
 
 

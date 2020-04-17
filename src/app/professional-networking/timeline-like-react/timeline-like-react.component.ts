@@ -19,6 +19,7 @@ export class TimelineLikeReactComponent implements OnInit {
   photoVal:boolean = true;
   videoval:boolean= true;
   isReacted:boolean=true;
+  isReported:boolean=true;
   @ViewChild('comment', { static: false }) commentRef: ElementRef
   constructor(
     private netService: NetworkingService,private cd: ChangeDetectorRef,private jobService:JobsService
@@ -48,6 +49,9 @@ export class TimelineLikeReactComponent implements OnInit {
   }
   IsReacted(){
     this.isReacted =!this.isReacted;
+  }
+  IsReported(){
+    this.isReported =!this.isReported;
   }
 
   createStatus() {
