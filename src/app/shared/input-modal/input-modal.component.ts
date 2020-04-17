@@ -34,6 +34,17 @@ export class InputModalComponent implements OnInit {
 
   createDynamicFormControls() {
     switch (this.inputData.description) {
+      case 'Profile': {
+        this.labels = ['Enter your first name', 'Enter your last name'];
+        console.log(this.labels);
+        this.inputForm = this.fb.group({
+          profile: this.fb.array([
+            this.fb.control(''),
+            this.fb.control('')
+          ])
+        });
+        break;
+      }
       case 'Headline': {
         this.inputForm = this.fb.group({
           profile: this.fb.array([
@@ -65,6 +76,18 @@ export class InputModalComponent implements OnInit {
 
   onSave(description) {
     switch (description) {
+      case 'Profile': {
+        this.authService.update_user_details(
+          this.currentUserId,
+          {
+            first_name: this.inputForm.get('profile').value[0],
+            last_name: this.inputForm.get('profile').value[1]
+          })
+          .subscribe(_ => {
+            this.closeInputModal();
+          })
+      }
+        break;
       case 'Headline': {
         this.authService.update_user_details(this.currentUserId, { brief_Desc: this.inputForm.get('profile').value[0] })
           .subscribe(_ => {
