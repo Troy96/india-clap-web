@@ -52,6 +52,10 @@ export class AuthService {
     return this.http.post(`${config.base_url}/Users/certifications/`, $data)
   }
 
+  add_skill($data) {
+    return this.http.post(`${config.base_url}/Users/skills/`, $data);
+  }
+
   get_privacy_details() {
     return this.http.get(`${config.base_url}/Users/privacy`);
   }

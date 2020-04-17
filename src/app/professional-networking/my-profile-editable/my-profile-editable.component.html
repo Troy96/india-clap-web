@@ -100,27 +100,30 @@
 
             </div>
             <div id="headline">
-                <h3>Skills <img src="/assets/icons/1x/plus.png" width="22px" class="edit-icon1"><img
-                        src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3>
+                <h3>Skills <img src="/assets/icons/1x/plus.png" width="22px" class="edit-icon1"
+                        (click)="openEditModal('Skills')" style="cursor: pointer;"></h3>
+                <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
 
 
 
                 <div class="project-description">
 
-                    <div id="skill">Photoshop</div>
-                    <div id="skill">Illustrator</div>
-                    <div id="skill">Indesign</div>
-                    <div id="skill">AutoCAD</div>
-                    <div id="skill">llustrator</div>
-                    <div id="skill">Logo Design</div>
-                    <div id="skill">Web designing</div>
+                    <div id="skill" *ngFor="let skill of userDetails?.skills">
+                        {{skill.skill}} ({{skill.level}})
+                    </div>
                 </div>
 
             </div>
             <div id="headline">
-                <h3>Upload Resume <img src="/assets/icons/1x/video.png" width="35px" class="edit-icon1"></h3>
+                <h3>Upload Resume
+                    <input type="file" style="display: none;" (change)="onVideoResumeUpload($event);" #videoInput>
+                    <img src="/assets/icons/1x/video.png" width="35px" class="edit-icon1" (click)="videoInput.click()"
+                        style="cursor: pointer;"></h3>
                 <small class="resume">Upload your resume video (Not more than 30 secs)</small>
 
+                <video #video style="display: none;" *ngIf="videoUrl" width="320" height="240" controls
+                    [attr.src]="videoUrl" (loadedmetadata)="validateVideoDuration($event)">
+                </video>
 
 
 

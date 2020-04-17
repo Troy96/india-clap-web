@@ -10,7 +10,8 @@
         <div [formGroup]="inputForm" class="experience-section">
             <div formArrayName="profile">
                 <div *ngFor="let control of inputForm.get('profile')?.controls; let i=index">
-                    <input type="text" placeholder="{{inputData.description}}" [formControlName]="i" class="form-control">
+                        {{labels[i]}}
+                        <input type="text" [formControlName]="i" class="form-control" style="margin-top: 20px;">
                 </div>
             </div>
             <button class="btn btn-primary save-btn" (click)="onSave(inputData.description)">Save</button>

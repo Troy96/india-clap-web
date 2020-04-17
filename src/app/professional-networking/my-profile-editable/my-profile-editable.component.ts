@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { NetworkingService } from 'src/app/services/networking.service';
 import { MyprofileEditableService } from './myprofile-editable.service';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser'
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-my-profile-editable',
@@ -13,11 +15,15 @@ export class MyProfileEditableComponent implements OnInit {
   userId: number;
   userDetails: object;
   userConnections: any[] = [];
+  videoUrl: SafeUrl;
+  videoSizeError: any;
 
   constructor(
     private authService: AuthService,
     private netService: NetworkingService,
-    private inputModal: MyprofileEditableService
+    private inputModal: MyprofileEditableService,
+    private sanitizer: DomSanitizer,
+    private notifService: NotificationService
   ) { }
 
   ngOnInit() {
@@ -51,6 +57,20 @@ export class MyProfileEditableComponent implements OnInit {
 
   openEditModal(description) {
     this.inputModal.setInputModal(description, [{ test: 'a' }])
+  }
+
+  onVideoResumeUpload(event) {
+    if (event.target.files && event.target.files.length) {
+      let selectedFiles = event.target.files;
+      let _file = selectedFiles[0];
+      this.videoUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(_file));
+    }
+  }
+
+  getVideoDuration(event) {
+    const duration = event.target.duration;
+    console.log(duration);
+    if (duration > 30) this.notifService.showWarning('Video size larger than 30s', 'Try again');
   }
 
 }

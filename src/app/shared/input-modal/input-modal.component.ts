@@ -14,6 +14,7 @@ export class InputModalComponent implements OnInit {
   inputForm: FormGroup;
   currentUserId: number;
   inputData: MyProfile
+  labels: string[];
 
   constructor(
     private myProfileService: MyprofileEditableService,
@@ -49,6 +50,16 @@ export class InputModalComponent implements OnInit {
         });
         break;
       }
+      case 'Skills': {
+        this.labels = ['Skill', 'Level']
+        this.inputForm = this.fb.group({
+          profile: this.fb.array([
+            this.fb.control(''),
+            this.fb.control('')
+          ])
+        });
+      }
+        break;
     }
   }
 
@@ -64,6 +75,16 @@ export class InputModalComponent implements OnInit {
       case 'Certifications': {
         this.authService.add_certificate({
           certification_name: this.inputForm.get('profile').value[0],
+          user: this.currentUserId
+        }).subscribe(_ => {
+          this.closeInputModal();
+        })
+        break;
+      }
+      case 'Skills': {
+        this.authService.add_skill({
+          skill: this.inputForm.get('profile').value[0],
+          level: this.inputForm.get('profile').value[1],
           user: this.currentUserId
         }).subscribe(_ => {
           this.closeInputModal();
