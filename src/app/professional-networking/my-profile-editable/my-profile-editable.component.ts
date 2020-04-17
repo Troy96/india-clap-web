@@ -67,6 +67,7 @@ export class MyProfileEditableComponent implements OnInit {
     if (event.target.files && event.target.files.length) {
       let selectedFiles = event.target.files;
       this.videoFile = selectedFiles[0];
+      if (!this.videoFile.type.includes('video')) return this.notifService.showWarning('Not a video file', 'Try again with a video file');
       this.videoUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(this.videoFile));
     }
   }
