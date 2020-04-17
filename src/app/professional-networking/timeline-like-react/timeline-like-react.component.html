@@ -41,8 +41,15 @@
                 <p class="teal" *ngIf="post.author_company">{{post.author_company.name}}</p><br>
                 <p> {{post?.created_on | date}}</p>
                 <p *ngIf="post?.text"> {{post?.text}}</p>
-                <p *ngIf="post?.photo"> <img src="{{post?.photo}}"></p>
-                <p *ngIf="post?.video"> <video src="{{post?.video}}"></video></p>
+                <p *ngIf="post?.photo"> <img src="{{post?.photo}}" width="950px" height="600px"></p>
+                <!-- <p *ngIf="post?.video"> <video style="width:950px;height:600px" src="{{post?.video}}" ></video></p> -->
+
+                <p *ngIf="post?.video"><video width="950px" height="600px" controls="controls" poster="image" preload="true">
+                    <!-- <source src="where the video is" type="video/mov"/> -->
+                    <source src="{{post?.video}}" type="video/mp4" />
+                    <!-- <source src="where the video is" type="video/oog" /> -->
+                    <!-- Your browser does not support the video tag. -->
+                  </video></p>
 
 
             </div>
@@ -53,6 +60,8 @@
                 <div *ngIf="!post?.isLiked" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/like.png"
                         width="19px" height="22px" class="like-comment-icon" (click)="likePost(post.id);"><br><small
                         class="icon-txt">Like</small></div>
+
+                    
                 <div *ngIf="post?.isLiked" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/like.png"
                         width="19px" height="22px" class="like-comment-icon"><br><small class="icon-txt">Liked</small>
                 </div>
@@ -61,8 +70,9 @@
                 <div id="icons" style="cursor: pointer;" (click)="commentOnPost(post.id)"> <img
                         src="/assets/icons/1x/Comment.png" width="25px" height="22px"
                         class="like-comment-icon report-img"><small class="icon-txt">Comment</small></div>
-                <!-- <div id="icons" class="report"><img src="/assets/icons/1x/Report.png" width="7px" height="22px"
-                        class="like-comment-icon report-img"><small class="icon-txt">Report</small></div> -->
+                        
+                <div id="icons" style="cursor: pointer;" class="report" (click)="report(post.id)"><img src="/assets/icons/1x/Report.png" width="7px" height="22px"
+                        class="like-comment-icon report-img"><small class="icon-txt" >Report</small></div>
             </div>
             <div class="comment" #comment>
                 <img src="/assets/icons/1x/dp.png" alt="" width="50px" class="comm-pro">

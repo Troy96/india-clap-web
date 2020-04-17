@@ -46,14 +46,6 @@ export class TimelineLikeReactComponent implements OnInit {
   }
 
   createStatus() {
-    // let data = {
-    //   author_user: this.currentUser,
-    //   text: this.statusText,
-    //   slug: 'post' + Math.floor(Math.random())
-    // }
-    // this.netService.create_post(data).subscribe(respObj => {
-    //   console.log(respObj)
-    // })
     
     this.timelineUpdateForm.patchValue({text:this.statusText});
        console.log(this.timelineUpdateForm.value)
@@ -66,7 +58,7 @@ export class TimelineLikeReactComponent implements OnInit {
       .subscribe(respObj => {
         console.log(respObj);
         this.statusText="";
-        this.showToasterSuccess()
+        this.showToasterSuccess("Your Status has been updated")
        // this.ngOnInit();
       //  location.reload();
         this.timelineUpdateForm.patchValue({
@@ -120,16 +112,7 @@ export class TimelineLikeReactComponent implements OnInit {
   onVideoUpload(event) {
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {
-      // const [file] = event.target.files;
-      // reader.readAsDataURL(file);
-
-      // reader.onload = () => {
-      //   this.timelineUpdateForm.patchValue({
-      //     video: reader.result
-      //   });
-
-      //   this.cd.markForCheck();
-      // };
+     
       let selectedFiles = event.target.files;
       // console.log(event.target.result);
       let _file = selectedFiles[0];
@@ -144,16 +127,7 @@ export class TimelineLikeReactComponent implements OnInit {
     const reader = new FileReader();
 
     if (event.target.files && event.target.files.length) {
-      // const [file] = event.target.files;
-      // reader.readAsDataURL(file);
-
-      // reader.onload = () => {
-      //   this.timelineUpdateForm.patchValue({
-      //     photo: reader.result
-      //   });
-
-      //   this.cd.markForCheck();
-      // };
+     
       let selectedFiles = event.target.files;
       // console.log(event.target.result);
       let _file = selectedFiles[0];
@@ -164,10 +138,25 @@ export class TimelineLikeReactComponent implements OnInit {
     
   }
  
-  showToasterSuccess(){
-    this.notifyService.showSuccess("Successful", "Your Status has been updated !")
+  showToasterSuccess(str:any){
+    this.notifyService.showSuccess("Successful", str)
   }
   showToasterError(str:any){
     this.notifyService.showError("Something is wrong", str)
 }
+
+report(id:number){
+  let obj:any={};
+  obj.flaggedReason = "";
+  this.netService.report_post(id,obj).subscribe((data:any)=>{
+    console.log(data);
+    this.showToasterSuccess("You have reported the Post!")
+
+  },
+  err=>{
+    this.showToasterError("Something went wrong")
+  })
+}
+
+
 }

@@ -74,6 +74,12 @@ export class NetworkingService {
   remove_user_connection(userId) {
     return this.http.get<any>(`${config.base_url}/Networking/connection/remove/${userId}`)
   }
+  report_post(postId,$data)
+  {
+     const formData = new FormData();
+    formData.append('flaggedReason', $data.flaggedReason);
+    return this.http.post(`${config.base_url}/Networking/timelinePost/${postId}/report/`, formData);
 
+  }
   
 }
