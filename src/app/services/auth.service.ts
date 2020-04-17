@@ -44,6 +44,34 @@ export class AuthService {
     return this.http.get<any>(`${config.base_url}/Users/profiles/${id}`);
   }
 
+  update_user_details(userId, data) {
+    return this.http.patch(`${config.base_url}/Users/profiles/${userId}/`, data)
+  }
+
+  upload_user_video_resume(userId, data) {
+    const formData = new FormData();
+    formData.append('video_resume', data);
+    return this.http.patch(`${config.base_url}/Users/profiles/${userId}/`, formData)
+  }
+
+  upload_user_photo(userId, data) {
+    const formData = new FormData();
+    formData.append('photo', data);
+    return this.http.patch(`${config.base_url}/Users/profiles/${userId}/`, formData)
+  }
+
+  add_certificate($data) {
+    return this.http.post(`${config.base_url}/Users/certifications/`, $data)
+  }
+
+  add_skill($data) {
+    return this.http.post(`${config.base_url}/Users/skills/`, $data);
+  }
+
+  add_experience($data) {
+    return this.http.post(`${config.base_url}/Users/experiences/`, $data);
+  }
+
   get_privacy_details() {
     return this.http.get(`${config.base_url}/Users/privacy`);
   }

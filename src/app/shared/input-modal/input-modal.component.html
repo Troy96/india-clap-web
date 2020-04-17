@@ -1,15 +1,19 @@
 <div class="experience">
     <div class="container experience-body">
-        <h1>Add Headline</h1>
-        <img src="cancel.png" width="20px" class="cancel-icon">
+        <h1>Add {{inputData.description}}</h1>
+        <img src="/assets/icons/1x/close.png" width="20px" class="cancel-icon" (click)="closeInputModal()">
         <hr>
-        <div class="experience-section">
+        <!-- <div class="experience-section">
             <h2>Headline <span class="teal">*</span> </h2>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div> -->
+        <div [formGroup]="inputForm" class="experience-section">
+            <div formArrayName="profile">
+                <div *ngFor="let control of inputForm.get('profile')?.controls; let i=index">
+                        {{labels[i]}}
+                        <input type="text" placeholder="{{placeholders[i]}}" [formControlName]="i" class="form-control" style="margin-top: 20px;">
+                </div>
+            </div>
+            <button class="btn btn-primary save-btn" (click)="onSave(inputData.description)">Save</button>
         </div>
-
-
-        <button class="btn btn-primary save-btn">Save</button>
     </div>
-
-</div>
