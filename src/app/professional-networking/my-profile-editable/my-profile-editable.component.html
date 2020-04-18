@@ -60,7 +60,7 @@
                         <div class="project-details">
 
                             <span class="teal">{{project?.project_name}}</span><br>
-                            <a href="{{project.link}}">{{project.link}}</a><br>
+                            <a href="{{project.link}}" target="_blank">{{project.link}}</a><br>
                             {{project?.start_date}} - {{project?.end_date}}
                         </div>
                     </div>
@@ -79,7 +79,9 @@
                 <div class="project-description" *ngIf="userDetails?.certifications.length">
 
                     <div id="skill" *ngFor="let certification of userDetails?.certifications">
-                        {{certification?.certification_name}}
+                        <span class="teal">{{certification?.certification_name}}</span><br />
+                        {{certification?.description}}<br />
+                        Valid till - {{certification?.validity_date}}
                     </div>
                 </div>
             </div>

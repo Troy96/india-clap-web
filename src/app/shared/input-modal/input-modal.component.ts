@@ -87,9 +87,11 @@ export class InputModalComponent implements OnInit {
         break;
       case 'Certifications': {
         this.labels = ['Certification'];
-        this.placeholders = ['Certifications'];
+        this.placeholders = ['Certification Name', 'Validity in YYYY-MM-DD','Description'];
         this.inputForm = this.fb.group({
           profile: this.fb.array([
+            this.fb.control(''),
+            this.fb.control(''),
             this.fb.control('')
           ])
         });
@@ -160,6 +162,8 @@ export class InputModalComponent implements OnInit {
       case 'Certifications': {
         this.authService.add_certificate({
           certification_name: this.inputForm.get('profile').value[0],
+          validity_date: this.inputForm.get('profile').value[1],
+          description: this.inputForm.get('profile').value[2],
           user: this.currentUserId
         }).subscribe(_ => {
           this.closeInputModal();
