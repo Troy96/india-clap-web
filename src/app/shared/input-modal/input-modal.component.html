@@ -34,6 +34,9 @@
                         style="margin-top: 20px;">
                 </div>
             </div>
-            <button class="btn btn-primary save-btn" (click)="onEdit(inputData.description)">Save Changes</button>
+            <div class="btn-container">
+                <button class="btn btn-primary save-btn" (click)="onEdit(inputData.description)">Save</button>
+                <button class="btn btn-primary save-btn" (click)="onDelete(inputData.description)">Delete</button>
+            </div>
         </div>
-</div>
+    </div>

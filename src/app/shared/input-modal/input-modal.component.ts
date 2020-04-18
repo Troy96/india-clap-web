@@ -217,13 +217,25 @@ export class InputModalComponent implements OnInit {
           description: this.editForm.get('profile').value[2],
           user: this.currentUserId
         })
-          .subscribe(_=>{
+          .subscribe(_ => {
             this.closeInputModal();
           })
         break;
       }
     }
 
+  }
+
+  onDelete(description) {
+    switch (description) {
+      case 'Certifications': {
+        this.authService.delete_certificate(this.inputData.data.id)
+          .subscribe(_=>{
+            this.closeInputModal();
+          })
+        break;
+      }
+    }
   }
 
   closeInputModal() {

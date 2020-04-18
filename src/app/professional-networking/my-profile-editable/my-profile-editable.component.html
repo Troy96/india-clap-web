@@ -40,7 +40,7 @@
                 <div id="experience">
                     <div id="txt-exp" *ngFor="let exp of userDetails?.experiences">
                         <img src="/assets/icons/1x/logo1.png" width="50px" class="exp-img">
-                        <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon">
+                        <img src="/assets/icons/1x/Edit.png" style="cursor: pointer;" (click)="openEditModal('Experience', exp)" width="22px" class="edit-icon">
 
                         <span class="teal">{{exp.company_name}}</span><br>
                         {{exp.title}}<br>
@@ -79,7 +79,7 @@
                 <div class="project-description" *ngIf="userDetails?.certifications.length">
 
                     <div id="skill" *ngFor="let certification of userDetails?.certifications">
-                        <span class="teal">{{certification?.certification_name}} <img src="/assets/icons/1x/Edit.png" (click)="openEditModal('Certifications', certification)" width="22px" class="edit-icon1"></span><br />
+                        <span class="teal">{{certification?.certification_name}} <img src="/assets/icons/1x/Edit.png" style="cursor: pointer;" (click)="openEditModal('Certifications', certification)" width="22px" class="edit-icon1"></span><br />
                         {{certification?.description}}<br />
                         Valid till - {{certification?.validity_date}}
                     </div>

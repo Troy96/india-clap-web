@@ -84,6 +84,10 @@ export class AuthService {
     return this.http.patch<any>(`${config.base_url}/Users/certifications/${id}/`, $data);
   }
 
+  delete_certificate(id: number){
+    return this.http.delete<any>(`${config.base_url}/Users/certifications/${id}/`);
+  }
+
   get_privacy_details() {
     return this.http.get(`${config.base_url}/Users/privacy`);
   }
