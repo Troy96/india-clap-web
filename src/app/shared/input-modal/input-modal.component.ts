@@ -145,11 +145,12 @@ export class InputModalComponent implements OnInit {
         break;
       }
       case 'Projects': {
-        this.authService.add_experience({
+        this.authService.add_project({
           project_name: this.inputForm.get('profile').value[0],
           start_date: this.inputForm.get('profile').value[1],
           end_date: this.inputForm.get('profile').value[2],
-          description: this.inputForm.get('profile').value[4],
+          description: this.inputForm.get('profile').value[3],
+          link: this.inputForm.get('profile').value[4],
           user: this.currentUserId,
         }).subscribe(_ => {
           this.closeInputModal();
