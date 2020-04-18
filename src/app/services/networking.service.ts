@@ -49,6 +49,10 @@ export class NetworkingService {
     return this.http.post(`${config.base_url}/Networking/timelinePosts/${postId}/comment`, formData);
   }
 
+  get_post_comments(postId: number){
+    return this.http.get<any>(`${config.base_url}/Networking/timelinePosts/${postId}/comments`)
+  }
+
   follow_request(userId: number) {
     return this.http.get(`${config.base_url}/Networking/connection-request/send/${userId}/`)
   }

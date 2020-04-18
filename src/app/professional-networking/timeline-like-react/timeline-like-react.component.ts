@@ -14,7 +14,6 @@ export class TimelineLikeReactComponent implements OnInit {
   currentUser: any;
   postList: any[];
   statusText: string = "";
-  commentTxt: string;
   timelineUpdateForm: FormGroup;
   photoVal: boolean = true;
   videoval: boolean = true;
@@ -100,19 +99,27 @@ export class TimelineLikeReactComponent implements OnInit {
       })
   }
 
-  postComment(postId: number) {
-    this.netService.comment_on_post(postId, this.commentTxt)
+  postComment(postId: number, commentTxt) {
+    this.netService.comment_on_post(postId, commentTxt)
       .subscribe(respObj => {
         console.log(respObj);
       })
   }
 
-  commentOnPost(postId: number) {
-    this.netService.comment_on_post(postId, this.commentTxt)
+  // commentOnPost(postId: number) {
+  //   this.netService.comment_on_post(postId, this.commentTxt)
+  //     .subscribe(respObj => {
+  //       console.log(respObj);
+  //     })
+  // }
+  getPostComments(postId) {
+    const post = this.postList.find(post => post.id === postId);
+    this.netService.get_post_comments(postId)
       .subscribe(respObj => {
-        console.log(respObj);
+        post['comments'] = [...respObj]
       })
   }
+
   onVideoUpload(event) {
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {

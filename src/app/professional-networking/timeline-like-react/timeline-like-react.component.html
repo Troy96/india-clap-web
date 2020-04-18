@@ -126,18 +126,18 @@
                 </div>
                 <div id="icons"> <img src="/assets/icons/1x/smiley.png" width="22px" height="22px"
                     (click)="smiley()"    class="like-comment-icon"><small class="icon-txt">React</small></div>
-                <div id="icons" style="cursor: pointer;" (click)="commentOnPost(post.id)"> <img
+                <!-- <div id="icons" style="cursor: pointer;" (click)="commentOnPost(post.id)"> <img
                         src="/assets/icons/1x/Comment.png" width="25px" height="22px"
-                        class="like-comment-icon report-img"><small class="icon-txt">Comment</small></div>
+                        class="like-comment-icon report-img"><small class="icon-txt">Comment</small></div> -->
                         
                 <div id="icons" style="cursor: pointer;" class="report" (click)="report(post.id)"><img src="/assets/icons/1x/Report.png" width="7px" height="22px"
                         class="like-comment-icon report-img"><small class="icon-txt" >Report</small></div>
             </div>
             <div class="comment" #comment>
                 <img src="/assets/icons/1x/dp.png" alt="" width="50px" class="comm-pro">
-                <input type="text" class="form-control comment-box" placeholder="Write a comment...">
+                <input type="text" class="form-control comment-box" placeholder="Write a comment..." #commentInp>
                 <div class="input-group-btn">
-                    <button class="btn btn-default comm-icons" (click)="postComment(post.id)">
+                    <button class="btn btn-default comm-icons" (click)="postComment(post.id, commentInp.value)">
                         <i class="glyphicon glyphicon-search comm-cam"><img src="/assets/icons/1x/Image.png"
                                 width="17px"></i>
                         <i class="glyphicon glyphicon-search comm-cam"><img src="/assets/icons/1x/video.png"
@@ -146,8 +146,9 @@
                     </button>
                 </div>
             </div>
-            <ng-container *ngFor="let comment of post?.reactions">
-                <div class="post-notification" *ngIf="comment?.comment">
+            <a style="text-decoration: underline; cursor: pointer; position: relative; top: 10px; color: grey;" (click)="getPostComments(post.id)">Load more comments...</a>
+            <ng-container *ngFor="let comment of post.comments">
+                <div class="post-notification" *ngIf="comment?.content">
                     <!-- <div class="time">
                         25min &nbsp
                         <img src="/assets/icons/1x/more-opt.png" width="12px">
@@ -156,10 +157,10 @@
                         <img src="/assets/icons/1x/sdp.png" width="47px">
                     </div> -->
                     <div class="post-text">
-                        <span id="teal">{{comment?.user.first_name}} {{comment?.user.last_name}}</span><br>
+                        <!-- <span id="teal">{{comment?.user.first_name}} {{comment?.user.last_name}}</span><br> -->
                         <!-- Kolkata, India<br> -->
 
-                        <p>{{comment?.comment}}</p>
+                        <p>{{comment?.content}}</p>
                     </div>
                 </div>
             </ng-container>
