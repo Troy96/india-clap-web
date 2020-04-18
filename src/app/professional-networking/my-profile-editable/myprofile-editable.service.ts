@@ -16,6 +16,9 @@ export class MyprofileEditableService {
     data: null
   });
 
+  private toRefreshUserDetails = new BehaviorSubject<boolean>(false);
+  public toRefreshDetails$ = this.toRefreshUserDetails.asObservable();
+
   public inputModal$ = this.inputModal.asObservable();
 
 
@@ -37,6 +40,10 @@ export class MyprofileEditableService {
       isInputForm: true,
       data: null
     })
+  }
+
+  updateUserDetails() {
+    this.toRefreshUserDetails.next(true);
   }
 
 

@@ -30,7 +30,6 @@ export class InputModalComponent implements OnInit {
     this.currentUserId = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
     this.myProfileService.inputModal$.subscribe(inputData => {
       this.inputData = { ...inputData };
-      console.log(this.inputData);
       this.createDynamicFormControls()
     })
   }

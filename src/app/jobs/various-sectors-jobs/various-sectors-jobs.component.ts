@@ -30,7 +30,7 @@ export class VariousSectorsJobsComponent implements OnInit {
   getVariousSectorsJobs() {
     this.jobService.get_various_sectors_jobs()
       .subscribe(respObj => {
-        this.jobList = [...respObj['results']];
+        this.jobList = [...respObj];
       })
   }
 

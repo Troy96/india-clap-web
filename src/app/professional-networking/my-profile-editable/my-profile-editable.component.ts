@@ -33,6 +33,9 @@ export class MyProfileEditableComponent implements OnInit {
   ngOnInit() {
     this.userId = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
     this.getUserDetails();
+    this.inputModal.toRefreshDetails$.subscribe(_ => {
+      this.getUserDetails();
+    })
   }
 
   getUserDetails() {

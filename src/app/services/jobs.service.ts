@@ -32,7 +32,7 @@ export class JobsService {
   }
 
   get_various_sectors_jobs() {
-    return this.http.get(`${config.base_url}/JobMarket/jobs`);
+    return this.http.get<any>(`${config.base_url}/JobMarket/jobs`);
   }
 
   get_job_description($data: number) {
