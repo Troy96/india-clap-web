@@ -10,18 +10,18 @@ import { NotificationService } from 'src/app/services/notification.service';
   styleUrls: ['./timeline-like-react.component.css']
 })
 export class TimelineLikeReactComponent implements OnInit {
-  showEmoji:Boolean = false;
+  showEmoji: Boolean = false;
   currentUser: any;
   postList: any[];
-  statusText: string="";
+  statusText: string = "";
   commentTxt: string;
   timelineUpdateForm: FormGroup;
-  photoVal:boolean = true;
-  videoval:boolean= true;
+  photoVal: boolean = true;
+  videoval: boolean = true;
   @ViewChild('comment', { static: false }) commentRef: ElementRef
   constructor(
-    private netService: NetworkingService,private cd: ChangeDetectorRef,private jobService:JobsService
-,private notifyService : NotificationService
+    private netService: NetworkingService, private cd: ChangeDetectorRef, private jobService: JobsService
+    , private notifyService: NotificationService
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
     console.log(this.currentUser);
@@ -46,44 +46,48 @@ export class TimelineLikeReactComponent implements OnInit {
   }
 
   createStatus() {
-    
-    this.timelineUpdateForm.patchValue({text:this.statusText});
-       console.log(this.timelineUpdateForm.value)
-       if (!this.timelineUpdateForm.valid || (this.timelineUpdateForm.get('text').value==""&&this.timelineUpdateForm.get('photo').value==""&&this.timelineUpdateForm.get('video').value==""))
-    {
+
+    this.timelineUpdateForm.patchValue({ text: this.statusText });
+    console.log(this.timelineUpdateForm.value)
+    if (!this.timelineUpdateForm.valid || (this.timelineUpdateForm.get('text').value == "" && this.timelineUpdateForm.get('photo').value == "" && this.timelineUpdateForm.get('video').value == "")) {
       this.showToasterError("Please add a text,photo or video first!");
       return;
-    } 
-       this.netService.create_post(this.timelineUpdateForm.value, this.currentUser)
+    }
+    this.netService.create_post(this.timelineUpdateForm.value, this.currentUser)
       .subscribe(respObj => {
         console.log(respObj);
-        this.statusText="";
+        this.statusText = "";
         this.showToasterSuccess("Your Status has been updated")
-       // this.ngOnInit();
-      //  location.reload();
+        // this.ngOnInit();
+        //  location.reload();
         this.timelineUpdateForm.patchValue({
-          text:"",
-          photo:"",
-          video:""
+          text: "",
+          photo: "",
+          video: ""
         })
-        this.statusText=""
+        this.statusText = ""
       },
-      err=>{
-        this.showToasterError("Please Select another image or video")
-        this.timelineUpdateForm.patchValue({
-          text:"",
-          photo:"",
-          video:""
-        })
-      }
+        err => {
+          this.showToasterError("Please Select another image or video")
+          this.timelineUpdateForm.patchValue({
+            text: "",
+            photo: "",
+            video: ""
+          })
+        }
       )
   }
 
   async getPostsReactions() {
     for await (let post of this.postList) {
-      this.netService.get_reactions_count(post.id)
+      this.netService.post_user_like_status(post.id)
         .subscribe(respObj => {
-          post['isLiked'] = respObj['like']
+          if (respObj.detail === 'Not Liked by user') {
+            post['isLiked'] = false
+          }
+          else {
+            post['isLiked'] = true
+          }
         })
     }
   }
@@ -112,74 +116,74 @@ export class TimelineLikeReactComponent implements OnInit {
   onVideoUpload(event) {
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {
-     
+
       let selectedFiles = event.target.files;
       // console.log(event.target.result);
       let _file = selectedFiles[0];
       console.log(_file)
       this.timelineUpdateForm.patchValue({
-        video:_file
+        video: _file
       })
-     
+
     }
   }
   onPhotoUpload(event) {
     const reader = new FileReader();
 
     if (event.target.files && event.target.files.length) {
-     
+
       let selectedFiles = event.target.files;
       // console.log(event.target.result);
       let _file = selectedFiles[0];
       this.timelineUpdateForm.patchValue({
-        photo:_file
+        photo: _file
       })
     }
-    
+
   }
- 
-  showToasterSuccess(str:any){
+
+  showToasterSuccess(str: any) {
     this.notifyService.showSuccess("Successful", str)
   }
-  showToasterError(str:any){
+  showToasterError(str: any) {
     this.notifyService.showError("Something is wrong", str)
-}
-
-report(id:number){
-  let obj:any={};
-  obj.flaggedReason = "";
-  this.netService.report_post(id,obj).subscribe((data:any)=>{
-    console.log(data);
-    this.showToasterSuccess("You have reported the Post!")
-
-  },
-  err=>{
-    this.showToasterError("Something went wrong")
-  })
-}
- smiley(){
-  if(this.showEmoji==true)
-  this.showEmoji=false;
-  else
-  this.showEmoji=true;
-  // var menu = document.querySelector('like-options') // Using a class instead, see note below.
-  // menu.classList.toggle('hidden-phone');
-
-}
-reactType(id:any,_id:any){
-  console.log(id)
-  if(this.showEmoji==true)
-  this.showEmoji=false;
-  else
-  this.showEmoji=true;
-  let obj:any={};
-  obj.emoji = id;
-  this.netService.post_reaction(_id,obj).subscribe((data)=>{
-    console.log(data);
-    this.showToasterSuccess("Thanks for reacting")
-  },err=>{
-    this.showToasterError("Something went wrong")
   }
-  )
-}
+
+  report(id: number) {
+    let obj: any = {};
+    obj.flaggedReason = "";
+    this.netService.report_post(id, obj).subscribe((data: any) => {
+      console.log(data);
+      this.showToasterSuccess("You have reported the Post!")
+
+    },
+      err => {
+        this.showToasterError("Something went wrong")
+      })
+  }
+  smiley() {
+    if (this.showEmoji == true)
+      this.showEmoji = false;
+    else
+      this.showEmoji = true;
+    // var menu = document.querySelector('like-options') // Using a class instead, see note below.
+    // menu.classList.toggle('hidden-phone');
+
+  }
+  reactType(id: any, _id: any) {
+    console.log(id)
+    if (this.showEmoji == true)
+      this.showEmoji = false;
+    else
+      this.showEmoji = true;
+    let obj: any = {};
+    obj.emoji = id;
+    this.netService.post_reaction(_id, obj).subscribe((data) => {
+      console.log(data);
+      this.showToasterSuccess("Thanks for reacting")
+    }, err => {
+      this.showToasterError("Something went wrong")
+    }
+    )
+  }
 }

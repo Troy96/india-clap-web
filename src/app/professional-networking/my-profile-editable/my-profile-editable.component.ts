@@ -50,7 +50,7 @@ export class MyProfileEditableComponent implements OnInit {
 
   getConnectionDetailList() {
     for (let user of this.userDetails['connections']) {
-      this.authService.get_user_details(5)
+      this.authService.get_user_details(user)
         .subscribe(respObj => {
           this.userConnections.push(respObj)
         })
