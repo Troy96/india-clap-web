@@ -10,7 +10,7 @@ import { NotificationService } from 'src/app/services/notification.service';
   styleUrls: ['./timeline-like-react.component.css']
 })
 export class TimelineLikeReactComponent implements OnInit {
-
+  showEmoji:Boolean = false;
   currentUser: any;
   postList: any[];
   statusText: string="";
@@ -157,6 +157,29 @@ report(id:number){
     this.showToasterError("Something went wrong")
   })
 }
+ smiley(){
+  if(this.showEmoji==true)
+  this.showEmoji=false;
+  else
+  this.showEmoji=true;
+  // var menu = document.querySelector('like-options') // Using a class instead, see note below.
+  // menu.classList.toggle('hidden-phone');
 
-
+}
+reactType(id:any,_id:any){
+  console.log(id)
+  if(this.showEmoji==true)
+  this.showEmoji=false;
+  else
+  this.showEmoji=true;
+  let obj:any={};
+  obj.emoji = id;
+  this.netService.post_reaction(_id,obj).subscribe((data)=>{
+    console.log(data);
+    this.showToasterSuccess("Thanks for reacting")
+  },err=>{
+    this.showToasterError("Something went wrong")
+  }
+  )
+}
 }

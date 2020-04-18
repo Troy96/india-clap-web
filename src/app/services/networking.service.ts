@@ -81,5 +81,13 @@ export class NetworkingService {
     return this.http.post(`${config.base_url}/Networking/timelinePost/${postId}/report/`, formData);
 
   }
+  post_reaction(postId,$data)
+  {  
+    const formData = new FormData();
+      formData.append('emoji', $data.emoji);
+
+    return this.http.post(`${config.base_url}/Networking/timelinePosts/${postId}/emoji`, formData);
+
+  }
   
 }
