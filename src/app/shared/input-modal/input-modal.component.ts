@@ -72,15 +72,29 @@ export class InputModalComponent implements OnInit {
       case 'Experience': {
         this.labels = ['Name of the company/corporation', 'Start date', 'End date', 'Name of Role', 'Job Responibilities'];
         this.placeholders = ['', 'YYYY-MM-DD', 'YYYY-MM-DD', '', '']
-        this.inputForm = this.fb.group({
-          profile: this.fb.array([
-            this.fb.control(''),
-            this.fb.control(''),
-            this.fb.control(''),
-            this.fb.control(''),
-            this.fb.control(''),
-          ])
-        });
+        if (this.inputData.isInputForm) {
+          this.inputForm = this.fb.group({
+            profile: this.fb.array([
+              this.fb.control(''),
+              this.fb.control(''),
+              this.fb.control(''),
+              this.fb.control(''),
+              this.fb.control(''),
+            ])
+          });
+        }
+        else {
+          const data = this.inputData.data;
+          this.editForm = this.fb.group({
+            profile: this.fb.array([
+              this.fb.control(data['company_name']),
+              this.fb.control(data['start_date']),
+              this.fb.control(data['end_date']),
+              this.fb.control(data['title']),
+              this.fb.control(data['responsibilities']),
+            ])
+          })
+        }
       }
         break;
       case 'Projects': {
@@ -98,7 +112,6 @@ export class InputModalComponent implements OnInit {
       }
         break;
       case 'Certifications': {
-        console.log('ggg');
         this.labels = ['Certification'];
         this.placeholders = ['Certification Name', 'Validity in YYYY-MM-DD', 'Description'];
         if (this.inputData.isInputForm) {
@@ -222,6 +235,20 @@ export class InputModalComponent implements OnInit {
           })
         break;
       }
+      case 'Experience': {
+        this.authService.update_experience(this.inputData.data.id, {
+          company_name: this.editForm.get('profile').value[0],
+          start_date: this.editForm.get('profile').value[1],
+          end_date: this.editForm.get('profile').value[2],
+          title: this.editForm.get('profile').value[3],
+          responsibilities: this.editForm.get('profile').value[4],
+          user: this.currentUserId
+        })
+          .subscribe(_ => {
+            this.closeInputModal();
+          })
+        break;
+      }
     }
 
   }
@@ -230,7 +257,7 @@ export class InputModalComponent implements OnInit {
     switch (description) {
       case 'Certifications': {
         this.authService.delete_certificate(this.inputData.data.id)
-          .subscribe(_=>{
+          .subscribe(_ => {
             this.closeInputModal();
           })
         break;

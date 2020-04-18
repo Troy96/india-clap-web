@@ -72,6 +72,10 @@ export class AuthService {
     return this.http.post(`${config.base_url}/Users/experiences/`, $data);
   }
 
+  update_experience(id, $data){
+    return this.http.patch(`${config.base_url}/Users/experiences/${id}/`,$data)
+  }
+
   add_project($data) {
     return this.http.post(`${config.base_url}/Users/projects/`, $data)
   }
