@@ -17,7 +17,7 @@
                 <!-- <img src="/assets/icons/1x/Image.png" alt="" width="25" height="26" id="status-icons"> -->
                 <label for="image">
                     <input type="file" name="image" id="image" style="display:none;"  (change)="onPhotoUpload($event);"/>
-                    <img src="/assets/icons/1x/Image.png" width="25" height="26" hspace="10"/>
+                    <img src="/assets/icons/1x/camera.png" width="25" height="26" hspace="10"/>
                  </label>
                 <label for="video">
                     <input type="file" name="video" id="video" style="display:none;"  (change)="onVideoUpload($event);"/>
@@ -41,28 +41,97 @@
                 <p class="teal" *ngIf="post.author_company">{{post.author_company.name}}</p><br>
                 <p> {{post?.created_on | date}}</p>
                 <p *ngIf="post?.text"> {{post?.text}}</p>
-                <p *ngIf="post?.photo"> <img src="{{post?.photo}}"></p>
-                <p *ngIf="post?.video"> <video src="{{post?.video}}"></video></p>
+                <p *ngIf="post?.photo"> <img src="{{post?.photo}}" width="950px" height="600px"></p>
+                <!-- <p *ngIf="post?.video"> <video style="width:950px;height:600px" src="{{post?.video}}" ></video></p> -->
+
+                <p *ngIf="post?.video"><video width="950px" height="600px" controls="controls" poster="image" preload="true">
+                    <!-- <source src="where the video is" type="video/mov"/> -->
+                    <source src="{{post?.video}}" type="video/mp4" />
+                    <!-- <source src="where the video is" type="video/oog" /> -->
+                    <!-- Your browser does not support the video tag. -->
+                  </video></p>
 
 
             </div>
             <small>{{post?.likes_count}} likes.{{post?.reactions?.length}} reacts.{{post?.comments_count}}
                 comments</small>
-            <hr color="#A9A9A9      ">
+            <hr color="#A9A9A9  ">
             <div class="icons-div">
+                <div id="like-options" *ngIf="showEmoji">
+                    <svg class="emojis" (click)="reactType(1,post.id)"  version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               viewBox="0 0 368 368" style="enable-background:new 0 0 368 368;" xml:space="preserve">
+                    <g>
+                      <g>
+                        <g>
+                          <path class="svg-emoji" id="svgid"  style="fill: white;"  d="M184,8c97.2,0,176,78.8,176,176s-78.8,176-176,176S8,281.2,8,184S86.8,8,184,8z M264,216H104
+                            c0,44.16,35.84,80,80,80S264,260.16,264,216z M264,136c0-8.8-7.2-16-16-16s-16,7.2-16,16s7.2,16,16,16S264,144.8,264,136z M136,136
+                            c0-8.8-7.2-16-16-16s-16,7.2-16,16s7.2,16,16,16S136,144.8,136,136z"/>
+                          <circle class="svg-emoji" cx="248" cy="136" r="16"/>
+                          <circle class="svg-emoji"cx="120" cy="136" r="16"/>
+                        </g>
+                        <g>
+                          <path style="fill:gray;" d="M248,160c13.232,0,24-10.768,24-24s-10.768-24-24-24s-24,10.768-24,24S234.768,160,248,160z
+                             M248,128c4.416,0,8,3.592,8,8s-3.584,8-8,8s-8-3.592-8-8S243.584,128,248,128z"/>
+                          <path style="fill:gray;" d="M120,160c13.232,0,24-10.768,24-24s-10.768-24-24-24s-24,10.768-24,24S106.768,160,120,160z
+                             M120,128c4.416,0,8,3.592,8,8s-3.584,8-8,8s-8-3.592-8-8S115.584,128,120,128z"/>
+                          <path style="fill:gray;" d="M184,368c101.464,0,184-82.544,184-184S285.464,0,184,0S0,82.544,0,184S82.536,368,184,368z M184,16
+                            c92.632,0,168,75.36,168,168s-75.368,168-168,168S16,276.64,16,184S91.368,16,184,16z"/>
+                          <path style="fill:gray;" d="M184,304c48.52,0,88-39.48,88-88c0-4.416-3.576-8-8-8H104c-4.424,0-8,3.584-8,8
+                            C96,264.52,135.48,304,184,304z M255.552,224C251.56,259.952,221,288,184,288s-67.56-28.048-71.552-64H255.552z"/>
+                        </g>
+                      </g>
+                    </g>
+                   
+                    </svg>
+          
+                    <svg class="emojis" (click)="reactType(2,post.id)" height="480pt" viewBox="0 -20 480 480" width="480pt" xmlns="http://www.w3.org/2000/svg"><path class="svg-emoji" d="m348 8c-44.773438.003906-86.066406 24.164062-108 63.199219-21.933594-39.035157-63.226562-63.195313-108-63.199219-68.480469 0-124 63.519531-124 132 0 172 232 292 232 292s232-120 232-292c0-68.480469-55.519531-132-124-132zm0 0" fill="white"/><path d="m348 0c-43 .0664062-83.28125 21.039062-108 56.222656-24.71875-35.183594-65-56.1562498-108-56.222656-70.320312 0-132 65.425781-132 140 0 72.679688 41.039062 147.535156 118.6875 216.480469 35.976562 31.882812 75.441406 59.597656 117.640625 82.625 2.304687 1.1875 5.039063 1.1875 7.34375 0 42.183594-23.027344 81.636719-50.746094 117.601563-82.625 77.6875-68.945313 118.726562-143.800781 118.726562-216.480469 0-74.574219-61.679688-140-132-140zm-108 422.902344c-29.382812-16.214844-224-129.496094-224-282.902344 0-66.054688 54.199219-124 116-124 41.867188.074219 80.460938 22.660156 101.03125 59.128906 1.539062 2.351563 4.160156 3.765625 6.96875 3.765625s5.429688-1.414062 6.96875-3.765625c20.570312-36.46875 59.164062-59.054687 101.03125-59.128906 61.800781 0 116 57.945312 116 124 0 153.40625-194.617188 266.6875-224 282.902344zm0 0" fill="gray"/></svg>          
+          <svg class="emojis" (click)="reactType(3,post.id)" height="511pt" viewBox="0 -10 511.98645 511" width="511pt" xmlns="http://www.w3.org/2000/svg"><path class="svg-emoji" d="m499.574219 188.503906c-3.199219-9.921875-11.988281-16.9375-22.398438-17.898437l-141.355469-12.84375-55.894531-130.835938c-4.117187-9.578125-13.503906-15.765625-23.933593-15.765625-10.433594 0-19.820313 6.207032-23.9375 15.808594l-55.890626 130.816406-141.378906 12.839844c-10.386718.941406-19.175781 7.957031-22.378906 17.878906-3.21875 9.921875-.234375 20.777344 7.617188 27.648438l106.859374 93.695312-31.511718 138.773438c-2.300782 10.199218 1.664062 20.734375 10.136718 26.878906 4.519532 3.328125 9.875 4.992188 15.230469 4.992188 4.628907 0 9.238281-1.234376 13.355469-3.710938l121.898438-72.894531 121.875 72.875c8.917968 5.351562 20.160156 4.882812 28.609374-1.238281 8.46875-6.144532 12.4375-16.683594 10.132813-26.882813l-31.507813-138.769531 106.859376-93.699219c7.847656-6.867187 10.835937-17.726563 7.613281-27.667969zm0 0" fill="white"/><path d="m114.617188 491.136719c-5.632813 0-11.203126-1.746094-15.957032-5.183594-8.855468-6.398437-12.992187-17.429687-10.582031-28.09375l32.9375-145.066406-111.703125-97.964844c-8.210938-7.1875-11.347656-18.515625-7.976562-28.90625 3.371093-10.367187 12.542968-17.726563 23.402343-18.730469l147.820313-13.417968 58.410156-136.746094c4.308594-10.046875 14.121094-16.535156 25.023438-16.535156 10.902343 0 20.714843 6.488281 25.023437 16.511718l58.410156 136.769532 147.796875 13.417968c10.882813.980469 20.054688 8.34375 23.425782 18.710938 3.371093 10.386718.253906 21.738281-7.980469 28.90625l-111.679688 97.941406 32.9375 145.066406c2.414063 10.667969-1.726562 21.695313-10.578125 28.09375-8.8125 6.378906-20.566406 6.914063-29.890625 1.324219l-127.464843-76.160156-127.445313 76.203125c-4.308594 2.582031-9.109375 3.859375-13.929687 3.859375zm141.375-112.871094c4.84375 0 9.640624 1.300781 13.953124 3.859375l120.277344 71.9375-31.085937-136.941406c-2.21875-9.769532 1.089843-19.925782 8.621093-26.515625l105.472657-92.523438-139.542969-12.671875c-10.003906-.894531-18.667969-7.1875-22.59375-16.46875l-55.101562-129.046875-55.148438 129.066407c-3.902344 9.238281-12.5625 15.53125-22.589844 16.429687l-139.519531 12.671875 105.46875 92.519531c7.554687 6.59375 10.839844 16.769531 8.621094 26.539063l-31.082031 136.941406 120.277343-71.9375c4.328125-2.558594 9.128907-3.859375 13.972657-3.859375zm-84.585938-221.824219v.019532zm169.152344-.066406v.023438s0 0 0-.023438zm0 0 " fill="gray"/></svg>          
+          <svg class="emojis" (click)="reactType(4,post.id)" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               viewBox="0 0 368 368" style="enable-background:new 0 0 368 368;" xml:space="preserve">
+          <g>
+              <path class="svg-emoji" style="fill:white;" d="M184,8c97.2,0,176,78.8,176,176s-78.8,176-176,176S8,281.2,8,184S86.8,8,184,8z M264,168
+                  c0-8.8-7.2-16-16-16s-16,7.2-16,16s7.2,16,16,16S264,176.8,264,168z M136,168c0-8.8-7.2-16-16-16s-16,7.2-16,16s7.2,16,16,16
+                  S136,176.8,136,168z"/>
+              <circle style="fill: white;" cx="248" cy="168" r="16"/>
+              <circle style="fill:white;" cx="120" cy="168" r="16"/>
+          </g>
+          <g>
+              <path  style="fill:gray;" d="M184,0C82.544,0,0,82.544,0,184s82.544,184,184,184c101.464,0,184-82.544,184-184S285.464,0,184,0z
+                   M184,352c-92.64,0-168-75.36-168-168S91.36,16,184,16c92.632,0,168,75.36,168,168S276.632,352,184,352z"/>
+              <path style="fill:gray;" d="M144,168c0-13.232-10.768-24-24-24s-24,10.768-24,24s10.768,24,24,24S144,181.232,144,168z M112,168
+                  c0-4.408,3.592-8,8-8s8,3.592,8,8s-3.592,8-8,8S112,172.408,112,168z"/>
+              <path style="fill:gray;" d="M248,144c-13.232,0-24,10.768-24,24s10.768,24,24,24s24-10.768,24-24S261.232,144,248,144z M248,176
+                  c-4.416,0-8-3.592-8-8s3.584-8,8-8s8,3.592,8,8S252.416,176,248,176z"/>
+              <path style="fill:gray;" d="M216.008,112c1.2,0,2.424-0.272,3.568-0.84l32-16c3.952-1.976,5.552-6.784,3.576-10.736
+                  c-1.984-3.952-6.792-5.56-10.736-3.576l-32,16c-3.952,1.976-5.552,6.784-3.576,10.736C210.248,110.384,213.072,112,216.008,112z"/>
+              <path style="fill:gray;" d="M116.424,95.16l32,16c1.144,0.568,2.368,0.84,3.568,0.84c2.936,0,5.76-1.616,7.168-4.424
+                  c1.976-3.952,0.376-8.76-3.576-10.736l-32-16c-3.968-1.984-8.76-0.368-10.736,3.576C110.864,88.376,112.472,93.176,116.424,95.16z"
+                  />
+              <path style="fill:gray;" d="M184,224c-29.84,0-58.256,12.64-77.968,34.664c-2.944,3.296-2.664,8.344,0.632,11.296
+                  c1.528,1.368,3.432,2.04,5.336,2.04c2.2,0,4.384-0.896,5.968-2.664C134.64,250.688,158.704,240,184,240
+                  c25.224,0,49.304,10.696,66.048,29.344c2.952,3.296,8.016,3.552,11.296,0.608c3.288-2.952,3.56-8.008,0.608-11.296
+                  C242.168,236.632,213.768,224,184,224z"/>
+          </g>  
+          </svg>
+                   
+                  </div>
+             
                 <div *ngIf="!post?.isLiked" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/like.png"
                         width="19px" height="22px" class="like-comment-icon" (click)="likePost(post.id);"><br><small
                         class="icon-txt">Like</small></div>
+
+                    
                 <div *ngIf="post?.isLiked" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/like.png"
                         width="19px" height="22px" class="like-comment-icon"><br><small class="icon-txt">Liked</small>
                 </div>
-                <!-- <div id="icons"> <img src="/assets/icons/1x/smiley.png" width="22px" height="22px"
-                        class="like-comment-icon"><small class="icon-txt">React</small></div> -->
+                <div id="icons"> <img src="/assets/icons/1x/smiley.png" width="22px" height="22px"
+                    (click)="smiley()"    class="like-comment-icon"><small class="icon-txt">React</small></div>
                 <div id="icons" style="cursor: pointer;" (click)="commentOnPost(post.id)"> <img
                         src="/assets/icons/1x/Comment.png" width="25px" height="22px"
                         class="like-comment-icon report-img"><small class="icon-txt">Comment</small></div>
-                <!-- <div id="icons" class="report"><img src="/assets/icons/1x/Report.png" width="7px" height="22px"
-                        class="like-comment-icon report-img"><small class="icon-txt">Report</small></div> -->
+                        
+                <div id="icons" style="cursor: pointer;" class="report" (click)="report(post.id)"><img src="/assets/icons/1x/Report.png" width="7px" height="22px"
+                        class="like-comment-icon report-img"><small class="icon-txt" >Report</small></div>
             </div>
             <div class="comment" #comment>
                 <img src="/assets/icons/1x/dp.png" alt="" width="50px" class="comm-pro">
