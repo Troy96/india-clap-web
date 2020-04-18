@@ -56,7 +56,7 @@
                 <div id="experience" *ngFor="let project of userDetails?.projects">
                     <div id="txt-exp">
                         <img src="/assets/icons/1x/logo3.png" width="50px" class="project-img">
-                        <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon">
+                        <img src="/assets/icons/1x/Edit.png" width="22px" style="cursor: pointer;" (click)="openEditModal('Projects', project)" class="edit-icon">
                         <div class="project-details">
 
                             <span class="teal">{{project?.project_name}}</span><br>

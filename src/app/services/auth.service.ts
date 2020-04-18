@@ -72,23 +72,37 @@ export class AuthService {
     return this.http.post(`${config.base_url}/Users/experiences/`, $data);
   }
 
-  update_experience(id, $data){
-    return this.http.patch(`${config.base_url}/Users/experiences/${id}/`,$data)
+  update_experience(id, $data) {
+    return this.http.patch(`${config.base_url}/Users/experiences/${id}/`, $data)
+  }
+
+  delete_experience(id) {
+    return this.http.delete(`${config.base_url}/Users/experiences/${id}/`)
   }
 
   add_project($data) {
     return this.http.post(`${config.base_url}/Users/projects/`, $data)
   }
 
+  update_project(id, $data) {
+    return this.http.patch(`${config.base_url}/Users/projects/${id}/`, $data);
+  }
+
+  delete_project(id) {
+    return this.http.delete(`${config.base_url}/Users/projects/${id}/`);
+  }
+
   get_certificate(id: number) {
     return this.http.get<any>(`${config.base_url}/Users/certifications/${id}`);
   }
 
-  update_certificate(id: number, $data){
+
+
+  update_certificate(id: number, $data) {
     return this.http.patch<any>(`${config.base_url}/Users/certifications/${id}/`, $data);
   }
 
-  delete_certificate(id: number){
+  delete_certificate(id: number) {
     return this.http.delete<any>(`${config.base_url}/Users/certifications/${id}/`);
   }
 
