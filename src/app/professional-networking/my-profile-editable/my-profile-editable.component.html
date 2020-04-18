@@ -53,31 +53,22 @@
                 <h3>Projects <img src="/assets/icons/1x/plus.png" width="22px" style="cursor: pointer;"
                         class="plus-icon1" (click)="openEditModal('Projects')">
                 </h3>
-                <div id="experience">
+                <div id="experience" *ngFor="let project of userDetails?.projects">
                     <div id="txt-exp">
                         <img src="/assets/icons/1x/logo3.png" width="50px" class="project-img">
                         <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon">
                         <div class="project-details">
 
-                            <span class="teal">Clifford Grace Law firm</span><br>
-                            <p>Copenhanem Denmark</p>
-                            Website and Brand designing for the Clifford Grace law firm<br>
-                            January 2019 - July 2019 . 7 mos
+                            <span class="teal">{{project?.project_name}}</span><br>
+                            <a href="{{project.link}}">{{project.link}}</a><br>
+                            {{project?.start_date}} - {{project?.end_date}}
                         </div>
                     </div>
                     <div class="project-description">
-                        <h3>Project description<img src="/assets/icons/1x/plus.png" width="22px" class="edit-icon1">
+                        <h3>Project description
                         </h3>
-                        <img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon">
                         <div class="pro-des">
-                            Art and design enthusiast. Always observing the space around me and finding things that
-                            interest and intrigue me. Anything creative draws me in. I have a passion for people,
-                            stories, the environment and the visual media! Art and design enthusiast. Always observing
-                            the space around me and finding things that interest and intrigue me. Anything creative
-                            draws me in. I have a passion for people, stories, the environment and the visual media! Art
-                            and design enthusiast. Always observing the space around me and finding things that interest
-                            and intrigue me. Anything creative draws me in. I have a passion for people, stories, the
-                            environment and the visual media! Art and design enthusiast
+                            {{project?.description}}
                         </div>
                     </div>
                 </div>
