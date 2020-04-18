@@ -41,10 +41,10 @@
                 <p class="teal" *ngIf="post.author_company">{{post.author_company.name}}</p><br>
                 <p> {{post?.created_on | date}}</p>
                 <p *ngIf="post?.text"> {{post?.text}}</p>
-                <p *ngIf="post?.photo"> <img src="{{post?.photo}}" width="950px" height="600px"></p>
+                <p *ngIf="post?.photo"> <img style="max-width: 100%; display: block" src="{{post?.photo}}" width="950px" height="600px"></p>
                 <!-- <p *ngIf="post?.video"> <video style="width:950px;height:600px" src="{{post?.video}}" ></video></p> -->
 
-                <p *ngIf="post?.video"><video width="950px" height="600px" controls="controls" poster="image" preload="true">
+                <p *ngIf="post?.video"><video style="max-width: 100%; display: block" width="950px" height="600px" controls="controls" poster="image" preload="true">
                     <!-- <source src="where the video is" type="video/mov"/> -->
                     <source src="{{post?.video}}" type="video/mp4" />
                     <!-- <source src="where the video is" type="video/oog" /> -->
@@ -118,7 +118,8 @@
              
                 <div *ngIf="!post?.isLiked" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/like.png"
                         width="19px" height="22px" class="like-comment-icon" (click)="likePost(post.id);"><br><small
-                        class="icon-txt">Like</small></div>
+                        class="icon-txt" style="    position: relative;
+                        bottom: 20px;">Like</small></div>
 
                     
                 <div *ngIf="post?.isLiked" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/like.png"

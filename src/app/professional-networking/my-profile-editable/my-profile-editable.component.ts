@@ -55,7 +55,7 @@ export class MyProfileEditableComponent implements OnInit {
   removeConnection(userId) {
     this.netService.remove_user_connection(userId)
       .subscribe(respobj => {
-        this.getUserDetails();
+        //this.getUserDetails();
       })
   }
 

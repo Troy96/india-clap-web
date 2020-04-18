@@ -1,129 +1,140 @@
-<div class="container float">
-    <div class="jumbotron jumbotron-fluid">
-        <div class="jumbotron-image" *ngIf="userDetails?.photo">
-            <img class="jmb-img" src="{{userDetails?.photo}}" alt="">
-        </div>
-        <input type="file" #photoInput style="display: none;" (change)="onPhotoUpload($event)">
-        <div class="jumbotron-image" *ngIf="!userDetails?.photo" style="cursor: pointer;" (click)="photoInput.click()">
-            <img class="jmb-img" src="/assets/icons/1x/dp.png">
-        </div>
-        <div id="jumbotron-text">
-            <div id="name">
-                <h2><span class="teal">{{userDetails?.first_name}} {{userDetails?.last_name}} <img
-                            src="/assets/icons/1x/Edit.png" (click)="openAddModal('Profile')" width="22px"
-                            style="cursor: pointer;" class="edit-icon1"></span></h2>
-                <!-- <span>Kolkata, India</span><br> -->
-                <!-- Graphic Designer -->
+<div class="main-container">
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="jumbotron-image" *ngIf="userDetails?.photo">
+                <img class="jmb-img" src="{{userDetails?.photo}}" alt="">
             </div>
-
-            <div id="j-icons"><a>
-                    <img class="more-opt" src="/assets/icons/1x/more-opt.png" alt=""><br>
-                </a>
-
-
+            <input type="file" #photoInput style="display: none;" (change)="onPhotoUpload($event)">
+            <div class="jumbotron-image" *ngIf="!userDetails?.photo" style="cursor: pointer;"
+                (click)="photoInput.click()">
+                <img class="jmb-img" src="/assets/icons/1x/dp.png">
             </div>
-        </div>
+            <div id="jumbotron-text">
+                <div id="name">
+                    <h2><span class="teal">{{userDetails?.first_name}} {{userDetails?.last_name}} <img
+                                src="/assets/icons/1x/Edit.png" (click)="openAddModal('Profile')" width="22px"
+                                style="cursor: pointer;" class="edit-icon1"></span></h2>
+                    <!-- <span>Kolkata, India</span><br> -->
+                    <!-- Graphic Designer -->
+                </div>
 
-    </div>
-    <div class="mainbody">
+                <div id="j-icons"><a>
+                        <img class="more-opt" src="/assets/icons/1x/more-opt.png" alt=""><br>
+                    </a>
 
-        <div class="place">
-            <div id="headline">
-                <h3>Headline <img src="/assets/icons/1x/Edit.png" (click)="openAddModal('Headline')" width="22px"
-                        style="cursor: pointer;" class="edit-icon1"></h3>
-                <span class="txt">{{userDetails?.brief_Desc}}</span>
-            </div>
-            <div id="headline">
-                <h3>Experience<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
-                        (click)="openAddModal('Experience')" style="cursor: pointer;"></h3>
 
-                <div id="experience">
-                    <div id="txt-exp" *ngFor="let exp of userDetails?.experiences">
-                        <img src="/assets/icons/1x/logo1.png" width="50px" class="exp-img">
-                        <img src="/assets/icons/1x/Edit.png" style="cursor: pointer;" (click)="openEditModal('Experience', exp)" style="cursor: pointer;" width="22px" class="edit-icon">
-
-                        <span class="teal">{{exp.company_name}}</span><br>
-                        {{exp.title}}<br>
-                        {{exp.responsibilities}}<br>
-                        <p style="position: relative; left: 25px;">{{exp?.start_date}} -- {{exp?.end_date}}</p>
-                    </div>
                 </div>
             </div>
-            <div id="headline">
-                <h3>Projects <img src="/assets/icons/1x/plus.png" width="22px" style="cursor: pointer;"
-                        class="plus-icon1" (click)="openAddModal('Projects')">
-                </h3>
-                <div id="experience" *ngFor="let project of userDetails?.projects">
-                    <div id="txt-exp">
-                        <img src="/assets/icons/1x/logo3.png" width="50px" class="project-img">
-                        <img src="/assets/icons/1x/Edit.png" width="22px" style="cursor: pointer;" (click)="openEditModal('Projects', project)" class="edit-icon">
-                        <div class="project-details">
 
-                            <span class="teal">{{project?.project_name}}</span><br>
-                            <a href="{{project.link}}" target="_blank">{{project.link}}</a><br>
-                            {{project?.start_date}} - {{project?.end_date}}
+        </div>
+        <div class="mainbody">
+
+            <div class="place">
+                <div id="headline">
+                    <h3>Headline <img src="/assets/icons/1x/Edit.png" (click)="openAddModal('Headline')" width="22px"
+                            style="cursor: pointer;" class="edit-icon1"></h3>
+                    <span class="txt">{{userDetails?.brief_Desc}}</span>
+                </div>
+                <div id="headline">
+                    <h3>Experience<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
+                            (click)="openAddModal('Experience')" style="cursor: pointer;"></h3>
+
+                    <div id="experience">
+                        <div id="txt-exp" *ngFor="let exp of userDetails?.experiences">
+                            <img src="/assets/icons/1x/logo1.png" width="50px" class="exp-img">
+                            <img src="/assets/icons/1x/Edit.png" style="cursor: pointer;"
+                                (click)="openEditModal('Experience', exp)" style="cursor: pointer;" width="22px"
+                                class="edit-icon">
+
+                            <span class="teal">{{exp.company_name}}</span><br>
+                            {{exp.title}}<br>
+                            {{exp.responsibilities}}<br>
+                            <p style="position: relative; left: 25px;">{{exp?.start_date}} -- {{exp?.end_date}}</p>
                         </div>
                     </div>
+                </div>
+                <div id="headline">
+                    <h3>Projects <img src="/assets/icons/1x/plus.png" width="22px" style="cursor: pointer;"
+                            class="plus-icon1" (click)="openAddModal('Projects')">
+                    </h3>
+                    <div id="experience" *ngFor="let project of userDetails?.projects">
+                        <div id="txt-exp">
+                            <img src="/assets/icons/1x/logo3.png" width="50px" class="project-img">
+                            <img src="/assets/icons/1x/Edit.png" width="22px" style="cursor: pointer;"
+                                (click)="openEditModal('Projects', project)" class="edit-icon">
+                            <div class="project-details">
+
+                                <span class="teal">{{project?.project_name}}</span><br>
+                                <a href="{{project.link}}" target="_blank">{{project.link}}</a><br>
+                                {{project?.start_date}} - {{project?.end_date}}
+                            </div>
+                        </div>
+                        <div class="project-description">
+                            <h3>Project description
+                            </h3>
+                            <div class="pro-des">
+                                {{project?.description}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="headline">
+                    <h3>Certificates<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
+                            (click)="openAddModal('Certifications')" style="cursor: pointer;"></h3>
+                    <div class="project-description" *ngIf="userDetails?.certifications.length">
+
+                        <div id="skill" *ngFor="let certification of userDetails?.certifications">
+                            <span class="teal">{{certification?.certification_name}} <img
+                                    src="/assets/icons/1x/Edit.png" style="cursor: pointer;"
+                                    (click)="openEditModal('Certifications', certification)" width="22px"
+                                    class="edit-icon1"></span><br />
+                            {{certification?.description}}<br />
+                            Valid till - {{certification?.validity_date}}
+                        </div>
+                    </div>
+                </div>
+                <div id="headline">
+                    <h3>Skills <img src="/assets/icons/1x/plus.png" width="22px" class="edit-icon1"
+                            (click)="openAddModal('Skills')" style="cursor: pointer;"></h3>
+                    <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
+
                     <div class="project-description">
-                        <h3>Project description
-                        </h3>
-                        <div class="pro-des">
-                            {{project?.description}}
+
+                        <div id="skill" *ngFor="let skill of userDetails?.skills">
+                            {{skill.skill}} ({{skill.level}})
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="headline">
-                <h3>Certificates<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
-                        (click)="openAddModal('Certifications')" style="cursor: pointer;"></h3>
-                <div class="project-description" *ngIf="userDetails?.certifications.length">
+                <div id="headline">
+                    <h3>Upload Resume
+                        <input type="file" style="display: none;" (change)="onVideoResumeUpload($event);" #videoInput>
+                        <img src="/assets/icons/1x/video.png" width="35px" class="edit-icon1"
+                            (click)="videoInput.click()" style="cursor: pointer;"></h3>
+                    <small class="resume">Upload your resume video (Not more than 30 secs)</small>
 
-                    <div id="skill" *ngFor="let certification of userDetails?.certifications">
-                        <span class="teal">{{certification?.certification_name}} <img src="/assets/icons/1x/Edit.png" style="cursor: pointer;" (click)="openEditModal('Certifications', certification)" width="22px" class="edit-icon1"></span><br />
-                        {{certification?.description}}<br />
-                        Valid till - {{certification?.validity_date}}
-                    </div>
+                    <video #video style="display: none;" *ngIf="videoUrl" width="320" height="240" controls
+                        [attr.src]="videoUrl" (loadedmetadata)="validateVideoDuration($event)">
+                    </video>
                 </div>
             </div>
-            <div id="headline">
-                <h3>Skills <img src="/assets/icons/1x/plus.png" width="22px" class="edit-icon1"
-                        (click)="openAddModal('Skills')" style="cursor: pointer;"></h3>
-                <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
 
-                <div class="project-description">
-
-                    <div id="skill" *ngFor="let skill of userDetails?.skills">
-                        {{skill.skill}} ({{skill.level}})
-                    </div>
+        </div>
+    </div>
+    <div class="suggestion container">
+        <div id="sug-head">
+            <h4>Your Connections</h4>
+        </div>
+        <div id="sug-body" *ngIf="userConnections.length">
+            <div id="sug-pro" *ngFor="let connection of userConnections">
+                <img src="/assets/icons/1x/close.png" width="10px" style="cursor: pointer;" class="close"
+                    (click)="removeConnection(connection.id)">
+                <!-- <img src="{{connection?.photo}}" class="sug-dp" alt="" width="55px" height="55px"> -->
+                <div class="text"><span class="teal">{{connection?.first_name}} {{connection?.last_name}}</span><br>
                 </div>
+                <br>
             </div>
-            <div id="headline">
-                <h3>Upload Resume
-                    <input type="file" style="display: none;" (change)="onVideoResumeUpload($event);" #videoInput>
-                    <img src="/assets/icons/1x/video.png" width="35px" class="edit-icon1" (click)="videoInput.click()"
-                        style="cursor: pointer;"></h3>
-                <small class="resume">Upload your resume video (Not more than 30 secs)</small>
 
-                <video #video style="display: none;" *ngIf="videoUrl" width="320" height="240" controls
-                    [attr.src]="videoUrl" (loadedmetadata)="validateVideoDuration($event)">
-                </video>
-            </div>
         </div>
-
+        <div class="no-data" *ngIf="!userConnections.length">No connections!</div>
     </div>
-</div>
-<div class="suggestion container">
-    <div id="sug-head">
-        <h4>Your Connections</h4>
-    </div>
-    <div id="sug-body" *ngIf="userConnections.length">
-        <div id="sug-pro" *ngFor="let connection of userConnections">
-            <img src="/assets/icons/1x/close.png" width="10px" class="close" (click)="removeConnection(connection.id)">
-            <img src="{{connection?.photo}}" class="sug-dp" alt="" width="55px" height="55px">
-            <div class="text"><span class="teal">{{connection?.first_name}} {{connection?.last_name}}</span><br></div>
-            <br>
-        </div>
-
-    </div>
-    <div class="no-data" *ngIf="!userConnections.length">No connections!</div>
 </div>

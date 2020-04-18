@@ -72,7 +72,7 @@ export class NetworkingService {
   }
 
   remove_user_connection(userId) {
-    return this.http.get<any>(`${config.base_url}/Networking/connection/remove/${userId}`)
+    return this.http.get<any>(`${config.base_url}/Networking/connection/remove/${userId}/`)
   }
   report_post(postId,$data)
   {
