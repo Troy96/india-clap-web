@@ -164,6 +164,7 @@ export class InputModalComponent implements OnInit {
             last_name: this.inputForm.get('profile').value[1]
           })
           .subscribe(_ => {
+            this.myProfileService.updateUserDetails();
             this.closeInputModal();
           })
       }
@@ -171,6 +172,7 @@ export class InputModalComponent implements OnInit {
       case 'Headline': {
         this.authService.update_user_details(this.currentUserId, { brief_Desc: this.inputForm.get('profile').value[0] })
           .subscribe(_ => {
+            this.myProfileService.updateUserDetails();
             this.closeInputModal();
           })
       }
@@ -185,6 +187,7 @@ export class InputModalComponent implements OnInit {
           responsibilities: this.inputForm.get('profile').value[4],
           user: this.currentUserId,
         }).subscribe(_ => {
+          this.myProfileService.updateUserDetails();
           this.closeInputModal();
         })
         break;
@@ -198,6 +201,7 @@ export class InputModalComponent implements OnInit {
           link: this.inputForm.get('profile').value[4],
           user: this.currentUserId,
         }).subscribe(_ => {
+          this.myProfileService.updateUserDetails();
           this.closeInputModal();
         })
         break;
@@ -209,6 +213,7 @@ export class InputModalComponent implements OnInit {
           description: this.inputForm.get('profile').value[2],
           user: this.currentUserId
         }).subscribe(_ => {
+          this.myProfileService.updateUserDetails();
           this.closeInputModal();
         })
         break;
@@ -219,6 +224,7 @@ export class InputModalComponent implements OnInit {
           level: this.inputForm.get('profile').value[1],
           user: this.currentUserId
         }).subscribe(_ => {
+          this.myProfileService.updateUserDetails();
           this.closeInputModal();
         })
         break;
@@ -236,6 +242,7 @@ export class InputModalComponent implements OnInit {
           user: this.currentUserId
         })
           .subscribe(_ => {
+            this.myProfileService.updateUserDetails();
             this.closeInputModal();
           })
         break;
@@ -250,6 +257,7 @@ export class InputModalComponent implements OnInit {
           user: this.currentUserId
         })
           .subscribe(_ => {
+            this.myProfileService.updateUserDetails();
             this.closeInputModal();
           })
         break;
@@ -263,6 +271,7 @@ export class InputModalComponent implements OnInit {
           link: this.editForm.get('profile').value[4],
           user: this.currentUserId,
         }).subscribe(_ => {
+          this.myProfileService.updateUserDetails();
           this.closeInputModal();
         })
         break;
@@ -276,6 +285,7 @@ export class InputModalComponent implements OnInit {
       case 'Certifications': {
         this.authService.delete_certificate(this.inputData.data.id)
           .subscribe(_ => {
+            this.myProfileService.updateUserDetails();
             this.closeInputModal();
           })
         break;
@@ -283,6 +293,7 @@ export class InputModalComponent implements OnInit {
       case 'Experience': {
         this.authService.delete_experience(this.inputData.data.id)
           .subscribe(_ => {
+            this.myProfileService.updateUserDetails();
             this.closeInputModal();
           })
         break;
@@ -293,5 +304,6 @@ export class InputModalComponent implements OnInit {
   closeInputModal() {
     this.myProfileService.closeModal();
   }
+
 
 }

@@ -31,14 +31,16 @@ export class MyProfileEditableComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.userConnections = [];
     this.userId = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
     this.getUserDetails();
-    this.inputModal.toRefreshDetails$.subscribe(_ => {
-      this.getUserDetails();
+    this.inputModal.toRefreshDetails$.subscribe(toRefresh => {
+      if(toRefresh) this.getUserDetails();
     })
   }
 
   getUserDetails() {
+    this.userConnections = [];
     this.authService.get_user_details(this.userId)
       .subscribe(respObj => {
         this.userDetails = { ...respObj }
