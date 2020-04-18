@@ -72,12 +72,18 @@ export class AuthService {
     return this.http.post(`${config.base_url}/Users/experiences/`, $data);
   }
 
+  add_project($data) {
+    return this.http.post(`${config.base_url}/Users/projects/`, $data)
+  }
+
   get_privacy_details() {
     return this.http.get(`${config.base_url}/Users/privacy`);
   }
+
   forgot_password($data) {
     return this.http.post(`${config.base_url}/accounts/password-reset/reset_password/`, $data, { headers: this.headers });
   }
+  
   reset_password($data) {
     return this.http.post(`${config.base_url}/accounts/password-reset/confirm/`, $data, { headers: this.headers });
   }

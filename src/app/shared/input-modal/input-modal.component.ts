@@ -37,7 +37,7 @@ export class InputModalComponent implements OnInit {
     switch (this.inputData.description) {
       case 'Profile': {
         this.labels = ['Enter your first name', 'Enter your last name'];
-        this.placeholders = ['first name','last name']
+        this.placeholders = ['first name', 'last name']
         console.log(this.labels);
         this.inputForm = this.fb.group({
           profile: this.fb.array([
@@ -59,7 +59,21 @@ export class InputModalComponent implements OnInit {
         break;
       case 'Experience': {
         this.labels = ['Name of the company/corporation', 'Start date', 'End date', 'Name of Role', 'Job Responibilities'];
-        this.placeholders = ['','YYYY-MM-DD','YYYY-MM-DD','','']
+        this.placeholders = ['', 'YYYY-MM-DD', 'YYYY-MM-DD', '', '']
+        this.inputForm = this.fb.group({
+          profile: this.fb.array([
+            this.fb.control(''),
+            this.fb.control(''),
+            this.fb.control(''),
+            this.fb.control(''),
+            this.fb.control(''),
+          ])
+        });
+      }
+        break;
+      case 'Projects': {
+        this.labels = ['Name of the project', 'Start date', 'End date', 'Description', 'Link to project'];
+        this.placeholders = ['', 'YYYY-MM-DD', 'YYYY-MM-DD', '', '']
         this.inputForm = this.fb.group({
           profile: this.fb.array([
             this.fb.control(''),
@@ -124,6 +138,18 @@ export class InputModalComponent implements OnInit {
           end_date: this.inputForm.get('profile').value[2],
           title: this.inputForm.get('profile').value[3],
           responsibilities: this.inputForm.get('profile').value[4],
+          user: this.currentUserId,
+        }).subscribe(_ => {
+          this.closeInputModal();
+        })
+        break;
+      }
+      case 'Projects': {
+        this.authService.add_experience({
+          project_name: this.inputForm.get('profile').value[0],
+          start_date: this.inputForm.get('profile').value[1],
+          end_date: this.inputForm.get('profile').value[2],
+          description: this.inputForm.get('profile').value[4],
           user: this.currentUserId,
         }).subscribe(_ => {
           this.closeInputModal();
