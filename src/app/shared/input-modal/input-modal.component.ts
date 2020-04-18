@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class InputModalComponent implements OnInit {
 
   inputForm: FormGroup;
+  editForm: FormGroup;
   currentUserId: number;
   inputData: MyProfile
   labels: string[];
@@ -29,8 +30,18 @@ export class InputModalComponent implements OnInit {
     this.currentUserId = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
     this.myProfileService.inputModal$.subscribe(inputData => {
       this.inputData = { ...inputData };
+      console.log(this.inputData);
       this.createDynamicFormControls()
     })
+  }
+
+  getProfileFieldData(description, id) {
+    switch (description) {
+      case 'Certifications': {
+
+        break;
+      }
+    }
   }
 
   createDynamicFormControls() {
@@ -38,13 +49,14 @@ export class InputModalComponent implements OnInit {
       case 'Profile': {
         this.labels = ['Enter your first name', 'Enter your last name'];
         this.placeholders = ['first name', 'last name']
-        console.log(this.labels);
-        this.inputForm = this.fb.group({
-          profile: this.fb.array([
-            this.fb.control(''),
-            this.fb.control('')
-          ])
-        });
+        if (this.inputData.isInputForm) {
+          this.inputForm = this.fb.group({
+            profile: this.fb.array([
+              this.fb.control(''),
+              this.fb.control('')
+            ])
+          });
+        }
         break;
       }
       case 'Headline': {
@@ -86,15 +98,28 @@ export class InputModalComponent implements OnInit {
       }
         break;
       case 'Certifications': {
+        console.log('ggg');
         this.labels = ['Certification'];
-        this.placeholders = ['Certification Name', 'Validity in YYYY-MM-DD','Description'];
-        this.inputForm = this.fb.group({
-          profile: this.fb.array([
-            this.fb.control(''),
-            this.fb.control(''),
-            this.fb.control('')
-          ])
-        });
+        this.placeholders = ['Certification Name', 'Validity in YYYY-MM-DD', 'Description'];
+        if (this.inputData.isInputForm) {
+          this.inputForm = this.fb.group({
+            profile: this.fb.array([
+              this.fb.control(''),
+              this.fb.control(''),
+              this.fb.control('')
+            ])
+          });
+        }
+        else {
+          const data = this.inputData.data;
+          this.editForm = this.fb.group({
+            profile: this.fb.array([
+              this.fb.control(data['certification_name']),
+              this.fb.control(data['validity_date']),
+              this.fb.control(data['description'])
+            ])
+          })
+        }
         break;
       }
       case 'Skills': {
@@ -181,6 +206,24 @@ export class InputModalComponent implements OnInit {
         break;
       }
     }
+  }
+
+  onEdit(description) {
+    switch (description) {
+      case 'Certifications': {
+        this.authService.update_certificate(this.inputData.data.id, {
+          certification_name: this.editForm.get('profile').value[0],
+          validity_date: this.editForm.get('profile').value[1],
+          description: this.editForm.get('profile').value[2],
+          user: this.currentUserId
+        })
+          .subscribe(_=>{
+            this.closeInputModal();
+          })
+        break;
+      }
+    }
+
   }
 
   closeInputModal() {

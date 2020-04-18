@@ -76,6 +76,14 @@ export class AuthService {
     return this.http.post(`${config.base_url}/Users/projects/`, $data)
   }
 
+  get_certificate(id: number) {
+    return this.http.get<any>(`${config.base_url}/Users/certifications/${id}`);
+  }
+
+  update_certificate(id: number, $data){
+    return this.http.patch<any>(`${config.base_url}/Users/certifications/${id}/`, $data);
+  }
+
   get_privacy_details() {
     return this.http.get(`${config.base_url}/Users/privacy`);
   }
@@ -83,7 +91,7 @@ export class AuthService {
   forgot_password($data) {
     return this.http.post(`${config.base_url}/accounts/password-reset/reset_password/`, $data, { headers: this.headers });
   }
-  
+
   reset_password($data) {
     return this.http.post(`${config.base_url}/accounts/password-reset/confirm/`, $data, { headers: this.headers });
   }

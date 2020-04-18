@@ -12,7 +12,8 @@ export class MyprofileEditableService {
   private inputModal = new BehaviorSubject<MyProfile>({
     toShow: false,
     description: '',
-    formControls: []
+    isInputForm: true,
+    data: null
   });
 
   public inputModal$ = this.inputModal.asObservable();
@@ -20,11 +21,12 @@ export class MyprofileEditableService {
 
   constructor() { }
 
-  setInputModal(description, formControls) {
+  setInputModal(description, isInputForm, data) {
     this.inputModal.next({
       toShow: true,
       description,
-      formControls
+      isInputForm,
+      data
     })
   }
 
@@ -32,7 +34,8 @@ export class MyprofileEditableService {
     this.inputModal.next({
       toShow: false,
       description: '',
-      formControls: []
+      isInputForm: true,
+      data: null
     })
   }
 

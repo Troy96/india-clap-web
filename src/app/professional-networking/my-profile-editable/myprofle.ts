@@ -1,5 +1,6 @@
 export interface MyProfile {
     toShow: boolean
     description: string,
-    formControls: any[]
+    isInputForm: boolean,
+    data: any
 }

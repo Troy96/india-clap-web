@@ -59,12 +59,16 @@ export class MyProfileEditableComponent implements OnInit {
       })
   }
 
-  openEditModal(description) {
-    this.inputModal.setInputModal(description, [{ test: 'a' }])
+  openAddModal(description) {
+    this.inputModal.setInputModal(description, true, null)
+  }
+
+  openEditModal(description, data) {
+    this.inputModal.setInputModal(description, false, data);
   }
 
   onVideoResumeUpload(event) {
-    if (event.target.files && event.target.files.length) {
+    if (event.target.œfiles && event.target.files.length) {
       let selectedFiles = event.target.files;
       this.videoFile = selectedFiles[0];
       if (!this.videoFile.type.includes('video')) return this.notifService.showWarning('Not a video file', 'Try again with a video file');
