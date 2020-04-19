@@ -28,24 +28,29 @@ export class NetworkingService {
   create_post($data, userId) {
     const formData = new FormData();
     formData.append('text', $data.text);
-    formData.append('photo',$data.photo);
-    formData.append('video',$data.video);
+    formData.append('photo', $data.photo);
+    formData.append('video', $data.video);
     formData.append('author_user', userId);
     // formData.append('slug',$data.slug);
-    return this.http.post(`${config.base_url}/Networking/timelinePosts/`, formData);  }
+    return this.http.post(`${config.base_url}/Networking/timelinePosts/`, formData);
+  }
 
   like_post(postId: number) {
     return this.http.get(`${config.base_url}/Networking/timelinePosts/${postId}/like`)
   }
 
-  get_reactions_count(postId: number) {
-    return this.http.get(`${config.base_url}/Networking/timelinePostReactions/${postId}/`);
+  post_user_like_status(postId: number) {
+    return this.http.get<any>(`${config.base_url}/Networking/timelinePosts/${postId}/liked_or_not`);
   }
 
   comment_on_post(postId: number, comment: string) {
     const formData = new FormData();
     formData.append('comment', comment);
     return this.http.post(`${config.base_url}/Networking/timelinePosts/${postId}/comment`, formData);
+  }
+
+  get_post_comments(postId: number){
+    return this.http.get<any>(`${config.base_url}/Networking/timelinePosts/${postId}/comments`)
   }
 
   follow_request(userId: number) {
@@ -72,8 +77,20 @@ export class NetworkingService {
   }
 
   remove_user_connection(userId) {
-    return this.http.get<any>(`${config.base_url}/Networking/connection/remove/${userId}`)
+    return this.http.get<any>(`${config.base_url}/Networking/connection/remove/${userId}/`);
+  }
+  report_post(postId, $data) {
+    const formData = new FormData();
+    formData.append('flaggedReason', $data.flaggedReason);
+    return this.http.post(`${config.base_url}/Networking/timelinePost/${postId}/report/`, formData);
+
+  }
+  post_reaction(postId, $data) {
+    const formData = new FormData();
+    formData.append('emoji', $data.emoji);
+
+    return this.http.post(`${config.base_url}/Networking/timelinePosts/${postId}/emoji`, formData);
+
   }
 
-  
 }

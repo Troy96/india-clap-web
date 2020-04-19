@@ -12,19 +12,24 @@ export class MyprofileEditableService {
   private inputModal = new BehaviorSubject<MyProfile>({
     toShow: false,
     description: '',
-    formControls: []
+    isInputForm: true,
+    data: null
   });
+
+  private toRefreshUserDetails = new BehaviorSubject<boolean>(false);
+  public toRefreshDetails$ = this.toRefreshUserDetails.asObservable();
 
   public inputModal$ = this.inputModal.asObservable();
 
 
   constructor() { }
 
-  setInputModal(description, formControls) {
+  setInputModal(description, isInputForm, data) {
     this.inputModal.next({
       toShow: true,
       description,
-      formControls
+      isInputForm,
+      data
     })
   }
 
@@ -32,8 +37,13 @@ export class MyprofileEditableService {
     this.inputModal.next({
       toShow: false,
       description: '',
-      formControls: []
+      isInputForm: true,
+      data: null
     })
+  }
+
+  updateUserDetails() {
+    this.toRefreshUserDetails.next(true);
   }
 
 

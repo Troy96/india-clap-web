@@ -31,11 +31,16 @@ export class MyProfileEditableComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.userConnections = [];
     this.userId = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
     this.getUserDetails();
+    this.inputModal.toRefreshDetails$.subscribe(toRefresh => {
+      if(toRefresh) this.getUserDetails();
+    })
   }
 
   getUserDetails() {
+    this.userConnections = [];
     this.authService.get_user_details(this.userId)
       .subscribe(respObj => {
         this.userDetails = { ...respObj }
@@ -45,7 +50,7 @@ export class MyProfileEditableComponent implements OnInit {
 
   getConnectionDetailList() {
     for (let user of this.userDetails['connections']) {
-      this.authService.get_user_details(5)
+      this.authService.get_user_details(user)
         .subscribe(respObj => {
           this.userConnections.push(respObj)
         })
@@ -55,16 +60,20 @@ export class MyProfileEditableComponent implements OnInit {
   removeConnection(userId) {
     this.netService.remove_user_connection(userId)
       .subscribe(respobj => {
-        this.getUserDetails();
+        //this.getUserDetails();
       })
   }
 
-  openEditModal(description) {
-    this.inputModal.setInputModal(description, [{ test: 'a' }])
+  openAddModal(description) {
+    this.inputModal.setInputModal(description, true, null)
+  }
+
+  openEditModal(description, data) {
+    this.inputModal.setInputModal(description, false, data);
   }
 
   onVideoResumeUpload(event) {
-    if (event.target.files && event.target.files.length) {
+    if (event.target.œfiles && event.target.files.length) {
       let selectedFiles = event.target.files;
       this.videoFile = selectedFiles[0];
       if (!this.videoFile.type.includes('video')) return this.notifService.showWarning('Not a video file', 'Try again with a video file');
