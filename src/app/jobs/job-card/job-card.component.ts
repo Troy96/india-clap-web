@@ -12,10 +12,10 @@ export class JobCardComponent implements OnInit {
 
   ngOnInit() {
   }
-  toJobSearch(){
-     this.router.navigate(['/jobs/instant-apply-search'])
+  toJobacrossvarioussectors(){
+     this.router.navigate(['/jobs/various-sectors'])
    }
-   toArchiveSearch()
+   toCustomjobsearches()
    {
     this.router.navigate(['/jobs/archive-job-search/'])
    }
