@@ -17,6 +17,6 @@ export class JobCardComponent implements OnInit {
    }
    toCustomjobsearches()
    {
-    this.router.navigate(['/jobs/archive-job-search/'])
+    this.router.navigate(['/jobs/instant-apply-search'])
    }
 }
