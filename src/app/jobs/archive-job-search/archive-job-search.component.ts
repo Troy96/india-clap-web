@@ -9,7 +9,7 @@ import { JobsService } from 'src/app/services/jobs.service';
   styleUrls: ['./archive-job-search.component.css']
 })
 export class ArchiveJobSearchComponent implements OnInit {
-
+  isCollapsed:boolean=true;
   archiveJobSearchForm: FormGroup;
 
   constructor(
@@ -32,7 +32,10 @@ export class ArchiveJobSearchComponent implements OnInit {
       .subscribe(respObj => {
         this.router.navigateByUrl('/jobs/description/' + respObj['results'][0]['id']);
       })
-
+      if(!this.archiveJobSearchForm.invalid)
+    {
+      this.isCollapsed=!this.isCollapsed;
+    }
   }
   ngOnInit() {
   }

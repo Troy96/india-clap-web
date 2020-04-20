@@ -4,7 +4,7 @@
             <h2>Archive job searches</h2>
         </div>
         <form [formGroup]='archiveJobSearchForm'>
-        <div class="place">
+        <div class="place" *ngIf="isCollapsed">
             <h3>Time period</h3>
             <div>
 
@@ -30,6 +30,10 @@
                 <i class="glyphicon glyphicon-search "><img src="/assets/icons/1x/button.png" width="50px"></i>
             </button>
         </div>
+        <div *ngIf="!isCollapsed" class="places">
+            <h3>No jobs found!!</h3>
+        </div>
         </form>
     </div>
+    
 </div>
