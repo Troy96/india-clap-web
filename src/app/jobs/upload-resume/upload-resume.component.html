@@ -37,8 +37,14 @@
                 <div id="des1">
                     Upload your video resume (not more than 30 sec)
                     <input class="form-control" id="frm2" type="file" (change)="onResumeUpload($event);">
+                <div *ngIf="!profshare" style="display: inline-block; background-color: white; position: absolute;padding: 10px; border: black solid 1px; width: fit-content; margin-left: 800px;">
+                    <p>Your application and profile will <br>be shared to the job poster.</p>
+                    <button class="btn btn-primary apply"  (click)="onSubmit();">Ok</button>
                 </div>
-                <button class="btn btn-primary apply" (click)="onSubmit();">Apply</button>
+                </div>
+                <button class="btn btn-primary apply" (click)="profileshare();">Apply</button>
+            
         </form>
     </div>
+    
 </div>

@@ -14,7 +14,7 @@ export class UploadResumeComponent implements OnInit {
 
   jobId: number;
   jobObj: any;
-
+  profshare:boolean=true;
   companyId: number;
   companyObj: any;
 
@@ -51,7 +51,9 @@ export class UploadResumeComponent implements OnInit {
         this.companyObj = { ...respObj };
       })
   }
-
+  profileshare(){
+    this.profshare=!this.profshare;
+  }
   onSubmit() {
     if (!this.uploadResumeForm.valid) return;
 
