@@ -20,7 +20,7 @@
   }
   .mainbody{
     border: 1px gray solid;
-    height: 1000px;
+    height: 750px;
     
   }
   #frm2{ /*forms*/
@@ -150,4 +150,10 @@
          width: 154px;
          height: 40px;
        }
+}
+.places{
+  text-align: center;
+  color: grey;
+  height: 500px;
+
 }

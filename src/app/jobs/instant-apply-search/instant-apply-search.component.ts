@@ -10,6 +10,7 @@ import { CommunicateService } from 'src/app/services/communicate.service';
 })
 export class InstantApplySearchComponent implements OnInit {
 
+  isCollapsed:boolean=true;
   instantApplyForm: FormGroup;
   constructor(
     private jobService: JobsService,
@@ -29,11 +30,15 @@ export class InstantApplySearchComponent implements OnInit {
     this.instantApplyForm.controls["location_District"].markAsTouched();
     this.instantApplyForm.controls["starting_time"].markAsTouched();
     this.instantApplyForm.controls["end_time"].markAsTouched();
-    if (!this.instantApplyForm.valid) return;
-    this.jobService.search_job(this.instantApplyForm.value)
+    if (!this.instantApplyForm.valid) 
+    return this.jobService.search_job(this.instantApplyForm.value)
       .subscribe(respObj => {
         this.communicateService.jobList = [...respObj['results']];
       })
+    if(!this.instantApplyForm.invalid)
+    {
+      this.isCollapsed=!this.isCollapsed;
+    }
   }
 
   ngOnInit() {
