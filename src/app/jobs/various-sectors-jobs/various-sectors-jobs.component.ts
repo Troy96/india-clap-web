@@ -22,7 +22,6 @@ export class VariousSectorsJobsComponent implements OnInit {
   jobList: any[];
   toggleFilter: boolean = false;
   toggleInstantJobs: boolean = false;
-
   ngOnInit() {
     this.getVariousSectorsJobs();
   }
@@ -43,7 +42,11 @@ export class VariousSectorsJobsComponent implements OnInit {
     this.jobService.save_job(jobId)
       .subscribe(respObj => console.log(respObj))
   }
-
+  onSavedJob(event, jobId) {
+    event.target.src = `${this._document.location.origin}/assets/icons/1x/save-filled.png`;
+    this.jobService.save_job(jobId)
+      .subscribe(respObj => console.log(respObj))
+  }
   onSelectAllAndApply() {
     this.jobService.select_all_jobs()
       .subscribe(respObj => console.log(respObj))
