@@ -98,7 +98,7 @@ export class NetworkingService {
 
   }
   get_mycompanies(){
-    return this.http.get(`${config.base_url}/JobMarket/myCompanies/`);
+    return this.http.get<any>(`${config.base_url}/JobMarket/myCompanies/`);
 
   }
 }
