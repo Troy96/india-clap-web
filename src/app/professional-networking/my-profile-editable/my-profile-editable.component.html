@@ -14,8 +14,8 @@
                     <h2><span class="teal">{{userDetails?.first_name}} {{userDetails?.last_name}} <img
                                 src="/assets/icons/1x/Edit.png" (click)="openAddModal('Profile')" width="22px"
                                 style="cursor: pointer;" class="edit-icon1"></span></h2>
-                    <!-- <span>Kolkata, India</span><br> -->
-                    <!-- Graphic Designer -->
+                    <span>{{userDetails?.location}}</span><br>
+                    {{userDetails?.profession}}
                 </div>
 
                 <div id="j-icons"><a>
