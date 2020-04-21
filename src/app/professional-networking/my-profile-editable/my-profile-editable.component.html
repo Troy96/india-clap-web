@@ -2,12 +2,12 @@
     <div class="container">
         <div class="jumbotron jumbotron-fluid">
             <div class="jumbotron-image" *ngIf="userDetails?.photo">
-                <img class="jmb-img" src="{{userDetails?.photo}}" alt="">
+                <img class="jmb-img"  style="cursor: pointer;" (click)="photoInput.click()" src="{{userDetails?.photo}}" alt="">
             </div>
             <input type="file" #photoInput style="display: none;" (change)="onPhotoUpload($event)">
-            <div class="jumbotron-image" *ngIf="!userDetails?.photo" style="cursor: pointer;"
+            <div class="jumbotron-image" *ngIf="!userDetails?.photo">
+                <img class="jmb-img" src="/assets/icons/1x/dp.png" style="cursor: pointer;"
                 (click)="photoInput.click()">
-                <img class="jmb-img" src="/assets/icons/1x/dp.png">
             </div>
             <div id="jumbotron-text">
                 <div id="name">
