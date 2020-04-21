@@ -19,6 +19,7 @@ export class SavedJobsComponent implements OnInit {
 
   ngOnInit() {
     this.getSavedJobs();
+    this.getFavouriteJobs();
   }
 
   getSavedJobs() {
@@ -50,10 +51,23 @@ export class SavedJobsComponent implements OnInit {
   }
 
   unsaveJob(job) {
-    console.log(job);
     this.jobService.unsave_job(job.id)
       .subscribe(respObj => {
         console.log(respObj)
+      })
+  }
+
+  bookmarkJob(job) {
+    this.jobService.favourite_job(job.id)
+      .subscribe(respObj => {
+        console.log(respObj)
+      })
+  }
+
+  getFavouriteJobs() {
+    this.jobService.get_favourite_jobs()
+      .subscribe(respObj => {
+        console.log(respObj);
       })
   }
 

@@ -67,6 +67,14 @@ export class JobsService {
     return this.http.get(`${config.base_url}/JobMarket/jobs/${jobId}/unsave/`)
   }
 
+  favourite_job(jobId) {
+    return this.http.get(`${config.base_url}/JobMarket/jobs/${jobId}/fav/`)
+  }
+
+  get_favourite_jobs() {
+    return this.http.get(`${config.base_url}/JobMaket/jobs/favourite/`)
+  }
+
   search_job($data) {
     return this.http.get(`${config.base_url}/JobMarket/jobs/job?salary=${$data['salary']}&location_District=${$data['location_District']}&location_State=${$data['location_State']}&starting_time=${$data['starting_time']}&end_time=${$data['end_time']}`)
   }

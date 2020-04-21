@@ -10,7 +10,7 @@ export class NetworkingService {
   constructor(private http: HttpClient) { }
 
   get_companies() {
-    return this.http.get(`${config.base_url}/JobMarket/companies`);
+    return this.http.get<any>(`${config.base_url}/JobMarket/companies`);
   }
 
   create_company($data) {
