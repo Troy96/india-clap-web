@@ -24,7 +24,7 @@ export class SavedJobsComponent implements OnInit {
   getSavedJobs() {
     this.jobService.get_saved_jobs()
       .subscribe(respObj => {
-        this.savedJobList = [...respObj['results']].map(obj => obj['saved_job']);
+        this.savedJobList = [...respObj].map(obj => obj['saved_job']);
         this.getJobDetails();
       })
   }
@@ -49,4 +49,6 @@ export class SavedJobsComponent implements OnInit {
         console.log(this.jobDetailList);
       })
   }
+
+
 }

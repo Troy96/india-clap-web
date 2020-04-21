@@ -73,7 +73,7 @@ export class JobsService {
   }
 
   get_saved_jobs() {
-    return this.http.get(`${config.base_url}/JobMarket/jobs/saved`);
+    return this.http.get<any>(`${config.base_url}/JobMarket/jobs/saved`);
   }
 
   get_applied_jobs() {
