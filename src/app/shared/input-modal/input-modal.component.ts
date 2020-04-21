@@ -14,6 +14,7 @@ export class InputModalComponent implements OnInit {
   inputForm: FormGroup;
   editForm: FormGroup;
   currentUserId: number;
+  currentProfileId: number;
   inputData: MyProfile
   labels: string[];
   placeholders: string[];
@@ -27,7 +28,8 @@ export class InputModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentUserId = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
+    this.currentProfileId = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
+    this.currentProfileId = JSON.parse(localStorage.getItem('currentUser'))['profile_id'];
     this.myProfileService.inputModal$.subscribe(inputData => {
       this.inputData = { ...inputData };
       this.createDynamicFormControls()
@@ -158,7 +160,7 @@ export class InputModalComponent implements OnInit {
     switch (description) {
       case 'Profile': {
         this.authService.update_user_details(
-          this.currentUserId,
+          this.currentProfileId,
           {
             first_name: this.inputForm.get('profile').value[0],
             last_name: this.inputForm.get('profile').value[1]
@@ -170,7 +172,7 @@ export class InputModalComponent implements OnInit {
       }
         break;
       case 'Headline': {
-        this.authService.update_user_details(this.currentUserId, { brief_Desc: this.inputForm.get('profile').value[0] })
+        this.authService.update_user_details(this.currentProfileId, { brief_Desc: this.inputForm.get('profile').value[0] })
           .subscribe(_ => {
             this.myProfileService.updateUserDetails();
             this.closeInputModal();
@@ -185,7 +187,7 @@ export class InputModalComponent implements OnInit {
           end_date: this.inputForm.get('profile').value[2],
           title: this.inputForm.get('profile').value[3],
           responsibilities: this.inputForm.get('profile').value[4],
-          user: this.currentUserId,
+          user: this.currentProfileId,
         }).subscribe(_ => {
           this.myProfileService.updateUserDetails();
           this.closeInputModal();
@@ -199,7 +201,7 @@ export class InputModalComponent implements OnInit {
           end_date: this.inputForm.get('profile').value[2],
           description: this.inputForm.get('profile').value[3],
           link: this.inputForm.get('profile').value[4],
-          user: this.currentUserId,
+          user: this.currentProfileId,
         }).subscribe(_ => {
           this.myProfileService.updateUserDetails();
           this.closeInputModal();
@@ -211,7 +213,7 @@ export class InputModalComponent implements OnInit {
           certification_name: this.inputForm.get('profile').value[0],
           validity_date: this.inputForm.get('profile').value[1],
           description: this.inputForm.get('profile').value[2],
-          user: this.currentUserId
+          user: this.currentProfileId
         }).subscribe(_ => {
           this.myProfileService.updateUserDetails();
           this.closeInputModal();
@@ -222,7 +224,7 @@ export class InputModalComponent implements OnInit {
         this.authService.add_skill({
           skill: this.inputForm.get('profile').value[0],
           level: this.inputForm.get('profile').value[1],
-          user: this.currentUserId
+          user: this.currentProfileId
         }).subscribe(_ => {
           this.myProfileService.updateUserDetails();
           this.closeInputModal();
@@ -239,7 +241,7 @@ export class InputModalComponent implements OnInit {
           certification_name: this.editForm.get('profile').value[0],
           validity_date: this.editForm.get('profile').value[1],
           description: this.editForm.get('profile').value[2],
-          user: this.currentUserId
+          user: this.currentProfileId
         })
           .subscribe(_ => {
             this.myProfileService.updateUserDetails();
@@ -254,7 +256,7 @@ export class InputModalComponent implements OnInit {
           end_date: this.editForm.get('profile').value[2],
           title: this.editForm.get('profile').value[3],
           responsibilities: this.editForm.get('profile').value[4],
-          user: this.currentUserId
+          user: this.currentProfileId
         })
           .subscribe(_ => {
             this.myProfileService.updateUserDetails();
@@ -269,7 +271,7 @@ export class InputModalComponent implements OnInit {
           end_date: this.editForm.get('profile').value[2],
           description: this.editForm.get('profile').value[3],
           link: this.editForm.get('profile').value[4],
-          user: this.currentUserId,
+          user: this.currentProfileId,
         }).subscribe(_ => {
           this.myProfileService.updateUserDetails();
           this.closeInputModal();

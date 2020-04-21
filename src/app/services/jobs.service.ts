@@ -27,7 +27,7 @@ export class JobsService {
     return this.http.get(`${config.base_url}/JobMarket/jobs/`);
   }
 
-  get_sectors(){
+  get_sectors() {
     return this.http.get(`${config.base_url}/JobMarket/jobs/sectorwise`)
   }
 
@@ -63,6 +63,18 @@ export class JobsService {
     return this.http.get(`${config.base_url}/JobMarket/jobs/${jobId}/save/`)
   }
 
+  unsave_job(jobId: number) {
+    return this.http.get(`${config.base_url}/JobMarket/jobs/${jobId}/unsave/`)
+  }
+
+  favourite_job(jobId) {
+    return this.http.get(`${config.base_url}/JobMarket/jobs/${jobId}/fav/`)
+  }
+
+  get_favourite_jobs() {
+    return this.http.get(`${config.base_url}/JobMaket/jobs/favourite/`)
+  }
+
   search_job($data) {
     return this.http.get(`${config.base_url}/JobMarket/jobs/job?salary=${$data['salary']}&location_District=${$data['location_District']}&location_State=${$data['location_State']}&starting_time=${$data['starting_time']}&end_time=${$data['end_time']}`)
   }
@@ -73,7 +85,7 @@ export class JobsService {
   }
 
   get_saved_jobs() {
-    return this.http.get(`${config.base_url}/JobMarket/jobs/saved`);
+    return this.http.get<any>(`${config.base_url}/JobMarket/jobs/saved`);
   }
 
   get_applied_jobs() {
@@ -120,5 +132,5 @@ export class JobsService {
     return this.http.delete(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/`);
 
   }
-  
+
 }

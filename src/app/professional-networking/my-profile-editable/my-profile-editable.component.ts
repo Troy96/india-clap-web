@@ -13,6 +13,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 export class MyProfileEditableComponent implements OnInit {
 
   userId: number;
+  profileId: number;
   userDetails: any;
   userConnections: any[] = [];
 
@@ -33,6 +34,7 @@ export class MyProfileEditableComponent implements OnInit {
   ngOnInit() {
     this.userConnections = [];
     this.userId = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
+    this.profileId = JSON.parse(localStorage.getItem('currentUser'))['profile_id'];
     this.getUserDetails();
     this.inputModal.toRefreshDetails$.subscribe(toRefresh => {
       if(toRefresh) this.getUserDetails();
@@ -41,7 +43,7 @@ export class MyProfileEditableComponent implements OnInit {
 
   getUserDetails() {
     this.userConnections = [];
-    this.authService.get_user_details(this.userId)
+    this.authService.get_user_details(this.profileId)
       .subscribe(respObj => {
         this.userDetails = { ...respObj }
         this.getConnectionDetailList();
@@ -88,7 +90,7 @@ export class MyProfileEditableComponent implements OnInit {
   }
 
   uploadVideoResume() {
-    this.authService.upload_user_video_resume(this.userId, this.videoFile)
+    this.authService.upload_user_video_resume(this.profileId, this.videoFile)
       .subscribe(_ => {
         this.notifService.showSuccess('Video uploaded successfully', 'profile Alert');
       })
@@ -99,7 +101,7 @@ export class MyProfileEditableComponent implements OnInit {
       let selectedFiles = event.target.files;
       this.imageFile = selectedFiles[0];
 
-      this.authService.upload_user_photo(this.userId, this.imageFile)
+      this.authService.upload_user_photo(this.profileId, this.imageFile)
         .subscribe(_ => {
           this.notifService.showSuccess('Photo changed successfully', 'Profile Alert')
         })

@@ -19,12 +19,13 @@ export class SavedJobsComponent implements OnInit {
 
   ngOnInit() {
     this.getSavedJobs();
+    this.getFavouriteJobs();
   }
 
   getSavedJobs() {
     this.jobService.get_saved_jobs()
       .subscribe(respObj => {
-        this.savedJobList = [...respObj['results']].map(obj => obj['saved_job']);
+        this.savedJobList = [...respObj].map(obj => obj['saved_job']);
         this.getJobDetails();
       })
   }
@@ -46,7 +47,29 @@ export class SavedJobsComponent implements OnInit {
           name: respObj['name'],
           ...jobDetails
         })
-        console.log(this.jobDetailList);
       })
   }
+
+  unsaveJob(job) {
+    this.jobService.unsave_job(job.id)
+      .subscribe(respObj => {
+        console.log(respObj)
+      })
+  }
+
+  bookmarkJob(job) {
+    this.jobService.favourite_job(job.id)
+      .subscribe(respObj => {
+        console.log(respObj)
+      })
+  }
+
+  getFavouriteJobs() {
+    this.jobService.get_favourite_jobs()
+      .subscribe(respObj => {
+        console.log(respObj);
+      })
+  }
+
+
 }
