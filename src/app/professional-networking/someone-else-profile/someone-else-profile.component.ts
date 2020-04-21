@@ -34,10 +34,10 @@ export class SomeoneElseProfileComponent implements OnInit {
   }
 
   getUserDetails() {
-    this.authService.get_user_profiles()
+    this.authService.get_user_details(this.userId)
       .subscribe(respObj => {
-        this.userList = [...respObj];
-        this.userDetails = this.userList.find(obj => obj['user'] == this.userId);
+        this.userDetails = respObj;
+        // this.userDetails = this.userList.find(obj => obj['user'] == this.userId);
       })
   }
 

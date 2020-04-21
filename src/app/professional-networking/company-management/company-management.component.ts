@@ -8,7 +8,7 @@ import { NetworkingService } from 'src/app/services/networking.service';
 })
 export class CompanyManagementComponent implements OnInit {
 
-  companyList: any[];
+  companyList: any=[];
 
   constructor(
     private netService: NetworkingService
@@ -19,9 +19,9 @@ export class CompanyManagementComponent implements OnInit {
   }
 
   getCompaniesManaged() {
-    this.netService.get_companies()
+    this.netService.get_mycompanies()
       .subscribe(respObj => {
-        this.companyList = [...respObj['results']];
+        this.companyList = respObj;
       })
   }
 }

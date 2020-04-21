@@ -48,7 +48,10 @@ export class JobsService {
   }
 
   upload_resume(jobId: number, $data: any) {
-    return this.http.post(`${config.base_url}/JobMarket/jobs/${jobId}/apply/`, $data);
+    const formData = new FormData();
+    formData.append('text', $data.text);
+    formData.append('video', $data.video);
+    return this.http.post(`${config.base_url}/JobMarket/jobs/${jobId}/apply/`, formData);
   }
 
   archive_job_search($data: any) {
@@ -107,7 +110,7 @@ export class JobsService {
   }
 
   change_job_application_state(postId: number, candidateId: number, state: string) {
-    return this.http.get(`${config.base_url}/JobMarket/myJobsPostings/${postId}/candidates/${candidateId}/${state}`)
+    return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings/${postId}/candidates/${candidateId}/${state}`)
   }
 
   get_job_byId(jobId: number) {

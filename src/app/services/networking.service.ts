@@ -92,5 +92,13 @@ export class NetworkingService {
     return this.http.post(`${config.base_url}/Networking/timelinePosts/${postId}/emoji`, formData);
 
   }
+  companyFollow_request(company_id)
+  {
+    return this.http.get(`${config.base_url}/Networking/follow-company/${company_id}/`);
 
+  }
+  get_mycompanies(){
+    return this.http.get(`${config.base_url}/JobMarket/myCompanies/`);
+
+  }
 }
