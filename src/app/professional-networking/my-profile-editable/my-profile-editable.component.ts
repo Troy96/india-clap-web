@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { NetworkingService } from 'src/app/services/networking.service';
 import { MyprofileEditableService } from './myprofile-editable.service';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser'
+import { DomSanitizer, SafeUrl, SafeStyle } from '@angular/platform-browser'
 import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { NotificationService } from 'src/app/services/notification.service';
   templateUrl: './my-profile-editable.component.html',
   styleUrls: ['./my-profile-editable.component.css']
 })
-export class MyProfileEditableComponent implements OnInit {
+export class MyProfileEditableComponent implements OnInit, AfterViewInit {
 
   userId: number;
   profileId: number;
@@ -19,26 +19,35 @@ export class MyProfileEditableComponent implements OnInit {
 
   videoFile: any;
   imageFile: any;
+  coverFile: any;
   videoUrl: SafeUrl;
   videoSizeError: any;
 
+  coverImgStyle: SafeStyle;
+
+  @ViewChild('coverImg', { static: true }) coverImgRef: ElementRef;
 
   constructor(
     private authService: AuthService,
     private netService: NetworkingService,
     private inputModal: MyprofileEditableService,
     private sanitizer: DomSanitizer,
-    private notifService: NotificationService
+    private notifService: NotificationService,
+    private renderer: Renderer2,
   ) { }
 
   ngOnInit() {
+
     this.userConnections = [];
     this.userId = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
     this.profileId = JSON.parse(localStorage.getItem('currentUser'))['profile_id'];
     this.getUserDetails();
     this.inputModal.toRefreshDetails$.subscribe(toRefresh => {
-      if(toRefresh) this.getUserDetails();
+      if (toRefresh) this.getUserDetails();
     })
+  }
+
+  ngAfterViewInit() {
   }
 
   getUserDetails() {
@@ -46,8 +55,18 @@ export class MyProfileEditableComponent implements OnInit {
     this.authService.get_user_details(this.profileId)
       .subscribe(respObj => {
         this.userDetails = { ...respObj }
+        this.setinitCover();
         this.getConnectionDetailList();
       })
+  }
+
+  setinitCover() {
+    if (!this.userDetails.cover_photo) {
+      this.coverImgStyle = this.getSanitizedPhoto(`background-image: url("./assets/icons/1x/Asset 2.png")`);
+    }
+    else {
+      this.coverImgStyle = this.getSanitizedPhoto(`background-image: url(${this.userDetails.cover_photo}`);
+    }
   }
 
   getConnectionDetailList() {
@@ -107,6 +126,28 @@ export class MyProfileEditableComponent implements OnInit {
         })
 
     }
+  }
+
+  onCoverUpload(event) {
+    if (event.target.files && event.target.files.length) {
+      let selectedFiles = event.target.files;
+
+      this.coverFile = selectedFiles[0];
+
+      this.authService.upload_user_cover(this.profileId, this.coverFile)
+        .subscribe(respObj => {
+
+          const styleExp = `background-image: url(${respObj['cover_photo']})`;
+          this.coverImgStyle = this.getSanitizedPhoto(styleExp);
+
+          this.notifService.showSuccess('Cover changed successfully', 'Profile Alert')
+
+        });
+    }
+  }
+
+  getSanitizedPhoto(photoUrl: string) {
+    return this.sanitizer.bypassSecurityTrustStyle(photoUrl);
   }
 
 }

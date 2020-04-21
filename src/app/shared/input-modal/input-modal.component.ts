@@ -40,11 +40,13 @@ export class InputModalComponent implements OnInit {
   createDynamicFormControls() {
     switch (this.inputData.description) {
       case 'Profile': {
-        this.labels = ['Enter your first name', 'Enter your last name'];
-        this.placeholders = ['first name', 'last name']
+        this.labels = ['Enter your first name', 'Enter your last name', 'Enter your location', 'Enter your profession'];
+        this.placeholders = ['first name', 'last name', '', '']
         if (this.inputData.isInputForm) {
           this.inputForm = this.fb.group({
             profile: this.fb.array([
+              this.fb.control(''),
+              this.fb.control(''),
               this.fb.control(''),
               this.fb.control('')
             ])
@@ -159,12 +161,15 @@ export class InputModalComponent implements OnInit {
   onSave(description) {
     switch (description) {
       case 'Profile': {
+        let updateObj = {};
+       
+        if(!!this.inputForm.get('profile').value[0]) updateObj['first_name'] = this.inputForm.get('profile').value[0];
+        if(!!this.inputForm.get('profile').value[1]) updateObj['last_name'] = this.inputForm.get('profile').value[1];
+        if(!!this.inputForm.get('profile').value[2]) updateObj['location'] = this.inputForm.get('profile').value[2];
+        if(!!this.inputForm.get('profile').value[3]) updateObj['profession'] = this.inputForm.get('profile').value[3];
+
         this.authService.update_user_details(
-          this.currentProfileId,
-          {
-            first_name: this.inputForm.get('profile').value[0],
-            last_name: this.inputForm.get('profile').value[1]
-          })
+          this.currentProfileId, updateObj)
           .subscribe(_ => {
             this.myProfileService.updateUserDetails();
             this.closeInputModal();

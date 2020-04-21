@@ -60,6 +60,12 @@ export class AuthService {
     return this.http.patch(`${config.base_url}/Users/profiles/${userId}/`, formData)
   }
 
+  upload_user_cover(userId, data){
+    const formData = new FormData();
+    formData.append('cover_photo', data);
+    return this.http.patch(`${config.base_url}/Users/profiles/${userId}/`, formData);
+  }
+
   add_certificate($data) {
     return this.http.post(`${config.base_url}/Users/certifications/`, $data)
   }
