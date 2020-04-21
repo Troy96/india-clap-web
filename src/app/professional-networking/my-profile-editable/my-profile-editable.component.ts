@@ -121,8 +121,9 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
       this.imageFile = selectedFiles[0];
 
       this.authService.upload_user_photo(this.profileId, this.imageFile)
-        .subscribe(_ => {
-          this.notifService.showSuccess('Photo changed successfully', 'Profile Alert')
+        .subscribe(respObj => {
+          this.notifService.showSuccess('Photo changed successfully', 'Profile Alert');
+          this.userDetails.photo = respObj['photo'];
         })
 
     }
