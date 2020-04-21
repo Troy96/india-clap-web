@@ -1,7 +1,8 @@
 import { Component, OnInit, Renderer2, ElementRef, ViewChild, Inject } from '@angular/core';
 import { JobsService } from 'src/app/services/jobs.service';
 import { DOCUMENT } from '@angular/common';
-
+import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/services/notification.service';
 @Component({
   selector: 'app-various-sectors-jobs',
   templateUrl: './various-sectors-jobs.component.html',
@@ -9,17 +10,18 @@ import { DOCUMENT } from '@angular/common';
 })
 export class VariousSectorsJobsComponent implements OnInit {
 
+  
   @ViewChild('filters', { static: false }) filtersRef: ElementRef
   constructor(
     @Inject(DOCUMENT) private _document: Document,
 
     private jobService: JobsService,
     private renderer: Renderer2,
-
+    private router: Router,private notifyService : NotificationService
   ) {
   }
-
-  jobList: any[];
+  savedJob: any[]=[];
+  jobList: any[]=[];
   toggleFilter: boolean = false;
   toggleInstantJobs: boolean = false;
   ngOnInit() {
@@ -43,6 +45,9 @@ export class VariousSectorsJobsComponent implements OnInit {
       .subscribe(respObj => console.log(respObj))
   }
   onSavedJob(event, jobId) {
+    this.notifyService.showSuccess('','Job added to saved list');
+    this.savedJob.push(this.jobList);
+    console.log(this.savedJob);
     event.target.src = `${this._document.location.origin}/assets/icons/1x/save-filled.png`;
     this.jobService.save_job(jobId)
       .subscribe(respObj => console.log(respObj))

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { JobsService } from 'src/app/services/jobs.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SavedJobsComponent implements OnInit {
 
-  savedJobList: any[];
+  @Input() savedJobList: any[] =[];
   jobDetailList: any[] = [];
 
   constructor(
