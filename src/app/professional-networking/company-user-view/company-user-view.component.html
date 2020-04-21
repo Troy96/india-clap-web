@@ -15,7 +15,8 @@
                 </a>
             </div>
             <div class="jumbo-btn">
-                <button class="btn btn-primary jbtn upload-image">Follow</button>
+                <button *ngIf="isFollowed" class="btn btn-primary jbtn upload-image" >Following</button>
+                <button *ngIf="!isFollowed" class="btn btn-primary jbtn upload-image" (click)="onFollowCompany()">Follow</button>
                 <button class="btn btn-primary jbtn">Message</button>
             </div>
         </div>

@@ -19,7 +19,7 @@ export class VariousSectorsJobsComponent implements OnInit {
   ) {
   }
 
-  jobList: any[];
+  jobList: any=[];
   toggleFilter: boolean = false;
   toggleInstantJobs: boolean = false;
 
@@ -30,7 +30,7 @@ export class VariousSectorsJobsComponent implements OnInit {
   getVariousSectorsJobs() {
     this.jobService.get_various_sectors_jobs()
       .subscribe(respObj => {
-        this.jobList = [...respObj];
+        this.jobList = respObj;
       })
   }
 

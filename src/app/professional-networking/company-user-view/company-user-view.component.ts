@@ -14,7 +14,7 @@ export class CompanyUserViewComponent implements OnInit {
   companyPosts: any[];
   commentTxt: string;
   connectionStatus: string;
-
+  isFollowed:Boolean = false;
   constructor(
     private router: ActivatedRoute,
     private netService: NetworkingService
@@ -24,6 +24,7 @@ export class CompanyUserViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   getCompanyDetails() {
@@ -31,7 +32,18 @@ export class CompanyUserViewComponent implements OnInit {
       .subscribe(respObj => {
         this.companyDetails = { ...respObj };
         this.companyPosts = [...respObj['company_posts']];
+        let findFollower = (this.companyDetails.followers_of_company);
+        let _profileId = (JSON.parse(localStorage.getItem('currentUser'))).profile_id;
+        // console.log(_profileId)
+        for(let i=0;i<findFollower.length;i++)
+        {
+          if(findFollower[i]==_profileId)
+          {
+            this.isFollowed = true;
+          }
+        }
       })
+
   }
 
   likePost(postId) {
@@ -76,6 +88,13 @@ export class CompanyUserViewComponent implements OnInit {
         console.log(respObj)
       })
   }
+  onFollowCompany(){
+    this.netService.companyFollow_request(this.companyId)
+      .subscribe(respObj => {
+        console.log(respObj)
+      })
+  }
+
 
   // isUserConnection() {
   //   const user = this.userList.find(user => user['id'] === this.companyId);

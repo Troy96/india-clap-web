@@ -9,30 +9,32 @@
   </div>
   </div>
   <div class="place" *ngIf="shortlistedList?.length">
+    <div *ngFor="let candidate of shortlistedList">
+
     <div class="card" style="width: 100%;">
       <div class="card-body">
 
         <div id="symbols">
-          <a href="">
-            <h5>Accept &nbsp;</h5>
+          <a >
+            <h5 (click)="changeJobStatus('accept',candidate.job.id,candidate.applicant.id)">Accept &nbsp;</h5>
           </a>
-          <a href="">
-            <h5>Reject &nbsp;</h5>
+          <a >
+            <h5 (click)="changeJobStatus('reject',candidate.job.id,candidate.applicant.id)">Reject &nbsp;</h5>
           </a>
-          <a href="">
-            <h5>Remove &nbsp;</h5>
+          <a >
+            <h5 (click)="changeJobStatus('reject',candidate.job.id,candidate.applicant.id)">Remove &nbsp;</h5>
           </a>
         </div>
 
         <div id="vidlink">
-          <a href="">
-            <h6>www.linktovideoprofile.com</h6>
+          <a href="{{candidate.applicant.video_resume}}">
+            <h6>Candidate video resume</h6>
           </a>
         </div>
-        <img class="card-img" src="/assets/icons/1x/dp1.png" alt="Card image cap">
+        <img class="card-img" src={{candidate.applicant.photo}} alt="Card image cap">
         <div id="crdtxt">
           <a href="">
-            <h4 class="card-title">Abesh Chatterjee</h4>
+            <h4 class="card-title">{{candidate.applicant.first_name}} {{candidate.applicant.last_name}}</h4>
             <span class="card-text">Gurgao, India</span><br>
 
           </a>
@@ -40,7 +42,8 @@
 
       </div>
     </div>
-    <div class="card" style="width: 100%;">
+    </div>
+    <!-- <div class="card" style="width: 100%;">
       <div class="card-body">
         <div id="symbols">
           <a href="">
@@ -126,7 +129,9 @@
         </div>
 
       </div>
-    </div>
+    </div> -->
   </div>
-  <div class="no-data" *ngIf="!shortlistedList?.length"></div>
+  <div class="no-data" *ngIf="!shortlistedList?.length">
+    No Candidates shortlisted for this job yet!
+  </div>
 </div>
