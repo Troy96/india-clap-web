@@ -46,7 +46,14 @@ export class SavedJobsComponent implements OnInit {
           name: respObj['name'],
           ...jobDetails
         })
-        console.log(this.jobDetailList);
+      })
+  }
+
+  unsaveJob(job) {
+    console.log(job);
+    this.jobService.unsave_job(job.id)
+      .subscribe(respObj => {
+        console.log(respObj)
       })
   }
 
