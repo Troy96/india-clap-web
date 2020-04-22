@@ -7,89 +7,89 @@
         <form class="form2" [formGroup]='jobPostForm'>
             <div class="form-group">
                 <label for="exampleInputEmail1">Name of the company</label>
-                <select class="form-control" style="width: 600px;"  formControlname="company">
-                    <option *ngFor="let company of company_data" [ngValue]="company.id">{{company.name}}</option>
-                </select>
-                <!-- <input type="email" class="form-control formcont" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <select class="form-control formcont" id="exampleInputEmail1" aria-describedby="emailHelp"
                     placeholder="Abc Industries, XYZ Designs" formControlName="company"
-                    [ngClass]="{'is-invalid':jobPostForm.get('company').touched && jobPostForm.get('company').invalid}"> -->
-                    <div class="invalid-feedback">
-                        <p class="error">This field is required</p>
-                     </div> 
+                    [ngClass]="{'is-invalid':jobPostForm.get('company').touched && jobPostForm.get('company').invalid}">
+                    <option *ngFor="let opt of company_data" [value]="opt.id">{{opt.name}}</option>
+
+                </select>
+                <div class="invalid-feedback">
+                    <p class="error">This field is required</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Job Role</label>
                 <input type="text" class="form-control formcont" id="exampleInputPassword1"
                     placeholder="Engineer, plumber" formControlName="job_role"
                     [ngClass]="{'is-invalid':jobPostForm.get('job_role').touched && jobPostForm.get('job_role').invalid}">
-                    <div class="invalid-feedback">
-                        <p class="error">This field is required</p>
-                     </div> 
+                <div class="invalid-feedback">
+                    <p class="error">This field is required</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Job title</label>
                 <input type="email" class="form-control formcont" id="exampleInputEmail1" aria-describedby="emailHelp"
                     placeholder="Title of the job" formControlName="job_title"
                     [ngClass]="{'is-invalid':jobPostForm.get('job_title').touched && jobPostForm.get('job_title').invalid}">
-                    <div class="invalid-feedback">
-                        <p class="error">This field is required</p>
-                     </div> 
+                <div class="invalid-feedback">
+                    <p class="error">This field is required</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Employer Email</label>
                 <input type="email" class="form-control formcont" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Email of Employer"  formControlName="emp_email"
+                    placeholder="Email of Employer" formControlName="emp_email"
                     [ngClass]="{'is-invalid':jobPostForm.get('emp_email').touched && jobPostForm.get('emp_email').invalid}">
-                    <div class="invalid-feedback">
-                        <p class="error">This field is required</p>
-                     </div> 
+                <div class="invalid-feedback">
+                    <p class="error">This field is required</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Description</label>
                 <input type="email" class="form-control formcont" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Roles and responsibilities within the job"  formControlName="desc"
+                    placeholder="Roles and responsibilities within the job" formControlName="desc"
                     [ngClass]="{'is-invalid':jobPostForm.get('desc').touched && jobPostForm.get('desc').invalid}">
-                    <div class="invalid-feedback">
-                        <p class="error">This field is required</p>
-                     </div> 
+                <div class="invalid-feedback">
+                    <p class="error">This field is required</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Salary Range</label>
                 <input type="email" class="form-control formcont" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Salary per month"  formControlName="salary_range"
+                    placeholder="Salary per month" formControlName="salary_range"
                     [ngClass]="{'is-invalid':jobPostForm.get('salary_range').touched && jobPostForm.get('salary_range').invalid}">
-                    <div class="invalid-feedback">
-                        <p class="error">This field is required</p>
-                     </div> 
+                <div class="invalid-feedback">
+                    <p class="error">This field is required</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Skills Required</label>
                 <input type="email" class="form-control formcont" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Skills which are expected from the applicant"  formControlName="skills_required"
+                    placeholder="Skills which are expected from the applicant" formControlName="skills_required"
                     [ngClass]="{'is-invalid':jobPostForm.get('skills_required').touched && jobPostForm.get('skills_required').invalid}">
-                    <div class="invalid-feedback">
-                        <p class="error">This field is required</p>
-                     </div> 
+                <div class="invalid-feedback">
+                    <p class="error">This field is required</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">State</label>
                 <input type="text" class="form-control formcont" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="West Bengal,Haryana,etc."  formControlName="job_state"
+                    placeholder="West Bengal,Haryana,etc." formControlName="job_state"
                     [ngClass]="{'is-invalid':jobPostForm.get('job_state').touched && jobPostForm.get('job_state').invalid}">
-                    <div class="invalid-feedback">
-                        <p class="error">This field is required</p>
-                     </div> 
+                <div class="invalid-feedback">
+                    <p class="error">This field is required</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">District</label>
                 <input type="email" class="form-control formcont" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Kolkata,24 Parganas"  formControlName="job_district"
+                    placeholder="Kolkata,24 Parganas" formControlName="job_district"
                     [ngClass]="{'is-invalid':jobPostForm.get('job_district').touched && jobPostForm.get('job_district').invalid}">
-                    <div class="invalid-feedback">
-                        <p class="error">This field is required</p>
-                     </div> 
+                <div class="invalid-feedback">
+                    <p class="error">This field is required</p>
+                </div>
             </div>
-          
+
 
             <button type="submit" class="btn btn-primary sub" (click)="submit()">Submit</button>
         </form>

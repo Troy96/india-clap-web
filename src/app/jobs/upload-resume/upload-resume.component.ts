@@ -29,7 +29,7 @@ export class UploadResumeComponent implements OnInit {
     this.getJobDetails(this.jobId);
     this.uploadResumeForm = new FormGroup({
       text: new FormControl("", Validators.required),
-      video: new FormControl(null, Validators.required)
+      video: new FormControl("")
     })
   }
 
@@ -73,8 +73,14 @@ export class UploadResumeComponent implements OnInit {
       let _file = selectedFiles[0];
     //  reader.onload = () => {
         this.uploadResumeForm.patchValue({
-          video: _file
+          video: ""
         });
+        let obj:any={};
+        obj.video_resume = _file;
+        let userId = (JSON.parse(localStorage.getItem('currentUser'))).profile_id;
+        this.jobService.send_video(userId,obj).subscribe((data):any=>{
+        console.log(data);
+        })
         console.log(_file);
 
       //   this.cd.markForCheck();
