@@ -47,3 +47,8 @@
     color: red;
     
   }
+
+  select {
+     border: 1px solid #DCDCDC !important; 
+     color: black !important;
+  }

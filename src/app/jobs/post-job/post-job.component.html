@@ -7,9 +7,12 @@
         <form class="form2" [formGroup]='jobPostForm'>
             <div class="form-group">
                 <label for="exampleInputEmail1">Name of the company</label>
-                <input type="email" class="form-control formcont" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Abc Industries, XYZ Designs" formControlName="name"
-                    [ngClass]="{'is-invalid':jobPostForm.get('name').touched && jobPostForm.get('name').invalid}">
+                <select class="form-control" style="width: 600px;"  formControlname="company">
+                    <option *ngFor="let company of company_data" [ngValue]="company.id">{{company.name}}</option>
+                </select>
+                <!-- <input type="email" class="form-control formcont" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Abc Industries, XYZ Designs" formControlName="company"
+                    [ngClass]="{'is-invalid':jobPostForm.get('company').touched && jobPostForm.get('company').invalid}"> -->
                     <div class="invalid-feedback">
                         <p class="error">This field is required</p>
                      </div> 

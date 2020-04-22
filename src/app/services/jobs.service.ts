@@ -17,7 +17,6 @@ export class JobsService {
   create_job($data: any) {
     // console.log($data)
     return this.http.post(`${config.base_url}/JobMarket/jobs/create/`, $data);
-
   }
   get_companies() {
     //JobMarket/companies

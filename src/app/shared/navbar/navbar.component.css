@@ -1,3 +1,6 @@
+nav {
+  height: 65px;
+}
 .navbar-icon-top .navbar-nav .nav-link .link > .fa {
   position: relative;
   width: 36px;
@@ -185,4 +188,13 @@ nav{
   padding-left: 10px;
   padding-right: 30px;
   cursor: pointer;
+}
+
+.navbar-dp {
+  display: block;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  position: relative;
+  left: 5px;
 }
