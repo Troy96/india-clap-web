@@ -60,7 +60,7 @@ export class SomeoneElseProfileComponent implements OnInit {
   }
 
   onConnectRequest(){
-    
+    this.onFollowRequest()
   }
 
   isCurrentUserProfile() {
@@ -70,17 +70,20 @@ export class SomeoneElseProfileComponent implements OnInit {
   onFollowRequest() {
     this.netService.follow_request(this.userId)
       .subscribe(respObj => {
+        this.getProfileConnectionStatus();
         this.notifyService.showSuccess('Your request has been sent to the user', 'Connection Alert');
       });
   }
 
-  onRejectRequest() {
+  onCancelRequest() {
     this.netService.cancel_request(this.userId)
       .subscribe(respObj => {
+        this.getProfileConnectionStatus();
         this.notifyService.showInfo('Connection request rejected!', 'Connection Alert');
         console.log(respObj);
       })
   }
+
 
   onAcceptRequest() {
     this.netService.accept_request(this.userId)

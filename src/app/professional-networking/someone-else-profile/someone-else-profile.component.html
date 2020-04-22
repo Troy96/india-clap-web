@@ -15,14 +15,11 @@
                 <div style="display: flex;
                 height: 35px;">
                     <button *ngIf="profileConnectionStatus === 'Not Connected'" (click)="onConnectRequest()"
-                    class="btn btn-primary jbtn">
-                    Connect</button>
-                    <button *ngIf="connectionStatus === 'pending'" (click)="onRejectRequest()"
                         class="btn btn-primary jbtn">
-                        Cancel</button>
-                    <button *ngIf="connectionStatus === 'none'" (click)="onFollowRequest();"
+                        Connect</button>
+                    <button *ngIf="profileConnectionStatus === 'Pending on FROM side'" (click)="onCancelRequest()"
                         class="btn btn-primary jbtn">
-                        Follow</button>
+                        Cancel Request</button>
                     <button *ngIf="connectionStatus === 'approval needed'" (click)="onDeleteRequest()"
                         class="btn btn-primary jbtn">
                         Delete</button>
