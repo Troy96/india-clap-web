@@ -1,6 +1,6 @@
 <div class="container float">
     <div class="jumbotron jumbotron-fluid">
-        <div class="jumbotron-image">
+        <div class="jumbotron-image" [style]="coverImgStyle">
             <img class="jmb-img" src="{{userDetails?.photo}}" alt="">
         </div>
         <div id="jumbotron-text">
@@ -20,14 +20,14 @@
                     <button *ngIf="profileConnectionStatus === 'Pending on FROM side'" (click)="onCancelRequest()"
                         class="btn btn-primary jbtn">
                         Cancel Request</button>
-                    <button *ngIf="connectionStatus === 'approval needed'" (click)="onDeleteRequest()"
+                    <button *ngIf="profileConnectionStatus === 'Pending on TO side'" (click)="onDeleteRequest()"
                         class="btn btn-primary jbtn">
-                        Delete</button>
-                    <button *ngIf="connectionStatus === 'approval needed'" (click)="onAcceptRequest()"
+                        Delete Request</button>
+                    <button *ngIf="profileConnectionStatus === 'Pending on TO side'" (click)="onAcceptRequest()"
                         class="btn btn-primary jbtn">
-                        Accept</button>
-                    <button *ngIf="connectionStatus === 'connected'" class="btn btn-primary jbtn">
-                        Following</button>
+                        Accept Request</button>
+                    <button *ngIf="profileConnectionStatus === 'Already Connected'" class="btn btn-primary jbtn">
+                        Connected</button>
                     <!-- <button class="btn btn-primary jbtn">
                         Message</button> -->
                 </div>
@@ -43,7 +43,7 @@
                 <h3>Headline</h3>
                 <p class="txt">{{userDetails?.brief_Desc}}</p>
             </div>
-            <div id="headline">
+            <!-- <div id="headline">
                 <h3>Experience</h3>
                 <div id="experience">
                     <img class="ex-img" src="/assets/icons/1x/bulb.png" alt="" width="50px">
@@ -53,7 +53,7 @@
                         Jan 2015-present. 4years
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
     </div>
