@@ -59,7 +59,7 @@ export class SomeoneElseProfileComponent implements OnInit {
       })
   }
 
-  onConnectRequest(){
+  onConnectRequest() {
     this.onFollowRequest()
   }
 
