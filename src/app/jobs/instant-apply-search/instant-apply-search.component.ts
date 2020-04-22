@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { JobsService } from 'src/app/services/jobs.service';
 import { CommunicateService } from 'src/app/services/communicate.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-instant-apply-search',
@@ -16,7 +17,7 @@ export class InstantApplySearchComponent implements OnInit {
     private communicateService: CommunicateService
   ) {
     this.instantApplyForm = new FormGroup({
-      salary: new FormControl("", Validators.required),
+      typeOfJob: new FormControl("", Validators.required),
       location_State: new FormControl("", Validators.required),
       location_District: new FormControl("", Validators.required),
       starting_time: new FormControl("", Validators.required),
@@ -24,7 +25,7 @@ export class InstantApplySearchComponent implements OnInit {
     });
   }
   submit() {
-    this.instantApplyForm.controls["salary"].markAsTouched();
+    this.instantApplyForm.controls["typeOfJob"].markAsTouched();
     this.instantApplyForm.controls["location_State"].markAsTouched();
     this.instantApplyForm.controls["location_District"].markAsTouched();
     this.instantApplyForm.controls["starting_time"].markAsTouched();

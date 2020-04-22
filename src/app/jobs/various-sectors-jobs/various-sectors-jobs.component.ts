@@ -53,14 +53,14 @@ export class VariousSectorsJobsComponent implements OnInit {
     this.toggleInstantJobs = !this.toggleInstantJobs;
     this.jobService.instant_apply_jobs(this.toggleInstantJobs)
       .subscribe(respObj => {
-        this.jobList = [...respObj['results']];
+        this.jobList = Object.keys([...respObj['results']]);
       })
   }
 
   getJobsByTitle() {
     this.jobService.get_jobs_by_titles()
       .subscribe(respObj => {
-        this.jobList = [...respObj['results']];
+        this.jobList = Object.keys([...respObj['results']]);
       })
   }
 

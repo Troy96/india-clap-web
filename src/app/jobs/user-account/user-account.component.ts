@@ -17,7 +17,7 @@ export class UserAccountComponent implements OnInit {
   ngOnInit() {
   }
   jobSearch() {
-    this.router.navigate(['/jobs/instant-apply-search'])
+    this.router.navigate(['/jobs/job-card'])
   }
   archiveJobSearch() {
     this.router.navigate(['/jobs/archive-job-search'])
