@@ -171,6 +171,7 @@ nav{
   width: fit-content;
   background-color:white;
   border: black solid 1px;
+  z-index: 5;
   
 }
 .nav-item:hover>.drop-items{
@@ -183,4 +184,5 @@ nav{
 .drop-items>p{
   padding-left: 10px;
   padding-right: 30px;
+  cursor: pointer;
 }
