@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppliedJobsComponent implements OnInit {
 
-  appliedJobList: any[];
+  appliedJobList: any=[];
   appliedJobDetailList: any[] = [];
 
   constructor(
@@ -24,7 +24,7 @@ export class AppliedJobsComponent implements OnInit {
   getAppliedJobs() {
     this.jobService.get_applied_jobs()
       .subscribe(respObj => {
-        this.appliedJobList = [...respObj['results']];
+        this.appliedJobList = respObj;
         this.appliedJobList.forEach(obj => {
           this.setJobDetails(obj['applied_job'], obj['id']);
         })

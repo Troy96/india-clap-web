@@ -50,17 +50,18 @@ export class PostJobComponent implements OnInit {
       obj.company_mail=(this.jobPostForm.get('emp_email').value);
       obj.location_State=this.jobPostForm.get('job_state').value;
       obj.location_District =this.jobPostForm.get('job_district').value;
+      obj.company =(this.jobPostForm.get('name').value);
       var today = new Date();
       var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
       console.log(date);
-      for(let i=1;i<this.company_data.length;i++)
-      {
-        if(this.company_data[i].name==(this.jobPostForm.get('name').value))
-        {
-          obj.company = this.company_data[i].id;
-          break;
-        }
-      }
+      // for(let i=1;i<this.company_data.length;i++)
+      // {
+      //   if(this.company_data[i].name==(this.jobPostForm.get('name').value))
+      //   {
+      //     obj.company = this.company_data[i].id;
+      //     break;
+      //   }
+      // }
       obj.date_posted = date;
       this.jservice.create_job(obj).subscribe((data:any)=>{
         console.log(data);
