@@ -19,6 +19,8 @@ export class SomeoneElseProfileComponent implements OnInit {
   connectionStatus: any;
   isLoading: boolean = true;
 
+  profileConnectionStatus: string;
+
   constructor(
     private router: ActivatedRoute,
     private authService: AuthService,
@@ -31,6 +33,7 @@ export class SomeoneElseProfileComponent implements OnInit {
 
   ngOnInit() {
     this.getUserContacts();
+    this.getProfileConnectionStatus();
   }
 
   getUserDetails() {
@@ -41,12 +44,23 @@ export class SomeoneElseProfileComponent implements OnInit {
       })
   }
 
+  getProfileConnectionStatus() {
+    this.netService.get_connection_status(this.userId)
+      .subscribe(respObj => {
+        this.profileConnectionStatus = respObj.status;
+      })
+  }
+
   getUserContacts() {
     this.netService.get_contacts()
       .subscribe(respObj => {
         this.contactList = [...respObj];
         this.getConnectionStatus();
       })
+  }
+
+  onConnectRequest(){
+    
   }
 
   isCurrentUserProfile() {
