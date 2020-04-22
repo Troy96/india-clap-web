@@ -49,7 +49,7 @@ export class NavbarComponent implements OnInit {
   getNotifications() {
     this.authService.get_user_notifications()
       .subscribe(respObj => {
-        this.notifList = Object.keys([...respObj['results']]);
+        this.notifList = [...respObj['results']];
       })
   }
 

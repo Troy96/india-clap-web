@@ -3,44 +3,16 @@
   width: 36px;
   font-size: 24px;
 }
-.nav-link{
-  background-color: teal;
-  border: none;
-}
-.link{
-  text-decoration: none;
-  color: white;
-}
-
-#filter-data{
-  float: right;
-  position: absolute;
-  top: 15%;
-  right: 15px;
- background-color: white;
- border: 1px gray solid;
- padding-left: 5px;
- padding-top: 5px;
-}
-
-#filter-data > p {
-  cursor: pointer;
-}
-.imgp{
-  text-align: center;
-}
-.imgs{
-	vertical-align: middle;
-}
-
-
 .navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
   font-size: 0.75rem;
   position: absolute;
   right: 0;
   font-family: sans-serif;
 }
-
+.imgp{
+  text-align: center;
+}
+img
 .nav-link, .navbar-brand {
   color: white;
 }
@@ -186,25 +158,29 @@
 nav{
   background-color: teal;
 }
-.input-group-btn{
-  border-left: none !important;
+.nav-item{
+  color: white;
+}
+.nav-item:hover{
   background-color: white;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  margin-top: 20px;
-
+  color: black;
 }
-.input-group-btn:hover{
-  box-shadow: none;
+.drop-items{
+  display:none;
+  position: relative;
+  width: fit-content;
+  background-color:white;
+  border: black solid 1px;
+  
 }
-.form-control{
-  border-right: none;
-  border: none;
-  /* color: white; */
-  border-radius: 15px;
-  margin-top: 20px;
-
+.nav-item:hover>.drop-items{
+  display: block;
+  position: absolute;
 }
-.form-control:hover{
-  box-shadow: none;
+.navbar-nav{
+  padding-right: 120px;
+}
+.drop-items>p{
+  padding-left: 10px;
+  padding-right: 30px;
 }

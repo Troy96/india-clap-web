@@ -10,7 +10,7 @@ import { JobsService } from 'src/app/services/jobs.service';
 export class ViewShortlistTabComponent implements OnInit {
 
   jobId: number;
-  shortlistedList: any[];
+  shortlistedList: any=[];
 
   constructor(
     private router: ActivatedRoute,
@@ -27,8 +27,16 @@ export class ViewShortlistTabComponent implements OnInit {
     this.jobService.get_shorlisted_candidates(this.jobId)
       .subscribe(respObj => {
         console.log(respObj);
-        this.shortlistedList = [...respObj['results']];
+        this.shortlistedList = respObj;
       })
   }
+  changeJobStatus(state,postId,candidateId) {
+    //  let postId = 0, candidateId = 0
+      this.jobService.change_job_application_state(postId, candidateId, state)
+        .subscribe(respObj => {
+          console.log(respObj);
+          this.ngOnInit();
+        })
+    }
 
 }

@@ -19,7 +19,9 @@ export class NotificationService {
   }
   
   showInfo(message, title){
-      this.toastr.info(message, title)
+       console.log("Hellooo");
+      this.toastr.info(message, title);
+    
   }
   
   showWarning(message, title){

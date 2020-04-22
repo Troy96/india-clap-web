@@ -1,13 +1,13 @@
 <div class="container">
     <div class="jumbotron jumbotron-fluid">
         <div class="jumbotron-image">
-            <img class="jmb-img" src="/assets/icons/1x/dp.png" alt="">
+            <img class="jmb-img" src="{{userDetails?.photo}}" alt="">
         </div>
         <div id="jumbotron-text">
             <div id="name">
-                <h2><span class="teal">Abeash Chatterjee</span></h2>
-                <span>Kolkata, India</span><br>
-                Graphic Designer
+                <h2><span class="teal">{{userDetails.first_name}} {{userDetails.last_name}}</span></h2>
+                <!-- <span>Kolkata, India</span><br>
+                Graphic Designer -->
             </div>
 
             <div id="j-icons"><a>
