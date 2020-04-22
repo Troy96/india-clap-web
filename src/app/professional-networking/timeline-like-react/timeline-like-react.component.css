@@ -286,3 +286,42 @@ hr{
       border-bottom-left-radius: 20px;
     }
 }
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.hideIt{
+  visibility:hidden;
+  }
+  #like-options{
+  width: 80px;
+  background-color: lightgrey;
+  margin-left: 25px;
+  -webkit-box-shadow: 0 8px 8px -6px gray;
+	-moz-box-shadow: 0 8px 8px -6px gray;
+	 box-shadow: 0 8px 8px -6px gray;
+}
+svg{
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+.svg-emoji{
+  
+}
+.svg-emoji:hover{
+  fill: gray !important;
+}
+
+.focus{
+  fill: gray !important;
+  color: black !important;
+
+}
+/* #like-options{
+  display: none;
+} */

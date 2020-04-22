@@ -25,7 +25,7 @@ export class PostJobComponent implements OnInit {
       job_district: new FormControl("", Validators.required),
     });
    }
-   compamy_data:any=[];
+   company_data:any=[];
    submit()
    {
     this.jobPostForm.controls["name"].markAsTouched();
@@ -53,11 +53,11 @@ export class PostJobComponent implements OnInit {
       var today = new Date();
       var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
       console.log(date);
-      for(let i=1;i<this.compamy_data.length;i++)
+      for(let i=1;i<this.company_data.length;i++)
       {
-        if(this.compamy_data[i].name==(this.jobPostForm.get('name').value))
+        if(this.company_data[i].name==(this.jobPostForm.get('name').value))
         {
-          obj.company = this.compamy_data[i].id;
+          obj.company = this.company_data[i].id;
           break;
         }
       }
@@ -66,12 +66,14 @@ export class PostJobComponent implements OnInit {
         console.log(data);
       })
     }
+    else
+    console.log("not valid");
    }
   ngOnInit() {
    this.jservice.get_companies().subscribe((data:any)=>{
-    
-     this.compamy_data=data.results;
-     console.log(this.compamy_data);
+  //  console.log(data)
+     this.company_data=data;
+     console.log(this.company_data);
    })
   }
 

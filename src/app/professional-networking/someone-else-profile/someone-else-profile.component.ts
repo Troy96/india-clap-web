@@ -34,17 +34,17 @@ export class SomeoneElseProfileComponent implements OnInit {
   }
 
   getUserDetails() {
-    this.authService.get_user_profiles()
+    this.authService.get_user_details(this.userId)
       .subscribe(respObj => {
-        this.userList = respObj['results'];
-        this.userDetails = this.userList.find(obj => obj['user'] == this.userId);
+        this.userDetails = respObj;
+        // this.userDetails = this.userList.find(obj => obj['user'] == this.userId);
       })
   }
 
   getUserContacts() {
     this.netService.get_contacts()
       .subscribe(respObj => {
-        this.contactList = [...respObj['results']];
+        this.contactList = [...respObj];
         this.getConnectionStatus();
       })
   }
