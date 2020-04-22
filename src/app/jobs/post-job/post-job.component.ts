@@ -53,14 +53,6 @@ export class PostJobComponent implements OnInit {
       obj.location_District =this.jobPostForm.get('job_district').value;
       var today = new Date();
       var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-      for(let i=1;i<this.company_data.length;i++)
-      {
-        if(this.company_data[i].name==(this.jobPostForm.get('company').value))
-        {
-          obj.company = this.company_data[i].id;
-          break;
-        }
-      }
       obj.date_posted = date;
       this.jservice.create_job(obj).subscribe((data:any)=>{
       })

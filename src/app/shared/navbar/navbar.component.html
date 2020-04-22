@@ -1,14 +1,14 @@
 
 <nav class="navbar navbar-icon-top navbar-expand-lg navbar ">
   <a class="navbar-brand" routerLink="professional-networking/me">holagraph</a>
-  <form id="frm">
+  <form id="frm" style="width: 65%;">
     <div class="input-group">
-      <input type="text" name="search" class="form-control frm1" placeholder="Search" [(ngModel)]="searchKey">
       <div class="input-group-btn">
-        <button class="btn btn-default" type="submit" (click)="displaysearch()">
+        <button class="btn btn-default" type="submit" (click)="displaysearch()" style="position: relative;left: 50px;z-index: 5">
           <i class="glyphicon glyphicon-search"><img src="/assets/icons/1x/Asset 1.png" width="17px"></i>
         </button>
       </div>
+      <input type="text" name="search" class="form-control frm1" placeholder="Search" [(ngModel)]="searchKey">
     </div>
   </form>
   <button class="navbar-toggler navbar-light" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -41,7 +41,6 @@
               <i class="fa fa-envelope-o">
                 <img src="/assets/icons/1x/Asset 5.png " width="20px">
               </i>
-              Notification
             </a>
         </li>
       </div>
@@ -50,7 +49,6 @@
           <i class="fa fa-envelope-o">
             <img src="/assets/icons/1x/Asset 10.png " width="20px" height="25px" >
           </i>
-          Learning Centre
         </a>
       </li>
       <li class="nav-item" >
@@ -58,7 +56,6 @@
           <i class="fa fa-envelope-o">
             <img src="/assets/icons/1x/Asset 7.png " width="20px" height="25px">
           </i>
-          Micro Projects
         </a>
       </li>
         <li class="nav-item">
