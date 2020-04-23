@@ -207,13 +207,3 @@ nav{
   position: relative;
   left: 5px;
 }
-
-input[type="text"]::placeholder {
-  position: relative;
-  left: 50px;
-}
-
-input[type="text"]::-webkit-textfield-decoration-container {
-  position: relative;
-  left: 50px;
-}

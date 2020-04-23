@@ -3,12 +3,12 @@
   <a class="navbar-brand" routerLink="professional-networking/me">holagraph</a>
   <form id="frm" style="width: 65%;">
     <div class="input-group">
+      <input type="text" name="search" class="form-control frm1" placeholder="Search" [(ngModel)]="searchKey">
       <div class="input-group-btn">
-        <button class="btn btn-default" type="submit" (click)="displaysearch()" style="position: relative;left: 50px;z-index: 5">
+        <button class="btn btn-default" type="submit" (click)="displaysearch()" style="position: relative;right: 45px;z-index: 5">
           <i class="glyphicon glyphicon-search"><img src="/assets/icons/1x/Asset 1.png" width="17px"></i>
         </button>
       </div>
-      <input type="text" name="search" class="form-control frm1" placeholder="Search" [(ngModel)]="searchKey">
     </div>
   </form>
   <button class="navbar-toggler navbar-light" data-toggle="collapse" data-target="#navbarSupportedContent"
