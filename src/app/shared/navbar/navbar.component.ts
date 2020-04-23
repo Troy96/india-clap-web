@@ -54,6 +54,10 @@ export class NavbarComponent implements OnInit {
     this.renderer.setStyle(this.moreRef2.nativeElement, 'display', 'block');
   }
 
+  hideNotifications(){
+    this.renderer.setStyle(this.moreRef2.nativeElement, 'display', 'none');
+  }
+
 
   getUserDetails() {
     this.authService.get_user_profiles()

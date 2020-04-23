@@ -20,6 +20,7 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
   videoFile: any;
   imageFile: any;
   coverFile: any;
+  companyLogoFile: any;
   videoUrl: SafeUrl;
   videoSizeError: any;
 
@@ -142,6 +143,20 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
           this.coverImgStyle = this.getSanitizedPhoto(styleExp);
 
           this.notifService.showSuccess('Cover changed successfully', 'Profile Alert')
+
+        });
+    }
+  }
+
+  onCompanyLogoUpload(event, expId) {
+    if (event.target.files && event.target.files.length) {
+      let selectedFiles = event.target.files;
+
+      this.companyLogoFile = selectedFiles[0];
+      console.log(this.companyLogoFile);
+      this.authService.update_company_logo(expId, this.companyLogoFile)
+        .subscribe(respObj => {
+          this.notifService.showSuccess('Company logo changed successfully', 'Profile Alert')
 
         });
     }

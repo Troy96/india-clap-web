@@ -6,16 +6,53 @@ nav {
   width: 36px;
   font-size: 24px;
 }
+.nav-link{
+  background-color: teal;
+  border: none;
+  cursor: pointer;
+}
+.nav-link:hover {
+  background-color: white;
+  color: teal;
+}
+
+.link{
+  text-decoration: none;
+  color: white;
+}
+
+#filter-data{
+  float: right;
+  position: absolute;
+  top: 15%;
+  right: 15px;
+ background-color: white;
+ border: 1px gray solid;
+ padding-left: 5px;
+ padding-top: 5px;
+ z-index: 5;
+ overflow: scroll;
+ height: 500px;
+}
+
+#filter-data > p {
+  cursor: pointer;
+}
+.imgp{
+  text-align: center;
+}
+.imgs{
+	vertical-align: middle;
+}
+
+
 .navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
   font-size: 0.75rem;
   position: absolute;
   right: 0;
   font-family: sans-serif;
 }
-.imgp{
-  text-align: center;
-}
-img
+
 .nav-link, .navbar-brand {
   color: white;
 }
@@ -127,34 +164,6 @@ img
     margin-left: 20px;
     margin-right: 20px;
     color: white;
-  }
-  .placement{
-    margin-top: -27px;
-    margin-right: -25px;
-    margin-left: 25px;
-  }
-  .placement2{
-    display: inline-block;
-    position: relative;
-    top: 12px;
-    left: -30px;
-  }
-  .placement3{
-    margin-top: -20px;
-    margin-right: -5px;
-    margin-left: 16px;
-  }
-  .placement4{
-    display: none;
-  }
-  .toLeft{
-    margin-left: -25px;
-  }
-  .img1{
-    margin-top: -20px;
-  }
-  .toLeft1{
-    margin-left: -20px;
   }
 }
 

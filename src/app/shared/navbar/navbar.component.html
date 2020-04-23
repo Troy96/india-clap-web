@@ -39,7 +39,7 @@
         <li class="nav-item">
             <a class="nav-link">
               <i class="fa fa-envelope-o">
-                <img src="/assets/icons/1x/Asset 5.png " width="20px">
+                <img src="/assets/icons/1x/Asset 5.png " width="20px" alt="Notifications">
               </i>
             </a>
         </li>
@@ -115,13 +115,16 @@
 </nav>
 
 
-<div id="filter-data" style="display: none;" #notification>
-  <ng-container *ngFor="let data of notifList">
+<div id="filter-data" style="display: none; overflow: scroll;" #notification>
+  <img src="./assets/icons/1x/close.png" style="width: 12px;
+  float: right;
+  margin-right: 10px;" (click)="hideNotifications();">
+  <div *ngFor="let data of notifList" style="margin-top: 15px;">
     <div class="imgp">
       <p>>
         {{data?.text}}</p>
     </div>
-  </ng-container>
+  </div>
 </div>
 <div id="user_search" style="display: none;" #networking>
   <ng-container *ngFor="let user of userlist">
