@@ -1,68 +1,74 @@
 nav {
   height: 65px;
 }
-.navbar-icon-top .navbar-nav .nav-link .link > .fa {
+
+.navbar-icon-top .navbar-nav .nav-link .link>.fa {
   position: relative;
   width: 36px;
   font-size: 24px;
 }
-.nav-link{
+
+.nav-link {
   background-color: teal;
   border: none;
   cursor: pointer;
 }
+
 .nav-link:hover {
   background-color: white;
   color: teal;
 }
 
-.link{
+.link {
   text-decoration: none;
   color: white;
 }
 
-#filter-data{
+#filter-data {
   float: right;
   position: absolute;
   top: 15%;
   right: 15px;
- background-color: white;
- border: 1px gray solid;
- padding-left: 5px;
- padding-top: 5px;
- z-index: 5;
- overflow: scroll;
- height: 500px;
+  background-color: white;
+  border: 1px gray solid;
+  padding-left: 5px;
+  padding-top: 5px;
+  z-index: 5;
+  overflow: scroll;
+  height: 500px;
 }
 
-#filter-data > p {
+#filter-data>p {
   cursor: pointer;
 }
-.imgp{
+
+.imgp {
   text-align: center;
 }
-.imgs{
-	vertical-align: middle;
+
+.imgs {
+  vertical-align: middle;
 }
 
 
-.navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
+.navbar-icon-top .navbar-nav .nav-link>.fa>.badge {
   font-size: 0.75rem;
   position: absolute;
   right: 0;
   font-family: sans-serif;
 }
 
-.nav-link, .navbar-brand {
+.nav-link,
+.navbar-brand {
   color: white;
 }
 
-.navbar-icon-top .navbar-nav .nav-link > .fa {
+.navbar-icon-top .navbar-nav .nav-link>.fa {
   top: 3px;
   line-height: 12px;
 }
 
-.navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
+.navbar-icon-top .navbar-nav .nav-link>.fa>.badge {
   top: -10px;
 }
 
@@ -76,7 +82,7 @@ nav {
     padding-bottom: 0;
   }
 
-  .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link > .fa {
+  .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link>.fa {
     display: block;
     width: 48px;
     margin: 2px auto 4px auto;
@@ -84,10 +90,11 @@ nav {
     line-height: 24px;
   }
 
-  .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link > .fa > .badge {
+  .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link>.fa>.badge {
     top: -7px;
   }
-  .navbar-brand{
+
+  .navbar-brand {
     margin-left: 0px;
     margin-right: 0px;
   }
@@ -103,7 +110,7 @@ nav {
     padding-bottom: 0;
   }
 
-  .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link > .fa {
+  .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link>.fa {
     display: block;
     width: 48px;
     margin: 2px auto 4px auto;
@@ -111,7 +118,7 @@ nav {
     line-height: 24px;
   }
 
-  .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link > .fa > .badge {
+  .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link>.fa>.badge {
     top: -7px;
   }
 }
@@ -126,7 +133,7 @@ nav {
     padding-bottom: 0;
   }
 
-  .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link > .fa {
+  .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link>.fa {
     display: block;
     width: 48px;
     margin: 2px auto 4px auto;
@@ -134,7 +141,7 @@ nav {
     line-height: 24px;
   }
 
-  .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link > .fa > .badge {
+  .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link>.fa>.badge {
     top: -7px;
   }
 }
@@ -149,7 +156,7 @@ nav {
     padding-bottom: 0;
   }
 
-  .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fa {
+  .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link>.fa {
     display: block;
     width: 48px;
     margin: 2px auto 4px auto;
@@ -157,43 +164,50 @@ nav {
     line-height: 24px;
   }
 
-  .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fa > .badge {
+  .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link>.fa>.badge {
     top: -7px;
   }
-  .navbar-brand{
+
+  .navbar-brand {
     margin-left: 20px;
     margin-right: 20px;
     color: white;
   }
 }
 
-nav{
+nav {
   background-color: teal;
 }
-.nav-item{
+
+.nav-item {
   color: white;
 }
-.nav-item:hover{
+
+.nav-item:hover {
   background-color: white;
   color: black;
 }
-.drop-items{
-  display:none;
+
+.drop-items {
+  display: none;
   position: relative;
   width: fit-content;
-  background-color:white;
+  background-color: white;
   border: black solid 1px;
   z-index: 5;
-  
+
 }
-.nav-item:hover>.drop-items{
+
+.nav-item:hover>.drop-items {
   display: block;
   position: absolute;
 }
-.navbar-nav{
+
+.navbar-nav {
   padding-right: 120px;
 }
-.drop-items>p{
+
+.drop-items>p {
   padding-left: 10px;
   padding-right: 30px;
   cursor: pointer;
@@ -201,9 +215,10 @@ nav{
 
 .navbar-dp {
   display: block;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   position: relative;
-  left: 5px;
+  left: 8px;
+  top: 5px;
 }

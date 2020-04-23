@@ -43,17 +43,21 @@
                 <h3>Headline</h3>
                 <p class="txt">{{userDetails?.brief_Desc}}</p>
             </div>
-            <!-- <div id="headline">
+            <div id="headline">
                 <h3>Experience</h3>
+
                 <div id="experience">
-                    <img class="ex-img" src="/assets/icons/1x/bulb.png" alt="" width="50px">
-                    <div id="txt-exp">
-                        <span class="teal">Creative Head</span>><br>
-                        Sustain Design<br>
-                        Jan 2015-present. 4years
+                    <div id="txt-exp" *ngFor="let exp of userDetails?.experiences">
+                        <img *ngIf="exp.company_logo" src="{{exp.company_logo}}" width="50px" class="exp-img">
+                        <img *ngIf="!exp.company_logo" src="/assets/icons/1x/no_company.jpg" width="50px" height="50px" style="display: block; border-radius: 50%;" class="exp-img">
+
+                        <span class="teal">{{exp.company_name}}</span><br>
+                        {{exp.title}}<br>
+                        {{exp.responsibilities}}<br>
+                        <p style="position: relative; left: 25px;">{{exp?.start_date}} -- {{exp?.end_date}}</p>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
 
     </div>

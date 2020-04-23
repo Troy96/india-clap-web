@@ -23,6 +23,8 @@ export class SomeoneElseProfileComponent implements OnInit {
   profileConnectionStatus: string;
   coverImgStyle: SafeStyle;
 
+  privacySettingsMap: any;
+
 
   constructor(
     private router: ActivatedRoute,
@@ -37,6 +39,7 @@ export class SomeoneElseProfileComponent implements OnInit {
 
   ngOnInit() {
     this.getUserContacts();
+    this.getPrivacySettings();
     this.getProfileConnectionStatus();
   }
 
@@ -145,6 +148,14 @@ export class SomeoneElseProfileComponent implements OnInit {
 
   getSanitizedPhoto(photoUrl: string) {
     return this.sanitizer.bypassSecurityTrustStyle(photoUrl);
+  }
+
+  getPrivacySettings() {
+    this.authService.get_privacy_details()
+      .subscribe(respObj => {
+        console.log(respObj);
+        this.privacySettingsMap = {...respObj};
+      })
   }
 
 
