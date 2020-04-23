@@ -137,7 +137,7 @@
             <div id="sug-pro" *ngFor="let connection of userConnections">
                 <img src="/assets/icons/1x/close.png" width="10px" style="cursor: pointer;" class="close"
                     (click)="removeConnection(connection.id)">
-                <!-- <img src="{{connection?.photo}}" class="sug-dp" alt="" width="55px" height="55px"> -->
+                <img src="{{connection?.photo}}" class="sug-dp" alt="" width="55px" height="55px">
                 <div class="text"><span class="teal" style="cursor: pointer;" [routerLink]="['/professional-networking/users/', connection.id]">{{connection?.first_name}} {{connection?.last_name}}</span><br>
                 </div>
                 <br>
