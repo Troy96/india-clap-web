@@ -177,6 +177,9 @@ h3 {
 .exp-img {
   float: left;
   margin-right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
 .teal {

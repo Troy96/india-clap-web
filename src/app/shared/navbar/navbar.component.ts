@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
 
   userlist: any[];
   userDetails: any;
+  user
   notifList: string[];
   searchKey: string;
   @ViewChild('more', { static: false }) moreRef3: ElementRef
@@ -46,6 +47,7 @@ export class NavbarComponent implements OnInit {
           return this.notificationService.showInfo('No User Found', 'Search Alert');
         }
         else {
+          if (respObj[0].id === this.userDetails.id) return this.router.navigateByUrl('/professional-networking/myprofile-editable')
           this.router.navigateByUrl('/professional-networking/users/' + respObj[0].id);
         }
       })
@@ -54,7 +56,7 @@ export class NavbarComponent implements OnInit {
     this.renderer.setStyle(this.moreRef2.nativeElement, 'display', 'block');
   }
 
-  hideNotifications(){
+  hideNotifications() {
     this.renderer.setStyle(this.moreRef2.nativeElement, 'display', 'none');
   }
 
