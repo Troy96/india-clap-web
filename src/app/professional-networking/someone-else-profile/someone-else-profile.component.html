@@ -54,7 +54,30 @@
                         <span class="teal">{{exp.company_name}}</span><br>
                         {{exp.title}}<br>
                         {{exp.responsibilities}}<br>
-                        <p style="position: relative; left: 25px;">{{exp?.start_date}} -- {{exp?.end_date}}</p>
+                        <p>{{exp?.start_date}} -- {{exp?.end_date}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="headline">
+                <h3>Projects
+                </h3>
+                <div id="experience" *ngFor="let project of userDetails?.projects">
+                    <div id="txt-exp">
+                        <img src="/assets/icons/1x/logo3.png" width="50px" class="project-img">
+                        <div class="project-details">
+
+                            <span class="teal">{{project?.project_name}}</span><br>
+                            <a href="{{project.link}}" target="_blank">{{project.link}}</a><br>
+                            {{project?.start_date}} - {{project?.end_date}}
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <h3>Project description
+                        </h3>
+                        <div class="pro-des">
+                            {{project?.description}}
+                        </div>
                     </div>
                 </div>
             </div>
