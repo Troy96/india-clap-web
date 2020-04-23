@@ -31,16 +31,20 @@ export class SomeoneElseProfileComponent implements OnInit {
     private authService: AuthService,
     private netService: NetworkingService,
     private notifyService: NotificationService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private activatedRoute: ActivatedRoute
   ) {
-    this.userId = +this.router.snapshot.paramMap.get('id');
-    this.getUserDetails();
+    this.activatedRoute.params.subscribe(param => {
+      this.userId = param.id;
+      this.getUserDetails();
+      this.getUserContacts();
+      this.getPrivacySettings();
+      this.getProfileConnectionStatus();
+    })
   }
 
   ngOnInit() {
-    this.getUserContacts();
-    this.getPrivacySettings();
-    this.getProfileConnectionStatus();
+
   }
 
   getUserDetails() {
