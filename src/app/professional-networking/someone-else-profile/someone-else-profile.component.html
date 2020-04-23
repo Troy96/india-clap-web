@@ -6,7 +6,7 @@
         <div id="jumbotron-text">
             <div id="name">
                 <h2>{{userDetails?.first_name}} {{userDetails?.last_name}}</h2>
-                <!-- <span>Kolkata, India</span> -->
+                <span *ngIf="privacySettingsMap?.location">{{userDetails?.location}}</span>
             </div>
 
             <div id="j-icons"><a>
@@ -39,11 +39,11 @@
     <div class="mainbody">
 
         <div class="place">
-            <div id="headline">
+            <div id="headline" *ngIf="privacySettingsMap?.headline">
                 <h3>Headline</h3>
                 <p class="txt">{{userDetails?.brief_Desc}}</p>
             </div>
-            <div id="headline">
+            <div id="headline" *ngIf="privacySettingsMap?.experience">
                 <h3>Experience</h3>
 
                 <div id="experience">
@@ -59,7 +59,7 @@
                 </div>
             </div>
 
-            <div id="headline">
+            <div id="headline" *ngIf="privacySettingsMap?.projects">
                 <h3>Projects
                 </h3>
                 <div id="experience" *ngFor="let project of userDetails?.projects">
@@ -72,7 +72,7 @@
                             {{project?.start_date}} - {{project?.end_date}}
                         </div>
                     </div>
-                    <div class="project-description">
+                    <div class="project-description" *ngIf="privacySettingsMap?.project_desc">
                         <h3>Project description
                         </h3>
                         <div class="pro-des">
@@ -82,7 +82,19 @@
                 </div>
             </div>
 
-            <div id="headline">
+            <div id="headline" *ngIf="privacySettingsMap?.certificates">
+                <h3>Certificates</h3>
+                <div class="project-description" *ngIf="userDetails?.certifications.length">
+
+                    <div id="skill" *ngFor="let certification of userDetails?.certifications" style="margin-bottom: 10px;">
+                        <span class="teal">{{certification?.certification_name}} </span>
+                        {{certification?.description}}<br />
+                        Valid till - {{certification?.validity_date}}
+                    </div>
+                </div>
+            </div>
+
+            <div id="headline" *ngIf="privacySettingsMap?.skills">
                 <h3>Skills</h3>
                 <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
 
@@ -93,6 +105,8 @@
                     </div>
                 </div>
             </div>
+
+           
         </div>
 
     </div>
