@@ -81,6 +81,18 @@
                     </div>
                 </div>
             </div>
+
+            <div id="headline">
+                <h3>Skills</h3>
+                <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
+
+                <div class="project-description">
+
+                    <div id="skill" *ngFor="let skill of userDetails?.skills">
+                        {{skill.skill}} ({{skill.level}})
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
