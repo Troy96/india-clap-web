@@ -85,7 +85,7 @@ export class AuthService {
   update_company_logo(id, logo) {
     const formData = new FormData();
     formData.append('company_logo', logo);
-    return this.http.patch(`${config.base_url}/Users/experiences/${id}`, formData)
+    return this.http.patch(`${config.base_url}/Users/experiences/${id}/`, formData)
   }
 
   delete_experience(id) {

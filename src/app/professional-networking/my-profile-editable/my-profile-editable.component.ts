@@ -153,11 +153,10 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
       let selectedFiles = event.target.files;
 
       this.companyLogoFile = selectedFiles[0];
-      console.log(this.companyLogoFile);
       this.authService.update_company_logo(expId, this.companyLogoFile)
         .subscribe(respObj => {
           this.notifService.showSuccess('Company logo changed successfully', 'Profile Alert')
-
+          this.getUserDetails();
         });
     }
   }
