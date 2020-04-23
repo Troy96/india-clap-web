@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { NotificationService } from '../../services/notification.service';
 
 import { Router } from '@angular/router';
+import { CommunicateService } from 'src/app/services/communicate.service';
 
 @Component({
   selector: 'app-navbar',
@@ -27,7 +28,8 @@ export class NavbarComponent implements OnInit {
     private renderer: Renderer2,
     private authService: AuthService,
     private router: Router,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private commService: CommunicateService
   ) {
     this.getNotifications();
   }
@@ -36,6 +38,7 @@ export class NavbarComponent implements OnInit {
     this.authService.get_user_profiles().subscribe(
       data => {
         this.userlist = data;
+        this.commService.setUserList(this.userlist);
       }
     )
   }
