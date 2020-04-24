@@ -43,10 +43,10 @@
                 <p class="teal" *ngIf="post.author_user">{{post.first_name}} {{post.flast_name}}</p>
                 <p> {{post?.created_on | date}}</p>
                 <p *ngIf="post?.text"> {{post?.text}}</p>
-                <p *ngIf="post?.photo"> <img style="max-width: 100%; display: block" src="{{post?.photo}}" width="950px" height="600px"></p>
+                <p *ngIf="post?.photo"> <img style="max-width: 100%; display: block; height: 100%; object-fit: cover; width: 100%;" src="{{post?.photo}}" width="950px" height="600px"></p>
                 <!-- <p *ngIf="post?.video"> <video style="width:950px;height:600px" src="{{post?.video}}" ></video></p> -->
 
-                <p *ngIf="post?.video"><video style="max-width: 100%; display: block" width="950px" height="600px" controls="controls" poster="image" preload="true">
+                <p *ngIf="post?.video"><video style="max-width: 100%; display: block;" width="950px" height="600px" controls="controls" poster="image" preload="true">
                     <!-- <source src="where the video is" type="video/mov"/> -->
                     <source src="{{post?.video}}" type="video/mp4" />
                     <!-- <source src="where the video is" type="video/oog" /> -->

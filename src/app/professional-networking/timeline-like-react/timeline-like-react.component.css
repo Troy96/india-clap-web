@@ -118,6 +118,7 @@ hr{
   margin-left: 15px;
 }
 .container{
+  max-width: 650px;
   margin-bottom: 20px;
 }
 .comm-pro{ /*comment profile image*/
