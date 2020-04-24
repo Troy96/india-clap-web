@@ -7,24 +7,18 @@
       </div>
       <div id="filter">
           <button type="button" class="btn ">
-
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
               <img src="/assets/icons/1x/Filter.png" alt="" width="22" height="25">
-
-          </button>
+              <select id="filter">
+                  <option>--select--</option>
+                  <option>Filter by job name</option>
+                  <option>Filter by state</option>
+                  <option>Filter by district</option>
+              </select>
+            </button>
       </div>
   </div>
   
-        <div class="dropdown">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Filter
-                <img src="/assets/icons/1x/Filter.png" alt="" width="22" height="25">
-
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Filter by job type</a>
-              <a class="dropdown-item" href="#">Filter by state</a>
-              <a class="dropdown-item" href="#">Filter by district</a>
-            </div>
-        </div>
     
     <div class="place">
         <form [formGroup]='instantApplyForm'>
@@ -33,7 +27,7 @@
                 <input type="text" class="form-control" formControlName="typeOfJob">
                 <p *ngIf="instantApplyForm.controls.typeOfJob.errors" class="alert alert-danger">This field is required!</p>
           </div>
-              <div class="form-group">
+          <div class="form-group">
                  <label>State</label><br>
                     <select id="location_State" class="form-control" formControlName="location_State">
                         <option>--select--</option>
@@ -49,8 +43,8 @@
                         <option>Uttar Pradesh</option>
                         <option>West Bengal</option>
                     </select>
-                    <p *ngIf="instantApplyForm.controls.location_State.errors" class="alert alert-danger">This field is required!</p>
-             </div>
+                 <p *ngIf="instantApplyForm.controls.location_State.errors" class="alert alert-danger">This field is required!</p>
+        </div>
               <div class="form-group">
                  <label>District</label><br>
                     <input [disabled]="instantApplyForm.controls.location_State.untouched">
@@ -84,5 +78,5 @@
               <button class="btn-primary" (click)="submit()">Search</button>
     </form>
          
-    </div>
+    
 </div>
