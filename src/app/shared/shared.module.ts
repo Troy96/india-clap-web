@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TooltipModule } from 'ng2-tooltip-directive'
+//import { TooltipModule } from 'ng2-tooltip-directive'
 import { NavbarComponent } from './navbar/navbar.component';
 import { BannerComponent } from './banner/banner.component';
 import { RouterModule } from '@angular/router';
@@ -21,7 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    TooltipModule
+    //TooltipModule
   ],
   exports: [
     NavbarComponent,

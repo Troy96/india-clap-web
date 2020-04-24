@@ -36,6 +36,9 @@ export class VariousSectorsJobsComponent implements OnInit {
       })
   }
 
+  getAllfavJobs(){
+
+  }
   displayJobFilters() {
     this.renderer.setStyle(this.filtersRef.nativeElement, 'display', 'block');
   }
@@ -60,7 +63,7 @@ export class VariousSectorsJobsComponent implements OnInit {
   onSelectAllAndApply() {
     this.jobService.select_all_jobs()
       .subscribe(respObj => {
-        this.notifService.showSuccess(respObj['detail'], 'Job Alert');
+        this.notifyService.showSuccess(respObj['detail'], 'Job Alert');
       })
   }
 

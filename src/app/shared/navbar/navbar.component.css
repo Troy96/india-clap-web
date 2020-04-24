@@ -212,7 +212,6 @@ nav {
   padding-right: 30px;
   cursor: pointer;
 }
-<<<<<<< HEAD
 .notifi{
   display: block;
   position: absolute;
@@ -220,15 +219,4 @@ nav {
   width: 400px;
   margin-left: 700px;
   border: black solid 1px;
-=======
-
-.navbar-dp {
-  display: block;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  position: relative;
-  left: 8px;
-  top: 5px;
->>>>>>> 5e2c0263164f63a4b6f3494c2e2801f25ac6e46f
 }

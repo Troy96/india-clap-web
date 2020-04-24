@@ -21,6 +21,7 @@ export class TimelineLikeReactComponent implements OnInit {
   videoval:boolean= true;
   isReacted:boolean=true;
   isReported:boolean=true;
+  users:any;
   @ViewChild('comment', { static: false }) commentRef: ElementRef
   constructor(
     private netService: NetworkingService, private cd: ChangeDetectorRef, private jobService: JobsService
