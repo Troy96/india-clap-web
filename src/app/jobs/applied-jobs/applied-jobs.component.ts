@@ -24,24 +24,7 @@ export class AppliedJobsComponent implements OnInit {
   getAppliedJobs() {
     this.jobService.get_applied_jobs()
       .subscribe(respObj => {
-        this.appliedJobList = respObj;
-        this.appliedJobList.forEach(obj => {
-          this.setJobDetails(obj['applied_job'], obj['id']);
-        })
-      })
-  }
-
-  setJobDetails(job, appId) {
-    this.http.get(job)
-      .subscribe(respObj => {
-        let jobDetail = { ...respObj };
-        this.jobService.get_job_status(appId)
-          .subscribe(respObj => {
-            this.appliedJobDetailList.push({
-              status: respObj['company_action'],
-              ...jobDetail
-            })
-          })
+        this.appliedJobList = [...respObj];
       })
   }
 

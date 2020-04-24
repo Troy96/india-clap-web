@@ -95,7 +95,7 @@ export class JobsService {
   }
 
   get_applied_jobs() {
-    return this.http.get(`${config.base_url}/JobMarket/jobs/applied`);
+    return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs/applied/`);
   }
 
   get_job_candidates(jobId: number) {
