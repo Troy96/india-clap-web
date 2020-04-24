@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2, ElementRef, ViewChild, Inject } from '@an
 import { DOCUMENT } from '@angular/common';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { CommunicateService } from 'src/app/services/communicate.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   userDetails: any;
+  user
   notifList: string[];
 
   @ViewChild('notification', { static: false }) moreRef2: ElementRef
@@ -21,13 +23,29 @@ export class NavbarComponent implements OnInit {
 
     private renderer: Renderer2,
     private authService: AuthService,
+
     private router: Router
+
+    private router: Router,
+    private notificationService: NotificationService,
+    private commService: CommunicateService
+
   ) {
     this.getNotifications();
   }
   ngOnInit() {
     this.getUserDetails();
+
+
+    this.authService.get_user_profiles().subscribe(
+      data => {
+        this.userlist = data;
+        this.commService.setUserList(this.userlist);
+      }
+    )
+
   }
+
 
   displaynotification() {
     this.renderer.setStyle(this.moreRef2.nativeElement, 'display', 'block');
@@ -38,6 +56,25 @@ export class NavbarComponent implements OnInit {
   displaymore() {
     this.renderer.setStyle(this.moreRef.nativeElement, 'display', 'block');
   }
+    this.authService.search_user(this.searchKey)
+      .subscribe(respObj => {
+        if (!respObj.length) {
+          return this.notificationService.showInfo('No User Found', 'Search Alert');
+        }
+        else {
+          if (respObj[0].id === this.userDetails.id) return this.router.navigateByUrl('/professional-networking/myprofile-editable')
+          this.router.navigateByUrl('/professional-networking/users/' + respObj[0].id);
+        }
+      })
+  }
+  displaynotification() {
+    this.renderer.setStyle(this.moreRef2.nativeElement, 'display', 'block');
+  }
+
+  hideNotifications() {
+    this.renderer.setStyle(this.moreRef2.nativeElement, 'display', 'none');
+  }
+
 
   getUserDetails() {
     this.authService.get_user_profiles()

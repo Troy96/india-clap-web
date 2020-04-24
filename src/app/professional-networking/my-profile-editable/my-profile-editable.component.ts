@@ -20,6 +20,7 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
   videoFile: any;
   imageFile: any;
   coverFile: any;
+  companyLogoFile: any;
   videoUrl: SafeUrl;
   videoSizeError: any;
 
@@ -94,7 +95,7 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
   }
 
   onVideoResumeUpload(event) {
-    if (event.target.œfiles && event.target.files.length) {
+    if (event.target.files && event.target.files.length) {
       let selectedFiles = event.target.files;
       this.videoFile = selectedFiles[0];
       if (!this.videoFile.type.includes('video')) return this.notifService.showWarning('Not a video file', 'Try again with a video file');
@@ -143,6 +144,19 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
 
           this.notifService.showSuccess('Cover changed successfully', 'Profile Alert')
 
+        });
+    }
+  }
+
+  onCompanyLogoUpload(event, expId) {
+    if (event.target.files && event.target.files.length) {
+      let selectedFiles = event.target.files;
+
+      this.companyLogoFile = selectedFiles[0];
+      this.authService.update_company_logo(expId, this.companyLogoFile)
+        .subscribe(respObj => {
+          this.notifService.showSuccess('Company logo changed successfully', 'Profile Alert')
+          this.getUserDetails();
         });
     }
   }

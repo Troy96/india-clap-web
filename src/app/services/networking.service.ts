@@ -101,4 +101,8 @@ export class NetworkingService {
     return this.http.get<any>(`${config.base_url}/JobMarket/myCompanies/`);
 
   }
+
+  get_connection_status(userId: number){
+    return this.http.get<any>(`${config.base_url}/Users/profiles/${userId}/status`);
+  }
 }

@@ -17,7 +17,6 @@ export class JobsService {
   create_job($data: any) {
     // console.log($data)
     return this.http.post(`${config.base_url}/JobMarket/jobs/create/`, $data);
-
   }
   get_companies() {
     //JobMarket/companies
@@ -50,7 +49,7 @@ export class JobsService {
   upload_resume(jobId: number, $data: any) {
     const formData = new FormData();
     formData.append('text', $data.text);
-    formData.append('video', $data.video);
+   // formData.append('video', $data.video);
     return this.http.post(`${config.base_url}/JobMarket/jobs/${jobId}/apply/`, formData);
   }
 
@@ -135,5 +134,10 @@ export class JobsService {
     return this.http.delete(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/`);
 
   }
+  send_video(userId,$data){
+    const formData = new FormData();
+    formData.append('video_resume', $data.video_resume);
+    return this.http.patch(`${config.base_url}/Users/profiles/${userId}/`,formData);
 
+  }
 }

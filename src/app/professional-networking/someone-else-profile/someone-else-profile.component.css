@@ -78,6 +78,7 @@ nav{
   }
   .jbtn{
     background-color: teal;
+    height: 55px;
   }
   
   h4{
@@ -124,7 +125,6 @@ nav{
   #txt-exp{
     font-size: 15px;
     color: gray;
-    margin-left: 60px;  
   }
   #headline{
     border: 1px gray solid;
@@ -153,7 +153,8 @@ nav{
   @media(min-width: 252px){
     .jmb-img{/*image of jumbotron*/
         width: 90px;
-        margin-top: 120px;
+        height: 90%;
+        margin-top: 140px;
         border-radius: 50%;
         margin-left: 10px;
       }
@@ -199,7 +200,8 @@ nav{
 @media (min-width: 406px) {
     .jmb-img{/*image of jumbotron*/
         width: 120px;
-        margin-top: 100px;
+        height: 120px;
+        margin-top: 140px;
         border-radius: 50%;
         margin-left: 10px;
       }
@@ -284,7 +286,8 @@ nav{
 @media (min-width: 1200px) {
     .jmb-img{/*image of jumbotron*/
         width: 150px;
-        margin-top: 100px;
+        height: 150px;
+        margin-top: 140px;
         border-radius: 50%;
         margin-left: 30px;
       }

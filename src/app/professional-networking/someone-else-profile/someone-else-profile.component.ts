@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { NetworkingService } from 'src/app/services/networking.service';
 import { Observable, observable } from 'rxjs';
 import { NotificationService } from 'src/app/services/notification.service';
+import { SafeStyle, DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-someone-else-profile',
@@ -19,25 +20,46 @@ export class SomeoneElseProfileComponent implements OnInit {
   connectionStatus: any;
   isLoading: boolean = true;
 
+  profileConnectionStatus: string;
+  coverImgStyle: SafeStyle;
+
+  privacySettingsMap: any;
+
+
   constructor(
     private router: ActivatedRoute,
     private authService: AuthService,
     private netService: NetworkingService,
-    private notifyService: NotificationService
+    private notifyService: NotificationService,
+    private sanitizer: DomSanitizer,
+    private activatedRoute: ActivatedRoute
   ) {
-    this.userId = +this.router.snapshot.paramMap.get('id');
-    this.getUserDetails();
+    this.activatedRoute.params.subscribe(param => {
+      this.userId = param.id;
+      this.getUserDetails();
+      this.getUserContacts();
+      this.getPrivacySettings();
+      this.getProfileConnectionStatus();
+    })
   }
 
   ngOnInit() {
-    this.getUserContacts();
+
   }
 
   getUserDetails() {
     this.authService.get_user_details(this.userId)
       .subscribe(respObj => {
         this.userDetails = respObj;
+        this.setinitCover();
         // this.userDetails = this.userList.find(obj => obj['user'] == this.userId);
+      })
+  }
+
+  getProfileConnectionStatus() {
+    this.netService.get_connection_status(this.userId)
+      .subscribe(respObj => {
+        this.profileConnectionStatus = respObj.status;
       })
   }
 
@@ -49,6 +71,10 @@ export class SomeoneElseProfileComponent implements OnInit {
       })
   }
 
+  onConnectRequest() {
+    this.onFollowRequest()
+  }
+
   isCurrentUserProfile() {
     return this.userId === this.currentUser['user_id'];
   }
@@ -56,31 +82,33 @@ export class SomeoneElseProfileComponent implements OnInit {
   onFollowRequest() {
     this.netService.follow_request(this.userId)
       .subscribe(respObj => {
+        this.getProfileConnectionStatus();
         this.notifyService.showSuccess('Your request has been sent to the user', 'Connection Alert');
       });
   }
 
-  onRejectRequest() {
+  onCancelRequest() {
     this.netService.cancel_request(this.userId)
       .subscribe(respObj => {
+        this.getProfileConnectionStatus();
         this.notifyService.showInfo('Connection request rejected!', 'Connection Alert');
-        console.log(respObj);
       })
   }
+
 
   onAcceptRequest() {
     this.netService.accept_request(this.userId)
       .subscribe(respObj => {
+        this.getProfileConnectionStatus();
         this.notifyService.showInfo('Connection request accepted!', 'Connection Alert');
-        console.log(respObj);
       })
   }
 
   onDeleteRequest() {
     this.netService.delete_request(this.userId)
       .subscribe(respObj => {
+        this.getProfileConnectionStatus();
         this.notifyService.showInfo('Connection request deleted!', 'Connection Alert');
-        console.log(respObj)
       })
   }
 
@@ -111,6 +139,26 @@ export class SomeoneElseProfileComponent implements OnInit {
 
   get currentUser() {
     return JSON.parse(localStorage.getItem('currentUser'));
+  }
+
+  setinitCover() {
+    if (!this.userDetails.cover_photo) {
+      this.coverImgStyle = this.getSanitizedPhoto(`background-image: url("./assets/icons/1x/Asset 2.png")`);
+    }
+    else {
+      this.coverImgStyle = this.getSanitizedPhoto(`background-image: url(${this.userDetails.cover_photo}`);
+    }
+  }
+
+  getSanitizedPhoto(photoUrl: string) {
+    return this.sanitizer.bypassSecurityTrustStyle(photoUrl);
+  }
+
+  getPrivacySettings() {
+    this.authService.get_privacy_details()
+      .subscribe(respObj => {
+        this.privacySettingsMap = { ...respObj[0] };
+      })
   }
 
 
