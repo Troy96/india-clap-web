@@ -59,7 +59,7 @@ export class NavbarComponent implements OnInit {
   }
 
   hideNotifications() {
-    this.renderer.setStyle(this.moreRef2.nativeElement, 'display', 'none');
+    this.renderer.setStyle(this.moreRef1.nativeElement, 'display', 'none');
   }
 
 

@@ -17,16 +17,10 @@ export class TimelineLikeReactComponent implements OnInit {
   postList: any[];
   statusText: string = "";
   timelineUpdateForm: FormGroup;
-<<<<<<< HEAD
   photoVal:boolean = true;
   videoval:boolean= true;
   isReacted:boolean=true;
   isReported:boolean=true;
-=======
-  photoVal: boolean = true;
-  videoval: boolean = true;
-  users: any[];
->>>>>>> 5e2c0263164f63a4b6f3494c2e2801f25ac6e46f
   @ViewChild('comment', { static: false }) commentRef: ElementRef
   constructor(
     private netService: NetworkingService, private cd: ChangeDetectorRef, private jobService: JobsService
