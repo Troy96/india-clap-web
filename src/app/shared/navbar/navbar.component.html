@@ -29,7 +29,6 @@
 
       <li class="nav-item"  [routerLink]="['/jobs/various-sectors']">
         <a class="nav-link">
-<<<<<<< HEAD
           <i class="fa fa-envelope-o">
             <img src="/assets/icons/1x/Asset 4.png " width="20px" height="23px">
           </i>  
@@ -44,31 +43,8 @@
               </i>
               Notification
             </a>
-=======
-          Jobs
-        </a>
-      </li>
-      <span tooltip="Notifications" placement="bottom" show-delay="500">
-        <div id="notification" (click)="displaynotification()" style="display: block;">
-          <li class="nav-item">
-              <a class="nav-link">
-                <i class="fa fa-envelope-o">
-                  <img src="/assets/icons/1x/Asset 5.png " width="20px" alt="Notifications">
-                </i>
-              </a>
-          </li>
-        </div>
-      </span>
-      <span tooltip="Learning Center" placement="bottom" show-delay="500">
-        <li class="nav-item toLeft" >
-          <a class="nav-link">
-            <i class="fa fa-envelope-o">
-              <img src="/assets/icons/1x/Asset 10.png " width="20px" height="25px" >
-            </i>
-          </a>
->>>>>>> 5e2c0263164f63a4b6f3494c2e2801f25ac6e46f
         </li>
-      </span>
+        </div>
       <span tooltip="Micro Projects" placement="bottom" show-delay="500">
         <li class="nav-item" >
           <a class="nav-link">
@@ -135,24 +111,15 @@
 </nav>
 
 
-<<<<<<< HEAD
 <div class="notifi">
   <ng-container *ngFor="let data of notifList">
     <div *ngIf="!isCollapsed" style="border-bottom: black solid 1px;">
       <p>
-=======
-<div id="filter-data" style="display: none; overflow: scroll;" #notification>
-  <img src="./assets/icons/1x/close.png" style="width: 12px;
-  float: right;
-  margin-right: 10px;" (click)="hideNotifications();">
-  <div *ngFor="let data of notifList" style="margin-top: 15px;">
-    <div class="imgp">
-      <p>>
->>>>>>> 5e2c0263164f63a4b6f3494c2e2801f25ac6e46f
         {{data?.text}}</p>
     </div>
-  </div>
+    </ng-container>
 </div>
+
 <div id="user_search" style="display: none;" #networking>
   <ng-container *ngFor="let user of userlist">
     <div class="imgp">
