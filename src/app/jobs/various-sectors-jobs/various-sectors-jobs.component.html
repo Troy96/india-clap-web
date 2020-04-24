@@ -37,8 +37,9 @@
                 <img class="card-img" src="/assets/icons/1x/bulb.png" alt="Card image cap">
 
                 <div id="crdtxt">
-                    <a href="">
-                        <h4 class="card-title">{{job?.company_mail}}</h4>
+                    <a>
+                        <h4 class="card-title" routerLink="/jobs/description/{{job.id}}" style="cursor: pointer;">
+                            {{job?.company_mail}}</h4>
                         <span class="card-text">{{job?.location_District}}, {{job.location_State}}</span><br>
                         <span class="card-text">{{job?.job_title}}</span>
                     </a>
@@ -51,6 +52,10 @@
     <div class="no-data" *ngIf="!jobList?.length">No jobs!</div>
 </div>
 <div id="filter-data" style="display: none;" #filters>
+    <img src="/assets/icons/1x/close.png" width="25px" style="width: 15px;
+    float: right;
+    position: relative;
+    right: 5px; cursor: pointer;" (click)="hideJobFilters()">
     <p (click)="getJobsByTitle()">Job title order</p>
     <hr>
     <p (click)="getJobsByOpenings()">Number of openings order</p>

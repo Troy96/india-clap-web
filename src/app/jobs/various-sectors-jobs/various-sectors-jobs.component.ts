@@ -40,6 +40,10 @@ export class VariousSectorsJobsComponent implements OnInit {
     this.renderer.setStyle(this.filtersRef.nativeElement, 'display', 'block');
   }
 
+  hideJobFilters(){
+    this.renderer.setStyle(this.filtersRef.nativeElement, 'display', 'none'); 
+  }
+
   onFavouriteJob(event, jobId) {
     event.target.src = `${this._document.location.origin}/assets/icons/1x/filled-star.png`;
     this.jobService.favourite_job(jobId)
@@ -88,7 +92,7 @@ export class VariousSectorsJobsComponent implements OnInit {
   getJobsByTitle() {
     this.jobService.get_jobs_by_titles()
       .subscribe(respObj => {
-        this.jobList = [...respObj['results']];
+        this.jobList = [...respObj];
       })
   }
 
@@ -98,7 +102,7 @@ export class VariousSectorsJobsComponent implements OnInit {
     (this.toggleFilter) ? filter = 'numOfOpenings' : filter = '-numOfOpenings';
     this.jobService.get_jobs_by_openings(filter)
       .subscribe(respObj => {
-        this.jobList = [...respObj['results']];
+        this.jobList = [...respObj];
       })
   }
 

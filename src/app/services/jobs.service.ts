@@ -109,11 +109,11 @@ export class JobsService {
   //   return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/shortlistedCandidates`);
 
   get_jobs_by_titles() {
-    return this.http.get(`${config.base_url}/JobMarket/jobs?ordering=job_title`);
+    return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=job_title`);
   }
 
   get_jobs_by_openings(order) {
-    return this.http.get(`${config.base_url}/JobMarket/jobs?ordering=${order}`);
+    return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=${order}`);
   }
 
   instant_apply_jobs(isInstantJob: boolean) {
