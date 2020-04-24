@@ -52,6 +52,7 @@ export class SomeoneElseProfileComponent implements OnInit {
       .subscribe(respObj => {
         this.userDetails = respObj;
         this.setinitCover();
+        console.log(this.userDetails);
         // this.userDetails = this.userList.find(obj => obj['user'] == this.userId);
       })
   }

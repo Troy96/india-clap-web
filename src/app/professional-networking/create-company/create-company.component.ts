@@ -11,7 +11,7 @@ import { JobsService } from 'src/app/services/jobs.service';
 export class CreateCompanyComponent implements OnInit {
 
   companyForm: FormGroup;
-  sectorList: any[];
+  sectorList: any=[];
 
   constructor(
     private netService: NetworkingService,
@@ -40,11 +40,24 @@ export class CreateCompanyComponent implements OnInit {
         console.log(respObj);
       })
   }
+  onPhotoUpload(event) {
+
+    if (event.target.files && event.target.files.length) {
+
+      let selectedFiles = event.target.files;
+      // console.log(event.target.result);
+      let _file = selectedFiles[0];
+      this.companyForm.patchValue({
+        logo: _file
+      })
+    }
+
+  }
 
   getIndustries() {
     this.jobService.get_sectors()
       .subscribe(sectors => {
-        this.sectorList = [...sectors['results']]
+        this.sectorList = sectors;
       })
   }
 

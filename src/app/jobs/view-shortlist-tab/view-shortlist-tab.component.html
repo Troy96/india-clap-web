@@ -33,8 +33,8 @@
         </div>
         <img class="card-img" src={{candidate.applicant.photo}} alt="Card image cap">
         <div id="crdtxt">
-          <a href="">
-            <h4 class="card-title">{{candidate.applicant.first_name}} {{candidate.applicant.last_name}}</h4>
+          <a >
+            <h4 class="card-title" (click)="applicantProfile(candidate.applicant.id)" >{{candidate.applicant.first_name}} {{candidate.applicant.last_name}}</h4>
             <span class="card-text">Gurgao, India</span><br>
 
           </a>

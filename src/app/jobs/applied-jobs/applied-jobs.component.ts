@@ -19,6 +19,8 @@ export class AppliedJobsComponent implements OnInit {
 
   ngOnInit() {
     this.getAppliedJobs();
+    console.log(this.appliedJobDetailList);
+
   }
 
   getAppliedJobs() {
