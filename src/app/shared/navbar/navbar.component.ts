@@ -1,6 +1,8 @@
 import { Component, OnInit, Renderer2, ElementRef, ViewChild, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { AuthService } from 'src/app/services/auth.service';
+import { NotificationService } from '../../services/notification.service';
+
 import { Router } from '@angular/router';
 import { CommunicateService } from 'src/app/services/communicate.service';
 
@@ -11,10 +13,12 @@ import { CommunicateService } from 'src/app/services/communicate.service';
 })
 export class NavbarComponent implements OnInit {
 
+  userlist: any[];
   userDetails: any;
   user
   notifList: string[];
-
+  searchKey: string;
+  @ViewChild('more', { static: false }) moreRef3: ElementRef
   @ViewChild('notification', { static: false }) moreRef2: ElementRef
   @ViewChild('myprofile', { static: false }) moreRef1: ElementRef
   @ViewChild('more', { static: false }) moreRef: ElementRef
@@ -23,39 +27,23 @@ export class NavbarComponent implements OnInit {
 
     private renderer: Renderer2,
     private authService: AuthService,
-
-    private router: Router
-
     private router: Router,
     private notificationService: NotificationService,
     private commService: CommunicateService
-
   ) {
     this.getNotifications();
   }
   ngOnInit() {
     this.getUserDetails();
-
-
     this.authService.get_user_profiles().subscribe(
       data => {
         this.userlist = data;
         this.commService.setUserList(this.userlist);
       }
     )
+  }
+  displaysearch() {
 
-  }
-
-
-  displaynotification() {
-    this.renderer.setStyle(this.moreRef2.nativeElement, 'display', 'block');
-  }
-  displaymyprofile() {
-    this.renderer.setStyle(this.moreRef1.nativeElement, 'display', 'block');
-  }
-  displaymore() {
-    this.renderer.setStyle(this.moreRef.nativeElement, 'display', 'block');
-  }
     this.authService.search_user(this.searchKey)
       .subscribe(respObj => {
         if (!respObj.length) {
@@ -79,14 +67,14 @@ export class NavbarComponent implements OnInit {
   getUserDetails() {
     this.authService.get_user_profiles()
       .subscribe(respObj => {
-        this.userDetails = respObj['results'].find(obj => obj['user'] === JSON.parse(localStorage.getItem('currentUser'))['user_id']);
+        this.userDetails = respObj.find(obj => obj['user'] === JSON.parse(localStorage.getItem('currentUser'))['user_id']);
       })
   }
 
   getNotifications() {
     this.authService.get_user_notifications()
       .subscribe(respObj => {
-        this.notifList = [...respObj['results']];
+        this.notifList = respObj;
       })
   }
 
@@ -94,4 +82,6 @@ export class NavbarComponent implements OnInit {
     this.authService.logout();
     this.router.navigateByUrl('/login');
   }
+
+
 }
