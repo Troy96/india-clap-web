@@ -19,9 +19,10 @@ export class VariousSectorsJobsComponent implements OnInit {
   ) {
   }
 
-  jobList: any=[];
+  jobList: any[] = [];
   toggleFilter: boolean = false;
   toggleInstantJobs: boolean = false;
+  favouriteJobMap: Map<number, boolean> = new Map();
 
   ngOnInit() {
     this.getVariousSectorsJobs();
@@ -31,6 +32,7 @@ export class VariousSectorsJobsComponent implements OnInit {
     this.jobService.get_various_sectors_jobs()
       .subscribe(respObj => {
         this.jobList = respObj;
+        this.getAllfavJobs();
       })
   }
 
@@ -40,8 +42,34 @@ export class VariousSectorsJobsComponent implements OnInit {
 
   onFavouriteJob(event, jobId) {
     event.target.src = `${this._document.location.origin}/assets/icons/1x/filled-star.png`;
-    this.jobService.save_job(jobId)
+    this.jobService.favourite_job(jobId)
       .subscribe(respObj => console.log(respObj))
+  }
+
+  onUnFavouriteJob(event, jobId) {
+    event.target.src = `${this._document.location.origin}/assets/icons/1x/star.png`;
+    this.jobService.un_favourite_job(jobId)
+      .subscribe(respObj => console.log(respObj))
+  }
+
+  getAllfavJobs() {
+    this.jobService.get_favourite_jobs().subscribe(respObj => {
+      respObj.map(job => {
+        let temp = job.favourite_job.split('/');
+        let jobId = temp[temp.length - 2];
+        this.favouriteJobMap.set(jobId, true)
+      })
+      this.sortJobsAsFav();
+    })
+  }
+
+  sortJobsAsFav() {
+    this.jobList.map(job => {
+      if (this.favouriteJobMap.has(job.id.toString())) {
+        job['isFav'] = true;
+      }
+      else job['isFav'] = false;
+    })
   }
 
   onSelectAllAndApply() {

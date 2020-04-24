@@ -73,8 +73,12 @@ export class JobsService {
     return this.http.get(`${config.base_url}/JobMarket/jobs/${jobId}/fav/`)
   }
 
+  un_favourite_job(jobId){
+    return this.http.get(`${config.base_url}/JobMarket/jobs/${jobId}/unfav/`)
+  }
+
   get_favourite_jobs() {
-    return this.http.get(`${config.base_url}/JobMaket/jobs/favourite/`)
+    return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs/favourite/`)
   }
 
   search_job($data) {

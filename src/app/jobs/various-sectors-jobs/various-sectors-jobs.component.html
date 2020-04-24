@@ -25,10 +25,12 @@
         <div class="card" style="width: 100%;" *ngFor="let job of jobList">
             <div class="card-body">
                 <div id="symbols">
-                    <span id="space1" routerLink="/jobs/description/{{job.id}}">Apply</span>
+                    <span id="space1" routerLink="/jobs/description/{{job.id}}" style="cursor: pointer;">Apply</span>
 
-                    <img src="/assets/icons/1x/star.png" id="job.id" (click)="onFavouriteJob($event, job.id)" alt=""
-                        width="14px" height="14px">
+                    <img *ngIf="!job.isFav" src="/assets/icons/1x/star.png" id="job.id" style="cursor: pointer;"
+                        (click)="onFavouriteJob($event, job.id)" alt="" width="14px" height="14px">
+                    <img *ngIf="job.isFav" src="/assets/icons/1x/filled-star.png" id="job.id" style="cursor: pointer;"
+                        (click)="onUnFavouriteJob($event, job.id)" alt="" width="14px" height="14px">
                     <span id="space"></span>
                     <!-- <img src="/assets/icons/1x/save.png" alt="" width="10px" height="15"> -->
                 </div>

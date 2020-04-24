@@ -17,11 +17,10 @@ export class UserAccountComponent implements OnInit {
   ngOnInit() {
   }
   jobSearch() {
-    this.router.navigate(['/jobs/instant-apply-search'])
+    this.router.navigate(['/jobs/jobs-card'])
   }
   archiveJobSearch() {
     this.router.navigate(['/jobs/archive-job-search'])
-
   }
   skillCourseSearch() {
     this.router.navigate(['/offline-learning/skill-courses-results'])
