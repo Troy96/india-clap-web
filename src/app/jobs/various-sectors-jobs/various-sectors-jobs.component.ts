@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2, ElementRef, ViewChild, Inject } from '@angular/core';
 import { JobsService } from 'src/app/services/jobs.service';
 import { DOCUMENT } from '@angular/common';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-various-sectors-jobs',
@@ -15,6 +16,7 @@ export class VariousSectorsJobsComponent implements OnInit {
 
     private jobService: JobsService,
     private renderer: Renderer2,
+    private notifService: NotificationService
 
   ) {
   }
@@ -78,14 +80,16 @@ export class VariousSectorsJobsComponent implements OnInit {
 
   onSelectAllAndApply() {
     this.jobService.select_all_jobs()
-      .subscribe(respObj => console.log(respObj))
+      .subscribe(respObj => {
+        this.notifService.showSuccess(respObj['detail'], 'Job Alert');
+      })
   }
 
-  onInstantApply() {
+  getJobsByInstantApply() {
     this.toggleInstantJobs = !this.toggleInstantJobs;
     this.jobService.instant_apply_jobs(this.toggleInstantJobs)
       .subscribe(respObj => {
-        this.jobList = [...respObj['results']];
+        this.jobList = [...respObj];
       })
   }
 

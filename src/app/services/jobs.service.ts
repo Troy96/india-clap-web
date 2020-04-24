@@ -117,7 +117,7 @@ export class JobsService {
   }
 
   instant_apply_jobs(isInstantJob: boolean) {
-    return this.http.get(`${config.base_url}/JobMarket/jobs?is_instantjob=${isInstantJob}`);
+    return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?is_instantjob=${isInstantJob}`);
   }
 
   get_job_status(applicationId: number) {
