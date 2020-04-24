@@ -40,6 +40,7 @@ export class SomeoneElseProfileComponent implements OnInit {
     this.authService.get_user_details(this.userId)
       .subscribe(respObj => {
         this.userDetails = respObj;
+        console.log(this.userDetails);
         // this.userDetails = this.userList.find(obj => obj['user'] == this.userId);
       })
   }

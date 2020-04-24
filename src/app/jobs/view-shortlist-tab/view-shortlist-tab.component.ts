@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JobsService } from 'src/app/services/jobs.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class ViewShortlistTabComponent implements OnInit {
 
   constructor(
     private router: ActivatedRoute,
-    private jobService: JobsService
+    private jobService: JobsService,private _router:Router
   ) {
     this.jobId = +this.router.snapshot.paramMap.get('jobId');
   }
@@ -38,5 +38,10 @@ export class ViewShortlistTabComponent implements OnInit {
           this.ngOnInit();
         })
     }
-
+    applicantProfile(id)
+    {
+      console.log(id);
+     let _url = '/professional-networking/users/'+id;
+      this._router.navigate([_url])
+    }
 }

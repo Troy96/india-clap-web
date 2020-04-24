@@ -19,16 +19,20 @@ export class AppliedJobsComponent implements OnInit {
 
   ngOnInit() {
     this.getAppliedJobs();
+    console.log(this.appliedJobDetailList);
+
   }
 
   getAppliedJobs() {
     this.jobService.get_applied_jobs()
       .subscribe(respObj => {
         this.appliedJobList = respObj;
+        console.log(this.appliedJobList);
         this.appliedJobList.forEach(obj => {
           this.setJobDetails(obj['applied_job'], obj['id']);
         })
       })
+      
   }
 
   setJobDetails(job, appId) {
