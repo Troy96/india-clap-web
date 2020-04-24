@@ -35,9 +35,9 @@ export class JobDescriptionComponent implements OnInit {
   apply() {
     this.renderer.setStyle(this.profileShareRef.nativeElement, 'display', 'block');
     this.obj.id = this.jobId;
-    this.jobService.apply_to_job(this.jobId,this.obj).subscribe((data:any)=>{
-    console.log(data);
-    })
+    // this.jobService.apply_to_job(this.jobId,this.obj).subscribe((data:any)=>{
+    // console.log(data);
+    // })
   }
   displayProfileShareAlert(){
     

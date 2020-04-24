@@ -60,7 +60,7 @@ export class AuthService {
     return this.http.patch(`${config.base_url}/Users/profiles/${userId}/`, formData)
   }
 
-  upload_user_cover(userId, data){
+  upload_user_cover(userId, data) {
     const formData = new FormData();
     formData.append('cover_photo', data);
     return this.http.patch(`${config.base_url}/Users/profiles/${userId}/`, formData);
@@ -80,6 +80,12 @@ export class AuthService {
 
   update_experience(id, $data) {
     return this.http.patch(`${config.base_url}/Users/experiences/${id}/`, $data)
+  }
+
+  update_company_logo(id, logo) {
+    const formData = new FormData();
+    formData.append('company_logo', logo);
+    return this.http.patch(`${config.base_url}/Users/experiences/${id}/`, formData)
   }
 
   delete_experience(id) {

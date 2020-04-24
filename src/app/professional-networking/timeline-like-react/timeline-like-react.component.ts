@@ -3,6 +3,7 @@ import { NetworkingService } from 'src/app/services/networking.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { JobsService } from 'src/app/services/jobs.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { CommunicateService } from 'src/app/services/communicate.service';
 
 @Component({
   selector: 'app-timeline-like-react',
@@ -12,21 +13,36 @@ import { NotificationService } from 'src/app/services/notification.service';
 export class TimelineLikeReactComponent implements OnInit {
   showEmoji: Boolean = false;
   currentUser: any;
+  currentUserDetails: any;
   postList: any[];
   statusText: string = "";
   timelineUpdateForm: FormGroup;
+<<<<<<< HEAD
   photoVal:boolean = true;
   videoval:boolean= true;
   isReacted:boolean=true;
   isReported:boolean=true;
+=======
+  photoVal: boolean = true;
+  videoval: boolean = true;
+  users: any[];
+>>>>>>> 5e2c0263164f63a4b6f3494c2e2801f25ac6e46f
   @ViewChild('comment', { static: false }) commentRef: ElementRef
   constructor(
     private netService: NetworkingService, private cd: ChangeDetectorRef, private jobService: JobsService
-    , private notifyService: NotificationService
+    , private notifyService: NotificationService,
+    private commService: CommunicateService
   ) {
+    this.commService.userList$.subscribe(data => {
+      this.users = [...data];
+      console.log(this.users);
+    })
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
-    console.log(this.currentUser);
     this.getUserPosts();
+    setTimeout(() => {
+      this.currentUserDetails = this.users.find(user=> user.id === this.currentUser);
+      this.addUserDetails();
+    }, 5000);
     this.timelineUpdateForm = new FormGroup({
       text: new FormControl(""),
       video: new FormControl(""),
@@ -51,6 +67,15 @@ export class TimelineLikeReactComponent implements OnInit {
   }
   IsReported(){
     this.isReported =!this.isReported;
+  }
+
+  addUserDetails(){
+    for (let post of this.postList) {
+      const user = this.users.find(user => user.id === post.author_user);
+      post.profile = user.photo;
+      post.first_name = user.first_name,
+      post.last_name = user.last_name
+    }
   }
 
   createStatus() {
@@ -126,6 +151,12 @@ export class TimelineLikeReactComponent implements OnInit {
     this.netService.get_post_comments(postId)
       .subscribe(respObj => {
         post['comments'] = [...respObj]
+        post['comments'].map(commemt=>{
+          const user = this.users.find(user=> user.id===commemt.user);
+          commemt['profile'] = user.photo;
+          commemt['first_name'] = user.first_name;
+          commemt['last_name'] = user.last_name
+        })
       })
   }
 

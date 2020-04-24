@@ -45,7 +45,7 @@ export class LoginPageComponent implements OnInit {
       this.authService.login(this.obj).subscribe(async (data: any) => {
         this.notifyService.showSuccess('You are now logged in','Login successful');
         await localStorage.setItem('currentUser', JSON.stringify(data));
-        this.router.navigateByUrl('/professional-networking/me');
+        this.router.navigateByUrl('/jobs/user-account');
       },
       err=>{
         if(err.error.error=="Invalid Credentials")

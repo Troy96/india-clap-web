@@ -14,7 +14,13 @@ export class NetworkingService {
   }
 
   create_company($data) {
-    return this.http.post(`${config.base_url}/JobMarket/companies/create`, $data);
+    const formData = new FormData();
+    formData.append('company_size', $data.company_size);
+    formData.append('industry', $data.industry);
+    formData.append('name', $data.name);
+    if($data.logo)
+    formData.append('logo', $data.logo);
+    return this.http.post(`${config.base_url}/JobMarket/companies/create`, formData);
   }
 
   get_company_details(id: number) {
@@ -92,5 +98,17 @@ export class NetworkingService {
     return this.http.post(`${config.base_url}/Networking/timelinePosts/${postId}/emoji`, formData);
 
   }
+  companyFollow_request(company_id)
+  {
+    return this.http.get(`${config.base_url}/Networking/follow-company/${company_id}/`);
 
+  }
+  get_mycompanies(){
+    return this.http.get<any>(`${config.base_url}/JobMarket/myCompanies/`);
+
+  }
+
+  get_connection_status(userId: number){
+    return this.http.get<any>(`${config.base_url}/Users/profiles/${userId}/status`);
+  }
 }

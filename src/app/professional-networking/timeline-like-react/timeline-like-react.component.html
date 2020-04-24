@@ -22,11 +22,13 @@
     <ng-container *ngFor="let post of postList">
         <div class="post">
             <div class="post-image">
-                <img src="/assets/icons/1x/bulb.png" width="47px">
+                <img src="{{post?.profile}}" style="display: block;
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;" width="47px">
             </div>
             <div class="post-text">
-                <p class="teal" *ngIf="post.author_user">{{post.author_user.first_name}}</p>
-                <p class="teal" *ngIf="post.author_company">{{post.author_company.name}}</p><br>
+                <p class="teal" *ngIf="post.author_user">{{post.first_name}} {{post.flast_name}}</p>
                 <p> {{post?.created_on | date}}</p>
                 <p> {{post?.text}}</p>
             </div>
@@ -129,7 +131,10 @@
                 </div>
             </div>
             <div class="comment" #comment>
-                <img src="/assets/icons/1x/dp.png" alt="" width="50px" class="comm-pro">
+                <img src="{{currentUserDetails?.photo}}" style="display: block;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;" alt="" width="50px" class="comm-pro">
                 <input type="text" class="form-control comment-box" placeholder="Write a comment..." #commentInp>
                 <div class="input-group-btn">
                     <button class="btn btn-default comm-icons" (click)="postComment(post.id, commentInp.value)">
@@ -141,6 +146,8 @@
                     </button>
                 </div>
             </div>
+            <div class="sharethis-inline-share-buttons"></div>
+
             <a style="text-decoration: underline; cursor: pointer; position: relative; top: 10px; color: grey;" (click)="getPostComments(post.id)">Load more comments...</a>
             <ng-container *ngFor="let comment of post.comments">
                 <div class="post-notification" *ngIf="comment?.content">
@@ -148,14 +155,22 @@
                         25min &nbsp
                         <img src="/assets/icons/1x/more-opt.png" width="12px">
                     </div> -->
-                    <!-- <div class="post-image">
-                        <img src="/assets/icons/1x/sdp.png" width="47px">
-                    </div> -->
+                    <div class="post-image">
+                        <img src="{{comment.profile}}" style="display: block;
+                        width: 55px;
+                        height: 55px;
+                        border-radius: 50%;" width="47px">
+                    </div>
                     <div class="post-text">
-                        <!-- <span id="teal">{{comment?.user.first_name}} {{comment?.user.last_name}}</span><br> -->
+                        <span id="teal">{{comment?.first_name}} {{comment?.last_name}}</span><br>
                         <!-- Kolkata, India<br> -->
 
-                        <p>{{comment?.content}}</p>
+                        <p style="background-color: #f3f3f3;
+                        height: 50px;
+                        display: flex;
+                        align-items: center;
+                        left: 10;
+                        border-radius: 8px; justify-content: space-between;"><span style="position: relative; left:10px;">{{comment?.content}}</span><span style="position: relative; right: 10px;">{{comment?.timestamp | date}}</span></p>
                     </div>
                 </div>
             </ng-container>

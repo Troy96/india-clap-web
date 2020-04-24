@@ -3,17 +3,19 @@
         <h2>Jobs you have applied for</h2>
     </div>
     <div class="place" *ngIf="appliedJobList?.length">
-        <div class="card" style="width: 100%;" *ngFor="let job of appliedJobDetailList">
+        <div class="card" style="width: 100%;" *ngFor="let appliedJob of appliedJobList">
             <div class="card-body">
                 <div id="symbols">
-                    <h5>{{job?.status}}</h5>
+                    <h5>{{appliedJob?.company_action}}</h5>
                 </div>
-                <img class="card-img" src="/assets/icons/1x/bulb.png" alt="Card image cap" width="14px" height="14px">
+                <img class="card-img" src="{{appliedJob?.job?.company_logo}}" style="width: 40px; height: 40px; border-radius: 50%;" alt="Card image cap" width="14px"
+                    height="14px">
                 <div id="crdtxt">
                     <a href="">
-                        <h4 class="card-title">{{job?.company_mail}}</h4>
-                        <span class="card-text">{{job?.location_District}}, {{job?.location_State}}</span><br>
-                        <span class="card-text">{{job?.job_title}}</span>
+                        <h4 class="card-title">{{appliedJob?.job?.company_mail}}</h4>
+                        <span class="card-text">{{appliedJob?.job?.location_District}},
+                            {{appliedJob?.job?.location_State}}</span><br>
+                        <span class="card-text">{{appliedJob?.job?.job_title}}</span>
                     </a>
                 </div>
 

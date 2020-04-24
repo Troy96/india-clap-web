@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JobsService } from 'src/app/services/jobs.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 
@@ -15,7 +15,7 @@ export class JobPostEditComponent implements OnInit {
   obj:any={};
   received_data: any;
   constructor(
-    private router: ActivatedRoute,private jService:JobsService
+    private router: ActivatedRoute,private jService:JobsService,private _router:Router
   ) {
     this.jobId = +this.router.snapshot.paramMap.get('jobId');
       this.jobEditForm = new FormGroup({
@@ -54,6 +54,7 @@ export class JobPostEditComponent implements OnInit {
     console.log(this.obj)
     this.jService.edit_job_post(this.obj,this.obj.id).subscribe((data:any)=>{
       console.log(data);
+      this.ngOnInit();
     })
     }
    }
@@ -61,6 +62,7 @@ export class JobPostEditComponent implements OnInit {
    delete(){
   this.jService.delete_job_post(this.received_data.id).subscribe((data)=>{
     console.log(data);
+    this._router.navigate(['/jobs/job-postings']);
   })
    }
 }

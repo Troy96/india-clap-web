@@ -9,37 +9,39 @@
         </div>
     </div>
     <div class="place" *ngIf="candidateList?.length">
+        <div *ngFor="let candidate of candidateList">
         <div class="card" style="width: 100%;">
             <div class="card-body">
 
                 <div id="symbols">
-                    <a (click)="changeJobStatus('shortlist')">
+                    <a (click)="changeJobStatus('shortlist',candidate.job.id,candidate.applicant.id)">
                         <h5>Shortlist &nbsp;</h5>
                     </a>
-                    <a (click)="changeJobStatus('accept')">
+                    <a (click)="changeJobStatus('accept',candidate.job.id,candidate.applicant.id)">
                         <h5>Accept &nbsp;</h5>
                     </a>
-                    <a (click)="changeJobStatus('reject')">
+                    <a (click)="changeJobStatus('reject',candidate.job.id,candidate.applicant.id)">
                         <h5>Reject &nbsp;</h5>
                     </a>
                 </div>
 
                 <div id="vidlink">
-                    <a href="">
-                        <h6>www.linktovideoprofile.com</h6>
+                    <a href={{candidate.applicant.video_resume}}>
+                        <h6>Candidate video resume</h6>
                     </a>
                 </div>
-                <img class="card-img" src="/assets/icons/1x/dp1.png" alt="Card image cap">
+                <img class="card-img" src={{candidate.applicant.photo}} alt="Card image cap">
                 <div id="crdtxt">
-                    <a href="">
-                        <h4 class="card-title">Abesh Chatterjee</h4>
+                    <!-- <a href=""> -->
+                        <h4 class="card-title" (click)="applicantProfile(candidate.applicant.id)">{{candidate.applicant.first_name}} {{candidate.applicant.last_name}}</h4>
                         <span class="card-text">Gurgao, India</span><br>
 
-                    </a>
+                    <!-- </a> -->
                 </div>
 
             </div>
         </div>
+    </div>
     </div>
     <div class="no-data" *ngIf="!candidateList?.length">No Candidates for this job yet!</div>
 </div>

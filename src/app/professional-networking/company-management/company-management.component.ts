@@ -26,7 +26,7 @@ export class CompanyManagementComponent implements OnInit {
   }
 
   getCompaniesManaged() {
-    this.netService.get_companies()
+    this.netService.get_mycompanies()
       .subscribe(respObj => {
         this.companyList = [...respObj];
       })

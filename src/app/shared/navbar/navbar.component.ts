@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { NotificationService } from '../../services/notification.service';
 
 import { Router } from '@angular/router';
+import { CommunicateService } from 'src/app/services/communicate.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,6 +15,7 @@ export class NavbarComponent implements OnInit {
 
   userlist: any[];
   userDetails: any;
+  user
   notifList: string[];
   searchKey: string;
   isCollapsed:boolean=true;
@@ -25,7 +27,8 @@ export class NavbarComponent implements OnInit {
     private renderer: Renderer2,
     private authService: AuthService,
     private router: Router,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private commService: CommunicateService
   ) {
     this.getNotifications();
   }
@@ -34,6 +37,7 @@ export class NavbarComponent implements OnInit {
     this.authService.get_user_profiles().subscribe(
       data => {
         this.userlist = data;
+        this.commService.setUserList(this.userlist);
       }
     )
   }
@@ -45,12 +49,17 @@ export class NavbarComponent implements OnInit {
           return this.notificationService.showInfo('No User Found', 'Search Alert');
         }
         else {
+          if (respObj[0].id === this.userDetails.id) return this.router.navigateByUrl('/professional-networking/myprofile-editable')
           this.router.navigateByUrl('/professional-networking/users/' + respObj[0].id);
         }
       })
   }
   displaynotification() {
     this.isCollapsed=!this.isCollapsed;
+  }
+
+  hideNotifications() {
+    this.renderer.setStyle(this.moreRef2.nativeElement, 'display', 'none');
   }
 
 

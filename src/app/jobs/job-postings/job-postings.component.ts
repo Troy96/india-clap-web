@@ -19,7 +19,7 @@ export class JobPostingsComponent implements OnInit {
     this.jobService.get_job_postings()
       .subscribe(respObj => {
         console.log(respObj);
-        this.jobPostsList = [...respObj['results']];
+        this.jobPostsList = respObj;
       })
   }
 

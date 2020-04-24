@@ -7,7 +7,7 @@
                 apply</button>
 
         </div>
-        <div id="button" (click)="onInstantApply()">
+        <div id="button" (click)="getJobsByInstantApply()">
             <button type="submit" class="btn btn-primary hbtn">Instant Apply Jobs</button>
 
         </div>
@@ -25,18 +25,21 @@
         <div class="card" style="width: 100%;" *ngFor="let job of jobList">
             <div class="card-body">
                 <div id="symbols">
-                    <span id="space1" routerLink="/jobs/description/{{job.id}}">Apply</span>
+                    <span id="space1" routerLink="/jobs/description/{{job.id}}" style="cursor: pointer;">Apply</span>
 
-                    <img src="/assets/icons/1x/star.png" id="job.id" (click)="onFavouriteJob($event, job.id)" alt=""
-                        width="14px" height="14px">
+                    <img *ngIf="!job.isFav" src="/assets/icons/1x/star.png" id="job.id" style="cursor: pointer;"
+                        (click)="onFavouriteJob($event, job.id)" alt="" width="14px" height="14px">
+                    <img *ngIf="job.isFav" src="/assets/icons/1x/filled-star.png" id="job.id" style="cursor: pointer;"
+                        (click)="onUnFavouriteJob($event, job.id)" alt="" width="14px" height="14px">
                     <span id="space"></span>
                     <img src="/assets/icons/1x/save.png" id="job.id" (click)="onSavedJob($event, job.id)" alt="" width="10px" height="15">
                 </div>
                 <img class="card-img" src="/assets/icons/1x/bulb.png" alt="Card image cap">
 
                 <div id="crdtxt">
-                    <a href="">
-                        <h4 class="card-title">{{job?.company_mail}}</h4>
+                    <a>
+                        <h4 class="card-title" routerLink="/jobs/description/{{job.id}}" style="cursor: pointer;">
+                            {{job?.company_mail}}</h4>
                         <span class="card-text">{{job?.location_District}}, {{job.location_State}}</span><br>
                         <span class="card-text">{{job?.job_title}}</span>
                     </a>
@@ -49,6 +52,10 @@
     <div class="no-data" *ngIf="!jobList?.length">No jobs!</div>
 </div>
 <div id="filter-data" style="display: none;" #filters>
+    <img src="/assets/icons/1x/close.png" width="25px" style="width: 15px;
+    float: right;
+    position: relative;
+    right: 5px; cursor: pointer;" (click)="hideJobFilters()">
     <p (click)="getJobsByTitle()">Job title order</p>
     <hr>
     <p (click)="getJobsByOpenings()">Number of openings order</p>

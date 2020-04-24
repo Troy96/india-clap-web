@@ -29,7 +29,7 @@ export class UploadResumeComponent implements OnInit {
     this.getJobDetails(this.jobId);
     this.uploadResumeForm = new FormGroup({
       text: new FormControl("", Validators.required),
-      video: new FormControl(null, Validators.required)
+      video: new FormControl("")
     })
   }
 
@@ -67,16 +67,29 @@ export class UploadResumeComponent implements OnInit {
     const reader = new FileReader();
 
     if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
+      // const [file] = event.target.files;
+      // reader.readAsDataURL(file);
+     
+      let selectedFiles = event.target.files;
+      // console.log(event.target.result);
+      let _file = selectedFiles[0];
+    //  reader.onload = () => {
         this.uploadResumeForm.patchValue({
-          video: reader.result
+          video: ""
         });
+        let obj:any={};
+        obj.video_resume = _file;
+        let userId = (JSON.parse(localStorage.getItem('currentUser'))).profile_id;
+        this.jobService.send_video(userId,obj).subscribe((data):any=>{
+        console.log(data);
+        })
+        console.log(_file);
 
-        this.cd.markForCheck();
-      };
+      //   this.cd.markForCheck();
+      // };
+    }
+    else{
+      console.log("no file selected");
     }
   }
 

@@ -46,7 +46,11 @@
 
                     <div id="experience">
                         <div id="txt-exp" *ngFor="let exp of userDetails?.experiences">
-                            <img src="/assets/icons/1x/logo1.png" width="50px" class="exp-img">
+                            <img *ngIf="exp.company_logo" src="{{exp.company_logo}}" width="50px" height="50px" style="display: block; border-radius: 50%; cursor: pointer;" (click)="companyLogoInput.click()">
+                            <img *ngIf="!exp.company_logo" src="/assets/icons/1x/no_company.jpg" width="50px" height="50px" style="display: block; border-radius: 50%; cursor: pointer;" (click)="companyLogoInput.click()" class="exp-img">
+                            
+                            <input type="file" style="display: none;" #companyLogoInput (change)="onCompanyLogoUpload($event, exp.id)">
+                            
                             <img src="/assets/icons/1x/Edit.png" style="cursor: pointer;"
                                 (click)="openEditModal('Experience', exp)" style="cursor: pointer;" width="22px"
                                 class="edit-icon">
@@ -133,7 +137,7 @@
             <div id="sug-pro" *ngFor="let connection of userConnections">
                 <img src="/assets/icons/1x/close.png" width="10px" style="cursor: pointer;" class="close"
                     (click)="removeConnection(connection.id)">
-                <!-- <img src="{{connection?.photo}}" class="sug-dp" alt="" width="55px" height="55px"> -->
+                <img src="{{connection?.photo}}"  class="sug-dp" alt="" width="55px" height="55px">
                 <div class="text"><span class="teal" style="cursor: pointer;" [routerLink]="['/professional-networking/users/', connection.id]">{{connection?.first_name}} {{connection?.last_name}}</span><br>
                 </div>
                 <br>

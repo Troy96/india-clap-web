@@ -57,7 +57,7 @@ export class PrivacySettingsComponent implements OnInit {
     // })
     this.authService.get_privacy_details()
       .subscribe((respObj: any) => {
-        this.received_data = respObj.results[0];
+        this.received_data = respObj[0];
         console.log(this.received_data);
         //  for(let i = 0;i<this.received_data.length;i++)
         //  {

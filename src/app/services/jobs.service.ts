@@ -17,7 +17,6 @@ export class JobsService {
   create_job($data: any) {
     // console.log($data)
     return this.http.post(`${config.base_url}/JobMarket/jobs/create/`, $data);
-
   }
   get_companies() {
     //JobMarket/companies
@@ -48,7 +47,10 @@ export class JobsService {
   }
 
   upload_resume(jobId: number, $data: any) {
-    return this.http.post(`${config.base_url}/JobMarket/jobs/${jobId}/apply/`, $data);
+    const formData = new FormData();
+    formData.append('text', $data.text);
+   // formData.append('video', $data.video);
+    return this.http.post(`${config.base_url}/JobMarket/jobs/${jobId}/apply/`, formData);
   }
 
   archive_job_search($data: any) {
@@ -71,8 +73,12 @@ export class JobsService {
     return this.http.get(`${config.base_url}/JobMarket/jobs/${jobId}/fav/`)
   }
 
+  un_favourite_job(jobId){
+    return this.http.get(`${config.base_url}/JobMarket/jobs/${jobId}/unfav/`)
+  }
+
   get_favourite_jobs() {
-    return this.http.get(`${config.base_url}/JobMaket/jobs/favourite/`)
+    return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs/favourite/`)
   }
 
   search_job($data) {
@@ -89,7 +95,7 @@ export class JobsService {
   }
 
   get_applied_jobs() {
-    return this.http.get(`${config.base_url}/JobMarket/jobs/applied`);
+    return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs/applied/`);
   }
 
   get_job_candidates(jobId: number) {
@@ -103,15 +109,15 @@ export class JobsService {
   //   return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/shortlistedCandidates`);
 
   get_jobs_by_titles() {
-    return this.http.get(`${config.base_url}/JobMarket/jobs?ordering=job_title`);
+    return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=job_title`);
   }
 
   get_jobs_by_openings(order) {
-    return this.http.get(`${config.base_url}/JobMarket/jobs?ordering=${order}`);
+    return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=${order}`);
   }
 
   instant_apply_jobs(isInstantJob: boolean) {
-    return this.http.get(`${config.base_url}/JobMarket/jobs?is_instantjob=${isInstantJob}`);
+    return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?is_instantjob=${isInstantJob}`);
   }
 
   get_job_status(applicationId: number) {
@@ -119,7 +125,7 @@ export class JobsService {
   }
 
   change_job_application_state(postId: number, candidateId: number, state: string) {
-    return this.http.get(`${config.base_url}/JobMarket/myJobsPostings/${postId}/candidates/${candidateId}/${state}`)
+    return this.http.get(`${config.base_url}/JobMarket/jobs/myJobPostings/${postId}/candidates/${candidateId}/${state}`)
   }
 
   get_job_byId(jobId: number) {
@@ -132,5 +138,10 @@ export class JobsService {
     return this.http.delete(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/`);
 
   }
+  send_video(userId,$data){
+    const formData = new FormData();
+    formData.append('video_resume', $data.video_resume);
+    return this.http.patch(`${config.base_url}/Users/profiles/${userId}/`,formData);
 
+  }
 }
