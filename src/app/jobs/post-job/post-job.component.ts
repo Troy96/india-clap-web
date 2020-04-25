@@ -13,13 +13,14 @@ export class PostJobComponent implements OnInit {
 
   jobPostForm: FormGroup;
   selectedCompany: string;
+  industryList: any;
 
   constructor(
     private fb: FormBuilder,
-    private router:Router,
-    private jservice:JobsService,
+    private router: Router,
+    private jservice: JobsService,
     private notifService: NotificationService
-    ) {
+  ) {
     this.jobPostForm = new FormGroup({
       company: new FormControl("", Validators.required),
       job_role: new FormControl("", Validators.required),
@@ -31,10 +32,10 @@ export class PostJobComponent implements OnInit {
       job_state: new FormControl("", Validators.required),
       job_district: new FormControl("", Validators.required),
     });
-   }
-   company_data:any=[];
-   submit()
-   {
+  }
+  company_data: any = [];
+  submit() {
+    console.log(this.industryList);
     this.jobPostForm.controls["company"].markAsTouched();
     this.jobPostForm.controls["job_role"].markAsTouched();
     this.jobPostForm.controls["job_title"].markAsTouched();
@@ -45,21 +46,21 @@ export class PostJobComponent implements OnInit {
     this.jobPostForm.controls["job_state"].markAsTouched();
     this.jobPostForm.controls["job_district"].markAsTouched();
     console.log(this.jobPostForm.value);
-    if(this.jobPostForm.valid)
-    {
-      let obj:any={};
-      obj.company=(this.jobPostForm.get('company').value);
-      obj.job_role=(this.jobPostForm.get('job_role').value);
-      obj.job_title=(this.jobPostForm.get('job_title').value);
-      obj.job_desc=(this.jobPostForm.get('desc').value);
-      obj.salary=(this.jobPostForm.get('salary_range').value);
-      obj.skills=(this.jobPostForm.get('skills_required').value);
-      obj.company_mail=(this.jobPostForm.get('emp_email').value);
-      obj.location_State=this.jobPostForm.get('job_state').value;
-      obj.location_District =this.jobPostForm.get('job_district').value;
+    if (this.jobPostForm.valid) {
+      let obj: any = {};
+      obj.company = (this.jobPostForm.get('company').value);
+      obj.job_role = (this.jobPostForm.get('job_role').value);
+      obj.job_title = (this.jobPostForm.get('job_title').value);
+      obj.job_desc = (this.jobPostForm.get('desc').value);
+      obj.salary = (this.jobPostForm.get('salary_range').value);
+      obj.skills = (this.jobPostForm.get('skills_required').value);
+      obj.company_mail = (this.jobPostForm.get('emp_email').value);
+      obj.location_State = this.jobPostForm.get('job_state').value;
+      obj.location_District = this.jobPostForm.get('job_district').value;
+      obj.industry_name = this.getIndustryId(this.jobPostForm.get('company').value)
       var today = new Date();
-      var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-      console.log(date);
+      var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+      console.log(obj);
       // for(let i=1;i<this.company_data.length;i++)
       // {
       //   if(this.company_data[i].name==(this.jobPostForm.get('name').value))
@@ -69,22 +70,36 @@ export class PostJobComponent implements OnInit {
       //   }
       // }
       obj.date_posted = date;
-      this.jservice.create_job(obj).subscribe((data:any)=>{
+      this.jservice.create_job(obj).subscribe((data: any) => {
         this.notifService.showSuccess('Company created!', 'Alert')
       })
     }
     else
-    console.log("not valid");
-   }
+      console.log("not valid");
+  }
   ngOnInit() {
-   this.jservice.get_companies().subscribe((data:any)=>{
-     this.company_data = data;
-   })
+    this.jservice.get_companies().subscribe((data: any) => {
+      this.company_data = [...data];
+    })
+    this.getSectors();
   }
 
-  onCompanySelect(e){
+  onCompanySelect(e) {
     this.selectedCompany = e.target.value;
 
   }
+
+  getIndustryId(companyId: number) {
+    const comp = this.company_data.find(comp => comp.id === Number(companyId));
+    return comp.industry;
+  }
+
+  getSectors() {
+    this.jservice.get_sectors()
+      .subscribe(respObj => {
+        this.industryList = [ ...respObj];
+      })
+  }
+
 
 }

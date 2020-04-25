@@ -27,7 +27,7 @@ export class JobsService {
   }
 
   get_sectors() {
-    return this.http.get(`${config.base_url}/JobMarket/jobs/sectorwise`)
+    return this.http.get<any>(`${config.base_url}/JobMarket/jobs/sectorwise`)
   }
 
   get_various_sectors_jobs() {
