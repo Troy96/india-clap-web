@@ -1,7 +1,7 @@
 
-<nav class="navbar navbar-icon-top navbar-expand-lg navbar ">
+<nav class="navbar fixed-top navbar-icon-top navbar-expand-lg navbar">
   <a class="navbar-brand" routerLink="professional-networking/me">holagraph</a>
-  <form id="frm" style="width: 65%;">
+  <form id="frm" class="search-bar">
     <div class="input-group">
       <input type="text" name="search" class="form-control frm1" placeholder="Search" [(ngModel)]="searchKey">
       <div class="input-group-btn">
@@ -20,7 +20,7 @@
   <div class="collapse navbar-collapse " id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto" style="position: relative;
     bottom: 7px;">
-      <li class="nav-item active"  [routerLink]="['/']" style="">
+      <li class="nav-item active"  [routerLink]="['/professional-networking/me']" style="">
         <a class="nav-link">
           Home
           <span class="sr-only">(current)</span>
