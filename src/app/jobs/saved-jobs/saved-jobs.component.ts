@@ -34,8 +34,7 @@ export class SavedJobsComponent implements OnInit {
     this.savedJobList.forEach(link => {
       this._http.get(link)
         .subscribe(respObj => {
-          const companyId = respObj['company'];
-          this.setJobDetailList(companyId, respObj)
+          this.jobDetailList.push(respObj)
         })
     })
   }
