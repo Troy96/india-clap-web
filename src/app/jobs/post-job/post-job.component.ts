@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { JobsService } from 'src/app/services/jobs.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { NetworkingService } from 'src/app/services/networking.service';
 
 @Component({
   selector: 'app-post-job',
@@ -14,13 +15,16 @@ export class PostJobComponent implements OnInit {
   jobPostForm: FormGroup;
   selectedCompany: string;
   industryList: any;
+  myCompanyList: any[];
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private jservice: JobsService,
-    private notifService: NotificationService
+    private notifService: NotificationService,
+    private netService: NetworkingService
   ) {
+    this.getMyCompanies();
     this.jobPostForm = new FormGroup({
       company: new FormControl("", Validators.required),
       job_role: new FormControl("", Validators.required),
@@ -97,7 +101,14 @@ export class PostJobComponent implements OnInit {
   getSectors() {
     this.jservice.get_sectors()
       .subscribe(respObj => {
-        this.industryList = [ ...respObj];
+        this.industryList = [...respObj];
+      })
+  }
+
+  getMyCompanies() {
+    this.netService.get_mycompanies()
+      .subscribe(respObj => {
+        this.myCompanyList = [...respObj]
       })
   }
 
