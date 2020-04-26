@@ -23,6 +23,7 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "angularx-social-login": "^2.2.1",
     "bootstrap": "^4.4.1",
     "express": "^4.17.1",
     "ng2-tooltip-directive": "^2.9.20",

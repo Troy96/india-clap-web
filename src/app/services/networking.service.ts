@@ -19,7 +19,7 @@ export class NetworkingService {
     formData.append('industry', $data.industry);
     formData.append('name', $data.name);
     if($data.logo)
-    formData.append('logo', $data.logo);
+    formData.append('company_logo', $data.logo);
     return this.http.post(`${config.base_url}/JobMarket/companies/create`, formData);
   }
 

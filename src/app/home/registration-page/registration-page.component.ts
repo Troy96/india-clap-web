@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthServices} from 'src/app/services/auth.service';
 import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class RegistrationPageComponent implements OnInit {
   emailValidation: boolean = false;
   passwordValidation: boolean = false;
 
-  constructor(private authService: AuthService, private notifyService: NotificationService) {
+  constructor(private authService: AuthServices, private notifyService: NotificationService) {
     this.registerForm = new FormGroup({
       first_name: new FormControl("", Validators.required),
       email: new FormControl("", [

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NetworkingService } from 'src/app/services/networking.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthServices} from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-company-management',
@@ -16,7 +16,7 @@ export class CompanyManagementComponent implements OnInit {
 
   constructor(
     private netService: NetworkingService,
-    private authService: AuthService
+    private authService: AuthServices
   ) { }
 
   ngOnInit() {

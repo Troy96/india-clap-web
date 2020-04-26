@@ -1,10 +1,11 @@
 import { Component, OnInit, Renderer2, ElementRef, ViewChild, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthServices} from 'src/app/services/auth.service';
 import { NotificationService } from '../../services/notification.service';
 
 import { Router } from '@angular/router';
 import { CommunicateService } from 'src/app/services/communicate.service';
+import { AuthService } from 'angularx-social-login';
 
 @Component({
   selector: 'app-navbar',
@@ -23,10 +24,10 @@ export class NavbarComponent implements OnInit {
   @ViewChild('myprofile', { static: false }) moreRef1: ElementRef
   @ViewChild('more', { static: false }) moreRef: ElementRef
   constructor(
-    @Inject(DOCUMENT) private _document: Document,
+    @Inject(DOCUMENT) private _document: Document,private auth_Service: AuthService,
 
     private renderer: Renderer2,
-    private authService: AuthService,
+    private authService: AuthServices,
     private router: Router,
     private notificationService: NotificationService,
     private commService: CommunicateService
@@ -80,8 +81,14 @@ export class NavbarComponent implements OnInit {
 
   onLogout() {
     this.authService.logout();
+    this.signOut();
     this.router.navigateByUrl('/login');
-  }
 
+  }
+ signOut(): void {
+    this.auth_Service.signOut().catch(err=>{
+      console.log(err)
+    });
+  }
 
 }
