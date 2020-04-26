@@ -10,12 +10,13 @@
                     <span id="space"></span>
                     <img src="/assets/icons/1x/close.png" (click)="unsaveJob(job)" style="cursor: pointer;" alt="" width="10px" height="12">
                     <span id="space"></span>
-                    <img src="/assets/icons/1x/bookmark_empty.png" (click)="bookmarkJob(job)" style="cursor: pointer;" alt="" width="10px" height="12">
+                    <img *ngIf="!job?.isFav" src="/assets/icons/1x/bookmark_empty.png" (click)="favouriteJob($event, job)" style="cursor: pointer;" alt="" width="10px" height="12">
+                    <img *ngIf="job?.isFav" src="/assets/icons/1x/bookmark_fill.png" (click)="onUnFavouriteJob($event, job.id)" style="cursor: pointer;" alt="" width="10px" height="12">
 
                 </div>
                 <img class="card-img" src="/assets/icons/1x/bulb.png" alt="Card image cap">
                 <div id="crdtxt">
-                    <a>
+                    <a style="cursor: pointer;">
                         <h4 class="card-title" routerLink="/jobs/description/{{job?.id}}">{{job?.job_desc}}</h4>
                         <span class="card-text">{{job?.location_District}} {{job?.location_State}}</span><br>
                         <span class="card-text">{{job?.job_role}}</span>
