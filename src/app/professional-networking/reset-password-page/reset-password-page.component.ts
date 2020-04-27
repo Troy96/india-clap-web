@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notification.service';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthServices} from 'src/app/services/auth.service';
 import { NetworkingService } from 'src/app/services/networking.service';
 
 @Component({

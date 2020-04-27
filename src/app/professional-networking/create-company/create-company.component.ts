@@ -35,21 +35,21 @@ export class CreateCompanyComponent implements OnInit {
     this.companyForm.markAllAsTouched;
     if (this.companyForm.invalid) return;
 
-    if (!this.companyForm.get('logo').value) this.companyForm.removeControl('logo');
-
+    // if (!this.companyForm.get('logo').value) this.companyForm.removeControl('logo');
     this.netService.create_company(this.companyForm.value)
       .subscribe(respObj => {
         console.log(respObj);
         this.notifService.showSuccess('Company created', 'company alert')
       })
   }
-  onPhotoUpload(event) {
-
+  onPhotoUpload(event:any) {
+    console.log("hello");
     if (event.target.files && event.target.files.length) {
 
       let selectedFiles = event.target.files;
       // console.log(event.target.result);
       let _file = selectedFiles[0];
+      console.log(_file);
       this.companyForm.patchValue({
         logo: _file
       })

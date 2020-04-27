@@ -5,8 +5,9 @@
                 <img class="jmb-img"  style="cursor: pointer;" (click)="photoInput.click()" src="{{userDetails?.photo}}" alt="" style="cursor: pointer;">
             </div>
 
-            <input type="file" #photoInput style="display: none;" (change)="onPhotoUpload($event)">
-            <input type="file" #coverInput style="display: none;" (change)="onCoverUpload($event)">
+            <input type="file" #photoInput style="display: none;"  (change)="onPhotoUpload($event);onlyCover()">
+            <!-- <div *ngIf="showCover"></div> -->
+            <input type="file" #coverInput style="display: none;"  (change)="onCoverUpload($event)">
 
             <div class="jumbotron-image" *ngIf="!userDetails?.photo">
                 <img class="jmb-img" src="/assets/icons/1x/dp.png" style="cursor: pointer;"

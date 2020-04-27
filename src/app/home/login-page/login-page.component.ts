@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthServices} from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notification.service';
+//import { Au } from "angularx-social-login";
+// import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+// import { SocialUser } from "angularx-social-login";
 
 @Component({
   selector: 'app-login-page',
@@ -11,10 +14,11 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class LoginPageComponent implements OnInit {
   loginForm: FormGroup;
-
+  //private user: SocialUser;
+  private loggedIn: boolean;
   obj: any = {};
   constructor(
-    private authService: AuthService,
+    private authService: AuthServices,//private auth_Service: AuthService,
     private router: Router,private notifyService : NotificationService
   ) {
     if (!!JSON.parse(localStorage.getItem('currentUser'))) {
@@ -85,6 +89,31 @@ showToasterWarning(){
         .setAttribute("type", "text");
     }
   }
+  // signInWithGoogle(): void {
+  //   this.auth_Service.signIn(GoogleLoginProvider.PROVIDER_ID);
+  // }
+ 
+  // signInWithFB(): void {
+  //  // this.social_login();
+  //   this.auth_Service.signIn(FacebookLoginProvider.PROVIDER_ID);
+  //   // if(this.user==null)
+  //   //   {
+  //   //   this.ngOnInit();
+  //   // }
+  // } 
+ 
+  // signOut(): void {
+  //   this.auth_Service.signOut().catch(err=>{
+  //     console.log(err)
+  //   });
+  // }
+  // social_login(){
+  //   this.auth_Service.authState.subscribe((user) => {
+  //     this.user = user;
+  //     this.loggedIn = (user != null);
+  //     console.log(this.user);
+  //   });
+  // }
 }
 
 

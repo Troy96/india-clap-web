@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthServices} from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notification.service';
 
@@ -19,7 +19,7 @@ export class PrivacySettingsComponent implements OnInit {
   received_data: any = [];
   menuObj: any = {};
   constructor(
-    private authService: AuthService, private router: Router, private notifyService: NotificationService
+    private authService: AuthServices, private router: Router, private notifyService: NotificationService
   ) {
     this.getUserDetails();
   }
