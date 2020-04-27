@@ -2,7 +2,7 @@
     <div class="header">
         <h2>Search for jobs</h2>
         <div id="button">
-            <button type="submit" class="btn btn-primary hbtn">Instant Apply</button>
+            <button type="submit" class="btn btn-primary hbtn" (click)="getJobsByInstantApply()">Instant Apply</button>
 
         </div>
         <div id="filter">
@@ -15,37 +15,39 @@
     </div>
     <div class="place">
         <form [formGroup]='instantApplyForm'>
-        <h3>Salary</h3>
-        <div>
+            <h3>Salary</h3>
+            <div>
 
-            <input class="form-control" id="frm2" placeholder=""  formControlName="salary">
-        </div>
-        <h3>State</h3>
-        <div>
+                <input class="form-control" id="frm2" placeholder="" formControlName="salary">
+            </div>
+            <h3>State</h3>
+            <div>
 
-            <input class="form-control" id="frm2" placeholder="West Bengal, Haryana etc" formControlName="location_State">
+                <input class="form-control" id="frm2" placeholder="West Bengal, Haryana etc"
+                    formControlName="location_State">
 
-        </div>
-        <h3>District</h3>
-        <div>
+            </div>
+            <h3>District</h3>
+            <div>
 
-            <input class="form-control" id="frm2" placeholder="North 24  paragona, etc" formControlName="location_District">
-        </div>
-        <div id="from">
+                <input class="form-control" id="frm2" placeholder="North 24  paragona, etc"
+                    formControlName="location_District">
+            </div>
+            <div id="from">
 
-            <h3>From</h3>
+                <h3>From</h3>
 
-            <input type="date" class="form-control" id="frm3" placeholder="" formControlName="starting_time">
+                <input type="date" class="form-control" id="frm3" placeholder="" formControlName="starting_time">
 
-        </div>
-        <div id="to">
-            <h3>To</h3>
-            <input type="date" class="form-control" id="frm4" placeholder="" formControlName="end_time">
-        </div>
+            </div>
+            <div id="to">
+                <h3>To</h3>
+                <input type="date" class="form-control" id="frm4" placeholder="" formControlName="end_time">
+            </div>
 
-        <button class="btn btn-default btnplc" type="submit" (click)="submit()">
-            <i class="glyphicon glyphicon-search "><img src="/assets/icons/1x/button.png" width="50px"></i>
-        </button>
-    </form>
+            <button class="btn btn-default btnplc" type="submit" (click)="submit()">
+                <i class="glyphicon glyphicon-search "><img src="/assets/icons/1x/button.png" width="50px"></i>
+            </button>
+        </form>
     </div>
 </div>

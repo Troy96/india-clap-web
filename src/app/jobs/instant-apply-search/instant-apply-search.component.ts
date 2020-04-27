@@ -47,4 +47,15 @@ export class InstantApplySearchComponent implements OnInit {
   ngOnInit() {
   }
 
+  getJobsByInstantApply() {
+    this.jobService.instant_apply_jobs(true)
+      .subscribe(respObj => {
+        if (respObj.length) {
+          this.router.navigateByUrl('/jobs/various-sectors');
+          this.jobService.pushNewJobs(respObj);
+        }
+        else return this.notifService.showWarning('No jobs found', 'job alert');
+      })
+  }
+
 }
