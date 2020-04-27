@@ -42,9 +42,12 @@
                 border-radius: 50%;" width="47px">
             </div>
             <div class="post-text">
-                <p class="teal" *ngIf="post.author_user">{{post.first_name}} {{post.flast_name}}</p>
-                <p> {{post?.created_on | date}}</p>
-                <p *ngIf="post?.text"> {{post?.text}}</p>
+                <div>
+
+                    <p class="teal" *ngIf="post.author_user">{{post.first_name}} {{post.flast_name}}</p>
+                    <p> {{post?.created_on | date}}</p>
+                    <p *ngIf="post?.text"> {{post?.text}}</p>
+                </div>
                 <p *ngIf="post?.photo"> <img
                         style="max-width: 100%; display: block; height: 100%; object-fit: cover; width: 100%;"
                         src="{{post?.photo}}" width="950px" height="600px"></p>
@@ -201,15 +204,16 @@
                                 <span>{{comment?.content}}</span>
                                 <span>{{comment?.timestamp | date}}</span>
                             </div>
-                            <br/>
+                            <br />
                             <p>{{comment?.reply}}</p>
                         </div>
                         <div style="display: flex;
                         justify-content: flex-end;
                         position: relative;
                         right: 10px;"> <input type="text" class="form-control comment-box"
-                                placeholder="Write a reply..." #replyInp >
-                                <button class="btn" (click)="replyComment(post.id, comment.id, replyInp.value)" style="background-color: teal; color: white;">Reply</button>
+                                placeholder="Write a reply..." #replyInp>
+                            <button class="btn" (click)="replyComment(post.id, comment.id, replyInp.value)"
+                                style="background-color: teal; color: white;">Reply</button>
                         </div>
                     </div>
                 </div>

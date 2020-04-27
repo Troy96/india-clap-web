@@ -67,7 +67,6 @@ export class TimelineLikeReactComponent implements OnInit {
   createStatus() {
 
     this.timelineUpdateForm.patchValue({ text: this.statusText });
-    console.log(this.timelineUpdateForm.value)
     if (!this.timelineUpdateForm.valid || (this.timelineUpdateForm.get('text').value == "" && this.timelineUpdateForm.get('photo').value == "" && this.timelineUpdateForm.get('video').value == "")) {
       this.showToasterError("Please add a text,photo or video first!");
       return;
