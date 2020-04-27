@@ -9,9 +9,9 @@
                 <img class="card-img" src={{companyObj?.logo}} alt="Card image cap">
                 <div id="crdtxt">
                     <a href="">
-                        <h4 class="card-title">{{companyObj?.name}}</h4>
-                        <span class="card-text">{{companyObj?.location}}</span><br>
-                        <span class="card-text">{{jobObj?.title}}</span>
+                        <h4 class="card-title">{{jobObj?.company?.name}}</h4>
+                        <span class="card-text">{{jobObj?.company?.location}}</span><br>
+                        <span class="card-text">{{jobObj?.job_title}}</span>
                     </a>
                 </div>
 
@@ -23,11 +23,7 @@
                 <div>
 
                     <input class="form-control" id="frm2" placeholder="Your message here..."
-                        formControlName="text"
-                        [ngClass]="{'is-invalid':uploadResumeForm.get('text').touched && uploadResumeForm.get('text').invalid}">
-                    <div class="invalid-feedback">
-                        <p class="error">This field is required</p>
-                    </div>
+                        formControlName="text">
                 </div>
                 <div class="heading1 ">
                     <h3 class="left">Upload video resume</h3>

@@ -6,7 +6,7 @@ import { config } from '../config';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthServices{
 
 
 
@@ -139,5 +139,9 @@ export class AuthService {
 
   logout() {
     return localStorage.removeItem('currentUser');
+  }
+  fb_login($data){
+    return this.http.post(`${config.base_url}/accounts/fblogin/`, $data, { headers: this.headers });
+
   }
 }

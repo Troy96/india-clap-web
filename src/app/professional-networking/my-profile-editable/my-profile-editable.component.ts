@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthServices} from 'src/app/services/auth.service';
 import { NetworkingService } from 'src/app/services/networking.service';
 import { MyprofileEditableService } from './myprofile-editable.service';
 import { DomSanitizer, SafeUrl, SafeStyle } from '@angular/platform-browser'
@@ -16,7 +16,7 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
   profileId: number;
   userDetails: any;
   userConnections: any[] = [];
-
+  showCover:Boolean = true;
   videoFile: any;
   imageFile: any;
   coverFile: any;
@@ -29,7 +29,7 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
   @ViewChild('coverImg', { static: true }) coverImgRef: ElementRef;
 
   constructor(
-    private authService: AuthService,
+    private authService: AuthServices,
     private netService: NetworkingService,
     private inputModal: MyprofileEditableService,
     private sanitizer: DomSanitizer,
@@ -117,6 +117,7 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
   }
 
   onPhotoUpload(event) {
+    console.log("hello")
     if (event.target.files && event.target.files.length) {
       let selectedFiles = event.target.files;
       this.imageFile = selectedFiles[0];
@@ -126,12 +127,18 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
           this.notifService.showSuccess('Photo changed successfully', 'Profile Alert');
           this.userDetails.photo = respObj['photo'];
         })
-
+    
     }
+    this.showCover = true;
+  }
+  onlyCover(){
+    console.log("only cover")
+    this.showCover = false;
   }
 
   onCoverUpload(event) {
-    if (event.target.files && event.target.files.length) {
+    console.log("hi")
+    if (event.target.files && event.target.files.length ) {
       let selectedFiles = event.target.files;
 
       this.coverFile = selectedFiles[0];

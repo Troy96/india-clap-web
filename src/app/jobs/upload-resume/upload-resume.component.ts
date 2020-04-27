@@ -1,8 +1,9 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JobsService } from 'src/app/services/jobs.service';
 
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { NotificationService } from 'src/app/services/notification.service';
 
 
 @Component({
@@ -19,11 +20,12 @@ export class UploadResumeComponent implements OnInit {
   companyObj: any;
 
   uploadResumeForm: FormGroup;
-
+  @ViewChild('profileShare', {static: false}) profileShareRef: ElementRef;
   constructor(
     private route: ActivatedRoute,
     private jobService: JobsService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private notifService: NotificationService
   ) {
     this.jobId = Number(this.route.snapshot.paramMap.get('jobId'));
     this.getJobDetails(this.jobId);
@@ -40,8 +42,6 @@ export class UploadResumeComponent implements OnInit {
     this.jobService.get_job_description(jobId)
       .subscribe(respObj => {
         this.jobObj = { ...respObj };
-        this.companyId = this.jobObj['company'];
-        this.getCompanyDetails();
       })
   }
 
@@ -60,6 +60,7 @@ export class UploadResumeComponent implements OnInit {
     this.jobService.upload_resume(this.jobId, this.uploadResumeForm.value)
       .subscribe(respObj => {
         console.log(respObj);
+        this.notifService.showSuccess('Applied', 'job alert');
       })
   }
 
@@ -67,30 +68,27 @@ export class UploadResumeComponent implements OnInit {
     const reader = new FileReader();
 
     if (event.target.files && event.target.files.length) {
-      // const [file] = event.target.files;
-      // reader.readAsDataURL(file);
-     
-      let selectedFiles = event.target.files;
-      // console.log(event.target.result);
-      let _file = selectedFiles[0];
-    //  reader.onload = () => {
-        this.uploadResumeForm.patchValue({
-          video: ""
-        });
-        let obj:any={};
-        obj.video_resume = _file;
-        let userId = (JSON.parse(localStorage.getItem('currentUser'))).profile_id;
-        this.jobService.send_video(userId,obj).subscribe((data):any=>{
-        console.log(data);
-        })
-        console.log(_file);
 
-      //   this.cd.markForCheck();
-      // };
+      let selectedFiles = event.target.files;
+      let _file = selectedFiles[0];
+      this.uploadResumeForm.patchValue({
+        video: ""
+      });
+      let obj: any = {};
+      obj.video_resume = _file;
+      let userId = (JSON.parse(localStorage.getItem('currentUser'))).profile_id;
+      this.jobService.send_video(userId, obj).subscribe((data): any => {
+        console.log(data);
+      })
     }
-    else{
-      console.log("no file selected");
+    else {
+      this.notifService.showWarning('No file selected', 'job alert');
     }
+  }
+
+
+  displayPopup(){
+    this.profileShareRef.nativeElement.style.display = 'block';
   }
 
 

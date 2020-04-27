@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthServices} from 'src/app/services/auth.service';
 @Component({
   selector: 'app-my-profile-dropdown',
   templateUrl: './my-profile-dropdown.component.html',
@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class MyProfileDropdownComponent implements OnInit {
 
-  constructor( public auth: AuthService ) { }
+  constructor( public auth: AuthServices) { }
 
   ngOnInit() {
   }

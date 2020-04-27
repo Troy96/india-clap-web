@@ -35,7 +35,7 @@ export class TimelineLikeReactComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
     this.getUserPosts();
     setTimeout(() => {
-      this.currentUserDetails = this.users.find(user=> user.id === this.currentUser);
+      this.currentUserDetails = this.users.find(user => user.id === this.currentUser);
       this.addUserDetails();
     }, 5000);
     this.timelineUpdateForm = new FormGroup({
@@ -53,7 +53,7 @@ export class TimelineLikeReactComponent implements OnInit {
   getUserPosts() {
     this.netService.get_posts()
       .subscribe(respObj => {
-        this.postList = [...respObj];
+        this.postList = [...respObj['Timeline Posts'], ...respObj['Shared Posts']];
         this.getPostsReactions();
       })
   }
@@ -64,12 +64,12 @@ export class TimelineLikeReactComponent implements OnInit {
     this.isReported =!this.isReported;
   }
 
-  addUserDetails(){
+  addUserDetails() {
     for (let post of this.postList) {
       const user = this.users.find(user => user.id === post.author_user);
       post.profile = user.photo;
       post.first_name = user.first_name,
-      post.last_name = user.last_name
+        post.last_name = user.last_name
     }
   }
 
@@ -135,6 +135,13 @@ export class TimelineLikeReactComponent implements OnInit {
       })
   }
 
+  replyComment(postId: number, commentId: number, replytxt: string) {
+    this.netService.reply_on_comment(postId, commentId, replytxt)
+      .subscribe(respObj => {
+        console.log(respObj);
+      })
+  }
+
   // commentOnPost(postId: number) {
   //   this.netService.comment_on_post(postId, this.commentTxt)
   //     .subscribe(respObj => {
@@ -146,8 +153,8 @@ export class TimelineLikeReactComponent implements OnInit {
     this.netService.get_post_comments(postId)
       .subscribe(respObj => {
         post['comments'] = [...respObj]
-        post['comments'].map(commemt=>{
-          const user = this.users.find(user=> user.id===commemt.user);
+        post['comments'].map(commemt => {
+          const user = this.users.find(user => user.id === commemt.user);
           commemt['profile'] = user.photo;
           commemt['first_name'] = user.first_name;
           commemt['last_name'] = user.last_name

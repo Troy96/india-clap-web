@@ -10,7 +10,7 @@
                 <select class="form-control formcont" id="exampleInputEmail1" aria-describedby="emailHelp"
                     placeholder="Abc Industries, XYZ Designs" formControlName="company"
                     [ngClass]="{'is-invalid':jobPostForm.get('company').touched && jobPostForm.get('company').invalid}">
-                    <option *ngFor="let opt of company_data" [value]="opt.id">{{opt.name}}</option>
+                    <option *ngFor="let opt of myCompanyList" [value]="opt.id">{{opt.name}}</option>
 
                 </select>
                 <div class="invalid-feedback">

@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JobsService } from 'src/app/services/jobs.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-job-description',
@@ -16,7 +17,8 @@ export class JobDescriptionComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private jobService: JobsService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private notifService: NotificationService
   ) {
 
     this.jobId = Number(this.route.snapshot.paramMap.get('jobId'));
@@ -29,6 +31,7 @@ export class JobDescriptionComponent implements OnInit {
     this.jobService.get_job_description(jobId)
       .subscribe(respObj => {
         this.jobObj = { ...respObj };
+        if(!this.jobObj.is_active) this.notifService.showWarning('The Job is no longer Active', 'job alert');
       })
   }
 
