@@ -29,7 +29,7 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
   @ViewChild('coverImg', { static: true }) coverImgRef: ElementRef;
 
   constructor(
-    private AuthService: AuthServices,
+    private authService: AuthServices,
     private netService: NetworkingService,
     private inputModal: MyprofileEditableService,
     private sanitizer: DomSanitizer,
@@ -53,7 +53,7 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
 
   getUserDetails() {
     this.userConnections = [];
-    this.AuthService.get_user_details(this.profileId)
+    this.authService.get_user_details(this.profileId)
       .subscribe(respObj => {
         this.userDetails = { ...respObj }
         this.setinitCover();
@@ -72,7 +72,7 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
 
   getConnectionDetailList() {
     for (let user of this.userDetails['connections']) {
-      this.AuthService.get_user_details(user)
+      this.authService.get_user_details(user)
         .subscribe(respObj => {
           this.userConnections.push(respObj)
         })
@@ -110,7 +110,7 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
   }
 
   uploadVideoResume() {
-    this.AuthService.upload_user_video_resume(this.profileId, this.videoFile)
+    this.authService.upload_user_video_resume(this.profileId, this.videoFile)
       .subscribe(_ => {
         this.notifService.showSuccess('Video uploaded successfully', 'profile Alert');
       })
@@ -122,7 +122,7 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
       let selectedFiles = event.target.files;
       this.imageFile = selectedFiles[0];
 
-      this.AuthService.upload_user_photo(this.profileId, this.imageFile)
+      this.authService.upload_user_photo(this.profileId, this.imageFile)
         .subscribe(respObj => {
           this.notifService.showSuccess('Photo changed successfully', 'Profile Alert');
           this.userDetails.photo = respObj['photo'];
@@ -143,7 +143,7 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
 
       this.coverFile = selectedFiles[0];
 
-      this.AuthService.upload_user_cover(this.profileId, this.coverFile)
+      this.authService.upload_user_cover(this.profileId, this.coverFile)
         .subscribe(respObj => {
 
           const styleExp = `background-image: url(${respObj['cover_photo']})`;
@@ -160,7 +160,7 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
       let selectedFiles = event.target.files;
 
       this.companyLogoFile = selectedFiles[0];
-      this.AuthService.update_company_logo(expId, this.companyLogoFile)
+      this.authService.update_company_logo(expId, this.companyLogoFile)
         .subscribe(respObj => {
           this.notifService.showSuccess('Company logo changed successfully', 'Profile Alert')
           this.getUserDetails();
