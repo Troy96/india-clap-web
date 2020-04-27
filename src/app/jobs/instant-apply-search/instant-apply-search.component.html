@@ -18,53 +18,30 @@
         <h3>Salary</h3>
         <div>
 
-            <input class="form-control" id="frm2" placeholder=""  formControlName="salary"
-            [ngClass]="{'is-invalid':instantApplyForm.get('salary').touched && instantApplyForm.get('salary').invalid}">
-            <div class="invalid-feedback">
-                <p class="error">This field is required</p>
-             </div> 
+            <input class="form-control" id="frm2" placeholder=""  formControlName="salary">
         </div>
         <h3>State</h3>
         <div>
 
-            <input class="form-control" id="frm2" placeholder="West Bengal, Haryana etc" formControlName="location_State"
-            [ngClass]="{'is-invalid':instantApplyForm.get('location_State').touched && instantApplyForm.get('location_State').invalid}">
-            <div class="invalid-feedback">
-                <p class="error">This field is required</p>
-             </div> 
+            <input class="form-control" id="frm2" placeholder="West Bengal, Haryana etc" formControlName="location_State">
+
         </div>
         <h3>District</h3>
         <div>
 
-            <input class="form-control" id="frm2" placeholder="North 24  paragona, etc" formControlName="location_District"
-            [ngClass]="{'is-invalid':instantApplyForm.get('location_District').touched && instantApplyForm.get('location_District').invalid}">
-            <div class="invalid-feedback">
-                <p class="error">This field is required</p>
-             </div> 
+            <input class="form-control" id="frm2" placeholder="North 24  paragona, etc" formControlName="location_District">
         </div>
         <div id="from">
 
             <h3>From</h3>
 
-            <input class="form-control" id="frm3" placeholder="26-07-2019" formControlName="starting_time"
-            [ngClass]="{'is-invalid':instantApplyForm.get('starting_time').touched && instantApplyForm.get('starting_time').invalid}">
-            <div class="invalid-feedback">
-                <p class="error">This field is required</p>
-             </div> 
-
+            <input type="date" class="form-control" id="frm3" placeholder="" formControlName="starting_time">
 
         </div>
         <div id="to">
             <h3>To</h3>
-            <input class="form-control" id="frm4" placeholder="28-07-2019" formControlName="end_time"
-            [ngClass]="{'is-invalid':instantApplyForm.get('end_time').touched && instantApplyForm.get('end_time').invalid}">
-            <div class="invalid-feedback">
-                <p class="error">This field is required</p>
-             </div> 
+            <input type="date" class="form-control" id="frm4" placeholder="" formControlName="end_time">
         </div>
-
-
-
 
         <button class="btn btn-default btnplc" type="submit" (click)="submit()">
             <i class="glyphicon glyphicon-search "><img src="/assets/icons/1x/button.png" width="50px"></i>

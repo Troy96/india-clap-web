@@ -27,7 +27,16 @@ export class VariousSectorsJobsComponent implements OnInit {
   favouriteJobMap: Map<number, boolean> = new Map();
 
   ngOnInit() {
-    this.getVariousSectorsJobs();
+    this.jobService.queryJobList$
+      .subscribe(jobSearchList => {
+        if (!jobSearchList.length) {
+          this.getVariousSectorsJobs();
+        }
+        else {
+          this.jobList = jobSearchList;
+        }
+        this.getAllfavJobs();
+      })
   }
 
   getVariousSectorsJobs() {
@@ -42,8 +51,8 @@ export class VariousSectorsJobsComponent implements OnInit {
     this.renderer.setStyle(this.filtersRef.nativeElement, 'display', 'block');
   }
 
-  hideJobFilters(){
-    this.renderer.setStyle(this.filtersRef.nativeElement, 'display', 'none'); 
+  hideJobFilters() {
+    this.renderer.setStyle(this.filtersRef.nativeElement, 'display', 'none');
   }
 
   onFavouriteJob(event, jobId) {

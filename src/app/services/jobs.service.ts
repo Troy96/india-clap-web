@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { config } from '../config';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class JobsService {
 
+  private queryJobList = new BehaviorSubject<any[]>([]);
+  public queryJobList$ = this.queryJobList.asObservable();
 
   constructor(private http: HttpClient) {
   }
@@ -49,7 +52,7 @@ export class JobsService {
   upload_resume(jobId: number, $data: any) {
     const formData = new FormData();
     formData.append('text', $data.text);
-   // formData.append('video', $data.video);
+    // formData.append('video', $data.video);
     return this.http.post(`${config.base_url}/JobMarket/jobs/${jobId}/apply/`, formData);
   }
 
@@ -73,7 +76,7 @@ export class JobsService {
     return this.http.get(`${config.base_url}/JobMarket/jobs/${jobId}/fav/`)
   }
 
-  un_favourite_job(jobId){
+  un_favourite_job(jobId) {
     return this.http.get(`${config.base_url}/JobMarket/jobs/${jobId}/unfav/`)
   }
 
@@ -82,7 +85,7 @@ export class JobsService {
   }
 
   search_job($data) {
-    return this.http.get(`${config.base_url}/JobMarket/jobs/job?salary=${$data['salary']}&location_District=${$data['location_District']}&location_State=${$data['location_State']}&starting_time=${$data['starting_time']}&end_time=${$data['end_time']}`)
+    return this.http.get<any>(`${config.base_url}/JobMarket/jobs/job?salary=${$data['salary']}&location_District=${$data['location_District']}&location_State=${$data['location_State']}&starting_time=${$data['starting_time']}&end_time=${$data['end_time']}`)
   }
 
   get_job_postings() {
@@ -138,10 +141,14 @@ export class JobsService {
     return this.http.delete(`${config.base_url}/JobMarket/jobs/myJobPostings/${jobId}/`);
 
   }
-  send_video(userId,$data){
+  send_video(userId, $data) {
     const formData = new FormData();
     formData.append('video_resume', $data.video_resume);
-    return this.http.patch(`${config.base_url}/Users/profiles/${userId}/`,formData);
+    return this.http.patch(`${config.base_url}/Users/profiles/${userId}/`, formData);
 
+  }
+
+  pushNewJobs(jobs: any[]) {
+    this.queryJobList.next(jobs)
   }
 }
