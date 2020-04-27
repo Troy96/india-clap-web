@@ -42,7 +42,7 @@
                 border-radius: 50%;" width="47px">
             </div>
             <div class="post-text">
-                <div>
+                <div style="display: flex; flex-direction: column;">
 
                     <p class="teal" *ngIf="post.author_user">{{post.first_name}} {{post.flast_name}}</p>
                     <p> {{post?.created_on | date}}</p>

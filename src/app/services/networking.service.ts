@@ -18,8 +18,8 @@ export class NetworkingService {
     formData.append('company_size', $data.company_size);
     formData.append('industry', $data.industry);
     formData.append('name', $data.name);
-    if($data.logo)
-    formData.append('company_logo', $data.logo);
+    if ($data.logo)
+      formData.append('company_logo', $data.logo);
     return this.http.post(`${config.base_url}/JobMarket/companies/create`, formData);
   }
 
@@ -39,6 +39,14 @@ export class NetworkingService {
     formData.append('author_user', userId);
     // formData.append('slug',$data.slug);
     return this.http.post(`${config.base_url}/Networking/timelinePosts/create/`, formData);
+  }
+
+  delete_post(postId: number) {
+    return this.http.get(`${config.base_url}/Networking/timelinePosts/${postId}/delete/`);
+  }
+
+  delete_comment(postId: number, commentId: number){
+    return this.http.get(`${config.base_url}/Networking/timelinePosts/${postId}/comment/${commentId}/delete/`)
   }
 
   like_post(postId: number) {
