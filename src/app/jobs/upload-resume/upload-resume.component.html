@@ -23,11 +23,7 @@
                 <div>
 
                     <input class="form-control" id="frm2" placeholder="Your message here..."
-                        formControlName="text"
-                        [ngClass]="{'is-invalid':uploadResumeForm.get('text').touched && uploadResumeForm.get('text').invalid}">
-                    <div class="invalid-feedback">
-                        <p class="error">This field is required</p>
-                    </div>
+                        formControlName="text">
                 </div>
                 <div class="heading1 ">
                     <h3 class="left">Upload video resume</h3>
@@ -38,7 +34,11 @@
                     Upload your video resume (not more than 30 sec)
                     <input class="form-control" id="frm2" type="file" (change)="onResumeUpload($event);">
                 </div>
-                <button class="btn btn-primary apply" (click)="onSubmit();">Apply</button>
+                <button class="btn btn-primary apply" (click)="displayPopup();">Apply</button>
+                <div id="profile-share" style="display: none;" #profileShare>
+                    Application and video Profile will be shared with job poster.
+                    <button class="btn btn-primary cont" (click)="onSubmit();">Continue</button>
+                </div>
         </form>
     </div>
 </div>

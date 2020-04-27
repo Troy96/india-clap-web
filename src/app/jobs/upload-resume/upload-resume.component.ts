@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JobsService } from 'src/app/services/jobs.service';
 
@@ -20,7 +20,7 @@ export class UploadResumeComponent implements OnInit {
   companyObj: any;
 
   uploadResumeForm: FormGroup;
-
+  @ViewChild('profileShare', {static: false}) profileShareRef: ElementRef;
   constructor(
     private route: ActivatedRoute,
     private jobService: JobsService,
@@ -58,6 +58,7 @@ export class UploadResumeComponent implements OnInit {
     this.jobService.upload_resume(this.jobId, this.uploadResumeForm.value)
       .subscribe(respObj => {
         console.log(respObj);
+        this.notifService.showSuccess('Applied', 'job alert');
       })
   }
 
@@ -76,12 +77,16 @@ export class UploadResumeComponent implements OnInit {
       let userId = (JSON.parse(localStorage.getItem('currentUser'))).profile_id;
       this.jobService.send_video(userId, obj).subscribe((data): any => {
         console.log(data);
-        this.notifService.showSuccess('Applied', 'job alert');
       })
     }
     else {
       this.notifService.showWarning('No file selected', 'job alert');
     }
+  }
+
+
+  displayPopup(){
+    this.profileShareRef.nativeElement.style.display = 'block';
   }
 
 
