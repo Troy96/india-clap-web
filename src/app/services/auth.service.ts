@@ -5,7 +5,9 @@ import { config } from '../config';
 
 @Injectable({
   providedIn: 'root'
+  
 })
+
 export class AuthServices{
 
 
@@ -15,6 +17,7 @@ export class AuthServices{
 
 
   constructor(
+    private AuthService: AuthServices,
     private http: HttpClient
   ) {
     this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
