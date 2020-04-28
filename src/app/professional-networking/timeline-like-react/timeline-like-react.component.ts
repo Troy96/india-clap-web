@@ -96,6 +96,14 @@ export class TimelineLikeReactComponent implements OnInit {
       )
   }
 
+  deletePost(postId) {
+    this.netService.delete_post(postId)
+      .subscribe(respObj => {
+        console.log(respObj);
+        this.getUserPosts();
+      })
+  }
+
   async getPostsReactions() {
     for await (let post of this.postList) {
       this.netService.post_user_like_status(post.id)

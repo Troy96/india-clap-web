@@ -19,6 +19,24 @@ input[type=radio] {
     height: 1em;
 }
 
+.drop-items {
+  display: none;
+  position: relative;
+  width: fit-content;
+  background-color: white;
+  border: black solid 1px;
+  z-index: 5;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+
+}
+
+.post-item:hover >.drop-items {
+  display: block;
+  position: absolute;
+}
+
 
  
 h3{

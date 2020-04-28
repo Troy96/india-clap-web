@@ -42,9 +42,16 @@
                 border-radius: 50%;" width="47px">
             </div>
             <div class="post-text">
+                <div style="display: flex; justify-content: flex-end; cursor: pointer;" (click)="deletePost(post.id)" class="post-item" *ngIf="post?.author_user === currentUser"><img
+                        src="/assets/icons/1x/more-opt.png">
+                    <div class="drop-items">
+                        <p>Delete this post</p>
+                    </div>
+                </div>
+
                 <div style="display: flex; flex-direction: column;">
 
-                    <p class="teal" *ngIf="post.author_user">{{post.first_name}} {{post.flast_name}}</p>
+                    <p class="teal" *ngIf="post.author_user">{{post?.first_name}} {{post?.flast_name}}</p>
                     <p> {{post?.created_on | date}}</p>
                     <p *ngIf="post?.text"> {{post?.text}}</p>
                 </div>
