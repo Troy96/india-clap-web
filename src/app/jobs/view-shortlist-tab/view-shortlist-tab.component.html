@@ -6,132 +6,48 @@
       <button routerLink="/jobs/candidates/{{jobId}}" class="btn btn-primary hbtn">View candidates</button>
       <button class="btn btn-primary hbtn active">Shortlist tab</button>
 
-  </div>
+    </div>
   </div>
   <div class="place" *ngIf="shortlistedList?.length">
     <div *ngFor="let candidate of shortlistedList">
 
-    <div class="card" style="width: 100%;">
-      <div class="card-body">
+      <div class="card" style="width: 100%;">
+        <div class="card-body">
 
-        <div id="symbols">
-          <a >
-            <h5 (click)="changeJobStatus('accept',candidate.job.id,candidate.applicant.id)">Accept &nbsp;</h5>
-          </a>
-          <a >
-            <h5 (click)="changeJobStatus('reject',candidate.job.id,candidate.applicant.id)">Reject &nbsp;</h5>
-          </a>
-          <a >
-            <h5 (click)="changeJobStatus('reject',candidate.job.id,candidate.applicant.id)">Remove &nbsp;</h5>
-          </a>
+          <div id="symbols" style="display: flex;
+        justify-content: center;
+        align-items: center;">
+            <a>
+              <h5 style="cursor: pointer;" (click)="changeJobStatus('accept',candidate.job.id,candidate.applicant.id)">Accept &nbsp;</h5>
+            </a>
+            <a>
+              <h5 style="cursor: pointer;" (click)="changeJobStatus('reject',candidate.job.id,candidate.applicant.id)">Reject &nbsp;</h5>
+            </a>
+            <a>
+              <h5 style="cursor: pointer;" (click)="changeJobStatus('reject',candidate.job.id,candidate.applicant.id)">Remove &nbsp;</h5>
+            </a>
+          </div>
+
+          <div id="vidlink">
+            <a href="{{candidate.applicant.video_resume}}">
+              <h6>Candidate video resume</h6>
+            </a>
+          </div>
+          <img class="card-img" src={{candidate.applicant.photo}} alt="Card image cap">
+          <div id="crdtxt">
+            <a>
+              <h4 style="cursor: pointer;" class="card-title" (click)="applicantProfile(candidate.applicant.id)">
+                {{candidate.applicant.first_name}} {{candidate.applicant.last_name}}</h4>
+              <span class="card-text">Gurgao, India</span><br>
+
+            </a>
+          </div>
+
         </div>
-
-        <div id="vidlink">
-          <a href="{{candidate.applicant.video_resume}}">
-            <h6>Candidate video resume</h6>
-          </a>
-        </div>
-        <img class="card-img" src={{candidate.applicant.photo}} alt="Card image cap">
-        <div id="crdtxt">
-          <a href="">
-            <h4 class="card-title">{{candidate.applicant.first_name}} {{candidate.applicant.last_name}}</h4>
-            <span class="card-text">Gurgao, India</span><br>
-
-          </a>
-        </div>
-
       </div>
     </div>
-    </div>
-    <!-- <div class="card" style="width: 100%;">
-      <div class="card-body">
-        <div id="symbols">
-          <a href="">
-            <h5>Accept &nbsp;</h5>
-          </a>
-          <a href="">
-            <h5>Reject &nbsp;</h5>
-          </a>
-          <a href="">
-            <h5>Remove &nbsp;</h5>
-          </a>
-        </div>
-
-        <div id="vidlink">
-          <a href="">
-            <h6>www.linktovideoprofile.com</h6>
-          </a>
-        </div>
-        <img class="card-img" src="/assets/icons/1x/dp2.png" alt="Card image cap">
-        <div id="crdtxt">
-          <a href="">
-            <h4 class="card-title">Sidhart Kumar</h4>
-          </a>
-          <span class="card-text">California, USA</span><br>
-        </div>
-
-      </div>
-    </div>
-    <div class="card" style="width: 100%;">
-      <div class="card-body">
-        <div id="symbols">
-          <a href="">
-            <h5>Accept &nbsp;</h5>
-          </a>
-          <a href="">
-            <h5>Reject &nbsp;</h5>
-          </a>
-          <a href="">
-            <h5>Remove &nbsp;</h5>
-          </a>
-        </div>
-
-        <div id="vidlink">
-          <a href="">
-            <h6>www.linktovideoprofile.com</h6>
-          </a>
-        </div>
-        <img class="card-img" src="/assets/icons/1x/dp3.png" alt="Card image cap">
-        <div id="crdtxt">
-          <a href="">
-            <h4 class="card-title">Astha Brahma Kuwali</h4>
-          </a>
-          <span class="card-text">Assam, India</span><br>
-        </div>
-
-      </div>
-    </div>
-    <div class="card" style="width: 100%;">
-      <div class="card-body">
-        <div id="symbols">
-          <a href="">
-            <h5>Accept &nbsp;</h5>
-          </a>
-          <a href="">
-            <h5>Reject &nbsp;</h5>
-          </a>
-          <a href="">
-            <h5>Remove &nbsp;</h5>
-          </a>
-        </div>
-
-        <div id="vidlink">
-          <a href="">
-            <h6>www.linktovideoprofile.com</h6>
-          </a>
-        </div>
-        <img class="card-img" src="/assets/icons/1x/dp4.png" alt="Card image cap">
-        <div id="crdtxt">
-          <a href="">
-            <h4 class="card-title">Francisco Lochowaski</h4>
-          </a>
-          <span class="card-text">California, USA</span><br>
-        </div>
-
-      </div>
-    </div> -->
   </div>
   <div class="no-data" *ngIf="!shortlistedList?.length">
-    No Candidates shortlisted for this job yet!
+    No candidates shortlisted for this job yet!
   </div>
 </div>

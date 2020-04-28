@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthServices} from 'src/app/services/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NotificationService } from 'src/app/services/notification.service';
 
@@ -16,7 +16,7 @@ export class ResetPasswordComponent implements OnInit {
   emailValidation: boolean=false;
   passwordValidation: boolean=false;
   constructor(private router: Router,
-    private authService: AuthService, private activeRoute: ActivatedRoute,private notifyService : NotificationService) {
+    private authService: AuthServices, private activeRoute: ActivatedRoute,private notifyService : NotificationService) {
       this.resetPasswordForm = new FormGroup({
         password1: new FormControl("", [Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}')]),
         password2: new FormControl("", Validators.required)

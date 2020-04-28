@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthServices} from 'src/app/services/auth.service';
 import { NetworkingService } from 'src/app/services/networking.service';
 import { Observable, observable } from 'rxjs';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -28,7 +28,7 @@ export class SomeoneElseProfileComponent implements OnInit {
 
   constructor(
     private router: ActivatedRoute,
-    private authService: AuthService,
+    private authService: AuthServices,
     private netService: NetworkingService,
     private notifyService: NotificationService,
     private sanitizer: DomSanitizer,
@@ -52,6 +52,7 @@ export class SomeoneElseProfileComponent implements OnInit {
       .subscribe(respObj => {
         this.userDetails = respObj;
         this.setinitCover();
+        console.log(this.userDetails);
         // this.userDetails = this.userList.find(obj => obj['user'] == this.userId);
       })
   }

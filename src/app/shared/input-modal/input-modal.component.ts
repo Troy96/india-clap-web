@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MyprofileEditableService } from 'src/app/professional-networking/my-profile-editable/myprofile-editable.service';
 import { MyProfile } from 'src/app/professional-networking/my-profile-editable/myprofle';
 import { FormBuilder, FormArray, FormGroup } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthServices} from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-input-modal',
@@ -22,7 +22,7 @@ export class InputModalComponent implements OnInit {
   constructor(
     private myProfileService: MyprofileEditableService,
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthServices
   ) {
 
   }
