@@ -203,10 +203,16 @@
                         border-radius: 50%;" width="47px">
                     </div>
                     <div class="post-text">
-                        <span id="teal">{{comment?.first_name}} {{comment?.last_name}}</span><br>
                         <!-- Kolkata, India<br> -->
 
                         <div style="background-color: #f3f3f3; border-radius: 4px;">
+                            <div style="display: flex; justify-content: flex-end; cursor: pointer;" (click)="deleteComment(post.id, comment.id)" class="post-item" *ngIf="comment?.user === currentUser"><img
+                                src="/assets/icons/1x/more-opt.png">
+                            <div class="drop-items">
+                                <p>Delete this comment</p>
+                            </div>
+                            </div>
+                            <span id="teal">{{comment?.first_name}} {{comment?.last_name}}</span><br>
                             <div style=" justify-content: space-between; display: flex; padding: 10px;">
                                 <span>{{comment?.content}}</span>
                                 <span>{{comment?.timestamp | date}}</span>

@@ -104,6 +104,13 @@ export class TimelineLikeReactComponent implements OnInit {
       })
   }
 
+  deleteComment(postId, commentId) {
+    this.netService.delete_comment(postId, commentId)
+      .subscribe(respObj => {
+        this.getPostComments(postId);
+      })
+  }
+
   async getPostsReactions() {
     for await (let post of this.postList) {
       this.netService.post_user_like_status(post.id)
@@ -130,6 +137,7 @@ export class TimelineLikeReactComponent implements OnInit {
     this.netService.comment_on_post(postId, commentTxt)
       .subscribe(respObj => {
         console.log(respObj);
+        this.getPostComments(postId);
       })
   }
 
