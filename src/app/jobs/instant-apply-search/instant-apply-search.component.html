@@ -1,4 +1,10 @@
 <div class="mainbody">
+
+  <div class="header">
+      <h2>Search for jobs</h2>
+      <div id="button">
+          <button type="submit" class="btn btn-primary hbtn">Instant Apply</button>
+
     <div class="header">
         <h2>Search for jobs</h2>
         <div id="button">
@@ -10,11 +16,85 @@
 
                 <img src="/assets/icons/1x/Filter.png" alt="" width="22" height="25">
 
+
+      </div>
+      <div id="filter">
+          <button type="button" class="btn ">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              <img src="/assets/icons/1x/Filter.png" alt="" width="22" height="25">
+              <select id="filter">
+                  <option>--select--</option>
+                  <option>Filter by job name</option>
+                  <option>Filter by state</option>
+                  <option>Filter by district</option>
+              </select>
             </button>
-        </div>
-    </div>
+      </div>
+  </div>
+  
+    
     <div class="place">
         <form [formGroup]='instantApplyForm'>
+
+            <div class="form-group">
+                <label>Type of Job</label><br>
+                <input type="text" class="form-control" formControlName="typeOfJob">
+                <p *ngIf="instantApplyForm.controls.typeOfJob.errors" class="alert alert-danger">This field is required!</p>
+          </div>
+          <div class="form-group">
+                 <label>State</label><br>
+                    <select id="location_State" class="form-control" formControlName="location_State">
+                        <option>--select--</option>
+                        <option>Andhra Pradesh</option>
+                        <option>Assam</option>
+                        <option>Bihar</option>
+                        <option>Gujarat</option>
+                        <option>Jharkand</option>
+                        <option>Karnataka</option>
+                        <option>Maharashtra</option>
+                        <option>Kerala</option>
+                        <option>Punjab</option>
+                        <option>Uttar Pradesh</option>
+                        <option>West Bengal</option>
+                    </select>
+                 <p *ngIf="instantApplyForm.controls.location_State.errors" class="alert alert-danger">This field is required!</p>
+        </div>
+              <div class="form-group">
+                 <label>District</label><br>
+                    <input [disabled]="instantApplyForm.controls.location_State.untouched">
+                        <select id="location_District" class="form-control" formControlName="location_District">
+                             <option>--select--</option>
+                            <option>Andhra Pradesh</option>
+                            <option>Assam</option>
+                            <option>Bihar</option>
+                            <option>Gujarat</option>
+                            <option>Jharkand</option>
+                            <option>Karnataka</option>
+                            <option>Maharashtra</option>
+                            <option>Kerala</option>
+                            <option>Punjab</option>
+                            <option>Uttar Pradesh</option>
+                            <option>West Bengal</option>
+                     </select>
+            
+                 <p *ngIf="instantApplyForm.controls.location_District.errors" class="alert alert-danger">This field is required!</p>
+              </div>
+              <div class="form-group">
+                    <label>From</label>
+                    <input type="date" class="form-control" formControlName="starting_time">
+                    <p *ngIf="instantApplyForm.controls.starting_time.errors" class="alert alert-danger">This field is required!</p>
+              </div>
+              <div class="form-group">
+                    <label>To</label>
+                    <input type="date" class="form-control" formControlName=" end_time">
+                    <p *ngIf="instantApplyForm.controls. end_time.errors" class="alert alert-danger">This field is required!</p>
+              </div>
+              <button class="btn-primary" (click)="submit()">Search</button>
+    </form>
+         
+    
+</div>
+
             <h3>Salary</h3>
             <div>
 
@@ -51,3 +131,4 @@
         </form>
     </div>
 </div>
+
