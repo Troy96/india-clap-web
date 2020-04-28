@@ -238,7 +238,6 @@ export class InputModalComponent implements OnInit {
         break;
       }
       case 'Skills': {
-        console.log('hi');
         this.authService.add_skill({
           skill: this.inputForm.get('profile').value[0],
           level: this.inputForm.get('profile').value[1],
