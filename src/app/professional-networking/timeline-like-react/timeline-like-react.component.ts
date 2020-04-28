@@ -117,13 +117,23 @@ export class TimelineLikeReactComponent implements OnInit {
     for await (let post of this.postList) {
       this.netService.post_user_like_status(post.id)
         .subscribe(respObj => {
-          if (respObj.detail === 'Not Liked by user') {
+          if (respObj.detail === 'False') {
             post['isLiked'] = false
           }
           else {
             post['isLiked'] = true
           }
         })
+        this.netService.post_user_react_status(post.id)
+        .subscribe(respObj => {
+          console.log(respObj)
+          if (respObj.detail === '1'||respObj.detail === '2'||respObj.detail === '3'||respObj.detail === '4') {
+            post['isReacted'] = true
+          }
+          else {
+            post['isReacted'] = false
+          }
+        }) 
     }
   }
 
@@ -176,6 +186,34 @@ export class TimelineLikeReactComponent implements OnInit {
         //   commemt['first_name'] = user.first_name;
         //   commemt['last_name'] = user.last_name;
         // })
+        
+        console.log(respObj)
+        this.commentList=
+        (respObj);
+        
+        console.log(this.commentList)
+      //  this.getCommentsReactions()
+        post['comments'] = [...respObj]
+        for (let comment of post.comments) {
+          this.netService.comment_user_like_status(comment.id,comment.post)
+            .subscribe(respObj => {
+              console.log(respObj);
+              if (respObj.detail === "False") {
+                comment.isLiked = false
+              }
+              else {
+                comment.isLiked = true
+              }
+            })
+        }
+        console.log(post)
+        post['comments'].map(commemt => {
+          const user = this.users.find(user => user.id === commemt.user);
+        //  console.log(user);
+          commemt['profile'] = user.photo;
+          commemt['first_name'] = user.first_name;
+          commemt['last_name'] = user.last_name;
+        })
 
         post['comments'] = {};
         respObj.map(comment => {
@@ -262,6 +300,7 @@ export class TimelineLikeReactComponent implements OnInit {
     obj.emoji = id;
     this.netService.post_reaction(_id, obj).subscribe((data) => {
       console.log(data);
+      this.getPostsReactions()
       this.showToasterSuccess("Thanks for reacting")
     }, err => {
       this.showToasterError("Something went wrong")
@@ -278,19 +317,39 @@ export class TimelineLikeReactComponent implements OnInit {
     console.log(commentId, postId);
     this.netService.like_comment(commentId, postId).subscribe((data): any => {
       console.log(data);
+      this.getPostComments(postId);
     })
   }
   // async getCommentsReactions() {
-  //   for await (let comment of this.commentList.comments) {
-  //     this.netService.post_user_like_status(comment.id)
+  //   console.log(this.commentList)
+  //   for await (let comment of this.commentList) {
+  //     this.netService.comment_user_like_status(comment.id,comment.post)
   //       .subscribe(respObj => {
-  //         if (respObj.detail === 'Not Liked by user') {
-  //           this.commentList['isLiked'] = false
+  //         console.log(respObj);
+  //         if (respObj.detail === "False") {
+  //           comment.isLiked = false
   //         }
   //         else {
-  //           this.commentList['isLiked'] = true
+  //           comment.isLiked = true
   //         }
   //       })
   //   }
+  //   console.log(this.commentList)
+  // }
+  // async getCommentsReactions() {
+  // //  console.log(this.)
+  //   for await (let comment of this.commentList) {
+  //     this.netService.comment_user_like_status(comment.id,comment.post)
+  //       .subscribe(respObj => {
+  //         console.log(respObj);
+  //         if (respObj.detail === "False") {
+  //           comment.isLiked = false
+  //         }
+  //         else {
+  //           comment.isLiked = true
+  //         }
+  //       })
+  //   }
+  //   console.log(this.commentList)
   // }
 }
