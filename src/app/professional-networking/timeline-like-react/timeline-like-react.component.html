@@ -73,8 +73,9 @@
             <small>{{post?.likes_count}} likes.{{post?.reactions?.length}} reacts.{{post?.comments_count}}
                 comments</small>
             <hr color="#A9A9A9  ">
+            
             <div class="icons-div">
-                <div id="like-options" *ngIf="showEmoji">
+                <!-- <div id="like-options" *ngIf="showEmoji">
                     <svg class="emojis" (click)="reactType(1,post.id)" version="1.1" id="Capa_1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                         viewBox="0 0 368 368" style="enable-background:new 0 0 368 368;" xml:space="preserve">
@@ -150,7 +151,7 @@
                         </g>
                     </svg>
 
-                </div>
+                </div> -->
 
                 <div *ngIf="!post?.isLiked" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/like.png"
                         width="19px" height="22px" class="like-comment-icon" (click)="likePost(post.id);"><br><small
@@ -158,10 +159,12 @@
 
 
                 <div *ngIf="post?.isLiked" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/like.png"
-                        width="19px" height="22px" class="like-comment-icon"><br><small class="icon-txt">Liked</small>
+                        width="19px" height="22px" class="like-comment-icon" (click)="likePost(post.id);"><br><small class="icon-txt">Liked</small>
                 </div>
-                <div id="icons"> <img src="/assets/icons/1x/smiley.png" width="22px" height="22px" (click)="smiley()"
-                        class="like-comment-icon"><small class="icon-txt">React</small></div>
+                <div id="icons" class="react-btn"> <img src="/assets/icons/1x/smiley.png" (click)="smiley()" (mouseenter)="enter($event)"  width="22px" height="22px" class="like-comment-icon"><small class="icon-txt">React</small></div>
+
+                <!-- <div id="icons"> <img src="/assets/icons/1x/smiley.png" width="22px" height="22px" (click)="smiley()"
+                        class="like-comment-icon"><small class="icon-txt">React</small></div> -->
                 <!-- <div id="icons" style="cursor: pointer;" (click)="commentOnPost(post.id)"> <img
                         src="/assets/icons/1x/Comment.png" width="25px" height="22px"
                         class="like-comment-icon report-img"><small class="icon-txt">Comment</small></div> -->
@@ -170,6 +173,14 @@
                         src="/assets/icons/1x/Report.png" width="7px" height="22px"
                         class="like-comment-icon report-img"><small class="icon-txt">Report</small></div>
             </div>
+            <div class="react-box">
+                <div id="like-options"  class="like-opt" *ngIf="showEmoji" (mouseleave)="leave($event)" >
+                  <img src="/assets/icons/1x/clap.png" (click)="reactType(1,post.id)" class="clap react-icons" width="30px" >
+                  <img src="/assets/icons/1x/heart.png" (click)="reactType(2,post.id)" class="heart react-icons" width="30px" >
+                  <img src="/assets/icons/1x/idea.png" (click)="reactType(3,post.id)" class="idea react-icons" width="30px" >
+                  <img src="/assets/icons/1x/emoji.png" (click)="reactType(4,post.id)" class="emoji react-icons" width="30px" >
+                </div>
+              </div>
             <div class="comment" #comment>
                 <img src="{{currentUserDetails?.photo}}" style="display: block;
                 width: 50px;
@@ -186,6 +197,7 @@
                     </button>
                 </div>
             </div>
+           
             <div class="sharethis-inline-share-buttons"></div>
 
             <a style="text-decoration: underline; cursor: pointer; position: relative; top: 10px; color: grey;"
@@ -220,6 +232,8 @@
                             <br />
                             <p>{{comment?.reply}}</p>
                         </div>
+                        <small class="comment-like" (click)="likeComment(comment.id,post.id)"><u>Like</u> </small>
+                       
                         <div style="display: flex;
                         justify-content: flex-end;
                         position: relative;

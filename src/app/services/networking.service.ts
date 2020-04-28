@@ -124,4 +124,8 @@ export class NetworkingService {
   get_connection_status(userId: number) {
     return this.http.get<any>(`${config.base_url}/Users/profiles/${userId}/status`);
   }
+  like_comment(commentId,postId){
+    return this.http.get<any>(`${config.base_url}/Networking/timelinePosts/${postId}/comment/${commentId}/like`);
+
+  }
 }
