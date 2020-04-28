@@ -147,12 +147,24 @@ export class InputModalComponent implements OnInit {
       case 'Skills': {
         this.labels = ['Skill', 'Level']
         this.placeholders = ['Enter skill name', 'Enter skill level (1-10)']
-        this.inputForm = this.fb.group({
-          profile: this.fb.array([
-            this.fb.control(''),
-            this.fb.control('')
-          ])
-        });
+        if (this.inputData.isInputForm) {
+          this.inputForm = this.fb.group({
+            profile: this.fb.array([
+              this.fb.control(''),
+              this.fb.control('')
+            ])
+          });
+        }
+        else {
+          const data = this.inputData.data;
+          this.editForm = this.fb.group({
+            profile: this.fb.array([
+              this.fb.control(data['skill']),
+              this.fb.control(data['level']),
+            ])
+          })
+        }
+     
       }
         break;
     }
@@ -226,6 +238,7 @@ export class InputModalComponent implements OnInit {
         break;
       }
       case 'Skills': {
+        console.log('hi');
         this.authService.add_skill({
           skill: this.inputForm.get('profile').value[0],
           level: this.inputForm.get('profile').value[1],
@@ -276,6 +289,17 @@ export class InputModalComponent implements OnInit {
           end_date: this.editForm.get('profile').value[2],
           description: this.editForm.get('profile').value[3],
           link: this.editForm.get('profile').value[4],
+          user: this.currentProfileId,
+        }).subscribe(_ => {
+          this.myProfileService.updateUserDetails();
+          this.closeInputModal();
+        })
+        break;
+      }
+      case 'Skills': {
+        this.authService.update_skill(this.inputData.data.id, {
+          skill: this.editForm.get('profile').value[0],
+          level: this.editForm.get('profile').value[1],
           user: this.currentProfileId,
         }).subscribe(_ => {
           this.myProfileService.updateUserDetails();

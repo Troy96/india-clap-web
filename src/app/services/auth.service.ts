@@ -6,7 +6,7 @@ import { config } from '../config';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServices{
+export class AuthServices {
 
 
 
@@ -100,6 +100,10 @@ export class AuthServices{
     return this.http.patch(`${config.base_url}/Users/projects/${id}/`, $data);
   }
 
+  update_skill(id, $data) {
+    return this.http.patch(`${config.base_url}/Users/skills/${id}/`, $data);
+  }
+
   delete_project(id) {
     return this.http.delete(`${config.base_url}/Users/projects/${id}/`);
   }
@@ -140,7 +144,7 @@ export class AuthServices{
   logout() {
     return localStorage.removeItem('currentUser');
   }
-  fb_login($data){
+  fb_login($data) {
     return this.http.post(`${config.base_url}/accounts/fblogin/`, $data, { headers: this.headers });
 
   }

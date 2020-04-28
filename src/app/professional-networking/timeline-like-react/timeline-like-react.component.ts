@@ -15,7 +15,7 @@ export class TimelineLikeReactComponent implements OnInit {
   currentUser: any;
   currentUserDetails: any;
   postList: any[];
-  commentList: any=[];
+  commentList: any = [];
   statusText: string = "";
   timelineUpdateForm: FormGroup;
   photoVal: boolean = true;
@@ -129,13 +129,13 @@ export class TimelineLikeReactComponent implements OnInit {
 
   likePost(postId) {
     this.netService.like_post(postId)
-      .subscribe((respObj:any) => {
+      .subscribe((respObj: any) => {
         console.log(respObj);
         let post = this.postList.find(post => post.id == postId);
-        if(respObj.detail=='Unliked Post')
-        post['isLiked'] = false;
+        if (respObj.detail == 'Unliked Post')
+          post['isLiked'] = false;
         else
-        post['isLiked'] = true;
+          post['isLiked'] = true;
 
       })
   }
@@ -168,17 +168,30 @@ export class TimelineLikeReactComponent implements OnInit {
         // this.netService.find_comment_liked().subscribe((data):any=>{
         //   console.log(data);
         // })
-        this.commentList['comments']=[...respObj];
-        console.log(this.commentList)
-        post['comments'] = [...respObj]
-        post['comments'].map(commemt => {
-          const user = this.users.find(user => user.id === commemt.user);
-        //  console.log(user);
-          commemt['profile'] = user.photo;
-          commemt['first_name'] = user.first_name;
-          commemt['last_name'] = user.last_name;
-        })
+        this.commentList['comments'] = [...respObj];
+        // post['comments'] = [...respObj]
+        // post['comments'].map(commemt => {
+        //   const user = this.users.find(user => user.id === commemt.user);
+        //   commemt['profile'] = user.photo;
+        //   commemt['first_name'] = user.first_name;
+        //   commemt['last_name'] = user.last_name;
+        // })
 
+        post['comments'] = {};
+        respObj.map(comment => {
+          if (!comment.reply) {
+            post['comments'][comment.id] = {
+              ...comment
+            }
+          }
+          else {
+            const commentObj = post['comments'][comment.reply];
+            commentObj['reply'] = {
+              ...comment
+            }
+          }
+        })
+        console.log(this.postList)
       })
   }
 
@@ -255,15 +268,15 @@ export class TimelineLikeReactComponent implements OnInit {
     }
     )
   }
-  enter(ev){
-    this.showEmoji=true;
+  enter(ev) {
+    this.showEmoji = true;
   }
-  leave(ev){
-    this.showEmoji=false;
+  leave(ev) {
+    this.showEmoji = false;
   }
-  likeComment(commentId,postId){
-    console.log(commentId,postId);
-    this.netService.like_comment(commentId,postId).subscribe((data):any=>{
+  likeComment(commentId, postId) {
+    console.log(commentId, postId);
+    this.netService.like_comment(commentId, postId).subscribe((data): any => {
       console.log(data);
     })
   }

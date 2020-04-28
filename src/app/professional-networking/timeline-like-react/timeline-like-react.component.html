@@ -202,14 +202,14 @@
 
             <a style="text-decoration: underline; cursor: pointer; position: relative; top: 10px; color: grey;"
                 (click)="getPostComments(post.id)">Load more comments...</a>
-            <ng-container *ngFor="let comment of post.comments">
-                <div class="post-notification" *ngIf="comment?.content">
+            <ng-container *ngFor="let data of post.comments | keyvalue"> 
+                <div class="post-notification" *ngIf="data.value?.content">
                     <!-- <div class="time">
                         25min &nbsp
                         <img src="/assets/icons/1x/more-opt.png" width="12px">
                     </div> -->
                     <div class="post-image">
-                        <img src="{{comment.profile}}" style="display: block;
+                        <img src="{{data?.value?.profile}}" style="display: block;
                         width: 55px;
                         height: 55px;
                         border-radius: 50%;" width="47px">
@@ -218,19 +218,21 @@
                         <!-- Kolkata, India<br> -->
 
                         <div style="background-color: #f3f3f3; border-radius: 4px;">
-                            <div style="display: flex; justify-content: flex-end; cursor: pointer;" (click)="deleteComment(post.id, comment.id)" class="post-item" *ngIf="comment?.user === currentUser"><img
+                            <div style="display: flex; justify-content: flex-end; cursor: pointer;" (click)="deleteComment(post.id, data.value.id)" class="post-item" *ngIf="data.value?.user === currentUser"><img
                                 src="/assets/icons/1x/more-opt.png">
                             <div class="drop-items">
                                 <p>Delete this comment</p>
                             </div>
                             </div>
-                            <span id="teal">{{comment?.first_name}} {{comment?.last_name}}</span><br>
+                            <span id="teal">{{data.value?.first_name}} {{data.value?.last_name}}</span><br>
                             <div style=" justify-content: space-between; display: flex; padding: 10px;">
-                                <span>{{comment?.content}}</span>
-                                <span>{{comment?.timestamp | date}}</span>
+                                <span>{{data.value?.content}}</span>
+                                <span>{{data.value?.timestamp | date}}</span>
                             </div>
                             <br />
-                            <p>{{comment?.reply}}</p>
+                        </div>
+                        <div *ngIf="data?.value?.reply" style="background-color: #f3f3f3; border-radius: 4px; position: relative; left: 10px; ">
+                            <p>{{data?.value?.reply?.content}}</p>
                         </div>
                         <small class="comment-like" (click)="likeComment(comment.id,post.id)"><u>Like</u> </small>
                        
@@ -239,7 +241,7 @@
                         position: relative;
                         right: 10px;"> <input type="text" class="form-control comment-box"
                                 placeholder="Write a reply..." #replyInp>
-                            <button class="btn" (click)="replyComment(post.id, comment.id, replyInp.value)"
+                            <button class="btn" (click)="replyComment(post.id, data.value.id, replyInp.value)"
                                 style="background-color: teal; color: white;">Reply</button>
                         </div>
                     </div>
