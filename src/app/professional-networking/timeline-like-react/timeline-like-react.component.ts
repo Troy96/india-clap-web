@@ -15,6 +15,7 @@ export class TimelineLikeReactComponent implements OnInit {
   currentUser: any;
   currentUserDetails: any;
   postList: any[];
+  commentList: any=[];
   statusText: string = "";
   timelineUpdateForm: FormGroup;
   photoVal: boolean = true;
@@ -51,6 +52,7 @@ export class TimelineLikeReactComponent implements OnInit {
     this.netService.get_posts()
       .subscribe(respObj => {
         this.postList = [...respObj['Timeline Posts'], ...respObj['Shared Posts']];
+        console.log(this.postList)
         this.getPostsReactions();
       })
   }
@@ -112,9 +114,14 @@ export class TimelineLikeReactComponent implements OnInit {
 
   likePost(postId) {
     this.netService.like_post(postId)
-      .subscribe(respObj => {
+      .subscribe((respObj:any) => {
+        console.log(respObj);
         let post = this.postList.find(post => post.id == postId);
+        if(respObj.detail=='Unliked Post')
+        post['isLiked'] = false;
+        else
         post['isLiked'] = true;
+
       })
   }
 
@@ -142,13 +149,20 @@ export class TimelineLikeReactComponent implements OnInit {
     const post = this.postList.find(post => post.id === postId);
     this.netService.get_post_comments(postId)
       .subscribe(respObj => {
+        // this.netService.find_comment_liked().subscribe((data):any=>{
+        //   console.log(data);
+        // })
+        this.commentList['comments']=[...respObj];
+        console.log(this.commentList)
         post['comments'] = [...respObj]
         post['comments'].map(commemt => {
           const user = this.users.find(user => user.id === commemt.user);
+        //  console.log(user);
           commemt['profile'] = user.photo;
           commemt['first_name'] = user.first_name;
-          commemt['last_name'] = user.last_name
+          commemt['last_name'] = user.last_name;
         })
+
       })
   }
 
@@ -225,4 +239,29 @@ export class TimelineLikeReactComponent implements OnInit {
     }
     )
   }
+  enter(ev){
+    this.showEmoji=true;
+  }
+  leave(ev){
+    this.showEmoji=false;
+  }
+  likeComment(commentId,postId){
+    console.log(commentId,postId);
+    this.netService.like_comment(commentId,postId).subscribe((data):any=>{
+      console.log(data);
+    })
+  }
+  // async getCommentsReactions() {
+  //   for await (let comment of this.commentList.comments) {
+  //     this.netService.post_user_like_status(comment.id)
+  //       .subscribe(respObj => {
+  //         if (respObj.detail === 'Not Liked by user') {
+  //           this.commentList['isLiked'] = false
+  //         }
+  //         else {
+  //           this.commentList['isLiked'] = true
+  //         }
+  //       })
+  //   }
+  // }
 }
