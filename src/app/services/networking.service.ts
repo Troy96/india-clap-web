@@ -128,4 +128,13 @@ export class NetworkingService {
     return this.http.get<any>(`${config.base_url}/Networking/timelinePosts/${postId}/comment/${commentId}/like`);
 
   }
+  comment_user_like_status(commentId,postId){
+    return this.http.get<any>(`${config.base_url}/Networking/timelinePosts/${postId}/comment/${commentId}/liked_or_not`);
+
+  }
+  post_user_react_status(postId){
+    return this.http.get<any>(`${config.base_url}/Networking/timelinePosts/${postId}/reacted_or_not`);
+
+  }
+  
 }
