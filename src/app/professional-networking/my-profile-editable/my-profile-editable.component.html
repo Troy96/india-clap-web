@@ -3,8 +3,8 @@
         <div class="jumbotron jumbotron-fluid" >
             <div class="jumbotron-image" #coverImg [style]="coverImgStyle" *ngIf="userDetails?.photo" (click)="coverInput.click()">
             </div>
-            <div class="jumbotron-image1" *ngIf="userDetails?.photo">
-                <img class="jmb-img"  style="cursor: pointer;" (click)="photoInput.click()" src={{userDetails?.photo}} alt="" style="cursor: pointer;">
+            <div class="jumbotron-image1" style="cursor: pointer; position: absolute; top: 180px;" *ngIf="userDetails?.photo">
+                <img class="jmb-img"  style="cursor: pointer; position: absolute;" (click)="photoInput.click()" src={{userDetails?.photo}} alt="" style="cursor: pointer;">
                 
             </div>
             <input type="file" #coverInput style="display: none;" (change)="onCoverUpload($event)">
