@@ -42,7 +42,8 @@
                 border-radius: 50%;" width="47px">
             </div>
             <div class="post-text">
-                <div style="display: flex; justify-content: flex-end; cursor: pointer;" (click)="deletePost(post.id)" class="post-item" *ngIf="post?.author_user === currentUser"><img
+                <div style="display: flex; justify-content: flex-end; cursor: pointer;" (click)="deletePost(post.id)"
+                    class="post-item" *ngIf="post?.author_user === currentUser"><img
                         src="/assets/icons/1x/more-opt.png">
                     <div class="drop-items">
                         <p>Delete this post</p>
@@ -73,19 +74,24 @@
             <small>{{post?.likes_count}} likes.{{post?.reactions?.length}} reacts.{{post?.comments_count}}
                 comments</small>
             <hr color="#A9A9A9  ">
-            
+
             <div class="icons-div">
-               
-                <div *ngIf="!post?.isLiked" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/like.png"
-                        width="19px" height="22px" class="like-comment-icon" (click)="likePost(post.id);"><br><small
+
+                <div *ngIf="!post?.isLiked" style="cursor: pointer;" (click)="likePost(post.id);" id="icons"> <img src="/assets/icons/1x/like.png"
+                        width="19px" height="22px" class="like-comment-icon" ><br><small
                         class="icon-txt">Like</small></div>
 
 
-                <div *ngIf="post?.isLiked" style="cursor: pointer;" id="icons"> <img src="/assets/icons/1x/like.png"
-                        width="19px" height="22px" class="like-comment-icon" (click)="likePost(post.id);"><br><small class="icon-txt">Liked</small>
+                <div *ngIf="post?.isLiked" style="cursor: pointer;" (click)="likePost(post.id);" id="icons"> <img src="/assets/icons/1x/like.png"
+                        width="19px" height="22px" class="like-comment-icon"><br><small
+                        class="icon-txt">Liked</small>
                 </div>
-                <div *ngIf="post?.isReacted" id="icons" class="react-btn"> <img src="/assets/icons/1x/smiley.png" (click)="smiley()" (mouseenter)="enter($event)"  width="22px" height="22px" class="like-comment-icon"><small class="icon-txt">Reacted</small></div>
-                <div *ngIf="!post?.isReacted" id="icons" class="react-btn"> <img src="/assets/icons/1x/smiley.png" (click)="smiley()" (mouseenter)="enter($event)"  width="22px" height="22px" class="like-comment-icon"><small class="icon-txt">React</small></div>
+                <div *ngIf="post?.isReacted" id="icons" class="react-btn"> <img src="/assets/icons/1x/smiley.png"
+                        (click)="smiley()" (mouseenter)="enter($event)" width="22px" height="22px"
+                        class="like-comment-icon"><small class="icon-txt">Reacted</small></div>
+                <div *ngIf="!post?.isReacted" id="icons" class="react-btn"> <img src="/assets/icons/1x/smiley.png"
+                        (click)="smiley()" (mouseenter)="enter($event)" width="22px" height="22px"
+                        class="like-comment-icon"><small class="icon-txt">React</small></div>
 
                 <!-- <div id="icons"> <img src="/assets/icons/1x/smiley.png" width="22px" height="22px" (click)="smiley()"
                         class="like-comment-icon"><small class="icon-txt">React</small></div> -->
@@ -98,13 +104,17 @@
                         class="like-comment-icon report-img"><small class="icon-txt">Report</small></div>
             </div>
             <div class="react-box">
-                <div id="like-options"  class="like-opt" *ngIf="showEmoji" (mouseleave)="leave($event)" >
-                  <img src="/assets/icons/1x/clap.png" (click)="reactType(1,post.id)" class="clap react-icons" width="30px" >
-                  <img src="/assets/icons/1x/heart.png" (click)="reactType(2,post.id)" class="heart react-icons" width="30px" >
-                  <img src="/assets/icons/1x/idea.png" (click)="reactType(3,post.id)" class="idea react-icons" width="30px" >
-                  <img src="/assets/icons/1x/emoji.png" (click)="reactType(4,post.id)" class="emoji react-icons" width="30px" >
+                <div id="like-options" class="like-opt" *ngIf="showEmoji" (mouseleave)="leave($event)">
+                    <img src="/assets/icons/1x/clap.png" (click)="reactType(1,post.id)" class="clap react-icons"
+                        width="30px">
+                    <img src="/assets/icons/1x/heart.png" (click)="reactType(2,post.id)" class="heart react-icons"
+                        width="30px">
+                    <img src="/assets/icons/1x/idea.png" (click)="reactType(3,post.id)" class="idea react-icons"
+                        width="30px">
+                    <img src="/assets/icons/1x/emoji.png" (click)="reactType(4,post.id)" class="emoji react-icons"
+                        width="30px">
                 </div>
-              </div>
+            </div>
             <div class="comment" #comment>
                 <img src="{{currentUserDetails?.photo}}" style="display: block;
                 width: 50px;
@@ -121,12 +131,12 @@
                     </button>
                 </div>
             </div>
-           
+
             <div class="sharethis-inline-share-buttons"></div>
 
             <a style="text-decoration: underline; cursor: pointer; position: relative; top: 10px; color: grey;"
                 (click)="getPostComments(post.id)">Load more comments...</a>
-            <ng-container *ngFor="let data of post.comments | keyvalue"> 
+            <ng-container *ngFor="let data of post.comments | keyvalue">
                 <div class="post-notification" *ngIf="data.value?.content">
                     <!-- <div class="time">
                         25min &nbsp
@@ -141,33 +151,64 @@
                     <div class="post-text">
                         <!-- Kolkata, India<br> -->
 
-                        <div style="background-color: #f3f3f3; border-radius: 4px;">
-                            <div style="display: flex; justify-content: flex-end; cursor: pointer;" (click)="deleteComment(post.id, data.value.id)" class="post-item" *ngIf="data.value?.user === currentUser"><img
-                                src="/assets/icons/1x/more-opt.png">
-                            <div class="drop-items">
-                                <p>Delete this comment</p>
+                        <div style="background-color: #f3f3f3; border-radius: 4px; height: 80px;
+                        padding: 7px; margin-bottom: 10px;">
+                            <div style="display: flex; justify-content: flex-end; cursor: pointer;"
+                                (click)="deleteComment(post.id, data.value.id)" class="post-item"
+                                *ngIf="data.value?.user === currentUser"><img src="/assets/icons/1x/more-opt.png">
+                                <div class="drop-items">
+                                    <p>Delete this comment</p>
+                                </div>
                             </div>
-                            </div>
-                            <span id="teal">{{data.value?.first_name}} {{data.value?.last_name}}</span><br>
-                            <div style=" justify-content: space-between; display: flex; padding: 10px;">
-                                <span>{{data.value?.content}}</span>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span id="teal">{{data.value?.first_name}} {{data.value?.last_name}}</span>
                                 <span>{{data.value?.timestamp | date}}</span>
                             </div>
-                            <br />
+
+                            <div style=" justify-content: space-between; display: flex;">
+                                <span>{{data.value?.content}}</span>
+                            </div>
+                            <small *ngIf="!comment.isLiked" class="comment-like"
+                                (click)="likeComment(data?.value?.id,post.id)"><u>Like</u> </small>
+                            <small *ngIf="comment.isLiked" class="comment-like"
+                                (click)="likeComment(data?.value?.id,post.id)"><u>Liked</u> </small>
+
                         </div>
-                        <div *ngIf="data?.value?.reply" style="background-color: #f3f3f3; border-radius: 4px; position: relative; left: 10px; ">
-                            <p>{{data?.value?.reply?.content}}</p>
+                        <div style="display: flex;
+                        justify-content: flex-end">
+                            <div class="post-image" *ngIf="data?.value?.reply">
+                                <img src="{{data?.value?.reply?.profile}}" style="display: block;
+                            width: 55px;
+                            height: 55px;
+                            border-radius: 50%;" width="47px">
+                            </div>
+                            <div *ngIf="data?.value?.reply" style="background-color: #f3f3f3; border-radius: 4px; width: 70%;
+                            margin-top: 10px;
+                            margin-bottom: 10px; height: 60px; padding: 5px;">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span id="teal">{{data?.value?.reply?.first_name}}
+                                        {{data?.value?.reply?.last_name}}</span>
+                                    <span>{{data?.value?.reply?.timestamp | date}}</span>
+                                </div>
+                                <div style=" justify-content: space-between; display: flex;">
+                                    <span>{{data?.value?.reply?.content}}</span>
+                                </div>
+                            </div>
                         </div>
-                        <small *ngIf="!comment.isLiked" class="comment-like" (click)="likeComment(comment.id,post.id)"><u>Like</u> </small>
-                        <small *ngIf="comment.isLiked" class="comment-like" (click)="likeComment(comment.id,post.id)"><u>Liked</u> </small>
 
                         <div style="display: flex;
                         justify-content: flex-end;
                         position: relative;
-                        right: 10px;"> <input type="text" class="form-control comment-box"
+                        right: 10px;" *ngIf="!data?.value?.reply"> <input type="text" class="form-control comment-box"
                                 placeholder="Write a reply..." #replyInp>
-                            <button class="btn" (click)="replyComment(post.id, data.value.id, replyInp.value)"
-                                style="background-color: teal; color: white;">Reply</button>
+                            <div class="input-group-btn">
+                                <button class="btn btn-default comm-icons"
+                                    (click)="replyComment(post?.id, data.value?.id, replyInp.value)">
+                                    <i class="glyphicon glyphicon-search comm-cam"><img src="/assets/icons/1x/Image.png"
+                                            width="17px"></i>
+
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

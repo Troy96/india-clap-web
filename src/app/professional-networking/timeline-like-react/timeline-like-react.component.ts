@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { JobsService } from 'src/app/services/jobs.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { CommunicateService } from 'src/app/services/communicate.service';
+import { AuthServices } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-timeline-like-react',
@@ -25,7 +26,8 @@ export class TimelineLikeReactComponent implements OnInit {
   constructor(
     private netService: NetworkingService, private cd: ChangeDetectorRef, private jobService: JobsService
     , private notifyService: NotificationService,
-    private commService: CommunicateService
+    private commService: CommunicateService,
+    private authService: AuthServices
   ) {
     this.commService.userList$.subscribe(data => {
       this.users = [...data];
@@ -78,6 +80,11 @@ export class TimelineLikeReactComponent implements OnInit {
         console.log(respObj);
         this.statusText = "";
         this.showToasterSuccess("Your Status has been updated")
+        this.getUserPosts();
+        setTimeout(() => {
+          this.currentUserDetails = this.users.find(user => user.id === this.currentUser);
+          this.addUserDetails();
+        }, 5000);
         // this.ngOnInit();
         //  location.reload();
         this.timelineUpdateForm.patchValue({
@@ -161,7 +168,7 @@ export class TimelineLikeReactComponent implements OnInit {
   replyComment(postId: number, commentId: number, replytxt: string) {
     this.netService.reply_on_comment(postId, commentId, replytxt)
       .subscribe(respObj => {
-        console.log(respObj);
+        this.getPostComments(postId);
       })
   }
 
@@ -207,25 +214,27 @@ export class TimelineLikeReactComponent implements OnInit {
             })
         }
         console.log(post)
-        post['comments'].map(commemt => {
-          const user = this.users.find(user => user.id === commemt.user);
-        //  console.log(user);
-          commemt['profile'] = user.photo;
-          commemt['first_name'] = user.first_name;
-          commemt['last_name'] = user.last_name;
+        respObj.sort((a,b)=>{
+          if(a.id < b.id) return -1;
         })
-
         post['comments'] = {};
         respObj.map(comment => {
+          const user = this.users.find(user => user.id === comment.user);
           if (!comment.reply) {
             post['comments'][comment.id] = {
-              ...comment
+              ...comment,
+              profile: user.photo,
+              first_name: user.first_name,
+              last_name: user.last_name
             }
           }
           else {
             const commentObj = post['comments'][comment.reply];
             commentObj['reply'] = {
-              ...comment
+              ...comment,
+              profile: user.photo,
+              first_name: user.first_name,
+              last_name: user.last_name
             }
           }
         })
