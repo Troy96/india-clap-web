@@ -2,7 +2,9 @@
 <nav class="navbar fixed-top navbar-icon-top navbar-expand-lg navbar">
   <a class="navbar-brand" routerLink="professional-networking/me">holagraph</a>
   <form id="frm" class="search-bar">
-    <div class="input-group">
+    <div class="input-group" style="width: 80% !important;
+    position: relative !important;
+    left: 3% !important;">
       <input type="text" name="search" class="form-control frm1" placeholder="Search" [(ngModel)]="searchKey">
       <div class="input-group-btn">
         <button class="btn btn-default" type="submit" (click)="displaysearch()" style="position: relative;right: 45px;z-index: 5">
@@ -21,14 +23,16 @@
     <ul class="navbar-nav ml-auto" style="position: relative;
     bottom: 7px;">
       <li class="nav-item active"  [routerLink]="['/professional-networking/me']" >
-        <a class="nav-link">
+        <a class="nav-link" style="position: relative;
+        top: 4px;">
           Home
           <span class="sr-only">(current)</span>
         </a>
       </li>
 
       <li class="nav-item"  [routerLink]="['/jobs/user-account']">
-        <a class="nav-link">
+        <a class="nav-link" style="position: relative;
+        top: 4px;">
           Jobs
         </a>
       </li>
@@ -104,7 +108,8 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link">
+            <a class="nav-link" style="position: relative;
+            top: 2px;">
               <i class="fa fa-envelope-o">
                 <img class="img1" src="/assets/icons/1x/Asset 9.png " width="20px">
               </i>
