@@ -153,7 +153,7 @@ export class TimelineLikeReactComponent implements OnInit {
           post['isLiked'] = false;
         else
           post['isLiked'] = true;
-
+        this.getUserPosts()
       })
   }
 
@@ -185,7 +185,7 @@ export class TimelineLikeReactComponent implements OnInit {
         // this.netService.find_comment_liked().subscribe((data):any=>{
         //   console.log(data);
         // })
-        this.commentList['comments'] = [...respObj];
+        //this.commentList['comments'] = [...respObj];
         // post['comments'] = [...respObj]
         // post['comments'].map(commemt => {
         //   const user = this.users.find(user => user.id === commemt.user);
@@ -194,62 +194,66 @@ export class TimelineLikeReactComponent implements OnInit {
         //   commemt['last_name'] = user.last_name;
         // })
 
-        console.log(respObj)
-        this.commentList =
-          (respObj);
+        // console.log(respObj)
+        // this.commentList =
+        //   (respObj);
 
-        console.log(this.commentList)
+        // console.log(this.commentList)
         //  this.getCommentsReactions()
-        post['comments'] = [...respObj]
-        for (let comment of post.comments) {
-          this.netService.comment_user_like_status(comment.id, comment.post)
-            .subscribe(respObj => {
-              console.log(respObj);
-              if (respObj.detail === "False") {
-                comment.isLiked = false
-              }
-              else {
-                comment.isLiked = true
-              }
-            })
-        }
+        // post['comments'] = [...respObj]
+        // for (let comment of post.comments) {
+        //   this.netService.comment_user_like_status(comment.id, comment.post)
+        //     .subscribe(respObj => {
+        //       console.log(respObj);
+        //       if (respObj.detail === "False") {
+        //         comment.isLiked = false
+        //       }
+        //       else {
+        //         comment.isLiked = true
+        //       }
+        //     })
+        // }
         respObj.sort((a, b) => {
           if (a.id < b.id) return -1;
         })
         post['comments'] = {};
-        setTimeout(() => {
-          respObj.map(comment => {
-            this.netService.comment_user_like_status(comment.id, comment.post)
-              .subscribe(resp => {
-                const user = this.users.find(user => user.id === comment.user);
-                if (!comment.reply) {
-                  let isLiked: boolean = false;
-                  if (resp.detail === 'True') isLiked = true
-                  post['comments'][comment.id] = {
-                    ...comment,
+        let that = this;
+          (async function next(i){
+            console.log(respObj[i])
+            if(i == respObj.length) return;
+            that.netService.comment_user_like_status(respObj[i].id, respObj[i].post)
+            .subscribe(resp => {
+              const user = that.users.find(user => user.id === respObj[i].user);
+              if (!respObj[i].reply) {
+                let isLiked: boolean = false;
+                if (resp.detail === 'True') isLiked = true
+                post['comments'][respObj[i].id] = {
+                  ...respObj[i],
+                  profile: user.photo,
+                  first_name: user.first_name,
+                  last_name: user.last_name,
+                  isLiked
+                }
+              }
+              else {
+                let isLiked: boolean = false;
+                if (resp.detail === 'True') isLiked = true
+                const commentObj = post['comments'][respObj[i].reply];
+                if(!!commentObj){
+                  commentObj['reply'] = {
+                    ...respObj[i],
                     profile: user.photo,
                     first_name: user.first_name,
                     last_name: user.last_name,
                     isLiked
                   }
                 }
-                else {
-                  let isLiked: boolean = false;
-                  if (resp.detail === 'True') isLiked = true
-                  const commentObj = post['comments'][comment.reply];
-                  if(!!commentObj){
-                    commentObj['reply'] = {
-                      ...comment,
-                      profile: user.photo,
-                      first_name: user.first_name,
-                      last_name: user.last_name,
-                      isLiked
-                    }
-                  }
-                }
-              })
-          })
-        }, 0);
+              }
+            })
+            setTimeout(async () => {
+              return await next(++i)
+            }, 2000);
+          }(0))
         console.log(this.postList)
       })
   }
