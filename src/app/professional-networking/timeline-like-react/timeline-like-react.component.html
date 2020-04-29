@@ -273,7 +273,7 @@
                                 placeholder="Write a reply..." #replyInp>
                             <div class="input-group-btn">
                                 <button class="btn btn-default comm-icons"
-                                    (click)="replyComment(post.id, replyInp.value)">
+                                    (click)="replyComment(post?.id, data.value?.id, replyInp.value)">
                                     <i class="glyphicon glyphicon-search comm-cam"><img src="/assets/icons/1x/Image.png"
                                             width="17px"></i>
 
