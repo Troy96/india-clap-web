@@ -237,12 +237,14 @@ export class TimelineLikeReactComponent implements OnInit {
                   let isLiked: boolean = false;
                   if (resp.detail === 'True') isLiked = true
                   const commentObj = post['comments'][comment.reply];
-                  commentObj['reply'] = {
-                    ...comment,
-                    profile: user.photo,
-                    first_name: user.first_name,
-                    last_name: user.last_name,
-                    isLiked
+                  if(!!commentObj){
+                    commentObj['reply'] = {
+                      ...comment,
+                      profile: user.photo,
+                      first_name: user.first_name,
+                      last_name: user.last_name,
+                      isLiked
+                    }
                   }
                 }
               })
