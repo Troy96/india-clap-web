@@ -168,9 +168,9 @@
                             <div style=" justify-content: space-between; display: flex;">
                                 <span>{{data.value?.content}}</span>
                             </div>
-                            <small *ngIf="!comment.isLiked" class="comment-like"
+                            <small *ngIf="!data?.value?.isLiked" class="comment-like"
                                 (click)="likeComment(data?.value?.id,post.id)"><u>Like</u> </small>
-                            <small *ngIf="comment.isLiked" class="comment-like"
+                            <small *ngIf="data?.value?.isLiked" class="comment-like"
                                 (click)="likeComment(data?.value?.id,post.id)"><u>Liked</u> </small>
 
                         </div>
