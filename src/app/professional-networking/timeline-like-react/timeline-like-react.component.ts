@@ -22,6 +22,7 @@ export class TimelineLikeReactComponent implements OnInit {
   photoVal: boolean = true;
   videoval: boolean = true;
   users: any[];
+  showReact:number=0;
   @ViewChild('comment', { static: false }) commentRef: ElementRef
   constructor(
     private netService: NetworkingService, private cd: ChangeDetectorRef, private jobService: JobsService
@@ -332,11 +333,13 @@ export class TimelineLikeReactComponent implements OnInit {
     }
     )
   }
-  enter(ev) {
+  enter(ev,id) {
     this.showEmoji = true;
+    this.showReact=id;
   }
   leave(ev) {
     this.showEmoji = false;
+    this.showReact=0;
   }
   likeComment(commentId, postId) {
     console.log(commentId, postId);
@@ -345,36 +348,5 @@ export class TimelineLikeReactComponent implements OnInit {
       this.getPostComments(postId);
     })
   }
-  // async getCommentsReactions() {
-  //   console.log(this.commentList)
-  //   for await (let comment of this.commentList) {
-  //     this.netService.comment_user_like_status(comment.id,comment.post)
-  //       .subscribe(respObj => {
-  //         console.log(respObj);
-  //         if (respObj.detail === "False") {
-  //           comment.isLiked = false
-  //         }
-  //         else {
-  //           comment.isLiked = true
-  //         }
-  //       })
-  //   }
-  //   console.log(this.commentList)
-  // }
-  // async getCommentsReactions() {
-  // //  console.log(this.)
-  //   for await (let comment of this.commentList) {
-  //     this.netService.comment_user_like_status(comment.id,comment.post)
-  //       .subscribe(respObj => {
-  //         console.log(respObj);
-  //         if (respObj.detail === "False") {
-  //           comment.isLiked = false
-  //         }
-  //         else {
-  //           comment.isLiked = true
-  //         }
-  //       })
-  //   }
-  //   console.log(this.commentList)
-  // }
+ 
 }

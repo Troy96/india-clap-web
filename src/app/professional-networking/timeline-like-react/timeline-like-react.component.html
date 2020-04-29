@@ -87,10 +87,10 @@
                         class="icon-txt">Liked</small>
                 </div>
                 <div *ngIf="post?.isReacted" id="icons" class="react-btn"> <img src="/assets/icons/1x/smiley.png"
-                        (click)="smiley()" (mouseenter)="enter($event)" width="22px" height="22px"
+                        (click)="smiley()" (mouseenter)="enter($event,post.id)" width="22px" height="22px"
                         class="like-comment-icon"><small class="icon-txt">Reacted</small></div>
                 <div *ngIf="!post?.isReacted" id="icons" class="react-btn"> <img src="/assets/icons/1x/smiley.png"
-                        (click)="smiley()" (mouseenter)="enter($event)" width="22px" height="22px"
+                        (click)="smiley()" (mouseenter)="enter($event,post.id)" width="22px" height="22px"
                         class="like-comment-icon"><small class="icon-txt">React</small></div>
 
                 <!-- <div id="icons"> <img src="/assets/icons/1x/smiley.png" width="22px" height="22px" (click)="smiley()"
@@ -104,7 +104,7 @@
                         class="like-comment-icon report-img"><small class="icon-txt">Report</small></div>
             </div>
             <div class="react-box">
-                <div id="like-options" class="like-opt" *ngIf="showEmoji" (mouseleave)="leave($event)">
+                <div id="like-options" class="like-opt" *ngIf="showEmoji && showReact==post.id" (mouseleave)="leave($event,post.id)">
                     <img src="/assets/icons/1x/clap.png" (click)="reactType(1,post.id)" class="clap react-icons"
                         width="30px">
                     <img src="/assets/icons/1x/heart.png" (click)="reactType(2,post.id)" class="heart react-icons"
