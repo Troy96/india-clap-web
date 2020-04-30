@@ -44,7 +44,7 @@ nav{
   #jumbotron-text{
     border: 1px gray solid;
     background-color: white;
-    height: 120px;
+    height: 180px;
     -webkit-box-shadow: 0 8px 6px -6px gray;
          -moz-box-shadow: 0 8px 6px -6px gray;
               box-shadow: 0 8px 6px -6px gray;
@@ -182,7 +182,7 @@ nav{
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-        height: 170px;
+        height: 255px;
       }
 }
 
@@ -204,7 +204,7 @@ nav{
 @media (min-width: 406px) {
     .jmb-img{/*image of jumbotron*/
         width: 120px;
-        height: 120px;
+        height: 180px;
         margin-top: 140px;
         border-radius: 50%;
         margin-left: 10px;
@@ -236,7 +236,7 @@ nav{
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-        height: 170px;
+        height: 255px;
       }
       .navbar-brand{
         margin-left: 0px;
@@ -263,7 +263,7 @@ nav{
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-        height: 170px;
+        height: 255px;
       
       }
 }
@@ -282,7 +282,7 @@ nav{
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-        height: 170px;
+        height: 255px;
       
       }
 }
@@ -345,7 +345,7 @@ nav{
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-        height: 170px;
+        height: 255px;
         
       }
 }
