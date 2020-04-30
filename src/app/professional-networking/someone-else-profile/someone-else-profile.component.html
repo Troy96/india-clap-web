@@ -62,14 +62,19 @@
 
                 <div id="experience">
                     <div id="txt-exp" *ngFor="let exp of userDetails?.experiences">
-                        <img *ngIf="exp.company_logo" src="{{exp.company_logo}}" width="50px" class="exp-img">
-                        <img *ngIf="!exp.company_logo" src="/assets/icons/1x/no_company.jpg" width="50px" height="50px"
-                            style="display: block; border-radius: 50%;" class="exp-img">
-
-                        <span class="teal">{{exp.company_name}}</span><br>
-                        {{exp.title}}<br>
-                        {{exp.responsibilities}}<br>
-                        <p>{{exp?.start_date}} -- {{exp?.end_date}}</p>
+                        <div style="display: flex;">
+                            <div>
+                                <img *ngIf="exp.company_logo" src="{{exp.company_logo}}" width="50px" class="exp-img">
+                                <img *ngIf="!exp.company_logo" src="/assets/icons/1x/no_company.jpg" width="50px"
+                                    height="50px" style="display: block; border-radius: 50%;" class="exp-img">
+                            </div>
+                            <div style="margin-left: 15px;">
+                                <span class="teal">{{exp.company_name}}</span><br>
+                                {{exp.title}}<br>
+                                {{exp.responsibilities}}<br>
+                                <p>{{exp?.start_date}} -- {{exp?.end_date}}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
