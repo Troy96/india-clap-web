@@ -7,38 +7,44 @@
             <div id="name" style="position: relative;
             bottom: 20px;">
                 <h2>{{userDetails?.first_name}} {{userDetails?.last_name}}</h2>
-                <span *ngIf="userDetails?.experiences">{{userDetails?.experiences[0].title}} at {{userDetails?.experiences[0].company_name}}</span><br/>
+                <span *ngIf="userDetails?.experiences">{{userDetails?.experiences[0].title}} at
+                    {{userDetails?.experiences[0].company_name}}</span><br />
                 <span *ngIf="privacySettingsMap?.location">{{userDetails?.location}}</span>
             </div>
 
             <div id="j-icons">
-                <a style="position: relative;
-                top: 5px;
-                left: 5px;
-            ">
-                    <img class="more-opt" src="/assets/icons/1x/more-opt.png" alt=""><br>
-                </a>
-                <div style="
+                <div style="display: flex; margin-top: 20px;">
+                    <span><img src="{{userDetails?.experiences[0].company_logo}}" width="20px" height="20px">
+                        {{userDetails?.experiences[0].company_name}}</span>
+                    <div style="
                 height: 35px; position: relative;
-    bottom: 10px;">
-                    <button *ngIf="profileConnectionStatus === 'Not Connected'" (click)="onConnectRequest()"
-                        class="btn btn-primary jbtn connect-btn">
-                        Connect</button>
-                    <button *ngIf="profileConnectionStatus === 'Pending on FROM side'" (click)="onCancelRequest()"
-                        class="btn btn-primary jbtn connect-btn">
-                        Cancel Request</button>
-                    <button *ngIf="profileConnectionStatus === 'Pending on TO side'" (click)="onDeleteRequest()"
-                        class="btn btn-primary jbtn connect-btn">
-                        Delete Request</button>
-                    <button *ngIf="profileConnectionStatus === 'Pending on TO side'" (click)="onAcceptRequest()"
-                        class="btn btn-primary jbtn connect-btn">
-                        Accept Request</button>
-                    <button *ngIf="profileConnectionStatus === 'Already Connected'" class="btn btn-primary jbtn connect-btn">
-                        Connected</button>
-                    <!-- <button class="btn btn-primary jbtn">
+                        bottom: 10px;">
+                        <a style="position: relative;
+                        top: 5px;
+                        left: 5px;
+                    ">
+                            <img class="more-opt" src="/assets/icons/1x/more-opt.png" alt=""><br>
+                        </a>
+                        <button *ngIf="profileConnectionStatus === 'Not Connected'" (click)="onConnectRequest()"
+                            class="btn btn-primary jbtn connect-btn">
+                            Connect</button>
+                        <button *ngIf="profileConnectionStatus === 'Pending on FROM side'" (click)="onCancelRequest()"
+                            class="btn btn-primary jbtn connect-btn">
+                            Cancel Request</button>
+                        <button *ngIf="profileConnectionStatus === 'Pending on TO side'" (click)="onDeleteRequest()"
+                            class="btn btn-primary jbtn connect-btn">
+                            Delete Request</button>
+                        <button *ngIf="profileConnectionStatus === 'Pending on TO side'" (click)="onAcceptRequest()"
+                            class="btn btn-primary jbtn connect-btn">
+                            Accept Request</button>
+                        <button *ngIf="profileConnectionStatus === 'Already Connected'"
+                            class="btn btn-primary jbtn connect-btn">
+                            Connected</button>
+                        <!-- <button class="btn btn-primary jbtn">
                         Message</button> -->
+                    </div>
                 </div>
-                <span><img src="{{userDetails?.experiences[0].company_logo}}" width="20px" height="20px"> {{userDetails?.experiences[0].company_name}}</span>
+
             </div>
 
         </div>
@@ -57,7 +63,8 @@
                 <div id="experience">
                     <div id="txt-exp" *ngFor="let exp of userDetails?.experiences">
                         <img *ngIf="exp.company_logo" src="{{exp.company_logo}}" width="50px" class="exp-img">
-                        <img *ngIf="!exp.company_logo" src="/assets/icons/1x/no_company.jpg" width="50px" height="50px" style="display: block; border-radius: 50%;" class="exp-img">
+                        <img *ngIf="!exp.company_logo" src="/assets/icons/1x/no_company.jpg" width="50px" height="50px"
+                            style="display: block; border-radius: 50%;" class="exp-img">
 
                         <span class="teal">{{exp.company_name}}</span><br>
                         {{exp.title}}<br>
@@ -94,7 +101,8 @@
                 <h3>Certificates</h3>
                 <div class="project-description" *ngIf="userDetails?.certifications.length">
 
-                    <div id="skill" *ngFor="let certification of userDetails?.certifications" style="margin-bottom: 10px;">
+                    <div id="skill" *ngFor="let certification of userDetails?.certifications"
+                        style="margin-bottom: 10px;">
                         <span class="teal">{{certification?.certification_name}} </span>
                         {{certification?.description}}<br />
                         Valid till - {{certification?.validity_date}}
@@ -114,7 +122,7 @@
                 </div>
             </div>
 
-           
+
         </div>
 
     </div>
