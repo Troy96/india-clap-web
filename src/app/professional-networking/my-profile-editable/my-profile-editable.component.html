@@ -19,10 +19,10 @@
                     <h2><span class="teal">{{userDetails?.first_name}} {{userDetails?.last_name}} <img
                                 src="/assets/icons/1x/Edit.png" (click)="openAddModal('Profile')" width="22px"
                                 style="cursor: pointer;" class="edit-icon1"></span></h2>
+                    <span *ngIf="userDetails?.experiences">{{userDetails?.experiences[0].title}} at {{userDetails?.experiences[0].company_name}}</span><br>
                     <span *ngIf="userDetails?.location">{{userDetails?.location}}</span>
-                    <ng-template *ngIf="!userDetails?.location">Enter a location</ng-template><br>
-                    <span *ngIf="userDetails?.profession">{{userDetails?.profession}}</span><br>
-                    <ng-template *ngIf="!userDetails?.profession">Enter a profession</ng-template>
+                    
+                    
                 </div>
 
                 <div id="j-icons"><a>

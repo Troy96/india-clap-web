@@ -51,7 +51,6 @@ nav{
     
   }
   #j-icons{ /*Apply button*/
-    margin-top: 20px;
     padding-bottom: 10px;
     
   }
@@ -126,6 +125,11 @@ nav{
     font-size: 15px;
     color: gray;
   }
+
+  .connect-btn {
+    height: 35px;
+  }
+
   #headline{
     border: 1px gray solid;
     padding-top: 15px;
@@ -333,7 +337,6 @@ nav{
         margin: 0px 5px;
       }
       .more-opt{/*more icon*/
-        margin-left: 180px;
         margin-bottom: 20px;
       }
       .jumbotron-image{
