@@ -35,7 +35,7 @@
     </div>
     <ng-container *ngFor="let post of postList">
         <div class="post">
-            <div class="post-image">
+            <div class="post-image" routerLink="/professional-networking/users/{{post?.author_user}}" style="cursor: pointer;">
                 <img src="{{post?.profile}}" style="display: block;
                 width: 70px;
                 height: 70px;
@@ -52,7 +52,7 @@
 
                 <div style="display: flex; flex-direction: column;">
 
-                    <p class="teal" *ngIf="post.author_user">{{post?.first_name}} {{post?.flast_name}}</p>
+                    <p class="teal" *ngIf="post.author_user" routerLink="/professional-networking/users/{{post?.author_user}}" style="cursor: pointer; text-decoration: underline;">{{post?.first_name}} {{post?.last_name}}</p>
                     <p> {{post?.created_on | date}}</p>
                     <p *ngIf="post?.text"> {{post?.text}}</p>
                 </div>
