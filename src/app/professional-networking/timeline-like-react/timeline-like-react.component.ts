@@ -337,9 +337,9 @@ export class TimelineLikeReactComponent implements OnInit {
     this.showEmoji = true;
     this.showReact=id;
   }
-  leave(ev) {
+  leave(ev, id) {
     this.showEmoji = false;
-    this.showReact=0;
+    this.showReact=id;
   }
   likeComment(commentId, postId) {
     console.log(commentId, postId);
