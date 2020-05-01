@@ -399,10 +399,12 @@ export class TimelineLikeReactComponent implements OnInit {
     this.ideaReactions();
     this.thinkReactions();
     this.likeReactions();
-    this.numAll = this.numClapped+this.numIdea+this.numLoved+this.numThink+this.numLiked;
+  //  this.numAll = this.numClapped+this.numIdea+this.numLoved+this.numThink+this.numLiked;
+    console.log(this.numAll)
     this.netService.get_all_reactions(this.reactionPostId).subscribe((data):any=>{
       console.log(data);
       this.allReactions=data;
+      this.numAll=data.length;
     })
   }
   loveReactions(){
