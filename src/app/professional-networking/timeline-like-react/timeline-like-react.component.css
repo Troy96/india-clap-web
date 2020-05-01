@@ -485,6 +485,7 @@ h2{
 .likers-dp{
   margin-left: 15px;
   float: left;
+   border-radius: 50%;
 }
 .likers{
   padding-top: 15px;

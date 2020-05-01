@@ -144,7 +144,7 @@ export class TimelineLikeReactComponent implements OnInit {
         })
       this.netService.post_user_react_status(post.id)
         .subscribe(respObj => {
-          console.log(respObj)
+        //  console.log(respObj)
           if (respObj.detail === '1' || respObj.detail === '2' || respObj.detail === '3' || respObj.detail === '4') {
             post['isReacted'] = true
           }
@@ -325,7 +325,7 @@ export class TimelineLikeReactComponent implements OnInit {
     let obj: any = {};
     obj.flaggedReason = "";
     this.netService.report_post(id, obj).subscribe((data: any) => {
-      console.log(data);
+    //  console.log(data);
       this.showToasterSuccess("You have reported the Post!")
 
     },
@@ -343,7 +343,7 @@ export class TimelineLikeReactComponent implements OnInit {
 
   }
   reactType(id: any, _id: any) {
-    console.log(id)
+   // console.log(id)
     if (this.showEmoji == true)
       this.showEmoji = false;
     else
@@ -353,7 +353,7 @@ export class TimelineLikeReactComponent implements OnInit {
     this.netService.post_reaction(_id, obj).subscribe((data) => {
       console.log(data);
       this.getPostsReactions()
-      this.showToasterSuccess("Thanks for reacting")
+    //  this.showToasterSuccess("Thanks for reacting")
     }, err => {
       this.showToasterError("Something went wrong")
     }
@@ -368,7 +368,7 @@ export class TimelineLikeReactComponent implements OnInit {
     this.showReact=id;
   }
   likeComment(commentId, postId) {
-    console.log(commentId, postId);
+   // console.log(commentId, postId);
     this.netService.like_comment(commentId, postId).subscribe((data): any => {
       console.log(data);
       this.getPostComments(postId);
@@ -392,7 +392,7 @@ export class TimelineLikeReactComponent implements OnInit {
 
   }
   all_reactions(){
-    console.log("all");
+   // console.log("all");
   //  this.reactionPostId=id;
     this.loveReactions();
     this.clapReactions();
@@ -400,7 +400,7 @@ export class TimelineLikeReactComponent implements OnInit {
     this.thinkReactions();
     this.likeReactions();
   //  this.numAll = this.numClapped+this.numIdea+this.numLoved+this.numThink+this.numLiked;
-    console.log(this.numAll)
+   // console.log(this.numAll)
     this.netService.get_all_reactions(this.reactionPostId).subscribe((data):any=>{
       console.log(data);
       this.allReactions=data;
@@ -408,41 +408,41 @@ export class TimelineLikeReactComponent implements OnInit {
     })
   }
   loveReactions(){
-    console.log("love");
+  //  console.log("love");
     this.netService.get_all_emojiReactions(2,this.reactionPostId).subscribe((data):any=>{
-      console.log(data);
+    //  console.log(data);
       this.numLoved=data.length;
       this.allReactions=data;
     })
   }
   clapReactions(){
-    console.log("clap");
+  //  console.log("clap");
     this.netService.get_all_emojiReactions(1,this.reactionPostId).subscribe((data):any=>{
-      console.log(data);
+    //  console.log(data);
       this.numClapped=data.length;
       this.allReactions=data;
     })
   }
   ideaReactions(){
-    console.log("idea");
+  //  console.log("idea");
     this.netService.get_all_emojiReactions(3,this.reactionPostId).subscribe((data):any=>{
-      console.log(data);
+   //   console.log(data);
       this.numIdea=data.length;
       this.allReactions=data;
     })
   }
   thinkReactions(){
-    console.log("think");
+  //  console.log("think");
     this.netService.get_all_emojiReactions(4,this.reactionPostId).subscribe((data):any=>{
-      console.log(data);
+  //    console.log(data);
       this.numThink=data.length;
       this.allReactions=data;
     })
   }
   likeReactions(){
-    console.log("like");
+  //  console.log("like");
     this.netService.get_all_likeReactions(this.reactionPostId).subscribe((data):any=>{
-      console.log(data);
+  //    console.log(data);
       this.numLiked=data.length;
       this.allReactions=data;
     })
