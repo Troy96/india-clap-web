@@ -104,7 +104,7 @@
                                     <div class="project-details">
 
                                         <span class="teal">{{project?.project_name}}</span><br />
-                                        <a href="{{project.link}}" target="_blank">{{project.link}}</a>
+                                        <a *ngIf="project?.link" href="{{project.link}}" target="_blank">{{project.link}}<br/></a>
                                         {{project?.start_date}} - {{project?.end_date}}
                                     </div>
                                 </div>
@@ -134,6 +134,9 @@
                     <span class="teal">{{certification?.certification_name}} </span>
                     {{certification?.description}}<br />
                     Valid till - {{certification?.validity_date}}
+                    <div>
+                        <hr />
+                    </div>
                 </div>
             </div>
         </div>
