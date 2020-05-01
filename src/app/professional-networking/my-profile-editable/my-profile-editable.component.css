@@ -48,7 +48,7 @@ h2 {
 #jumbotron-text {
   border: 1px gray solid;
   background-color: white;
-  height: 120px;
+  height: 180px;
   -webkit-box-shadow: 0 8px 6px -6px gray;
   -moz-box-shadow: 0 8px 6px -6px gray;
   box-shadow: 0 8px 6px -6px gray;
@@ -257,7 +257,7 @@ h3 {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 170px;
+    height: 255px;
   }
 
   .jmb-img {
@@ -321,7 +321,7 @@ h3 {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 170px;
+    height: 255px;
   }
 
   .jmb-img {
@@ -371,7 +371,7 @@ h3 {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 170px;
+    height: 255px;
 
   }
 
@@ -408,7 +408,7 @@ h3 {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 170px;
+    height: 255px;
 
   }
 
@@ -436,7 +436,7 @@ h3 {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 170px;
+    height: 255px;
 
   }
 

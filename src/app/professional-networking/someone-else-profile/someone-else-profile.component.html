@@ -97,7 +97,7 @@
                 <div id="experience">
                     <div id="txt-exp" *ngFor="let project of userDetails?.projects">
                         <div style="display: flex;">
-                            <img src="/assets/icons/1x/logo3.png" width="50px" class="project-img">
+                            <img src="/assets/icons/1x/logo3.png" width="70px" height="70px" class="project-img">
                             <div style="margin-left: 35px;">
                                 <div id="txt-exp">
 
@@ -145,7 +145,7 @@
             <h3>Skills</h3>
             <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
 
-            <div class="project-description">
+            <div class="project-description" style="margin-top: 20px;">
 
                 <div id="skill" *ngFor="let skill of userDetails?.skills">
                     {{skill.skill}} ({{skill.level}})
