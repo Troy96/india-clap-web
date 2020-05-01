@@ -7,7 +7,7 @@
             <div id="name" style="position: relative;
             bottom: 20px;">
                 <h2>{{userDetails?.first_name}} {{userDetails?.last_name}}</h2>
-                <p *ngIf="userDetails?.experiences" style="overflow-wrap: normal;">{{userDetails?.experiences[0].title}} at
+                <p *ngIf="userDetails?.experiences" style="overflow-wrap: normal; width: 200px;">{{userDetails?.experiences[0].title}} at
                     {{userDetails?.experiences[0].company_name}}</p><br />
                 <span *ngIf="privacySettingsMap?.location">{{userDetails?.location}}</span>
             </div>
@@ -16,7 +16,7 @@
                 <div style="display: flex; margin-top: 20px; position: relative;
                 right: 50%;">
                     <span><img src="{{userDetails?.experiences[0].company_logo}}" width="20px" height="20px">
-                        <p>{{userDetails?.experiences[0].company_name}}</p></span>
+                        <p style="width: 200px;">{{userDetails?.experiences[0].company_name}}</p></span>
                     <div style="
                 height: 35px; position: relative;
                         bottom: 10px;">
