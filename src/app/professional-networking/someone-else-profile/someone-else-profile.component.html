@@ -70,9 +70,9 @@
                     <div id="txt-exp" *ngFor="let exp of userDetails?.experiences">
                         <div style="display: flex;">
                             <div>
-                                <img *ngIf="exp.company_logo" src="{{exp.company_logo}}" width="50px" class="exp-img">
-                                <img *ngIf="!exp.company_logo" src="/assets/icons/1x/no_company.jpg" width="50px"
-                                    height="50px" style="display: block;" class="exp-img">
+                                <img *ngIf="exp.company_logo" src="{{exp.company_logo}}" width="70px" height="70px"  class="exp-img" style="border-radius: 50%;">
+                                <img *ngIf="!exp.company_logo" src="/assets/icons/1x/no_company.jpg" width="70px"
+                                    height="70px" style="display: block;" class="exp-img" style="border-radius: 50%;">
                             </div>
                             <div style="margin-left: 35px;">
                                 <span class="teal">{{exp.company_name}}</span><br>
@@ -90,6 +90,44 @@
                     </div>
                 </div>
             </div>
+
+            <div id="headline" *ngIf="privacySettingsMap?.education" style="padding: 40px;">
+                <h3>Education</h3>
+
+                <div id="experience">
+                    <div id="txt-exp" *ngFor="let exp of userDetails?.education">
+                        <div style="display: flex">
+                            <div>
+                                <img *ngIf="exp.institute_logo" src="{{exp.institute_logo}}" width="70px"
+                                    height="70px" style="display: block; border-radius: 50%;"
+                                     class="exp-img">
+                                <img *ngIf="!exp.institute_logo" src="/assets/icons/1x/no_company.jpg" width="70px"
+                                    height="70px" style="display: block; border-radius: 50%;"
+                                    class="exp-img">
+                            </div>
+                            <div style="margin-left: 35px;">
+                                <span class="teal">{{exp.institute}}</span><br>
+                                {{exp.degree}},
+                                {{exp.study_field}}<br>
+                                Grade - {{exp.grade}}<br>
+                                {{exp.link}}<br>
+                                <p *ngIf="exp.is_present">
+                                    {{exp?.start_year}} --
+                                    Present</p>
+                                <p *ngIf="!exp.is_present">
+                                    {{exp?.start_year}} --
+                                    {{exp?.end_year}}</p>
+                            </div>
+                        </div>
+                        <div style="margin-left:85px">
+                            <hr />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
 
             <div id="headline" *ngIf="privacySettingsMap?.projects" style="padding: 40px;">
                 <h3>Projects
