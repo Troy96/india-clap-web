@@ -136,14 +136,14 @@
 
             <a style="text-decoration: underline; cursor: pointer; position: relative; top: 10px; color: grey;"
                 (click)="getPostComments(post.id)">Load more comments...</a>
-            <ng-container *ngFor="let data of post.comments | keyvalue">
-                <div class="post-notification" *ngIf="data.value?.content">
+            <ng-container *ngFor="let data of post?.comments">
+                <div class="post-notification" *ngIf="data?.content">
                     <!-- <div class="time">
                         25min &nbsp
                         <img src="/assets/icons/1x/more-opt.png" width="12px">
                     </div> -->
                     <div class="post-image">
-                        <img src="{{data?.value?.profile}}" style="display: block;
+                        <img src="{{data?.profile}}" style="display: block;
                         width: 55px;
                         height: 55px;
                         border-radius: 50%;" width="47px">
@@ -154,44 +154,44 @@
                         <div style="background-color: #f3f3f3; border-radius: 4px; height: 80px;
                         padding: 7px; margin-bottom: 10px;">
                             <div style="display: flex; justify-content: flex-end; cursor: pointer;"
-                                (click)="deleteComment(post.id, data.value.id)" class="post-item"
-                                *ngIf="data.value?.user === currentUser"><img src="/assets/icons/1x/more-opt.png">
+                                (click)="deleteComment(post.id, data.id)" class="post-item"
+                                *ngIf="data?.user === currentUser"><img src="/assets/icons/1x/more-opt.png">
                                 <div class="drop-items">
                                     <p>Delete this comment</p>
                                 </div>
                             </div>
                             <div style="display: flex; justify-content: space-between;">
-                                <span id="teal">{{data.value?.first_name}} {{data.value?.last_name}}</span>
-                                <span>{{data.value?.timestamp | date}}</span>
+                                <span id="teal">{{data?.first_name}} {{data?.last_name}}</span>
+                                <span>{{data?.timestamp | date}}</span>
                             </div>
 
                             <div style=" justify-content: space-between; display: flex;">
-                                <span>{{data.value?.content}}</span>
+                                <span>{{data?.content}}</span>
                             </div>
-                            <small *ngIf="!data?.value?.isLiked" class="comment-like"
-                                (click)="likeComment(data?.value?.id,post.id)"><u>Like</u> </small>
-                            <small *ngIf="data?.value?.isLiked" class="comment-like"
-                                (click)="likeComment(data?.value?.id,post.id)"><u>Liked</u> </small>
+                            <small *ngIf="!data?.isLiked" class="comment-like"
+                                (click)="likeComment(data?.id,post.id)"><u>Like</u> </small>
+                            <small *ngIf="data?.isLiked" class="comment-like"
+                                (click)="likeComment(data?.id,post.id)"><u>Liked</u> </small>
 
                         </div>
                         <div style="display: flex;
                         justify-content: flex-end">
-                            <div class="post-image" *ngIf="data?.value?.reply">
-                                <img src="{{data?.value?.reply?.profile}}" style="display: block;
+                            <!-- <div class="post-image" *ngIf="data?.replies.length">
+                                <img src="{{data?.replies.length}}" style="display: block;
                             width: 55px;
                             height: 55px;
                             border-radius: 50%;" width="47px">
-                            </div>
-                            <div *ngIf="data?.value?.reply" style="background-color: #f3f3f3; border-radius: 4px; width: 70%;
+                            </div> -->
+                            <div *ngIf="data?.replies.length" style="background-color: #f3f3f3; border-radius: 4px; width: 70%;
                             margin-top: 10px;
                             margin-bottom: 10px; height: 60px; padding: 5px;">
                                 <div style="display: flex; justify-content: space-between;">
-                                    <span id="teal">{{data?.value?.reply?.first_name}}
-                                        {{data?.value?.reply?.last_name}}</span>
-                                    <span>{{data?.value?.reply?.timestamp | date}}</span>
+                                    <!-- <span id="teal">{{data?.reply?.first_name}}
+                                        {{data?.value?.reply?.last_name}}</span> -->
+                                    <span>{{data?.replies[0].timestamp | date}}</span>
                                 </div>
                                 <div style=" justify-content: space-between; display: flex;">
-                                    <span>{{data?.value?.reply?.content}}</span>
+                                    <span>{{data?.replies[0]?.content}}</span>
                                 </div>
                             </div>
                         </div>
@@ -199,11 +199,11 @@
                         <div style="display: flex;
                         justify-content: flex-end;
                         position: relative;
-                        right: 10px;" *ngIf="!data?.value?.reply"> <input type="text" class="form-control comment-box"
+                        right: 10px;" *ngIf="!data?.replies.length"> <input type="text" class="form-control comment-box"
                                 placeholder="Write a reply..." #replyInp>
                             <div class="input-group-btn">
                                 <button class="btn btn-default comm-icons"
-                                    (click)="replyComment(post?.id, data.value?.id, replyInp.value)">
+                                    (click)="replyComment(post?.id, data?.id, replyInp.value)">
                                     <i class="glyphicon glyphicon-search comm-cam"><img src="/assets/icons/1x/Image.png"
                                             width="17px"></i>
 

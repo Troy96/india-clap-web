@@ -7,15 +7,16 @@
             <div id="name" style="position: relative;
             bottom: 20px;">
                 <h2>{{userDetails?.first_name}} {{userDetails?.last_name}}</h2>
-                <span *ngIf="userDetails?.experiences">{{userDetails?.experiences[0].title}} at
-                    {{userDetails?.experiences[0].company_name}}</span><br />
+                <p *ngIf="userDetails?.experiences" style="overflow-wrap: normal;">{{userDetails?.experiences[0].title}} at
+                    {{userDetails?.experiences[0].company_name}}</p><br />
                 <span *ngIf="privacySettingsMap?.location">{{userDetails?.location}}</span>
             </div>
 
             <div id="j-icons">
-                <div style="display: flex; margin-top: 20px;">
+                <div style="display: flex; margin-top: 20px; position: relative;
+                right: 50%;">
                     <span><img src="{{userDetails?.experiences[0].company_logo}}" width="20px" height="20px">
-                        {{userDetails?.experiences[0].company_name}}</span>
+                        <p>{{userDetails?.experiences[0].company_name}}</p></span>
                     <div style="
                 height: 35px; position: relative;
                         bottom: 10px;">

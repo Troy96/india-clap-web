@@ -217,44 +217,57 @@ export class TimelineLikeReactComponent implements OnInit {
         respObj.sort((a, b) => {
           if (a.id < b.id) return -1;
         })
-        post['comments'] = {};
-        let that = this;
-          (async function next(i){
-            console.log(respObj[i])
-            if(i == respObj.length) return;
-            that.netService.comment_user_like_status(respObj[i].id, respObj[i].post)
-            .subscribe(resp => {
-              const user = that.users.find(user => user.id === respObj[i].user);
-              if (!respObj[i].reply) {
-                let isLiked: boolean = false;
-                if (resp.detail === 'True') isLiked = true
-                post['comments'][respObj[i].id] = {
-                  ...respObj[i],
-                  profile: user.photo,
-                  first_name: user.first_name,
-                  last_name: user.last_name,
-                  isLiked
-                }
-              }
-              else {
-                let isLiked: boolean = false;
-                if (resp.detail === 'True') isLiked = true
-                const commentObj = post['comments'][respObj[i].reply];
-                if(!!commentObj){
-                  commentObj['reply'] = {
-                    ...respObj[i],
-                    profile: user.photo,
-                    first_name: user.first_name,
-                    last_name: user.last_name,
-                    isLiked
-                  }
-                }
-              }
-            })
-            setTimeout(async () => {
-              return await next(++i)
-            }, 2000);
-          }(0))
+
+        post['comments'] = respObj;
+
+        post['comments'].forEach(async comment=>{
+          const resp = await this.netService.comment_user_like_status(comment['id'], comment['post']).toPromise();
+          const user = this.users.find(user=> user.id === comment.user);
+          let isLiked: boolean = false;
+          if(resp.detail == 'True') isLiked = true;
+
+          comment['profile'] = user.photo;
+          comment['first_name'] = user.first_name;
+          comment['last_name'] = user.last_name;
+          comment['isLiked'] = isLiked;
+        })
+        
+          // (async function next(i){
+          //   console.log(respObj[i])
+          //   if(i == respObj.length) return;
+          //   that.netService.comment_user_like_status(respObj[i].id, respObj[i].post)
+          //   .subscribe(resp => {
+          //     const user = that.users.find(user => user.id === respObj[i].user);
+          //     if (!respObj[i].reply) {
+          //       let isLiked: boolean = false;
+          //       if (resp.detail === 'True') isLiked = true
+          //       post['comments'][respObj[i].id] = {
+          //         ...respObj[i],
+          //         profile: user.photo,
+          //         first_name: user.first_name,
+          //         last_name: user.last_name,
+          //         isLiked
+          //       }
+          //     }
+          //     else {
+          //       let isLiked: boolean = false;
+          //       if (resp.detail === 'True') isLiked = true
+          //       const commentObj = post['comments'][respObj[i].reply];
+          //       if(!!commentObj){
+          //         commentObj['reply'] = {
+          //           ...respObj[i],
+          //           profile: user.photo,
+          //           first_name: user.first_name,
+          //           last_name: user.last_name,
+          //           isLiked
+          //         }
+          //       }
+          //     }
+          //   })
+          //   setTimeout(async () => {
+          //     return await next(++i)
+          //   }, 2000);
+          // }(0))
         console.log(this.postList)
       })
   }
