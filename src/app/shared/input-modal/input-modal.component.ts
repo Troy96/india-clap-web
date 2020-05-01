@@ -144,6 +144,42 @@ export class InputModalComponent implements OnInit {
         }
         break;
       }
+      case 'Education': {
+        this.labels = ['Education'];
+        this.placeholders = ['Institute', 'Degree', 'Study Field','Start Year','End Year','Is Present','Grade','Description','Link'];
+        if (this.inputData.isInputForm) {
+          this.inputForm = this.fb.group({
+            profile: this.fb.array([
+              this.fb.control(''),
+              this.fb.control(''),
+              this.fb.control(''),
+              this.fb.control(''),
+              this.fb.control(''),
+              this.fb.control(''),
+              this.fb.control(''),
+              this.fb.control(''),
+              this.fb.control('')
+            ])
+          });
+        }
+        else {
+          const data = this.inputData.data;
+          this.editForm = this.fb.group({
+            profile: this.fb.array([
+              this.fb.control(data['institute']),
+              this.fb.control(data['degree']),
+              this.fb.control(data['study_field']),
+              this.fb.control(data['start_year']),
+              this.fb.control(data['end_year']),
+              this.fb.control(data['is_present']),
+              this.fb.control(data['grade']),
+              this.fb.control(data['desc']),
+              this.fb.control(data['link']),
+            ])
+          })
+        }
+        break;
+      }
       case 'Skills': {
         this.labels = ['Skill', 'Level']
         this.placeholders = ['Enter skill name', 'Enter skill level (1-10)']
@@ -248,6 +284,25 @@ export class InputModalComponent implements OnInit {
         })
         break;
       }
+      case 'Education': {
+        this.authService.add_education({
+          institute: this.inputForm.get('profile').value[0],
+          degree: this.inputForm.get('profile').value[1],
+          study_field: this.inputForm.get('profile').value[2],
+          start_year: this.inputForm.get('profile').value[3],
+          end_year: this.inputForm.get('profile').value[4],
+          is_present: this.inputForm.get('profile').value[5],
+          grade: this.inputForm.get('profile').value[6],
+          desc: this.inputForm.get('profile').value[7],
+          link: this.inputForm.get('profile').value[8],
+
+          user: this.currentProfileId
+        }).subscribe(_ => {
+          this.myProfileService.updateUserDetails();
+          this.closeInputModal();
+        })
+        break;
+      }
     }
   }
 
@@ -299,6 +354,24 @@ export class InputModalComponent implements OnInit {
         this.authService.update_skill(this.inputData.data.id, {
           skill: this.editForm.get('profile').value[0],
           level: this.editForm.get('profile').value[1],
+          user: this.currentProfileId,
+        }).subscribe(_ => {
+          this.myProfileService.updateUserDetails();
+          this.closeInputModal();
+        })
+        break;
+      }
+      case 'Education': {
+        this.authService.update_education(this.inputData.data.id, {
+          institute: this.editForm.get('profile').value[0],
+          degree: this.editForm.get('profile').value[1],
+          study_field: this.editForm.get('profile').value[2],
+          start_year: this.editForm.get('profile').value[3],
+          end_year: this.editForm.get('profile').value[4],
+          is_present: this.editForm.get('profile').value[5],
+          grade: this.editForm.get('profile').value[6],
+          desc: this.editForm.get('profile').value[7],
+          link: this.editForm.get('profile').value[8],
           user: this.currentProfileId,
         }).subscribe(_ => {
           this.myProfileService.updateUserDetails();

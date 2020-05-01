@@ -51,7 +51,7 @@
                             <div style="display: flex">
                                 <div>
                                     <img *ngIf="exp.company_logo" src="{{exp.company_logo}}" width="70px" height="70px"
-                                        style="display: block; border-radius: 50%; cursor: pointer; " 
+                                        style="display: block; border-radius: 50%; cursor: pointer; "
                                         (click)="companyLogoInput.click()" class="exp-img">
                                     <img *ngIf="!exp.company_logo" src="/assets/icons/1x/no_company.jpg" width="70px"
                                         height="70px" style="display: block; border-radius: 50%; cursor: pointer; "
@@ -76,12 +76,45 @@
 
                             </div>
                             <div style="margin-left: 12%;">
-                                <hr/>
+                                <hr />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div id="headline" style="padding: 40px;">
+                    <h3>Education<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
+                            (click)="openAddModal('Education')" style="cursor: pointer;"></h3>
+
+                    <div id="experience">
+                        <div id="txt-exp" *ngFor="let exp of userDetails?.education">
+                            <img *ngIf="exp.institute_logo" src="{{exp.institute_logo}}" width="50px" height="50px"
+                                style="display: block; border-radius: 50%; cursor: pointer;"
+                                (click)="educationLogoInput.click()" class="exp-img">
+                            <img *ngIf="!exp.institute_logo" src="/assets/icons/1x/no_company.jpg" width="50px"
+                                height="50px" style="display: block; border-radius: 50%; cursor: pointer;"
+                                (click)="educationLogoInput.click()" class="exp-img">
+
+                            <input type="file" style="display: none;" #educationLogoInput
+                                (change)="educationLogoUpload($event, exp.id)">
+                            <img src="/assets/icons/1x/Edit.png" style="cursor: pointer;"
+                                (click)="openEditModal('Education', exp)" style="cursor: pointer;" width="22px"
+                                class="edit-icon">
+
+                            <span class="teal">{{exp.institute}}</span><br>
+                            {{exp.degree}},
+                            {{exp.study_field}}<br>
+                            Grade - {{exp.grade}}<br>
+                            {{exp.link}}<br>
+                            <p *ngIf="exp.is_present" style="position: relative; left: 25px;">{{exp?.start_year}} --
+                                Present</p>
+                            <p *ngIf="!exp.is_present" style="position: relative; left: 25px;">{{exp?.start_year}} --
+                                {{exp?.end_year}}</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="headline">
                     <h3>Projects <img src="/assets/icons/1x/plus.png" width="22px" style="cursor: pointer;"
                             class="plus-icon1" (click)="openAddModal('Projects')">
                     </h3>
@@ -105,7 +138,7 @@
                             </div>
                         </div>
                         <div style="margin-left: 10%;">
-                            <hr/>
+                            <hr />
                         </div>
                     </div>
                 </div>
@@ -121,7 +154,7 @@
                                     class="edit-icon1"></span><br />
                             {{certification?.description}}<br />
                             Valid till - {{certification?.validity_date}}
-                            <hr/>
+                            <hr />
                         </div>
                     </div>
                 </div>
@@ -136,7 +169,7 @@
                             {{skill.skill}} ({{skill.level}}) <img src="/assets/icons/1x/Edit.png"
                                 style="cursor: pointer;" (click)="openEditModal('Skills', skill)" width="22px"
                                 class="edit-icon1">
-                                <hr/>
+                            <hr />
                         </div>
 
                     </div>
@@ -175,4 +208,6 @@
         </div>
         <div class="no-data" *ngIf="!userConnections.length">No connections!</div>
     </div>
+
+
 </div>

@@ -5,6 +5,7 @@ import { JobsService } from 'src/app/services/jobs.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { CommunicateService } from 'src/app/services/communicate.service';
 import { AuthServices } from 'src/app/services/auth.service';
+declare var $: any;
 
 @Component({
   selector: 'app-timeline-like-react',
@@ -12,6 +13,7 @@ import { AuthServices } from 'src/app/services/auth.service';
   styleUrls: ['./timeline-like-react.component.css']
 })
 export class TimelineLikeReactComponent implements OnInit {
+  showModal:boolean=false;
   showEmoji: Boolean = false;
   currentUser: any;
   currentUserDetails: any;
@@ -23,6 +25,13 @@ export class TimelineLikeReactComponent implements OnInit {
   videoval: boolean = true;
   users: any[];
   showReact:number=0;
+  allReactions:any=[];
+  numLiked:number=0;
+  numLoved:number=0;
+  numClapped:number=0;
+  numIdea:number=0;
+  numThink:number=0;
+  numAll:number=0;
   @ViewChild('comment', { static: false }) commentRef: ElementRef
   constructor(
     private netService: NetworkingService, private cd: ChangeDetectorRef, private jobService: JobsService
@@ -49,6 +58,7 @@ export class TimelineLikeReactComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   getUserPosts() {
@@ -180,6 +190,9 @@ export class TimelineLikeReactComponent implements OnInit {
   //     })
   // }
   getPostComments(postId) {
+    // this.netService.get_all_reactions(postId).subscribe((data):any=>{
+    //   console.log(data);
+    // })
     const post = this.postList.find(post => post.id === postId);
     this.netService.get_post_comments(postId)
       .subscribe(respObj => {
@@ -361,5 +374,78 @@ export class TimelineLikeReactComponent implements OnInit {
       this.getPostComments(postId);
     })
   }
- 
+  reactionPostId:number=0;
+  showAllReactions(ev,postId){
+    this.reactionPostId = postId;
+    // $("#resetModal").modal("show");
+    this.netService.get_all_reactions(postId).subscribe((data):any=>{
+      console.log(data);
+      this.allReactions=data;
+    })
+    this.showModal=true;
+  }
+  closeAllReactions(ev){
+    // $("#resetModal").modal("hide");
+    this.showModal=false;
+    this.allReactions=[];
+    this.reactionPostId=0;
+
+  }
+  all_reactions(){
+    console.log("all");
+  //  this.reactionPostId=id;
+    this.loveReactions();
+    this.clapReactions();
+    this.ideaReactions();
+    this.thinkReactions();
+    this.likeReactions();
+    this.numAll = this.numClapped+this.numIdea+this.numLoved+this.numThink+this.numLiked;
+    this.netService.get_all_reactions(this.reactionPostId).subscribe((data):any=>{
+      console.log(data);
+      this.allReactions=data;
+    })
+  }
+  loveReactions(){
+    console.log("love");
+    this.netService.get_all_emojiReactions(2,this.reactionPostId).subscribe((data):any=>{
+      console.log(data);
+      this.numLoved=data.length;
+      this.allReactions=data;
+    })
+  }
+  clapReactions(){
+    console.log("clap");
+    this.netService.get_all_emojiReactions(1,this.reactionPostId).subscribe((data):any=>{
+      console.log(data);
+      this.numClapped=data.length;
+      this.allReactions=data;
+    })
+  }
+  ideaReactions(){
+    console.log("idea");
+    this.netService.get_all_emojiReactions(3,this.reactionPostId).subscribe((data):any=>{
+      console.log(data);
+      this.numIdea=data.length;
+      this.allReactions=data;
+    })
+  }
+  thinkReactions(){
+    console.log("think");
+    this.netService.get_all_emojiReactions(4,this.reactionPostId).subscribe((data):any=>{
+      console.log(data);
+      this.numThink=data.length;
+      this.allReactions=data;
+    })
+  }
+  likeReactions(){
+    console.log("like");
+    this.netService.get_all_likeReactions(this.reactionPostId).subscribe((data):any=>{
+      console.log(data);
+      this.numLiked=data.length;
+      this.allReactions=data;
+    })
+  }
+  // showReactorProfile(profileId){
+  //   this.router.navigate
+  // }
 }

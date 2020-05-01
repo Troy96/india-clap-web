@@ -148,4 +148,17 @@ export class AuthServices {
     return this.http.post(`${config.base_url}/accounts/fblogin/`, $data, { headers: this.headers });
 
   }
+  add_education( $data){
+    return this.http.post(`${config.base_url}/Users/education/`, $data);
+
+  }
+  update_education(id, $data){
+    return this.http.patch(`${config.base_url}/Users/education/${id}/`, $data);
+
+  }
+  education_company_logo(id,logo){
+    const formData = new FormData();
+    formData.append('institute_logo', logo);
+    return this.http.patch(`${config.base_url}/Users/education/${id}/`, formData);
+  }
 }
