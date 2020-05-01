@@ -87,28 +87,40 @@
 
                     <div id="experience">
                         <div id="txt-exp" *ngFor="let exp of userDetails?.education">
-                            <img *ngIf="exp.institute_logo" src="{{exp.institute_logo}}" width="50px" height="50px"
-                                style="display: block; border-radius: 50%; cursor: pointer;"
-                                (click)="educationLogoInput.click()" class="exp-img">
-                            <img *ngIf="!exp.institute_logo" src="/assets/icons/1x/no_company.jpg" width="50px"
-                                height="50px" style="display: block; border-radius: 50%; cursor: pointer;"
-                                (click)="educationLogoInput.click()" class="exp-img">
+                            <div style="display: flex">
+                                <div>
+                                    <img *ngIf="exp.institute_logo" src="{{exp.institute_logo}}" width="50px"
+                                        height="50px" style="display: block; border-radius: 50%; cursor: pointer;"
+                                        (click)="educationLogoInput.click()" class="exp-img">
+                                    <img *ngIf="!exp.institute_logo" src="/assets/icons/1x/no_company.jpg" width="50px"
+                                        height="50px" style="display: block; border-radius: 50%; cursor: pointer;"
+                                        (click)="educationLogoInput.click()" class="exp-img">
 
-                            <input type="file" style="display: none;" #educationLogoInput
-                                (change)="educationLogoUpload($event, exp.id)">
-                            <img src="/assets/icons/1x/Edit.png" style="cursor: pointer;"
-                                (click)="openEditModal('Education', exp)" style="cursor: pointer;" width="22px"
-                                class="edit-icon">
-
-                            <span class="teal">{{exp.institute}}</span><br>
-                            {{exp.degree}},
-                            {{exp.study_field}}<br>
-                            Grade - {{exp.grade}}<br>
-                            {{exp.link}}<br>
-                            <p *ngIf="exp.is_present" style="position: relative; left: 25px;">{{exp?.start_year}} --
-                                Present</p>
-                            <p *ngIf="!exp.is_present" style="position: relative; left: 25px;">{{exp?.start_year}} --
-                                {{exp?.end_year}}</p>
+                                    <input type="file" style="display: none;" #educationLogoInput
+                                        (change)="educationLogoUpload($event, exp.id)">
+                                </div>
+                                <div style="margin-left: 35px;">
+                                    <span class="teal">{{exp.institute}}</span><br>
+                                    {{exp.degree}},
+                                    {{exp.study_field}}<br>
+                                    Grade - {{exp.grade}}<br>
+                                    {{exp.link}}<br>
+                                    <p *ngIf="exp.is_present">
+                                        {{exp?.start_year}} --
+                                        Present</p>
+                                    <p *ngIf="!exp.is_present">
+                                        {{exp?.start_year}} --
+                                        {{exp?.end_year}}</p>
+                                </div>
+                                <div>
+                                    <img src="/assets/icons/1x/Edit.png" style="cursor: pointer;"
+                                        (click)="openEditModal('Education', exp)" style="cursor: pointer;" width="22px"
+                                        class="edit-icon">
+                                </div>
+                            </div>
+                            <div style="margin-left: 12%;">
+                                <hr />
+                            </div>
 
                         </div>
                     </div>
