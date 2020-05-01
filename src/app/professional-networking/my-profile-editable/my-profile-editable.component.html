@@ -37,7 +37,7 @@
         <div class="mainbody">
 
             <div class="place">
-                <div id="headline">
+                <div id="headline" style="padding: 40px;">
                     <h3>About<img src="/assets/icons/1x/Edit.png" (click)="openAddModal('Headline')" width="22px"
                             style="cursor: pointer;" class="edit-icon1"></h3>
                     <span class="txt">{{userDetails?.brief_Desc}}</span>
@@ -50,11 +50,11 @@
                         <div id="txt-exp" *ngFor="let exp of userDetails?.experiences">
                             <div style="display: flex">
                                 <div>
-                                    <img *ngIf="exp.company_logo" src="{{exp.company_logo}}" width="50px" height="50px"
+                                    <img *ngIf="exp.company_logo" src="{{exp.company_logo}}" width="70px" height="70px"
                                         style="display: block; border-radius: 50%; cursor: pointer; " 
-                                        (click)="companyLogoInput.click()">
-                                    <img *ngIf="!exp.company_logo" src="/assets/icons/1x/no_company.jpg" width="50px"
-                                        height="50px" style="display: block; border-radius: 50%; cursor: pointer; "
+                                        (click)="companyLogoInput.click()" class="exp-img">
+                                    <img *ngIf="!exp.company_logo" src="/assets/icons/1x/no_company.jpg" width="70px"
+                                        height="70px" style="display: block; border-radius: 50%; cursor: pointer; "
                                         (click)="companyLogoInput.click()" class="exp-img">
 
                                     <input type="file" style="display: none;" #companyLogoInput
@@ -85,7 +85,7 @@
                     </h3>
                     <div id="experience" *ngFor="let project of userDetails?.projects">
                         <div id="txt-exp">
-                            <img src="/assets/icons/1x/logo3.png" width="50px" class="project-img">
+                            <img src="/assets/icons/1x/logo3.png" width="60px" height="60px" class="project-img">
                             <img src="/assets/icons/1x/Edit.png" width="22px" style="cursor: pointer;"
                                 (click)="openEditModal('Projects', project)" class="edit-icon">
                             <div class="project-details">
@@ -105,7 +105,7 @@
                         <hr/>
                     </div>
                 </div>
-                <div id="headline">
+                <div id="headline" style="padding: 40px;">
                     <h3>Certificates<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
                             (click)="openAddModal('Certifications')" style="cursor: pointer;"></h3>
                     <div class="project-description" *ngIf="userDetails?.certifications.length">
@@ -121,12 +121,12 @@
                         </div>
                     </div>
                 </div>
-                <div id="headline">
+                <div id="headline" style="padding: 40px;">
                     <h3>Skills <img src="/assets/icons/1x/plus.png" width="22px" class="edit-icon1"
                             (click)="openAddModal('Skills')" style="cursor: pointer;"></h3>
                     <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
 
-                    <div class="project-description">
+                    <div class="project-description" style="margin-top: 20px;">
 
                         <div id="skill" *ngFor="let skill of userDetails?.skills">
                             {{skill.skill}} ({{skill.level}}) <img src="/assets/icons/1x/Edit.png"
@@ -137,7 +137,7 @@
 
                     </div>
                 </div>
-                <div id="headline">
+                <div id="headline" style="padding: 40px;">
                     <h3>Upload Resume
                         <input type="file" style="display: none;" (change)="onVideoResumeUpload($event);" #videoInput>
                         <img src="/assets/icons/1x/video.png" width="35px" class="edit-icon1"

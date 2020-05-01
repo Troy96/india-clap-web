@@ -144,7 +144,7 @@ h4 {
 
 h3 {
   color: grey;
-  font-size: 20px;
+  font-size: 25px;
   text-decoration: none;
 }
 
@@ -177,8 +177,8 @@ h3 {
 .exp-img {
   float: left;
   margin-right: 20px;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
 }
 
