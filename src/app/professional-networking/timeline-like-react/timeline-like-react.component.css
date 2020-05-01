@@ -414,7 +414,7 @@ svg {
   margin-top: -100px;
 }
 
-.like-opt {}
+/* .like-opt {} */
 
 .react-btn:hover .like-opt {
   display: inline-block;
@@ -434,4 +434,88 @@ svg {
   float: left;
   cursor: pointer;
 
+}
+.experience{
+  position: fixed; /* Sit on top of the page content */
+width: 100%; /* Full width (cover the whole page) */
+height: 100%; /* Full height (cover the whole page) */
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+z-index: 20; /* Specify a stack order in case you're using a different order for other elements */
+padding-top: 0%;
+/* display: none; */
+
+}
+.experience-body{
+    background-color: white !important;
+    border: 1px gray solid;
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 100px;
+    }
+h1{
+    color: teal;
+    font-size: 25px;
+}
+h2{
+    color: gray;
+    font-size: 20px;
+}
+.header-modal{
+  border-bottom: 1px solid gray;
+  padding-bottom: 10px;
+  padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.nav-emoji{
+  margin-left: 30px;
+  width: 25px;
+  height: 25px;
+  vertical-align: text-bottom;
+  margin-right: 3px;
+}
+
+.reaction{
+  margin-bottom: 20px;
+}
+.likers-dp{
+  margin-left: 15px;
+  float: left;
+}
+.likers{
+  padding-top: 15px;
+  cursor: pointer;
+}
+.likers-info{
+  margin-left: 90px;
+  min-height: 60px;
+  color: gray;
+  padding-left: 10px;
+}
+.hr{
+  width: 480px;
+  margin-right: 35px;
+  border-width: 1.8px;
+
+}
+.likers-cont{
+  height: 500px;
+  overflow: auto;
+}
+.black{
+  color: black;
+}
+.react-nos:hover{
+  color: teal;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.cross{
+  float: right;
+  margin-right: 15px;
+  margin-top: 15px;
 }

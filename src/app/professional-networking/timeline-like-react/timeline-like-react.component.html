@@ -71,7 +71,7 @@
 
 
             </div>
-            <small>{{post?.likes_count}} likes.{{post?.reactions?.length}} reacts.{{post?.comments_count}}
+            <small style="cursor:pointer;" (click)="showAllReactions($event,post.id);all_reactions()">{{post?.likes_count}} likes.{{post?.reactions?.length}} reacts.{{post?.comments_count}}
                 comments</small>
             <hr color="#A9A9A9  ">
 
@@ -215,5 +215,29 @@
             </ng-container>
         </div>
     </ng-container>
+    <div *ngIf="showModal" class="experience" id="resetModal">
+        <div class="cont experience-body" style="cursor:pointer;">
+          <img (click)="closeAllReactions($event)" src="./../../../assets/icons/1x/cancel.png" width="17px" class="cross">
+           <div class="header-modal">
+            <h1 class="reaction">Reactions</h1>
+            <span class="react-nos" (click)="all_reactions()">All {{numAll}} </span><span (click)="likeReactions()" class="react-nos"><img  src="./../../../assets/icons/1x/like.png" class="nav-emoji" > {{numLiked}} </span> <span (click)="loveReactions()" class="react-nos"><img   src="./../../../assets/icons/1x/heart.png" class="nav-emoji" > {{numLoved}}</span> <span class="react-nos" (click)="thinkReactions()"><img   src="./../../../assets/icons/1x/emoji.png" class="nav-emoji">{{numThink}}</span> <span (click)="ideaReactions()" class="react-nos"><img  src="./../../../assets/icons/1x/idea.png" class="nav-emoji">{{numIdea}}</span> <span (click)="clapReactions()" class="react-nos"><img  src="./../../../assets/icons/1x/clap.png" class="nav-emoji">{{numClapped}}</span>
+           </div>
+           
+           <div class="likers-cont" >
+            <div *ngFor="let user of allReactions">
+           <div class="likers">
+            <img src="./../../../assets/icons/1x/dp.png" class="likers-dp" width="65px">
+            <div class="likers-info">
+           <b class="black" routerLink="/professional-networking/users/{{user.user.id}}" >{{user.user.first_name}} {{user.user.last_name}}</b>
+          </div>
+          <hr class="hr">
+           </div>
+        </div>
+           
+      
+          </div>
+        </div>
+
+    </div>
 
 </div>

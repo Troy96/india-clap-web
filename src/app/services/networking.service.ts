@@ -136,5 +136,17 @@ export class NetworkingService {
     return this.http.get<any>(`${config.base_url}/Networking/timelinePosts/${postId}/reacted_or_not`);
 
   }
+  get_all_reactions(postId){
+    return this.http.get<any>(`${config.base_url}/Networking/timelinePosts/${postId}/reactions/all`);
+
+  }
+  get_all_emojiReactions(id,postId){
+    return this.http.get<any>(`${config.base_url}/Networking/timelinePosts/${postId}/reactions/${id}/`);
+
+  }
+  get_all_likeReactions(postId){
+    return this.http.get<any>(`${config.base_url}/Networking/timelinePosts/${postId}/reactions/likes/`);
+
+  }
   
 }
