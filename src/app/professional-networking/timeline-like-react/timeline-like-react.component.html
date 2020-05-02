@@ -199,7 +199,7 @@
                         <div style="display: flex;
                         justify-content: flex-end;
                         position: relative;
-                        right: 10px;" *ngIf="!data?.replies.length"> <input type="text" class="form-control comment-box"
+                        right: 10px;" *ngIf="!data?.replies.length"> <input  (keyup.enter)="replyComment(post?.id, data?.id, replyInp.value)" type="text" class="form-control comment-box"
                                 placeholder="Write a reply..." #replyInp>
                             <div class="input-group-btn">
                                 <button class="btn btn-default comm-icons"
