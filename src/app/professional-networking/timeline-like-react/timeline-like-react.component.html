@@ -120,7 +120,7 @@
                 width: 50px;
                 height: 50px;
                 border-radius: 50%;" alt="" width="50px" class="comm-pro">
-                <input type="text" class="form-control comment-box" placeholder="Write a comment..." #commentInp>
+                <input (keyup.enter)="postComment(post.id, commentInp.value)" type="text" class="form-control comment-box" placeholder="Write a comment..." #commentInp>
                 <div class="input-group-btn">
                     <button class="btn btn-default comm-icons" (click)="postComment(post.id, commentInp.value)">
                         <i class="glyphicon glyphicon-search comm-cam"><img src="/assets/icons/1x/Image.png"
