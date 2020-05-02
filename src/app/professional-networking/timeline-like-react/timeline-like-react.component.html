@@ -226,7 +226,7 @@
            <div class="likers-cont" >
             <div *ngFor="let user of allReactions">
            <div class="likers">
-            <img src="./../../../assets/icons/1x/dp.png" class="likers-dp" width="65px">
+            <img   src={{user.user.photo}} routerLink="/professional-networking/users/{{user.user.id}}" class="likers-dp" width="65px" height="65px" >
             <div class="likers-info">
            <b class="black" routerLink="/professional-networking/users/{{user.user.id}}" >{{user.user.first_name}} {{user.user.last_name}}</b>
           </div>
