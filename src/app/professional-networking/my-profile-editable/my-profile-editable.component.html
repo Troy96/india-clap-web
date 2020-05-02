@@ -24,7 +24,7 @@
                                 style="cursor: pointer;" class="edit-icon1"></span></h2>
                     <span *ngIf="userDetails?.experiences">{{userDetails?.experiences[0].title}} at
                         {{userDetails?.experiences[0].company_name}}</span><br>
-                    <span *ngIf="userDetails?.location">{{userDetails?.location}}</span>
+                    <span>{{userDetails?.location_district}}, {{userDetails?.location_country}}</span>
 
 
                 </div>
