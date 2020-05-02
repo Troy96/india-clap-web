@@ -15,8 +15,9 @@ import { CreateCompanyComponent } from './create-company/create-company.componen
 import { CompanyAdminViewComponent } from './company-admin-view/company-admin-view.component';
 import { CompanyUserViewComponent } from './company-user-view/company-user-view.component';
 import { MoreTabComponent } from './more-tab/more-tab.component';
-import {AcceptDeclineRequestComponent} from './accept-decline-request/accept-decline-request.component';
+import { AcceptDeclineRequestComponent } from './accept-decline-request/accept-decline-request.component';
 import { ResetPasswordPageComponent } from './reset-password-page/reset-password-page.component';
+import { MynetworkComponent } from './mynetwork/mynetwork.component';
 
 const routes: Routes = [
   {
@@ -39,7 +40,8 @@ const routes: Routes = [
       { path: 'company-user-view', component: CompanyUserViewComponent },
       { path: 'more-tabs', component: MoreTabComponent },
       { path: 'accept-decline', component: AcceptDeclineRequestComponent },
-      { path: 'change-password', component:ResetPasswordPageComponent}
+      { path: 'change-password', component: ResetPasswordPageComponent },
+      { path: 'mynetwork', component: MynetworkComponent }
     ]
   },
 ];
