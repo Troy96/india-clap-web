@@ -1,1 +1,27 @@
-<p>mynetwork works!</p>
+<div class="container main-body">
+    <div class="head-network">
+        <span class="filter">Search with filter</span>
+        <img src="/assets/icons/1x/magnifying-glass (2) (1).png" width="25px" class="magnify">
+        <input class="form-control search-conn" placeholder="Search">
+
+
+        <h4 class="noconn" *ngIf="connectionIdList">{{connectionIdList?.length}} Connections</h4>
+
+        <span class="sort">Sort by: <b>Recently added</b></span>
+    </div>
+    <div class="connections" *ngFor="let user of connectionDetailList">
+        <img src="/assets/icons/more-opt.png" class="more-opt2">
+        <button class="btn btn-primary conn-msg">Message</button>
+        <img src="{{user?.photo}}" width="55px" height="55px" style="border-radius: 50%;" class="net-dp">
+        <div class="conn-text">
+            <b>{{user.first_name}} {{user.last_name}}</b><br>
+            <span *ngIf="user?.experiences?.length">{{user?.experiences[0]?.title}} at
+                {{user?.experiences[0]?.company_name}}</span>
+            <span *ngIf="!user?.experiences?.length">{{user?.brief_Desc}}</span>
+        </div>
+        <hr class="hr2">
+    </div>
+    <div class="no-data" *ngIf="!connectionDetailList.length">
+        Loading...
+    </div>
+</div>
