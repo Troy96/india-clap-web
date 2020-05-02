@@ -11,6 +11,7 @@ export class MynetworkComponent implements OnInit {
   userId: number;
   connectionIdList: number[];
   connectionDetailList: any[] = [];
+  term: string;
 
   constructor(
     private userService: AuthServices
@@ -28,7 +29,6 @@ export class MynetworkComponent implements OnInit {
         this.connectionIdList = [...respObj['connections']];
         this.getConnectionDetails();
       })
-      console.log(this.connectionDetailList);
   }
 
   private async getConnectionDetails() {
