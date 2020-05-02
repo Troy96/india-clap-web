@@ -9,8 +9,8 @@
                 <h2>{{userDetails?.first_name}} {{userDetails?.last_name}}</h2>
                 <p *ngIf="userDetails?.experiences" style="overflow-wrap: normal; width: 200px;">
                     {{userDetails?.experiences[0].title}} at
-                    {{userDetails?.experiences[0].company_name}}</p><br />
-                <span *ngIf="privacySettingsMap?.location">{{userDetails?.location}}</span>
+                    {{userDetails?.experiences[0].company_name}}</p>
+                <span>{{userDetails?.location_district}}, {{userDetails?.location_country}}</span>
             </div>
 
             <div id="j-icons">
