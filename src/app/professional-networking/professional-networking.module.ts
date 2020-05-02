@@ -26,6 +26,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtTokenIntercelptor } from '../interceptors/jwt-token.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JobsService } from '../services/jobs.service';
+import { MynetworkComponent } from './mynetwork/mynetwork.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { JobsService } from '../services/jobs.service';
     CreateCompanyComponent,
     CompanyAdminViewComponent,
     CompanyUserViewComponent,
-    MoreTabComponent
+    MoreTabComponent,
+    MynetworkComponent
   ],
   imports: [
     CommonModule,
