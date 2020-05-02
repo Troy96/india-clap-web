@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 import { ProfessionalNetworkingRoutingModule } from './professional-networking-routing.module';
 
 import { ProfessionalNetworkingComponent } from './professional-networking.component';
@@ -55,7 +57,8 @@ import { MynetworkComponent } from './mynetwork/mynetwork.component';
     ProfessionalNetworkingRoutingModule,
     SharedModule,
     FormsModule, ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule
   ],
   providers: [NetworkingService, JobsService, {
     provide: HTTP_INTERCEPTORS, useClass: JwtTokenIntercelptor, multi: true
