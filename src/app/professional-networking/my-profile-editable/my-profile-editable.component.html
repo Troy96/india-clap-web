@@ -158,7 +158,7 @@
                     </div>
                 </div>
                 <div id="headline" style="padding: 40px;">
-                    <h3>Certificates<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
+                    <h3>Certification<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
                             (click)="openAddModal('Certifications')" style="cursor: pointer;"></h3>
                     <div class="project-description" *ngIf="userDetails?.certifications.length">
 
@@ -174,7 +174,7 @@
                     </div>
                 </div>
                 <div id="headline" style="padding: 40px;">
-                    <h3>Skills <img src="/assets/icons/1x/plus.png" width="22px" class="edit-icon1"
+                    <h3>Skills and Endorsements <img src="/assets/icons/1x/plus.png" width="22px" class="edit-icon1"
                             (click)="openAddModal('Skills')" style="cursor: pointer;"></h3>
                     <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
 
@@ -183,6 +183,22 @@
                         <div id="skill" *ngFor="let skill of userDetails?.skills">
                             {{skill.skill}} ({{skill.level}}) <img src="/assets/icons/1x/Edit.png"
                                 style="cursor: pointer;" (click)="openEditModal('Skills', skill)" width="22px"
+                                class="edit-icon1">
+                            <hr />
+                        </div>
+
+                    </div>
+                </div>
+                <div id="headline" style="padding: 40px;">
+                    <h3>Languages <img src="/assets/icons/1x/plus.png" width="22px" class="edit-icon1"
+                            (click)="openAddModal('Language')" style="cursor: pointer;"></h3>
+                    <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
+
+                    <div class="project-description" style="margin-top: 20px;">
+
+                        <div id="skill" *ngFor="let lang of userDetails?.languages">
+                            {{lang.language}} - ({{lang.proficiency}}) <img src="/assets/icons/1x/Edit.png"
+                                style="cursor: pointer;" (click)="openEditModal('Language', lang)" width="22px"
                                 class="edit-icon1">
                             <hr />
                         </div>

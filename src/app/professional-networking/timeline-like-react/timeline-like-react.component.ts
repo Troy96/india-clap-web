@@ -179,6 +179,7 @@ export class TimelineLikeReactComponent implements OnInit {
   replyComment(postId: number, commentId: number, replytxt: string) {
     this.netService.reply_on_comment(postId, commentId, replytxt)
       .subscribe(respObj => {
+        console.log(respObj)
         this.getPostComments(postId);
       })
   }
@@ -227,6 +228,7 @@ export class TimelineLikeReactComponent implements OnInit {
         //       }
         //     })
         // }
+        console.log(respObj)
         respObj.sort((a, b) => {
           if (a.id > b.id) return -1;
         })
@@ -244,7 +246,7 @@ export class TimelineLikeReactComponent implements OnInit {
           comment['last_name'] = user.last_name;
           comment['isLiked'] = isLiked;
         })
-        
+        console.log(post)
           // (async function next(i){
           //   console.log(respObj[i])
           //   if(i == respObj.length) return;

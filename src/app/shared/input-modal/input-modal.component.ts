@@ -203,6 +203,29 @@ export class InputModalComponent implements OnInit {
      
       }
         break;
+        case 'Language': {
+          this.labels = ['Language', 'Proficiency']
+          this.placeholders = ['Enter language name', 'Enter proficiency level (1-10)']
+          if (this.inputData.isInputForm) {
+            this.inputForm = this.fb.group({
+              profile: this.fb.array([
+                this.fb.control(''),
+                this.fb.control('')
+              ])
+            });
+          }
+          else {
+            const data = this.inputData.data;
+            this.editForm = this.fb.group({
+              profile: this.fb.array([
+                this.fb.control(data['language']),
+                this.fb.control(data['proficiency']),
+              ])
+            })
+          }
+       
+        }
+          break;
     }
   }
 
@@ -266,6 +289,17 @@ export class InputModalComponent implements OnInit {
           certification_name: this.inputForm.get('profile').value[0],
           validity_date: this.inputForm.get('profile').value[1],
           description: this.inputForm.get('profile').value[2],
+          user: this.currentProfileId
+        }).subscribe(_ => {
+          this.myProfileService.updateUserDetails();
+          this.closeInputModal();
+        })
+        break;
+      }
+      case 'Language': {
+        this.authService.add_language({
+          language: this.inputForm.get('profile').value[0],
+          proficiency: this.inputForm.get('profile').value[1],
           user: this.currentProfileId
         }).subscribe(_ => {
           this.myProfileService.updateUserDetails();
@@ -354,6 +388,17 @@ export class InputModalComponent implements OnInit {
         this.authService.update_skill(this.inputData.data.id, {
           skill: this.editForm.get('profile').value[0],
           level: this.editForm.get('profile').value[1],
+          user: this.currentProfileId,
+        }).subscribe(_ => {
+          this.myProfileService.updateUserDetails();
+          this.closeInputModal();
+        })
+        break;
+      }
+      case 'Language': {
+        this.authService.update_language(this.inputData.data.id, {
+          language: this.editForm.get('profile').value[0],
+          proficiency: this.editForm.get('profile').value[1],
           user: this.currentProfileId,
         }).subscribe(_ => {
           this.myProfileService.updateUserDetails();

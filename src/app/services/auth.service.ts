@@ -161,4 +161,11 @@ export class AuthServices {
     formData.append('institute_logo', logo);
     return this.http.patch(`${config.base_url}/Users/education/${id}/`, formData);
   }
+  add_language($data){
+    return this.http.post(`${config.base_url}/Users/languages/`, $data);
+
+  }
+  update_language(id,$data){
+    return this.http.patch(`${config.base_url}/Users/languages/${id}/`, $data);
+  }
 }

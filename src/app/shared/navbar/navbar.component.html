@@ -22,20 +22,28 @@
   <div class="collapse navbar-collapse " id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto" style="position: relative;
     bottom: 7px;">
+          <span tooltip="Home" placement="bottom" show-delay="500">
+
       <li class="nav-item active"  [routerLink]="['/professional-networking/me']" >
         <a class="nav-link" style="position: relative;
         top: 4px;">
-          Home
+          <i class="fa fa-envelope-o">
+            <img src="/assets/icons/1x/homeAsset.png " width="20px" height="25px" >
+          </i>
           <span class="sr-only">(current)</span>
         </a>
       </li>
-
+          </span>
+          <span tooltip="Jobs" placement="bottom" show-delay="500">
       <li class="nav-item"  [routerLink]="['/jobs/user-account']">
         <a class="nav-link" style="position: relative;
         top: 4px;">
-          Jobs
+          <i class="fa fa-envelope-o">
+            <img src="/assets/icons/1x/jobAsset.png " width="20px" height="25px" >
+          </i>
         </a>
       </li>
+          </span>
       <span tooltip="Notifications" placement="bottom" show-delay="500">
         <!-- <div id="notification" (click)="displaynotification()" style="display: block;">
           <li class="nav-item">
