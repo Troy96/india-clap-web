@@ -185,14 +185,19 @@
                             <div *ngIf="data?.replies.length" style="background-color: #f3f3f3; border-radius: 4px; width: 70%;
                             margin-top: 10px;
                             margin-bottom: 10px; height: 60px; padding: 5px;">
-                                <div style="display: flex; justify-content: space-between;">
+                            <span id="teal">Abbesh Chatterjee</span>
+                            <small class="float-right">{{data?.replies[0].timestamp | date}}</small>
+                                <!-- <div style="display: flex; justify-content: space-between;"> -->
                                     <!-- <span id="teal">{{data?.reply?.first_name}}
                                         {{data?.value?.reply?.last_name}}</span> -->
-                                    <span>{{data?.replies[0].timestamp | date}}</span>
-                                </div>
+                                    <!-- <span>{{data?.replies[0].timestamp | date}}</span> -->
+                                <!-- </div> -->
                                 <div style=" justify-content: space-between; display: flex;">
                                     <span>{{data?.replies[0]?.content}}</span>
                                 </div>
+                                <small *ngIf="!data.replies[0].is_liked" (click)="likeReply(data.replies[0].id,data.post)" class="reply-like">like</small>
+                                <small *ngIf="data.replies[0].is_liked" (click)="likeReply(data.replies[0].id,data.post)" class="reply-like">liked</small>
+
                             </div>
                         </div>
 

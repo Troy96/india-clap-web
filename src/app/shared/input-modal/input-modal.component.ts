@@ -226,6 +226,60 @@ export class InputModalComponent implements OnInit {
        
         }
           break;
+      case 'Hobby': {
+            this.labels = ['Title', 'Description']
+            this.placeholders = ['Enter Hobby Title', 'Description of Hobby']
+            if (this.inputData.isInputForm) {
+              this.inputForm = this.fb.group({
+                profile: this.fb.array([
+                  this.fb.control(''),
+                  this.fb.control('')
+                ])
+              });
+            }
+            else {
+              const data = this.inputData.data;
+              this.editForm = this.fb.group({
+                profile: this.fb.array([
+                  this.fb.control(data['title']),
+                  this.fb.control(data['desc']),
+                ])
+              })
+            }
+         
+          }
+            break;
+            case 'Award': {
+              this.labels = ['Title', 'Issued by','Issue month','Issue year','Descripion']
+              this.placeholders = ['Enter Award Title', 'Issued by','Month','Year','Description']
+              if (this.inputData.isInputForm) {
+                this.inputForm = this.fb.group({
+                  profile: this.fb.array([
+                    this.fb.control(''),
+                    this.fb.control(''),
+                    this.fb.control(''),
+                    this.fb.control(''),
+                    this.fb.control(''),
+                    
+                  ])
+                });
+              }
+              else {
+                const data = this.inputData.data;
+                this.editForm = this.fb.group({
+                  profile: this.fb.array([
+                    this.fb.control(data['title']),
+                    this.fb.control(data['issuer']),
+                    this.fb.control(data['issue_month']),
+                    this.fb.control(data['issue_year']),
+                    this.fb.control(data['desc']),
+
+                  ])
+                })
+              }
+           
+            }
+              break;
     }
   }
 
@@ -337,6 +391,31 @@ export class InputModalComponent implements OnInit {
         })
         break;
       }
+      case 'Hobby': {
+        this.authService.add_hobby({
+          title: this.inputForm.get('profile').value[0],
+          desc: this.inputForm.get('profile').value[1],
+          user: this.currentProfileId
+        }).subscribe(_ => {
+          this.myProfileService.updateUserDetails();
+          this.closeInputModal();
+        })
+        break;
+      }
+      case 'Award': {
+        this.authService.add_award({
+          title: this.inputForm.get('profile').value[0],
+          issuer: this.inputForm.get('profile').value[1],
+          issue_month: this.inputForm.get('profile').value[2],
+          issue_year: this.inputForm.get('profile').value[3],
+          desc: this.inputForm.get('profile').value[4],
+          user: this.currentProfileId
+        }).subscribe(_ => {
+          this.myProfileService.updateUserDetails();
+          this.closeInputModal();
+        })
+        break;
+      }
     }
   }
 
@@ -417,6 +496,31 @@ export class InputModalComponent implements OnInit {
           grade: this.editForm.get('profile').value[6],
           desc: this.editForm.get('profile').value[7],
           link: this.editForm.get('profile').value[8],
+          user: this.currentProfileId,
+        }).subscribe(_ => {
+          this.myProfileService.updateUserDetails();
+          this.closeInputModal();
+        })
+        break;
+      }
+      case 'Hobby' :{
+        this.authService.update_hobby(this.inputData.data.id, {
+          title: this.editForm.get('profile').value[0],
+          desc: this.editForm.get('profile').value[1],
+          user: this.currentProfileId,
+        }).subscribe(_ => {
+          this.myProfileService.updateUserDetails();
+          this.closeInputModal();
+        })
+        break;
+      }
+      case 'Award' :{
+        this.authService.update_award(this.inputData.data.id, {
+          title: this.editForm.get('profile').value[0],
+          issuer: this.editForm.get('profile').value[1],
+          issue_month: this.editForm.get('profile').value[2],
+          issue_year: this.editForm.get('profile').value[3],
+          desc:this.editForm.get('profile').value[4],
           user: this.currentProfileId,
         }).subscribe(_ => {
           this.myProfileService.updateUserDetails();

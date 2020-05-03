@@ -107,7 +107,7 @@
                                     {{exp.degree}},
                                     {{exp.study_field}}<br>
                                     Grade - {{exp.grade}}<br>
-                                    {{exp.link}}<br>
+                                   <a href={{exp.link}}> {{exp.link}}</a><br>
                                     <p *ngIf="exp.is_present">
                                         {{exp?.start_year}} --
                                         Present</p>
@@ -183,6 +183,42 @@
                         <div id="skill" *ngFor="let skill of userDetails?.skills">
                             {{skill.skill}} ({{skill.level}}) <img src="/assets/icons/1x/Edit.png"
                                 style="cursor: pointer;" (click)="openEditModal('Skills', skill)" width="22px"
+                                class="edit-icon1">
+                            <hr />
+                        </div>
+
+                    </div>
+                </div>
+                <div id="headline" style="padding: 40px;">
+                    <h3>Awards <img src="/assets/icons/1x/plus.png" width="22px" class="edit-icon1"
+                            (click)="openAddModal('Award')" style="cursor: pointer;"></h3>
+                    <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
+
+                    <div class="project-description" style="margin-top: 20px;">
+
+                        <div id="skill" *ngFor="let award of userDetails?.awards">
+                            {{award.title}} ({{award.issuer}}) <img src="/assets/icons/1x/Edit.png"
+                                style="cursor: pointer;" (click)="openEditModal('Award', award)" width="22px"
+                                class="edit-icon1">
+                                <br />
+                                {{award?.desc}}
+                                <br />
+                                Awarded on - {{award?.issue_month}}/{{award?.issue_year}}
+                            <hr />
+                        </div>
+
+                    </div>
+                </div>
+                <div id="headline" style="padding: 40px;">
+                    <h3>Hobbies <img src="/assets/icons/1x/plus.png" width="22px" class="edit-icon1"
+                            (click)="openAddModal('Hobby')" style="cursor: pointer;"></h3>
+                    <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
+
+                    <div class="project-description" style="margin-top: 20px;">
+
+                        <div id="skill" *ngFor="let hobby of userDetails?.hobbies">
+                            {{hobby.title}} - {{hobby.desc}} <img src="/assets/icons/1x/Edit.png"
+                                style="cursor: pointer;" (click)="openEditModal('Hobby', hobby)" width="22px"
                                 class="edit-icon1">
                             <hr />
                         </div>

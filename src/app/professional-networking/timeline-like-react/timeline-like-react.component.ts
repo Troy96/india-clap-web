@@ -452,4 +452,10 @@ export class TimelineLikeReactComponent implements OnInit {
   // showReactorProfile(profileId){
   //   this.router.navigate
   // }
+  likeReply(replyId,postId){
+    this.netService.like_comment(replyId, postId).subscribe((data): any => {
+      console.log(data);
+      this.getPostComments(postId);
+    })
+  }
 }

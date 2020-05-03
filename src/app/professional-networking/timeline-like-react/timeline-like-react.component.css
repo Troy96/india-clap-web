@@ -520,3 +520,8 @@ h2{
   margin-right: 15px;
   margin-top: 15px;
 }
+.reply-like{
+  text-decoration: underline;
+  cursor: pointer;
+  float: left;
+}

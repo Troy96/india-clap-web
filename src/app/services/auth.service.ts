@@ -168,4 +168,20 @@ export class AuthServices {
   update_language(id,$data){
     return this.http.patch(`${config.base_url}/Users/languages/${id}/`, $data);
   }
+  add_award($data){
+    return this.http.post(`${config.base_url}/Users/awards/`, $data);
+
+  }
+  update_award(id,$data){
+    return this.http.patch(`${config.base_url}/Users/awards/${id}/`, $data);
+
+  }
+  add_hobby($data){
+    return this.http.post(`${config.base_url}/Users/hobbies/`, $data);
+
+  }
+  update_hobby(id,$data){
+    return this.http.patch(`${config.base_url}/Users/hobbies/${id}/`, $data);
+
+  }
 }
