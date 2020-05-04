@@ -13,7 +13,7 @@ export class PrivacySettingsComponent implements OnInit {
   userId: number; //remove this
   userDetails: any = {};
   name: any = [];
-  privacy_menu = ['Location', 'Headline', 'Experience', 'Projects', 'Project Descriptions', 'Certificates', 'Skills', 'Resume'];
+  privacy_menu = ['Location', 'Headline', 'Experience', 'Projects', 'Project Descriptions', 'Certificates', 'Skills', 'Resume','Hobbies','Awards','Languages','Education'];
   selected_menu: any = [];
   menuValidation: Boolean = false;
   received_data: any = [];
@@ -82,6 +82,14 @@ export class PrivacySettingsComponent implements OnInit {
           this.selected_menu.push({ id: 6 })
         if (this.received_data.resume == true)
           this.selected_menu.push({ id: 7 })
+          if (this.received_data.hobbies == true)
+          this.selected_menu.push({ id: 8 })
+          if (this.received_data.awards == true)
+          this.selected_menu.push({ id: 9 })
+          if (this.received_data.languages == true)
+          this.selected_menu.push({ id: 10 })
+          if (this.received_data.education == true)
+          this.selected_menu.push({ id: 11 })
         console.log(this.selected_menu)
       })
   }
@@ -153,6 +161,14 @@ export class PrivacySettingsComponent implements OnInit {
         this.name.push('skills');
       if (this.selected_menu[i].id == 7)
         this.name.push('resume');
+        if (this.selected_menu[i].id == 8)
+        this.name.push('hobbies');
+        if (this.selected_menu[i].id == 9)
+        this.name.push('awards');
+        if (this.selected_menu[i].id == 10)
+        this.name.push('languages');
+        if (this.selected_menu[i].id == 11)
+        this.name.push('education');
       // let obj:any={};
 
     }
