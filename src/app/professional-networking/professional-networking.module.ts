@@ -30,6 +30,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JobsService } from '../services/jobs.service';
 import { MynetworkComponent } from './mynetwork/mynetwork.component';
 import { ContactInfoComponent } from './my-profile-editable/contact-info/contact-info.component';
+import { ContactUsElseComponent } from './someone-else-profile/contact-us-else/contact-us-else/contact-us-else.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { ContactInfoComponent } from './my-profile-editable/contact-info/contact
     CompanyUserViewComponent,
     MoreTabComponent,
     MynetworkComponent,
-    ContactInfoComponent
+    ContactInfoComponent,
+    ContactUsElseComponent
   ],
   imports: [
     CommonModule,

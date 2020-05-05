@@ -5,6 +5,7 @@ import { NetworkingService } from 'src/app/services/networking.service';
 import { Observable, observable } from 'rxjs';
 import { NotificationService } from 'src/app/services/notification.service';
 import { SafeStyle, DomSanitizer } from '@angular/platform-browser';
+import { ContactUsElseService } from './contact-us-else/contact-us-else/contact-us-else.service';
 
 @Component({
   selector: 'app-someone-else-profile',
@@ -32,7 +33,8 @@ export class SomeoneElseProfileComponent implements OnInit {
     private netService: NetworkingService,
     private notifyService: NotificationService,
     private sanitizer: DomSanitizer,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private contactUs: ContactUsElseService
   ) {
     this.activatedRoute.params.subscribe(param => {
       this.userId = param.id;
@@ -117,6 +119,10 @@ export class SomeoneElseProfileComponent implements OnInit {
     const user = this.userList.find(user => user['id'] === this.userId);
     if (user) return true;
     return false;
+  }
+
+  openContactInfo(){
+    this.contactUs.openContactInfo(this.userDetails);
   }
 
   getConnectionStatus() {

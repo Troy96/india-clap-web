@@ -10,7 +10,12 @@
                 <p *ngIf="userDetails?.experiences" style="overflow-wrap: normal; width: 200px;">
                     {{userDetails?.experiences[0].title}} at
                     {{userDetails?.experiences[0].company_name}}</p>
+
                 <span>{{userDetails?.location_district}}, {{userDetails?.location_country}}</span>
+
+                <a style="margin-left: 10px; cursor: pointer; color: #0073b1; font-weight: 600; display: block; position: absolute;
+                left: -10px;"
+                    (click)="openContactInfo()">Contact Info</a>
             </div>
 
             <div id="j-icons">
@@ -30,7 +35,7 @@
                         top: 5px;
                         right: 5px;" *ngIf="userDetails?.education.length"
                                 src="{{userDetails?.education[0].institute_logo}}" width="20px" height="20px">
-                            <p style="width: 200px;">{{userDetails?.education[0].institute}}</p>
+                            <p style="width: 200px;" *ngIf="userDetails?.education.length">{{userDetails?.education[0].institute}}</p>
                         </div>
                     </span>
                     <div style="
@@ -209,6 +214,8 @@
 
     </div>
 </div>
+
+<app-contact-us-else *ngIf="(contactUs.content$ | async).show"></app-contact-us-else>
 <!-- <div class="suggestion container">
     <div id="sug-head">
         <h4>Suggestions for you</h4>
