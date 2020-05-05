@@ -26,6 +26,7 @@
                         {{userDetails?.experiences[0].company_name}}</span><br>
                     <span>{{userDetails?.location_district}}, {{userDetails?.location_country}}</span>
 
+                    <a style="margin-left: 10px; cursor: pointer; color: #0073b1; font-weight: 600;" (click)="openContactInfo()">Contact Info</a>
 
                 </div>
                 <div style="display: flex; flex-direction: column; position: relative; top: 15px;">
@@ -360,3 +361,5 @@
 
 
 </div>
+
+<app-contact-info *ngIf="(contactInfo.content$ | async).show"></app-contact-info>

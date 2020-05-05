@@ -29,6 +29,7 @@ import { JwtTokenIntercelptor } from '../interceptors/jwt-token.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JobsService } from '../services/jobs.service';
 import { MynetworkComponent } from './mynetwork/mynetwork.component';
+import { ContactInfoComponent } from './my-profile-editable/contact-info/contact-info.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { MynetworkComponent } from './mynetwork/mynetwork.component';
     CompanyAdminViewComponent,
     CompanyUserViewComponent,
     MoreTabComponent,
-    MynetworkComponent
+    MynetworkComponent,
+    ContactInfoComponent
   ],
   imports: [
     CommonModule,

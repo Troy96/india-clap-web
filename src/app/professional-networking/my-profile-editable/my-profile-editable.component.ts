@@ -4,6 +4,7 @@ import { NetworkingService } from 'src/app/services/networking.service';
 import { MyprofileEditableService } from './myprofile-editable.service';
 import { DomSanitizer, SafeUrl, SafeStyle } from '@angular/platform-browser'
 import { NotificationService } from 'src/app/services/notification.service';
+import { ContactInfoService } from './contact-info/contact-info.service';
 
 @Component({
   selector: 'app-my-profile-editable',
@@ -35,11 +36,12 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     private inputModal: MyprofileEditableService,
     private sanitizer: DomSanitizer,
     private notifService: NotificationService,
+    private contactInfo: ContactInfoService,
     private renderer: Renderer2,
   ) { }
 
   ngOnInit() {
-    this.getAllCompanies();
+    //this.getAllCompanies();
     this.userConnections = [];
     this.userId = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
     this.profileId = JSON.parse(localStorage.getItem('currentUser'))['profile_id'];
@@ -186,11 +188,8 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     return this.sanitizer.bypassSecurityTrustStyle(photoUrl);
   }
 
-  getAllCompanies() {
-    this.netService.get_companies()
-      .subscribe(respObj => {
-        console.log(respObj)
-      })
+  openContactInfo(){
+    this.contactInfo.openContactInfo(this.userDetails);
   }
 
 }
