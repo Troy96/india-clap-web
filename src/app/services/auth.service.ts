@@ -122,8 +122,11 @@ export class AuthServices {
     return this.http.delete<any>(`${config.base_url}/Users/certifications/${id}/`);
   }
 
+  getuser_privacy_details(id:number) {
+    return this.http.get(`${config.base_url}/Users/privacy/${id}`);
+  }
   get_privacy_details() {
-    return this.http.get(`${config.base_url}/Users/privacy`);
+    return this.http.get(`${config.base_url}/Users/privacy/`);
   }
 
   forgot_password($data) {

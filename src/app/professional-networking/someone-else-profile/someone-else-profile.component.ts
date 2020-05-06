@@ -156,9 +156,11 @@ export class SomeoneElseProfileComponent implements OnInit {
   }
 
   getPrivacySettings() {
-    this.authService.get_privacy_details()
+    this.authService.getuser_privacy_details(this.userId)
       .subscribe(respObj => {
-        this.privacySettingsMap = { ...respObj[0] };
+        console.log(respObj)
+        this.privacySettingsMap = { ...respObj };
+        console.log(this.privacySettingsMap)
       })
   }
 

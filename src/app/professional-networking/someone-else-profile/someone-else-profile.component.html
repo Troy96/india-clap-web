@@ -192,7 +192,7 @@
             </div>
 
             <div id="headline" *ngIf="privacySettingsMap?.skills" style="padding:40px">
-                <h3>Skills</h3>
+                <h3>Skills and Endorsements</h3>
                 <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
 
                 <div class="project-description" style="margin-top: 20px;">
@@ -203,8 +203,43 @@
                     </div>
                 </div>
             </div>
+            <div id="headline" *ngIf="privacySettingsMap?.awards" style="padding:40px">
+                <h3>Awards</h3>
+                <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
 
+                <div class="project-description" style="margin-top: 20px;">
 
+                    <div id="skill" *ngFor="let award of userDetails?.awards">
+                       {{award?.issuer}}    <span class="teal">{{award?.title}} </span>
+                        {{award?.desc}}<br />
+                        Awarded on - {{award?.issue_month}}/{{award?.issue_year}}                        <hr />
+                    </div>
+                </div>
+            </div>
+            <div id="headline" *ngIf="privacySettingsMap?.hobbies" style="padding:40px">
+                <h3>Hobbies</h3>
+                <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
+
+                <div class="project-description" style="margin-top: 20px;">
+
+                    <div id="skill" *ngFor="let hobby of userDetails?.hobbies">
+                        {{hobby.title}} ({{hobby.desc}})
+                        <hr />
+                    </div>
+                </div>
+            </div>
+            <div id="headline" *ngIf="privacySettingsMap?.languages" style="padding:40px">
+                <h3>Languages</h3>
+                <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
+
+                <div class="project-description" style="margin-top: 20px;">
+
+                    <div id="skill" *ngFor="let language of userDetails?.languages">
+                        {{language.language}} ({{language.proficiency}})
+                        <hr />
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
