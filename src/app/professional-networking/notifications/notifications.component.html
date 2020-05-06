@@ -1,0 +1,89 @@
+<div class="cont">
+    <div class="notification-body">
+        <div class="recent">
+            <h4>Recent</h4>
+        </div>
+        <div class="notify" *ngFor="let data of notifList">
+            <img src="/assets/icons/1x/more-opt.png" class="more-opt">
+            <img src="{{data.photo}}" width="66px" height="66px" class="notify-dp">
+            <small class="time-stamp">5h</small>
+
+            <div class="notify-msg">
+                <span routerLink="/professional-networking/users/{{data.url.substring(data.url.length - 3, data.url.length - 1)}}">{{data.text}}</span>
+            </div>
+        </div>
+        <!-- <div class="notify">
+            <img src="images/more-opt.png" class="more-opt">
+            <img src="images/dp.png" width="66px" class="notify-dp">
+            <small class="time-stamp">5h</small>
+
+            <div class="notify-msg">
+                Abbesh Kumar <b> and three others commented on your job update </b>.
+                <button class="btn  btn-primary notify-btn">Say Thanks</button>
+            </div>
+        </div>
+        <div class="notify">
+            <img src="images/more-opt.png" class="more-opt">
+            <img src="images/dp.png" width="66px" class="notify-dp">
+            <small class="time-stamp">5h</small>
+
+            <div class="notify-msg">
+                Abbesh Kumar <b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</b>.
+            </div>
+        </div>
+        <div class="notify">
+            <img src="images/more-opt.png" class="more-opt">
+            <img src="images/dp.png" width="66px" class="notify-dp">
+            <small class="time-stamp">5h</small>
+
+            <div class="notify-msg">
+                Abbesh Kumar <b> and three others liked your job update </b>.
+            </div>
+        </div> -->
+        
+    </div>
+    <!-- <div class="notification-body">
+        <div class="recent">
+            <h4>Earlier</h4>
+        </div>
+        <div class="notify">
+            <img src="images/more-opt.png" class="more-opt">
+            <img src="images/dp.png" width="66px" class="notify-dp">
+            <small class="time-stamp">5h</small>
+
+            <div class="notify-msg">
+                Abbesh Kumar <b> and three others liked your job update </b>.
+            </div>
+        </div>
+        <div class="notify">
+            <img src="images/more-opt.png" class="more-opt">
+            <img src="images/dp.png" width="66px" class="notify-dp">
+            <small class="time-stamp">5h</small>
+
+            <div class="notify-msg">
+                Abbesh Kumar <b> and three others liked your job update </b>.
+            </div>
+        </div>
+        <div class="notify">
+            <img src="images/more-opt.png" class="more-opt">
+            <img src="images/dp.png" width="66px" class="notify-dp">
+            <small class="time-stamp">5h</small>
+
+            <div class="notify-msg">
+                Abbesh Kumar <b> and three others liked your job update </b>.
+            </div>
+        </div>
+        <div class="notify">
+            <img src="images/more-opt.png" class="more-opt">
+            <img src="images/dp.png" width="66px" class="notify-dp">
+            <small class="time-stamp">5h</small>
+
+            <div class="notify-msg">
+                Abbesh Kumar <b> and three others liked your job update </b>.
+            </div>
+        </div>
+        
+    </div> -->
+    
+
+</div>

@@ -18,6 +18,7 @@ import { MoreTabComponent } from './more-tab/more-tab.component';
 import { AcceptDeclineRequestComponent } from './accept-decline-request/accept-decline-request.component';
 import { ResetPasswordPageComponent } from './reset-password-page/reset-password-page.component';
 import { MynetworkComponent } from './mynetwork/mynetwork.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 const routes: Routes = [
   {
@@ -41,7 +42,8 @@ const routes: Routes = [
       { path: 'more-tabs', component: MoreTabComponent },
       { path: 'accept-decline', component: AcceptDeclineRequestComponent },
       { path: 'change-password', component: ResetPasswordPageComponent },
-      { path: 'mynetwork', component: MynetworkComponent }
+      { path: 'mynetwork', component: MynetworkComponent },
+      { path: 'notifications', component: NotificationsComponent }
     ]
   },
 ];

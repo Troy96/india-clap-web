@@ -31,6 +31,7 @@ import { JobsService } from '../services/jobs.service';
 import { MynetworkComponent } from './mynetwork/mynetwork.component';
 import { ContactInfoComponent } from './my-profile-editable/contact-info/contact-info.component';
 import { ContactUsElseComponent } from './someone-else-profile/contact-us-else/contact-us-else/contact-us-else.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { ContactUsElseComponent } from './someone-else-profile/contact-us-else/c
     MoreTabComponent,
     MynetworkComponent,
     ContactInfoComponent,
-    ContactUsElseComponent
+    ContactUsElseComponent,
+    NotificationsComponent
   ],
   imports: [
     CommonModule,
