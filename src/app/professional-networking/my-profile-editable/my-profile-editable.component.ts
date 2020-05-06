@@ -36,7 +36,7 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     private inputModal: MyprofileEditableService,
     private sanitizer: DomSanitizer,
     private notifService: NotificationService,
-    private contactInfo: ContactInfoService,
+    public contactInfo: ContactInfoService,
     private renderer: Renderer2,
   ) { }
 

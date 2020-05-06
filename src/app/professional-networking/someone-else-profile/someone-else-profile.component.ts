@@ -34,7 +34,7 @@ export class SomeoneElseProfileComponent implements OnInit {
     private notifyService: NotificationService,
     private sanitizer: DomSanitizer,
     private activatedRoute: ActivatedRoute,
-    private contactUs: ContactUsElseService
+    public contactUs: ContactUsElseService
   ) {
     this.activatedRoute.params.subscribe(param => {
       this.userId = param.id;
