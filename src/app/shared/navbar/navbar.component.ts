@@ -32,7 +32,6 @@ export class NavbarComponent implements OnInit {
     private notificationService: NotificationService,
     private commService: CommunicateService
   ) {
-    this.getNotifications();
   }
   ngOnInit() {
     this.getUserDetails();
@@ -69,13 +68,6 @@ export class NavbarComponent implements OnInit {
     this.authService.get_user_profiles()
       .subscribe(respObj => {
         this.userDetails = respObj.find(obj => obj['user'] === JSON.parse(localStorage.getItem('currentUser'))['user_id']);
-      })
-  }
-
-  getNotifications() {
-    this.authService.get_user_notifications()
-      .subscribe(respObj => {
-        this.notifList = respObj;
       })
   }
 

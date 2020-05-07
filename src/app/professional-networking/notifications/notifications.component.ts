@@ -19,7 +19,8 @@ export class NotificationsComponent implements OnInit {
   getNotifications() {
     this.authService.get_user_notifications()
       .subscribe(respObj => {
-        this.notifList = respObj;
+        this.notifList = respObj.splice(0, 10);
+        console.log(this.notifList);
       })
   }
 
