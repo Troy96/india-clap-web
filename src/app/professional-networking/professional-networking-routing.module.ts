@@ -24,14 +24,10 @@ const routes: Routes = [
   {
     path: '', component: ProfessionalNetworkingComponent,
     children: [
-      { path: 'users/:id', component: SomeoneElseProfileComponent },
-      { path: 'my-profile', component: MyProfileDropdownComponent },
-      { path: 'me', component: TimelineLikeReactComponent, },
-      { path: 'notification-dropdown', component: NotificationDropdownComponent },
-      { path: 'timeline-comment', component: TimelineCommentComponent },
-      { path: 'timelime-react', component: TimelineReactEmojiComponent },
+      { path: 'feed', component: TimelineLikeReactComponent, },
       { path: ':slug', component: MyProfileEditableComponent },
-      { path: 'privacy-settings', component: PrivacySettingsComponent },
+      { path: 'users/:id', component: SomeoneElseProfileComponent },
+      { path: 'privacy/settings', component: PrivacySettingsComponent },
       { path: 'company-management', component: CompanyManagementComponent },
       { path: 'create-company', component: CreateCompanyComponent },
       { path: 'companies/me', component: CompanyAdminViewComponent },

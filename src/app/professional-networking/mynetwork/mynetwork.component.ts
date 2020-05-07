@@ -16,6 +16,7 @@ export class MynetworkComponent implements OnInit {
   constructor(
     private userService: AuthServices
   ) {
+    console.log('fgghtntnnt');
     this.userId = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
   }
 

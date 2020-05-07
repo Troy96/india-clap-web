@@ -24,7 +24,7 @@
     bottom: 7px;">
       <span tooltip="Home" placement="bottom" show-delay="500">
 
-        <li class="nav-item active" [routerLink]="['/in/me']">
+        <li class="nav-item active" [routerLink]="['/in/feed']">
           <a class="nav-link">
             <i class="fa fa-envelope-o">
               <img src="/assets/icons/1x/homeAsset.png " width="20px" height="25px">
@@ -59,15 +59,16 @@
           </li>
         </div>
       </span>
-        <!-- <li class="nav-item">
-          Messages
+      <span tooltip="Messages" placement="bottom" show-delay="500">
+        <li class="nav-item" [routerLink]="['/jobs/user-account']">
           <a class="nav-link">
             <i class="fa fa-envelope-o">
-              <img src="/assets/icons/1x/jobAsset.png " width="20px" height="25px">
+              <img src="/assets/icons/1x/message.png " width="20px" height="25px">
             </i>
           </a>
-        </li> -->
-      <span tooltip="Jobs" placement="bottom" show-delay="500">
+        </li>
+      </span>
+      <span tooltip="Job Center" placement="bottom" show-delay="500">
         <li class="nav-item" [routerLink]="['/jobs/user-account']">
           <a class="nav-link">
             <i class="fa fa-envelope-o">
@@ -98,7 +99,16 @@
         <li class="nav-item">
           <a class="nav-link">
             <i class="fa fa-envelope-o">
-              <img src="/assets/icons/1x/Asset 7.png " width="20px" height="25px">
+              <img src="/assets/icons/1x/finance.png" width="20px" height="25px">
+            </i>
+          </a>
+        </li>
+      </span>
+      <span tooltip="Provider Center" placement="bottom" show-delay="500">
+        <li class="nav-item">
+          <a class="nav-link">
+            <i class="fa fa-envelope-o">
+              <img src="/assets/icons/1x/provider.png" width="20px" height="25px">
             </i>
           </a>
         </li>
@@ -117,7 +127,7 @@
             <h3>{{userDetails?.first_name}} {{userDetails?.last_name}}</h3>
           </div>
           <hr>
-          <p routerLink="/in/{{userDetails?.slug}}">View your Profile</p>
+          <p [routerLink]="['/in', userDetails?.slug]">View your Profile</p>
           <hr>
           <!-- <p [routerLink]="['/in/company-management']">Company Pages Managed</p>
           <hr>
@@ -127,7 +137,7 @@
           <hr>
           <p [routerLink]="['/jobs/skills-test']">Take a Holograph Skill Test</p>
           <hr> -->
-          <p [routerLink]="['/in/privacy-settings']">Privacy Settings</p>
+          <p [routerLink]="['/in/privacy/settings']">Privacy Settings</p>
           <hr>
           <p (click)="onLogout();">Log Out</p>
         </div>
