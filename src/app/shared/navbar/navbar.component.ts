@@ -50,8 +50,8 @@ export class NavbarComponent implements OnInit {
           return this.notificationService.showInfo('No User Found', 'Search Alert');
         }
         else {
-          if (respObj[0].id === this.userDetails.id) return this.router.navigateByUrl('/professional-networking/myprofile-editable')
-          this.router.navigateByUrl('/professional-networking/users/' + respObj[0].id);
+          if (respObj[0].id === this.userDetails.id) return this.router.navigateByUrl('/in/myprofile-editable')
+          this.router.navigateByUrl('/in/users/' + respObj[0].id);
         }
       })
   }

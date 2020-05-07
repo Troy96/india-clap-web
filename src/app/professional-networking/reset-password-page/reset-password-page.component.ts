@@ -50,7 +50,7 @@ export class ResetPasswordPageComponent implements OnInit {
       this.networkService.change_password(this.obj).subscribe((data)=>{
         console.log(data);
         this.showToasterSuccess()
-        setTimeout(() => { this.router.navigate(['/professional-networking/me']) }, 7000);
+        setTimeout(() => { this.router.navigate(['/in/me']) }, 7000);
 
       },
       err=>{

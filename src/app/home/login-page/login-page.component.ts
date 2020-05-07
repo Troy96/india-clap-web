@@ -22,7 +22,7 @@ export class LoginPageComponent implements OnInit {
     private router: Router,private notifyService : NotificationService
   ) {
     if (!!JSON.parse(localStorage.getItem('currentUser'))) {
-      this.router.navigateByUrl('/professional-networking/me');
+      this.router.navigateByUrl('/in/me');
     }
     this.loginForm = new FormGroup({
       email: new FormControl("", [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
@@ -49,7 +49,7 @@ export class LoginPageComponent implements OnInit {
       this.authService.login(this.obj).subscribe(async (data: any) => {
         this.notifyService.showSuccess('You are now logged in','Login successful');
         await localStorage.setItem('currentUser', JSON.stringify(data));
-        this.router.navigateByUrl('/professional-networking/me');
+        this.router.navigateByUrl('/in/me');
       },
       err=>{
         if(err.error.error=="Invalid Credentials")

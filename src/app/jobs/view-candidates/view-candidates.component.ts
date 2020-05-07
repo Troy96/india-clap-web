@@ -57,7 +57,7 @@ export class ViewCandidatesComponent implements OnInit {
   }
 
   applicantProfile(id) {
-    let _url = '/professional-networking/users/' + id;
+    let _url = '/in/users/' + id;
     this._router.navigate([_url])
   }
 

@@ -24,7 +24,7 @@
     bottom: 7px;">
       <span tooltip="Home" placement="bottom" show-delay="500">
 
-        <li class="nav-item active" [routerLink]="['/professional-networking/me']">
+        <li class="nav-item active" [routerLink]="['/in/me']">
           <a class="nav-link">
             <i class="fa fa-envelope-o">
               <img src="/assets/icons/1x/homeAsset.png " width="20px" height="25px">
@@ -43,7 +43,7 @@
               </a>
           </li>
         </div> -->
-        <div id="notification" routerLink="/professional-networking/notifications">
+        <div id="notification" routerLink="/in/notifications">
           <li class="nav-item">
             <a class="nav-link">
               <i class="fa fa-envelope-o ">
@@ -117,9 +117,9 @@
             <h3>{{userDetails?.first_name}} {{userDetails?.last_name}}</h3>
           </div>
           <hr>
-          <p [routerLink]="['/professional-networking/myprofile-editable']">View your Profile</p>
+          <p [routerLink]="['/in/myprofile-editable']">View your Profile</p>
           <hr>
-          <!-- <p [routerLink]="['/professional-networking/company-management']">Company Pages Managed</p>
+          <!-- <p [routerLink]="['/in/company-management']">Company Pages Managed</p>
           <hr>
           <p [routerLink]="['/jobs/saved-jobs']">View Saved Jobes</p>
           <hr>
@@ -127,7 +127,7 @@
           <hr>
           <p [routerLink]="['/jobs/skills-test']">Take a Holograph Skill Test</p>
           <hr> -->
-          <p [routerLink]="['/professional-networking/privacy-settings']">Privacy Settings</p>
+          <p [routerLink]="['/in/privacy-settings']">Privacy Settings</p>
           <hr>
           <p (click)="onLogout();">Log Out</p>
         </div>
@@ -147,7 +147,7 @@
               <hr> -->
           <p [routerLink]="['/jobs/post-job']">Post a job</p>
           <hr>
-          <p [routerLink]="['/professional-networking/create-company']">Create a company page</p>
+          <p [routerLink]="['/in/create-company']">Create a company page</p>
           <hr>
           <p [routerLink]="['/jobs/job-postings']">My job postings</p>
           <hr>

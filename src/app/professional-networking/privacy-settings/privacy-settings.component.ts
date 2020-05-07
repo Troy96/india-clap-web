@@ -177,7 +177,7 @@ export class PrivacySettingsComponent implements OnInit {
 
     this.authService.edit_privacy_details(this.menuObj).subscribe((data: any) => {
       this.showToasterSuccess()
-      this.router.navigateByUrl('/professional-networking/me')
+      this.router.navigateByUrl('/in/me')
     })
   }
 

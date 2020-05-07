@@ -35,7 +35,7 @@
     </div>
     <ng-container *ngFor="let post of postList">
         <div class="post">
-            <div class="post-image" routerLink="/professional-networking/users/{{post?.author_user}}" style="cursor: pointer;">
+            <div class="post-image" routerLink="/in/users/{{post?.author_user}}" style="cursor: pointer;">
                 <img src="{{post?.profile}}" style="display: block;
                 width: 70px;
                 height: 70px;
@@ -52,7 +52,7 @@
 
                 <div style="display: flex; flex-direction: column;">
 
-                    <p class="teal" *ngIf="post.author_user" routerLink="/professional-networking/users/{{post?.author_user}}" style="cursor: pointer; text-decoration: underline;">{{post?.first_name}} {{post?.last_name}}</p>
+                    <p class="teal" *ngIf="post.author_user" routerLink="/in/users/{{post?.author_user}}" style="cursor: pointer; text-decoration: underline;">{{post?.first_name}} {{post?.last_name}}</p>
                     <p> {{post?.created_on | date}}</p>
                     <p *ngIf="post?.text"> {{post?.text}}</p>
                 </div>
@@ -231,9 +231,9 @@
            <div class="likers-cont" >
             <div *ngFor="let user of allReactions">
            <div class="likers">
-            <img   src={{user.user.photo}} routerLink="/professional-networking/users/{{user.user.id}}" class="likers-dp" width="65px" height="65px" >
+            <img   src={{user.user.photo}} routerLink="/in/users/{{user.user.id}}" class="likers-dp" width="65px" height="65px" >
             <div class="likers-info">
-           <b class="black" routerLink="/professional-networking/users/{{user.user.id}}" >{{user.user.first_name}} {{user.user.last_name}}</b>
+           <b class="black" routerLink="/in/users/{{user.user.id}}" >{{user.user.first_name}} {{user.user.last_name}}</b>
           </div>
           <hr class="hr">
            </div>

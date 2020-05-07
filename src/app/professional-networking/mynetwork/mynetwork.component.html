@@ -12,9 +12,9 @@
     <div class="connections" *ngFor="let user of connectionDetailList |filter:term">
         <img src="/assets/icons/1x/more-opt.png" class="more-opt2">
         <button class="btn btn-primary conn-msg">Message</button>
-        <img style="cursor: pointer;" routerLink="/professional-networking/users/{{user.id}}" src="{{user?.photo}}" width="55px" height="55px" style="border-radius: 50%;" class="net-dp">
+        <img style="cursor: pointer;" routerLink="/in/users/{{user.id}}" src="{{user?.photo}}" width="55px" height="55px" style="border-radius: 50%;" class="net-dp">
         <div class="conn-text">
-            <b style="text-decoration: underline; cursor: pointer;" routerLink="/professional-networking/users/{{user.id}}">{{user.first_name}} {{user.last_name}}</b><br>
+            <b style="text-decoration: underline; cursor: pointer;" routerLink="/in/users/{{user.id}}">{{user.first_name}} {{user.last_name}}</b><br>
             <span *ngIf="user?.experiences?.length">{{user?.experiences[0]?.title}} at
                 {{user?.experiences[0]?.company_name}}</span>
             <span *ngIf="!user?.experiences?.length">{{user?.brief_Desc}}</span>
