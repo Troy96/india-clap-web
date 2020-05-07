@@ -30,7 +30,7 @@ const routes: Routes = [
       { path: 'notification-dropdown', component: NotificationDropdownComponent },
       { path: 'timeline-comment', component: TimelineCommentComponent },
       { path: 'timelime-react', component: TimelineReactEmojiComponent },
-      { path: 'myprofile-editable', component: MyProfileEditableComponent },
+      { path: ':slug', component: MyProfileEditableComponent },
       { path: 'privacy-settings', component: PrivacySettingsComponent },
       { path: 'company-management', component: CompanyManagementComponent },
       { path: 'create-company', component: CreateCompanyComponent },
