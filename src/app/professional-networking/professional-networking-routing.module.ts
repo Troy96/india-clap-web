@@ -25,7 +25,6 @@ const routes: Routes = [
     path: '', component: ProfessionalNetworkingComponent,
     children: [
       { path: 'feed', component: TimelineLikeReactComponent, },
-      { path: ':slug', component: MyProfileEditableComponent },
       { path: 'users/:id', component: SomeoneElseProfileComponent },
       { path: 'privacy/settings', component: PrivacySettingsComponent },
       { path: 'company-management', component: CompanyManagementComponent },
@@ -39,7 +38,8 @@ const routes: Routes = [
       { path: 'accept-decline', component: AcceptDeclineRequestComponent },
       { path: 'change-password', component: ResetPasswordPageComponent },
       { path: 'mynetwork', component: MynetworkComponent },
-      { path: 'notifications', component: NotificationsComponent }
+      { path: 'notifications', component: NotificationsComponent },
+      { path: ':slug', component: MyProfileEditableComponent }
     ]
   },
 ];
