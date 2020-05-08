@@ -55,7 +55,7 @@
                     <p class="teal" *ngIf="post.author_user" routerLink="/in/users/{{post?.author_user}}"
                         style="cursor: pointer; text-decoration: underline;">{{post?.first_name}} {{post?.last_name}}
                     </p>
-                    <p> {{post?.created_on | date}}</p>
+                    <p> {{moment(post?.created_on).fromNow()}}</p>
                     <p *ngIf="post?.text"> {{post?.text}}</p>
                 </div>
                 <p *ngIf="post?.photo"> <img

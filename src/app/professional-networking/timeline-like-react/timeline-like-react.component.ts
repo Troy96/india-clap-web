@@ -5,6 +5,7 @@ import { JobsService } from 'src/app/services/jobs.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { CommunicateService } from 'src/app/services/communicate.service';
 import { AuthServices } from 'src/app/services/auth.service';
+import * as moment from 'moment';
 declare var $: any;
 
 @Component({
@@ -32,6 +33,7 @@ export class TimelineLikeReactComponent implements OnInit {
   numIdea:number=0;
   numThink:number=0;
   numAll:number=0;
+  moment: any;
   @ViewChild('comment', { static: false }) commentRef: ElementRef
   constructor(
     private netService: NetworkingService, private cd: ChangeDetectorRef, private jobService: JobsService
@@ -39,6 +41,7 @@ export class TimelineLikeReactComponent implements OnInit {
     private commService: CommunicateService,
     private authService: AuthServices
   ) {
+    this.moment = moment;
     this.commService.userList$.subscribe(data => {
       this.users = [...data];
       console.log(this.users);
