@@ -52,7 +52,9 @@
 
                 <div style="display: flex; flex-direction: column;">
 
-                    <p class="teal" *ngIf="post.author_user" routerLink="/in/users/{{post?.author_user}}" style="cursor: pointer; text-decoration: underline;">{{post?.first_name}} {{post?.last_name}}</p>
+                    <p class="teal" *ngIf="post.author_user" routerLink="/in/users/{{post?.author_user}}"
+                        style="cursor: pointer; text-decoration: underline;">{{post?.first_name}} {{post?.last_name}}
+                    </p>
                     <p> {{post?.created_on | date}}</p>
                     <p *ngIf="post?.text"> {{post?.text}}</p>
                 </div>
@@ -71,19 +73,21 @@
 
 
             </div>
-            <small style="cursor:pointer;" (click)="showAllReactions($event,post.id);all_reactions()">{{post?.likes_count}} likes.{{post?.reactions?.length}} reacts.{{post?.comments_count}}
+            <small style="cursor:pointer;"
+                (click)="showAllReactions($event,post.id);all_reactions()">{{post?.likes_count}}
+                likes.{{post?.reactions?.length}} reacts.{{post?.comments_count}}
                 comments</small>
             <hr color="#A9A9A9  ">
 
             <div class="icons-div">
 
-                <div *ngIf="!post?.isLiked" style="cursor: pointer;" (click)="likePost(post.id);" id="icons"> <img src="/assets/icons/1x/like.png"
-                        width="19px" height="22px" class="like-comment-icon" ><br><small
+                <div *ngIf="!post?.isLiked" style="cursor: pointer;" (click)="likePost(post.id);" id="icons"> <img
+                        src="/assets/icons/1x/like.png" width="19px" height="22px" class="like-comment-icon"><br><small
                         class="icon-txt">Like</small></div>
 
 
-                <div *ngIf="post?.isLiked" style="cursor: pointer;" (click)="likePost(post.id);" id="icons"> <img src="/assets/icons/1x/like.png"
-                        width="19px" height="22px" class="like-comment-icon"><br><small
+                <div *ngIf="post?.isLiked" style="cursor: pointer;" (click)="likePost(post.id);" id="icons"> <img
+                        src="/assets/icons/1x/like.png" width="19px" height="22px" class="like-comment-icon"><br><small
                         class="icon-txt">Liked</small>
                 </div>
                 <div *ngIf="post?.isReacted" id="icons" class="react-btn"> <img src="/assets/icons/1x/smiley.png"
@@ -104,7 +108,8 @@
                         class="like-comment-icon report-img"><small class="icon-txt">Report</small></div>
             </div>
             <div class="react-box">
-                <div id="like-options" class="like-opt" *ngIf="showEmoji && showReact==post.id" (mouseleave)="leave($event,post.id)">
+                <div id="like-options" class="like-opt" *ngIf="showEmoji && showReact==post.id"
+                    (mouseleave)="leave($event,post.id)">
                     <img src="/assets/icons/1x/clap.png" (click)="reactType(1,post.id)" class="clap react-icons"
                         width="30px">
                     <img src="/assets/icons/1x/heart.png" (click)="reactType(2,post.id)" class="heart react-icons"
@@ -120,7 +125,8 @@
                 width: 50px;
                 height: 50px;
                 border-radius: 50%;" alt="" width="50px" class="comm-pro">
-                <input (keyup.enter)="postComment(post.id, commentInp.value)" type="text" class="form-control comment-box" placeholder="Write a comment..." #commentInp>
+                <input (keyup.enter)="postComment(post.id, commentInp.value)" type="text"
+                    class="form-control comment-box" placeholder="Write a comment..." #commentInp>
                 <div class="input-group-btn">
                     <button class="btn btn-default comm-icons" (click)="postComment(post.id, commentInp.value)">
                         <i class="glyphicon glyphicon-search comm-cam"><img src="/assets/icons/1x/Image.png"
@@ -185,18 +191,20 @@
                             <div *ngIf="data?.replies.length" style="background-color: #f3f3f3; border-radius: 4px; width: 70%;
                             margin-top: 10px;
                             margin-bottom: 10px; height: 60px; padding: 5px;">
-                            <span id="teal">Abbesh Chatterjee</span>
-                            <small class="float-right">{{data?.replies[0].timestamp | date}}</small>
+                                <span id="teal">Abbesh Chatterjee</span>
+                                <small class="float-right">{{data?.replies[0].timestamp | date}}</small>
                                 <!-- <div style="display: flex; justify-content: space-between;"> -->
-                                    <!-- <span id="teal">{{data?.reply?.first_name}}
+                                <!-- <span id="teal">{{data?.reply?.first_name}}
                                         {{data?.value?.reply?.last_name}}</span> -->
-                                    <!-- <span>{{data?.replies[0].timestamp | date}}</span> -->
+                                <!-- <span>{{data?.replies[0].timestamp | date}}</span> -->
                                 <!-- </div> -->
                                 <div style=" justify-content: space-between; display: flex;">
                                     <span>{{data?.replies[0]?.content}}</span>
                                 </div>
-                                <small *ngIf="!data.replies[0].is_liked" (click)="likeReply(data.replies[0].id,data.post)" class="reply-like">like</small>
-                                <small *ngIf="data.replies[0].is_liked" (click)="likeReply(data.replies[0].id,data.post)" class="reply-like">liked</small>
+                                <small *ngIf="!data.replies[0].is_liked"
+                                    (click)="likeReply(data.replies[0].id,data.post)" class="reply-like">like</small>
+                                <small *ngIf="data.replies[0].is_liked"
+                                    (click)="likeReply(data.replies[0].id,data.post)" class="reply-like">liked</small>
 
                             </div>
                         </div>
@@ -204,8 +212,9 @@
                         <div style="display: flex;
                         justify-content: flex-end;
                         position: relative;
-                        right: 10px;" *ngIf="!data?.replies.length"> <input  (keyup.enter)="replyComment(post?.id, data?.id, replyInp.value)" type="text" class="form-control comment-box"
-                                placeholder="Write a reply..." #replyInp>
+                        right: 10px;" *ngIf="!data?.replies.length"> <input
+                                (keyup.enter)="replyComment(post?.id, data?.id, replyInp.value)" type="text"
+                                class="form-control comment-box" placeholder="Write a reply..." #replyInp>
                             <div class="input-group-btn">
                                 <button class="btn btn-default comm-icons"
                                     (click)="replyComment(post?.id, data?.id, replyInp.value)">
@@ -222,27 +231,38 @@
     </ng-container>
     <div *ngIf="showModal" class="experience" id="resetModal">
         <div class="cont experience-body" style="cursor:pointer;">
-          <img (click)="closeAllReactions($event)" src="./../../../assets/icons/1x/cancel.png" width="17px" class="cross">
-           <div class="header-modal">
-            <h1 class="reaction">Reactions</h1>
-            <span class="react-nos" (click)="all_reactions()">All {{numAll}} </span><span (click)="likeReactions()" class="react-nos"><img  src="./../../../assets/icons/1x/like.png" class="nav-emoji" > {{numLiked}} </span> <span (click)="loveReactions()" class="react-nos"><img   src="./../../../assets/icons/1x/heart.png" class="nav-emoji" > {{numLoved}}</span> <span class="react-nos" (click)="thinkReactions()"><img   src="./../../../assets/icons/1x/emoji.png" class="nav-emoji">{{numThink}}</span> <span (click)="ideaReactions()" class="react-nos"><img  src="./../../../assets/icons/1x/idea.png" class="nav-emoji">{{numIdea}}</span> <span (click)="clapReactions()" class="react-nos"><img  src="./../../../assets/icons/1x/clap.png" class="nav-emoji">{{numClapped}}</span>
-           </div>
-           
-           <div class="likers-cont" >
-            <div *ngFor="let user of allReactions">
-           <div class="likers">
-            <img   src={{user.user.photo}} routerLink="/in/users/{{user.user.id}}" class="likers-dp" width="65px" height="65px" >
-            <div class="likers-info">
-           <b class="black" routerLink="/in/users/{{user.user.id}}" >{{user.user.first_name}} {{user.user.last_name}}</b>
-          </div>
-          <hr class="hr">
-           </div>
-        </div>
-           
-      
-          </div>
+            <img (click)="closeAllReactions($event)" src="./../../../assets/icons/1x/cancel.png" width="17px"
+                class="cross">
+            <div class="header-modal">
+                <h1 class="reaction">Reactions</h1>
+                <span class="react-nos" (click)="all_reactions()">All {{numAll}} </span><span (click)="likeReactions()"
+                    class="react-nos"><img src="./../../../assets/icons/1x/like.png" class="nav-emoji"> {{numLiked}}
+                </span> <span (click)="loveReactions()" class="react-nos"><img
+                        src="./../../../assets/icons/1x/heart.png" class="nav-emoji"> {{numLoved}}</span> <span
+                    class="react-nos" (click)="thinkReactions()"><img src="./../../../assets/icons/1x/emoji.png"
+                        class="nav-emoji">{{numThink}}</span> <span (click)="ideaReactions()" class="react-nos"><img
+                        src="./../../../assets/icons/1x/idea.png" class="nav-emoji">{{numIdea}}</span> <span
+                    (click)="clapReactions()" class="react-nos"><img src="./../../../assets/icons/1x/clap.png"
+                        class="nav-emoji">{{numClapped}}</span>
+            </div>
+
+            <div class="likers-cont">
+                <div *ngFor="let user of allReactions">
+                    <div class="likers">
+                        <img src={{user.user.photo}} routerLink="/in/users/{{user.user.id}}" class="likers-dp"
+                            width="65px" height="65px">
+                        <div class="likers-info">
+                            <b class="black" routerLink="/in/users/{{user.user.id}}">{{user.user.first_name}}
+                                {{user.user.last_name}}</b>
+                        </div>
+                        <hr class="hr">
+                    </div>
+                </div>
+
+
+            </div>
         </div>
 
     </div>
-
+    <div *ngIf="!postList || !postList.length" class="no-data">Loading...</div>
 </div>
