@@ -9,7 +9,10 @@
             <small class="time-stamp">{{moment(data['timestamp']).fromNow()}}</small>
 
             <div class="notify-msg">
-                <span routerLink="/in/users/{{data.profile.id}}" style="cursor: pointer;">{{data.text}}</span>
+                <span>
+                    <!-- {{ data.text.split(' ')[0] }} {{ data.text.split(' ').slice(1, data.text.indexOf()).join(' ') }} {{ data.text.substring(data.text.length - 4) }} -->
+                    <span routerLink="/in/users/{{data.profile.id}}" style="cursor: pointer;">{{data.text.split(' ').slice(0, data.text.indexOf()).join(' ')}}</span><span routerLink="/in/feed"> {{data.text.split(' ').slice(data.text.indexOf())[0]}}</span>
+                </span>
             </div>
         </div>
         
