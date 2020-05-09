@@ -16,6 +16,8 @@
     cursor: pointer;
     padding-top: 5%;
 
+    overflow: scroll;
+
 }
 
 .experience-body {

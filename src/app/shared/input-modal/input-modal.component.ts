@@ -146,7 +146,7 @@ export class InputModalComponent implements OnInit {
       }
       case 'Education': {
         this.labels = ['Education'];
-        this.placeholders = ['Institute', 'Degree', 'Study Field','Start Year','End Year','Is Present','Grade','Description','Link'];
+        this.placeholders = ['Institute', 'Degree', 'Study Field','Start Year (e.g. - 2015)','End Year (e.g. - 2020)','Is Present (True/False)','Grade (In Numbers)','Description','Link'];
         if (this.inputData.isInputForm) {
           this.inputForm = this.fb.group({
             profile: this.fb.array([
@@ -251,7 +251,7 @@ export class InputModalComponent implements OnInit {
             break;
             case 'Award': {
               this.labels = ['Title', 'Issued by','Issue month','Issue year','Descripion']
-              this.placeholders = ['Enter Award Title', 'Issued by','Month','Year','Description']
+              this.placeholders = ['Enter Award Title', 'Issued by','Enter Month Number (1 for January)','Year (e.g 2020)','Description']
               if (this.inputData.isInputForm) {
                 this.inputForm = this.fb.group({
                   profile: this.fb.array([
