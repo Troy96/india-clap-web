@@ -6,6 +6,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 import { CommunicateService } from 'src/app/services/communicate.service';
 import { AuthServices } from 'src/app/services/auth.service';
 import * as moment from 'moment';
+import { Router, NavigationEnd } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -39,8 +40,15 @@ export class TimelineLikeReactComponent implements OnInit {
     private netService: NetworkingService, private cd: ChangeDetectorRef, private jobService: JobsService
     , private notifyService: NotificationService,
     private commService: CommunicateService,
-    private authService: AuthServices
+    private authService: AuthServices,
+    private router: Router
   ) {
+    this.router.events.subscribe(e=>{
+      if(e instanceof NavigationEnd){
+        const tree = this.router.parseUrl(this.router.url);
+        console.log(tree)
+      }
+    })
     this.moment = moment;
     this.commService.userList$.subscribe(data => {
       this.users = [...data];

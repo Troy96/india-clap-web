@@ -34,7 +34,7 @@
 
     </div>
     <ng-container *ngFor="let post of postList">
-        <div class="post">
+        <div class="post" id="{{post?.id}}">
             <div class="post-image" routerLink="/in/users/{{post?.author_user}}" style="cursor: pointer;">
                 <img src="{{post?.profile}}" style="display: block;
                 width: 70px;
