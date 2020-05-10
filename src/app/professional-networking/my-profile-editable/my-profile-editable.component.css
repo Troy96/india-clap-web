@@ -547,3 +547,98 @@ b{
   color: teal;
   cursor: pointer;
 }
+.reco-info{
+  margin-left: 90px;
+  width: 180px;
+}
+.reco-txt{
+  margin-left: 280px;
+  color: gray;
+}
+.reco-body{
+  margin-top: 30px;
+  border-bottom: 1px solid gray;
+  padding-bottom: 20px;
+}
+.Recieved:hover{
+  text-decoration: underline;
+  color: teal !important;
+  cursor: pointer;
+
+}
+.Given:hover{
+  text-decoration: underline;
+  color: teal !important;
+  cursor: pointer;
+
+}
+.reco-nav{
+  border-bottom: 1px solid gray;
+  padding-bottom: 20px;
+}
+@media print {
+  body {
+      
+      -webkit-print-color-adjust: exact;
+      }
+  }
+  @page {
+margin: 0;
+}
+  
+  .cont1{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      height: 300%;
+      background-color: teal !important;
+      color: white;
+      
+      width: 30%;
+      overflow-wrap: break-word;
+      padding: 30px;
+      padding-top: 80px;
+      font-size: 20px;
+      
+              }
+  .cont2{
+      width: 70%;
+      height: 100%;
+      padding: 30px;
+      padding-top: 80px;
+      font-size: 20px;
+  }
+  /* .inside-cont1{
+     
+  } */
+  .skills{
+      margin-top: 20px;
+  }
+  /* .basic-info{
+  } */
+  .hr{
+      width: 80px;
+      margin-left: 0px;
+      border-width: 1px;
+      background-color: black;
+  }
+  .exp-body{
+      margin-top: 20px;
+  }
+  .edu-body{
+      margin-top: 20px;
+  }
+  .Summary{
+      margin-top: 30px;
+  }
+  .Experience{
+      margin-top: 30px;
+  }
+  .Education{
+      margin-top: 30px;
+  }
+  h4{
+      letter-spacing: 2px;
+      word-spacing: 8px;
+      font-size: 30px;
+  }

@@ -83,7 +83,9 @@ export class JobsService {
   get_favourite_jobs() {
     return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs/favourite/`)
   }
-
+  un_save_job(jobId) {
+    return this.http.get(`${config.base_url}/JobMarket/jobs/${jobId}/unsave/`)
+  }
   search_job($data) {
     return this.http.get<any>(`${config.base_url}/JobMarket/jobs/job?salary=${$data['salary']}&location_District=${$data['location_District']}&location_State=${$data['location_State']}&starting_time=${$data['starting_time']}&end_time=${$data['end_time']}`)
   }
@@ -150,5 +152,90 @@ export class JobsService {
 
   pushNewJobs(jobs: any[]) {
     this.queryJobList.next(jobs)
+  }
+  all_archive_jobs(){
+    return this.http.get(`${config.base_url}/JobMarket/jobs/archive`);
+
+  }
+  get_jobs_by_filters($data:any){
+    console.log($data)
+    if($data.searchText){
+
+      if($data.ordering&&$data.ordering=='job_title')
+      {      console.log("not applying")
+
+        if($data.jobType=='Active'){
+          return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=job_title&&search=${$data.searchText}&&is_active=true`);
+        }
+        else if($data.jobType=='Instant'){
+          return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=job_title&&search=${$data.searchText}&&is_active=true&is_instantjob=true`);
+        }
+        else if($data.jobType=='Archive'){
+          return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=job_title&&search=${$data.searchText}&&is_active=false`);
+        }
+      }
+      if($data.ordering&&$data.ordering=='numOfOpenings')
+      {
+        if($data.jobType=='Active'){
+          return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=${$data.filter}&&search=${$data.searchText}&&is_active=true`);
+        }
+        else if($data.jobType=='Instant'){
+          return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=${$data.filter}&&search=${$data.searchText}&&is_active=true&is_instantjob=true`);
+        }
+        else if($data.jobType=='Archive'){
+          return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=${$data.filter}&&search=${$data.searchText}&&is_active=false`);
+        }
+      }
+      else{
+        if($data.jobType=='Active'){
+          return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?search=${$data.searchText}&&is_active=true`);
+        }
+        else if($data.jobType=='Instant'){
+          return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?search=${$data.searchText}&&is_active=true&is_instantjob=true`);
+        }
+        else if($data.jobType=='Archive'){
+          return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?search=${$data.searchText}&&is_active=false`);
+        }
+      }
+    }
+    else{
+      if($data.ordering&&$data.ordering=='job_title')
+      {
+        if($data.jobType=='Active'){
+          return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=job_title&&is_active=true`);
+        }
+        else if($data.jobType=='Instant'){
+          return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=job_title&&is_active=true&is_instantjob=true`);
+        }
+        else if($data.jobType=='Archive'){
+          return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=job_title&&is_active=false`);
+        }
+      //  return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=job_title&&is_active=true&&is_instant=true`);
+      }
+      if($data.ordering&&$data.ordering=='numOfOpenings')
+      {
+        // return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=${$data.filter}&&is_active=true&&is_instant=true`);
+        if($data.jobType=='Active'){
+          return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=${$data.filter}&&is_active=true`);
+        }
+        else if($data.jobType=='Instant'){
+          return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=${$data.filter}&&is_active=true&is_instantjob=true`);
+        }
+        else if($data.jobType=='Archive'){
+          return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=${$data.filter}&&is_active=false`);
+        }
+      }
+      else{
+        if($data.jobType=='Active'){
+          return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?is_active=true`);
+        }
+        else if($data.jobType=='Instant'){
+          return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?is_active=true&is_instantjob=true`);
+        }
+        else if($data.jobType=='Archive'){
+          return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?is_active=false`);
+        }
+      }
+    }
   }
 }

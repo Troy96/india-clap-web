@@ -1,4 +1,4 @@
-<div class="mainbody">
+<!-- <div class="mainbody">
     <div class="header">
 
         <h2>Job across various sectors </h2>
@@ -32,7 +32,6 @@
                     <img *ngIf="job.isFav" src="/assets/icons/1x/filled-star.png" id="job.id" style="cursor: pointer;"
                         (click)="onUnFavouriteJob($event, job.id)" alt="" width="14px" height="14px">
                     <span id="space"></span>
-                    <!-- <img src="/assets/icons/1x/save.png" alt="" width="10px" height="15"> -->
                 </div>
                 <img class="card-img" src="/assets/icons/1x/bulb.png" alt="Card image cap">
 
@@ -50,7 +49,79 @@
     </div>
 
     <div class="no-data" *ngIf="!jobList?.length">No jobs!</div>
-</div>
+</div> -->
+
+
+<div class="container">
+    <div class="mainbody">
+      <div class="header">
+        <div class="float-left job-search">
+          <input class="form-control" placeholder="Search" [(ngModel)]="searchText">
+          <img src="./../../../assets/icons/1x/Asset 1.png" width="20px" class="float-right" (click)="jobsBySearch()" style="margin-top: -30px; margin-right: 10px; z-index: 500; background-color: white;cursor: pointer;">
+        </div>
+        
+        
+        <div class="float-right dropdown" style="cursor:pointer">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{jobType}}
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li class="drop-opt" style="padding-left: 10px;"><a (click)="getJobsByActive()">Active</a></li>
+            <li class="drop-opt" style="padding-left: 10px;"><a (click)="getJobsByInstant()">Instant</a></li>
+            <li class="drop-opt" style="padding-left: 10px;"><a (click)="getJobsByArchive()">Archive</a></li>
+          </ul>
+        </div>
+        <div class="float-right" id="filter"  (click)="displayJobFilters()" >
+          <button type="button" class="btn ">
+
+          <img src="./../../../assets/icons/1x/Filter.png" alt="" width="22" height="25" >
+
+          </button>
+        </div>
+    </div>
+    <div *ngIf="jobType=='Instant'" class="instant-buttons">
+        <button class="btn btn-primary ins-btn" (click)="onSelectAllAndApply()">Select all and Apply</button>
+        <button class="btn btn-primary ins-btn" (click)="getJobsByInstant()">Instant Apply jobs</button>
+      </div>
+        <div class="place" *ngIf="jobList?.length">
+           
+            <div class="card" style="width: 100%;" *ngFor="let job of jobList">
+                <div class="card-body">
+                    <div id="symbols">
+                        <span id="space1" routerLink="/jobs/description/{{job.id}}" style="cursor: pointer;">Apply</span>
+    
+                        <img *ngIf="!job.isFav&&jobType=='Active'" src="/assets/icons/1x/star.png" id="job.id" style="cursor: pointer;"
+                            (click)="onFavouriteJob($event, job.id)" alt="" width="14px" height="14px">
+                        <img *ngIf="job.isFav&&jobType=='Active'" src="/assets/icons/1x/filled-star.png" id="job.id" style="cursor: pointer;"
+                            (click)="onUnFavouriteJob($event, job.id)" alt="" width="14px" height="14px">
+                        <span id="space"></span>
+                        <img *ngIf="!job.isSaved&&jobType=='Active'" src="./../../../assets/icons/1x/save.png" (click)="onSaveJob($event, job.id)" style="cursor: pointer;" alt=""  width="10px" height="14px">
+                        <img *ngIf="job.isSaved&&jobType=='Active'" src="./../../../assets/icons/1x/bookmark_fill.png" (click)="onUnSaveJob($event, job.id)" style="cursor: pointer;" alt=""  width="10px" height="14px">
+
+                    </div>
+                    <img class="card-img" src="/assets/icons/1x/bulb.png" alt="Card image cap">
+    
+                    <div id="crdtxt">
+                        <a>
+                            <h4 class="card-title" routerLink="/jobs/description/{{job.id}}" style="cursor: pointer;">
+                                {{job?.company.name}}</h4>
+                            <span class="card-text">{{job?.location_District}}, {{job.location_State}}</span><br>
+                            <span class="card-text">{{job?.job_title}}</span>
+                        </a>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+        <div class="no-data" *ngIf="!jobList?.length">No jobs!</div>
+
+      
+      
+        </div>
+          
+  
+    </div>
+ 
+
 <div id="filter-data" style="display: none;" #filters>
     <img src="/assets/icons/1x/close.png" width="25px" style="width: 15px;
     float: right;

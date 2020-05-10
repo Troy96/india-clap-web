@@ -5,6 +5,8 @@ import { MyprofileEditableService } from './myprofile-editable.service';
 import { DomSanitizer, SafeUrl, SafeStyle } from '@angular/platform-browser'
 import { NotificationService } from 'src/app/services/notification.service';
 import { ContactInfoService } from './contact-info/contact-info.service';
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-my-profile-editable',
@@ -12,7 +14,7 @@ import { ContactInfoService } from './contact-info/contact-info.service';
   styleUrls: ['./my-profile-editable.component.css']
 })
 export class MyProfileEditableComponent implements OnInit, AfterViewInit {
-
+  activityArray:any=[];
   userId: number;
   profileId: number;
   userDetails: any;
@@ -25,8 +27,9 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
   educationLogoFile: any;
   videoUrl: SafeUrl;
   videoSizeError: any;
-
+  companiesFollowedArray:any=[];
   coverImgStyle: SafeStyle;
+  showPdf:boolean=false;
 
   @ViewChild('coverImg', { static: true }) coverImgRef: ElementRef;
 
@@ -46,6 +49,8 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     this.userId = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
     this.profileId = JSON.parse(localStorage.getItem('currentUser'))['profile_id'];
     this.getUserDetails();
+    this.companiesFollowed();
+    this.showActivity();
     this.inputModal.toRefreshDetails$.subscribe(toRefresh => {
       if (toRefresh) this.getUserDetails();
     })
@@ -191,5 +196,52 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
   openContactInfo(){
     this.contactInfo.openContactInfo(this.userDetails);
   }
-
+  companiesFollowed(){
+    this.netService.followed_companies(this.profileId).subscribe((data):any=>{
+     console.log(data);
+     this.companiesFollowedArray=data;
+    })
+  }
+  showActivity(){
+    this.netService.show_activity(this.userId).subscribe((data):any=>{
+      console.log(data);
+    //  this.companiesFollowedArray=data;
+    this.activityArray=data;
+     })
+  }
+  // exportAsPDF(_data)
+  // {
+  //   if(this.showPdf==false)
+  //   this.showPdf=true;
+  //   else
+  //   this.showPdf
+  //   //let data = document.querySelector(_data)
+  //   console.log(document.querySelector(_data))
+  //   let data = document.getElementById("MyDIv");  
+  //   console.log(data);
+  //   html2canvas(data).then(canvas => {
+  //     const contentDataURL = canvas.toDataURL('image/png')  
+  //     console.log(canvas)
+  //     let pdf = new jspdf('l', 'cm', 'a4'); //Generates PDF in landscape mode
+  //     // let pdf = new jspdf('p', 'cm', 'a4'); Generates PDF in portrait mode
+  //     pdf.addImage(contentDataURL, 'PNG', 0, 0, 29.7, 21.0);  
+  //     pdf.save('Filename.pdf');   
+  //   }); 
+  // }
+  // public exportAsPDF(_data)
+  // {
+  // var data = document.getElementById('MyDIv');
+  // html2canvas(data).then(canvas => {
+  // var imgWidth = 208;
+  // var pageHeight = 295;
+  // var imgHeight = canvas.height * imgWidth / canvas.width;
+  // var heightLeft = imgHeight;
+   
+  // const contentDataURL = canvas.toDataURL('image/png')
+  // let pdf = new jspdf('p', 'mm', 'a4'); 
+  // var position = 0;
+  // pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+  // pdf.save('new-file.pdf');
+  // });
+  // }
 }

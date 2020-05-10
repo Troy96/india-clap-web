@@ -280,3 +280,17 @@ svg>path {
 .notifi--number {
   margin-top: -10px;
 }
+.dropdown-submenu {
+  position: relative;
+}
+
+.drop-items2{
+  margin-left: -155px;
+}
+.drop-items3{
+  margin-left: -122px;
+
+}
+.nav-item2{
+  color: black !important;
+}

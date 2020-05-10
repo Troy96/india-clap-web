@@ -42,13 +42,21 @@
                 border-radius: 50%;" width="47px">
             </div>
             <div class="post-text">
-                <div style="display: flex; justify-content: flex-end; cursor: pointer;" (click)="deletePost(post.id)"
+                <div style="display: flex; justify-content: flex-end; cursor: pointer;" 
+                    class="post-item" ><img
+                        src="/assets/icons/1x/more-opt.png">
+                    <div class="drop-items">
+                        <p *ngIf="post?.author_user === currentUser" (click)="deletePost(post.id)">Delete this post</p>
+                        <p (click)="savePost(post.id)">Save this post</p>
+                    </div>
+                </div>
+                <!-- <div style="display: flex; justify-content: flex-end; cursor: pointer;" 
                     class="post-item" *ngIf="post?.author_user === currentUser"><img
                         src="/assets/icons/1x/more-opt.png">
                     <div class="drop-items">
-                        <p>Delete this post</p>
+                        <p>Save this post</p>
                     </div>
-                </div>
+                </div> -->
 
                 <div style="display: flex; flex-direction: column;">
 
