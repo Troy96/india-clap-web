@@ -31,6 +31,7 @@ export class VariousSectorsJobsComponent implements OnInit {
   jobFilters:any={};
   jobSort:number=0;
   ngOnInit() {
+    this.jobType='Active'
     this.jobService.queryJobList$
       .subscribe(jobSearchList => {
         if (!jobSearchList.length) {
@@ -108,7 +109,7 @@ export class VariousSectorsJobsComponent implements OnInit {
   getAllsaveJobs() {
     this.jobService.get_saved_jobs().subscribe(respObj => {
       respObj.map(job => {
-        console.log(job);
+      //  console.log(job);
         let temp = job.saved_job.split('/');
         let jobId = temp[temp.length - 2];
         this.savedJobMap.set(jobId, true)
@@ -126,6 +127,7 @@ export class VariousSectorsJobsComponent implements OnInit {
   }
 
   onSelectAllAndApply() {
+    
     this.jobService.select_all_jobs()
       .subscribe(respObj => {
         this.notifService.showSuccess(respObj['detail'], 'Job Alert');
@@ -133,6 +135,8 @@ export class VariousSectorsJobsComponent implements OnInit {
   }
 
   getJobsByInstantApply() {
+    this.jobFilters={}
+
     this.jobType='Instant';
 
     this.toggleInstantJobs = !this.toggleInstantJobs;
@@ -143,6 +147,8 @@ export class VariousSectorsJobsComponent implements OnInit {
       })
   }
   getJobsByActive(){
+    this.jobFilters={}
+
     this.jobType='Active';
     this.jobFilters.jobType=this.jobType;
     if(this.searchText&&this.searchText!='')
@@ -154,11 +160,13 @@ export class VariousSectorsJobsComponent implements OnInit {
     this.jobService.get_jobs_by_filters(this.jobFilters).subscribe(respObj => {
       this.jobList = [...respObj];
       this.hideJobFilters();
-
+      this.getAllsaveJobs();
+      this.getAllfavJobs();
     })
   }
   getJobsByArchive(){
     console.log(this.jobFilters)
+    this.jobFilters={}
 
     this.jobType='Archive';
     this.jobFilters.jobType=this.jobType;
@@ -171,10 +179,13 @@ export class VariousSectorsJobsComponent implements OnInit {
     this.jobService.get_jobs_by_filters(this.jobFilters).subscribe(respObj => {
       this.jobList = [...respObj];
       this.hideJobFilters();
-
+      this.getAllsaveJobs();
+      this.getAllfavJobs();
     })
   }
   getJobsByInstant(){
+    this.jobFilters={}
+
     this.jobType='Instant';
     this.jobFilters.jobType=this.jobType;
     if(this.searchText&&this.searchText!='')
@@ -191,11 +202,14 @@ export class VariousSectorsJobsComponent implements OnInit {
     this.jobService.get_jobs_by_filters(this.jobFilters).subscribe((respObj:any) => {
       this.jobList = [...respObj];
       this.hideJobFilters();
-
+      this.getAllsaveJobs();
+      this.getAllfavJobs();
     })
   }
 
   getJobsByTitle() {
+    this.jobFilters={}
+
     this.jobSort=1;
     this.jobFilters.jobType=this.jobType;
     if(this.searchText&&this.searchText!='')
@@ -212,11 +226,14 @@ export class VariousSectorsJobsComponent implements OnInit {
     this.jobService.get_jobs_by_filters(this.jobFilters).subscribe(respObj => {
       this.jobList = [...respObj];
       this.hideJobFilters();
-
+      this.getAllsaveJobs();
+      this.getAllfavJobs();
     })
   }
 
   getJobsByOpenings() {
+    this.jobFilters={}
+
     this.jobSort=2;
     this.jobFilters.jobType=this.jobType;
     if(this.searchText&&this.searchText!='')
@@ -245,23 +262,34 @@ export class VariousSectorsJobsComponent implements OnInit {
       this.jobService.get_jobs_by_filters(this.jobFilters).subscribe(respObj => {
         this.jobList = [...respObj];
         this.hideJobFilters();
-
-      })
+        this.getAllsaveJobs();
+        this.getAllfavJobs();     
+       })
   }
   jobsBySearch(){
+    this.jobFilters={}
   console.log(this.searchText)
-  this.jobFilters.jobType=this.jobType;
-  if(this.searchText&&this.searchText!='')
-  this.jobFilters.searchText=this.searchText;
-  if(this.jobSort==1)
-  this.jobFilters.ordering="job_title";
-  if(this.jobSort==2)
-  this.jobFilters.ordering="numOpenings"
-  this.jobService.get_jobs_by_filters(this.jobFilters).subscribe(respObj => {
-    this.jobList = [...respObj];
-    this.hideJobFilters();
+  if(this.searchText!='')
+  {
+    this.jobFilters.jobType=this.jobType;
+    if(this.searchText&&this.searchText!='')
+    this.jobFilters.searchText=this.searchText;
+    if(this.jobSort==1)
+    this.jobFilters.ordering="job_title";
+    if(this.jobSort==2)
+    this.jobFilters.ordering="numOpenings"
+    this.jobService.get_jobs_by_filters(this.jobFilters).subscribe(respObj => {
+      this.jobList = [...respObj];
+      this.hideJobFilters();
+      this.getAllsaveJobs();
+      this.getAllfavJobs();
+    })
+  }
+  else{
+    
+    this.ngOnInit();
+  }
 
-  })
   }
 
 }
