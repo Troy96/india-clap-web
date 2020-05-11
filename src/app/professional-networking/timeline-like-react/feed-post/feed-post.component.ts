@@ -101,7 +101,13 @@ export class FeedPostComponent implements OnInit {
     this.netService.delete_post(postId)
       .subscribe(respObj => {
         console.log(respObj);
-        this.getUserPosts();
+      })
+  }
+
+  deleteComment(postId, commentId) {
+    this.netService.delete_comment(postId, commentId)
+      .subscribe(respObj => {
+        this.getPostComments(postId);
       })
   }
 
