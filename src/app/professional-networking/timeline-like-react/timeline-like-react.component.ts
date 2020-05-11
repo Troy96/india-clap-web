@@ -15,7 +15,7 @@ declare var $: any;
   styleUrls: ['./timeline-like-react.component.css']
 })
 export class TimelineLikeReactComponent implements OnInit {
-  showModal:boolean=false;
+  showModal: boolean = false;
   showEmoji: Boolean = false;
   currentUser: any;
   currentUserDetails: any;
@@ -26,14 +26,14 @@ export class TimelineLikeReactComponent implements OnInit {
   photoVal: boolean = true;
   videoval: boolean = true;
   users: any[];
-  showReact:number=0;
-  allReactions:any=[];
-  numLiked:number=0;
-  numLoved:number=0;
-  numClapped:number=0;
-  numIdea:number=0;
-  numThink:number=0;
-  numAll:number=0;
+  showReact: number = 0;
+  allReactions: any = [];
+  numLiked: number = 0;
+  numLoved: number = 0;
+  numClapped: number = 0;
+  numIdea: number = 0;
+  numThink: number = 0;
+  numAll: number = 0;
   moment: any;
   @ViewChild('comment', { static: false }) commentRef: ElementRef
   constructor(
@@ -43,8 +43,8 @@ export class TimelineLikeReactComponent implements OnInit {
     private authService: AuthServices,
     private router: Router
   ) {
-    this.router.events.subscribe(e=>{
-      if(e instanceof NavigationEnd){
+    this.router.events.subscribe(e => {
+      if (e instanceof NavigationEnd) {
         const tree = this.router.parseUrl(this.router.url);
         console.log(tree)
       }
@@ -56,10 +56,7 @@ export class TimelineLikeReactComponent implements OnInit {
     })
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
     this.getUserPosts();
-    setTimeout(() => {
-      this.currentUserDetails = this.users.find(user => user.id === this.currentUser);
-      this.addUserDetails();
-    }, 5000);
+    this.currentUserDetails = this.users.find(user => user.id === this.currentUser);
     this.timelineUpdateForm = new FormGroup({
       text: new FormControl(""),
       video: new FormControl(""),
@@ -69,26 +66,25 @@ export class TimelineLikeReactComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
 
   getUserPosts() {
     this.netService.get_posts()
       .subscribe(respObj => {
         this.postList = [...respObj['Timeline Posts'], ...respObj['Shared Posts']];
-        console.log(this.postList)
         this.getPostsReactions();
       })
   }
 
-  addUserDetails() {
-    for (let post of this.postList) {
-      const user = this.users.find(user => user.id === post.author_user);
-      post.profile = user.photo;
-      post.first_name = user.first_name,
-        post.last_name = user.last_name
-    }
-  }
+  // addUserDetails() {
+  //   for (let post of this.postList) {
+  //     const user = this.users.find(user => user.id === post.author_user);
+  //     post.profile = user.photo;
+  //     post.first_name = user.first_name,
+  //       post.last_name = user.last_name
+  //   }
+  // }
 
   createStatus() {
 
@@ -103,10 +99,8 @@ export class TimelineLikeReactComponent implements OnInit {
         this.statusText = "";
         this.showToasterSuccess("Your Status has been updated")
         this.getUserPosts();
-        setTimeout(() => {
-          this.currentUserDetails = this.users.find(user => user.id === this.currentUser);
-          this.addUserDetails();
-        }, 5000);
+
+        this.currentUserDetails = this.users.find(user => user.id === this.currentUser);
         // this.ngOnInit();
         //  location.reload();
         this.timelineUpdateForm.patchValue({
@@ -155,7 +149,7 @@ export class TimelineLikeReactComponent implements OnInit {
         })
       this.netService.post_user_react_status(post.id)
         .subscribe(respObj => {
-        //  console.log(respObj)
+          //  console.log(respObj)
           if (respObj.detail === '1' || respObj.detail === '2' || respObj.detail === '3' || respObj.detail === '4') {
             post['isReacted'] = true
           }
@@ -246,54 +240,48 @@ export class TimelineLikeReactComponent implements OnInit {
 
         post['comments'] = respObj;
 
-        post['comments'].forEach(async comment=>{
+        post['comments'].forEach(async comment => {
           const resp = await this.netService.comment_user_like_status(comment['id'], comment['post']).toPromise();
-          const user = this.users.find(user=> user.id === comment.user);
           let isLiked: boolean = false;
-          if(resp.detail == 'True') isLiked = true;
-
-          comment['profile'] = user.photo;
-          comment['first_name'] = user.first_name;
-          comment['last_name'] = user.last_name;
+          if (resp.detail == 'True') isLiked = true;
           comment['isLiked'] = isLiked;
         })
-        console.log(post)
-          // (async function next(i){
-          //   console.log(respObj[i])
-          //   if(i == respObj.length) return;
-          //   that.netService.comment_user_like_status(respObj[i].id, respObj[i].post)
-          //   .subscribe(resp => {
-          //     const user = that.users.find(user => user.id === respObj[i].user);
-          //     if (!respObj[i].reply) {
-          //       let isLiked: boolean = false;
-          //       if (resp.detail === 'True') isLiked = true
-          //       post['comments'][respObj[i].id] = {
-          //         ...respObj[i],
-          //         profile: user.photo,
-          //         first_name: user.first_name,
-          //         last_name: user.last_name,
-          //         isLiked
-          //       }
-          //     }
-          //     else {
-          //       let isLiked: boolean = false;
-          //       if (resp.detail === 'True') isLiked = true
-          //       const commentObj = post['comments'][respObj[i].reply];
-          //       if(!!commentObj){
-          //         commentObj['reply'] = {
-          //           ...respObj[i],
-          //           profile: user.photo,
-          //           first_name: user.first_name,
-          //           last_name: user.last_name,
-          //           isLiked
-          //         }
-          //       }
-          //     }
-          //   })
-          //   setTimeout(async () => {
-          //     return await next(++i)
-          //   }, 2000);
-          // }(0))
+        // (async function next(i){
+        //   console.log(respObj[i])
+        //   if(i == respObj.length) return;
+        //   that.netService.comment_user_like_status(respObj[i].id, respObj[i].post)
+        //   .subscribe(resp => {
+        //     const user = that.users.find(user => user.id === respObj[i].user);
+        //     if (!respObj[i].reply) {
+        //       let isLiked: boolean = false;
+        //       if (resp.detail === 'True') isLiked = true
+        //       post['comments'][respObj[i].id] = {
+        //         ...respObj[i],
+        //         profile: user.photo,
+        //         first_name: user.first_name,
+        //         last_name: user.last_name,
+        //         isLiked
+        //       }
+        //     }
+        //     else {
+        //       let isLiked: boolean = false;
+        //       if (resp.detail === 'True') isLiked = true
+        //       const commentObj = post['comments'][respObj[i].reply];
+        //       if(!!commentObj){
+        //         commentObj['reply'] = {
+        //           ...respObj[i],
+        //           profile: user.photo,
+        //           first_name: user.first_name,
+        //           last_name: user.last_name,
+        //           isLiked
+        //         }
+        //       }
+        //     }
+        //   })
+        //   setTimeout(async () => {
+        //     return await next(++i)
+        //   }, 2000);
+        // }(0))
         console.log(this.postList)
       })
   }
@@ -338,7 +326,7 @@ export class TimelineLikeReactComponent implements OnInit {
     let obj: any = {};
     obj.flaggedReason = "";
     this.netService.report_post(id, obj).subscribe((data: any) => {
-    //  console.log(data);
+      //  console.log(data);
       this.showToasterSuccess("You have reported the Post!")
 
     },
@@ -356,7 +344,7 @@ export class TimelineLikeReactComponent implements OnInit {
 
   }
   reactType(id: any, _id: any) {
-   // console.log(id)
+    // console.log(id)
     if (this.showEmoji == true)
       this.showEmoji = false;
     else
@@ -366,104 +354,104 @@ export class TimelineLikeReactComponent implements OnInit {
     this.netService.post_reaction(_id, obj).subscribe((data) => {
       console.log(data);
       this.getPostsReactions()
-    //  this.showToasterSuccess("Thanks for reacting")
+      //  this.showToasterSuccess("Thanks for reacting")
     }, err => {
       this.showToasterError("Something went wrong")
     }
     )
   }
-  enter(ev,id) {
+  enter(ev, id) {
     this.showEmoji = true;
-    this.showReact=id;
+    this.showReact = id;
   }
   leave(ev, id) {
     this.showEmoji = false;
-    this.showReact=id;
+    this.showReact = id;
   }
   likeComment(commentId, postId) {
-   // console.log(commentId, postId);
+    // console.log(commentId, postId);
     this.netService.like_comment(commentId, postId).subscribe((data): any => {
       console.log(data);
       this.getPostComments(postId);
     })
   }
-  reactionPostId:number=0;
-  showAllReactions(ev,postId){
+  reactionPostId: number = 0;
+  showAllReactions(ev, postId) {
     this.reactionPostId = postId;
     // $("#resetModal").modal("show");
-    this.netService.get_all_reactions(postId).subscribe((data):any=>{
+    this.netService.get_all_reactions(postId).subscribe((data): any => {
       console.log(data);
-      this.allReactions=data;
+      this.allReactions = data;
     })
-    this.showModal=true;
+    this.showModal = true;
   }
-  closeAllReactions(ev){
+  closeAllReactions(ev) {
     // $("#resetModal").modal("hide");
-    this.showModal=false;
-    this.allReactions=[];
-    this.reactionPostId=0;
+    this.showModal = false;
+    this.allReactions = [];
+    this.reactionPostId = 0;
 
   }
-  all_reactions(){
-   // console.log("all");
-  //  this.reactionPostId=id;
+  all_reactions() {
+    // console.log("all");
+    //  this.reactionPostId=id;
     this.loveReactions();
     this.clapReactions();
     this.ideaReactions();
     this.thinkReactions();
     this.likeReactions();
-  //  this.numAll = this.numClapped+this.numIdea+this.numLoved+this.numThink+this.numLiked;
-   // console.log(this.numAll)
-    this.netService.get_all_reactions(this.reactionPostId).subscribe((data):any=>{
+    //  this.numAll = this.numClapped+this.numIdea+this.numLoved+this.numThink+this.numLiked;
+    // console.log(this.numAll)
+    this.netService.get_all_reactions(this.reactionPostId).subscribe((data): any => {
       console.log(data);
-      this.allReactions=data;
-      this.numAll=data.length;
+      this.allReactions = data;
+      this.numAll = data.length;
     })
   }
-  loveReactions(){
-  //  console.log("love");
-    this.netService.get_all_emojiReactions(2,this.reactionPostId).subscribe((data):any=>{
-    //  console.log(data);
-      this.numLoved=data.length;
-      this.allReactions=data;
+  loveReactions() {
+    //  console.log("love");
+    this.netService.get_all_emojiReactions(2, this.reactionPostId).subscribe((data): any => {
+      //  console.log(data);
+      this.numLoved = data.length;
+      this.allReactions = data;
     })
   }
-  clapReactions(){
-  //  console.log("clap");
-    this.netService.get_all_emojiReactions(1,this.reactionPostId).subscribe((data):any=>{
-    //  console.log(data);
-      this.numClapped=data.length;
-      this.allReactions=data;
+  clapReactions() {
+    //  console.log("clap");
+    this.netService.get_all_emojiReactions(1, this.reactionPostId).subscribe((data): any => {
+      //  console.log(data);
+      this.numClapped = data.length;
+      this.allReactions = data;
     })
   }
-  ideaReactions(){
-  //  console.log("idea");
-    this.netService.get_all_emojiReactions(3,this.reactionPostId).subscribe((data):any=>{
-   //   console.log(data);
-      this.numIdea=data.length;
-      this.allReactions=data;
+  ideaReactions() {
+    //  console.log("idea");
+    this.netService.get_all_emojiReactions(3, this.reactionPostId).subscribe((data): any => {
+      //   console.log(data);
+      this.numIdea = data.length;
+      this.allReactions = data;
     })
   }
-  thinkReactions(){
-  //  console.log("think");
-    this.netService.get_all_emojiReactions(4,this.reactionPostId).subscribe((data):any=>{
-  //    console.log(data);
-      this.numThink=data.length;
-      this.allReactions=data;
+  thinkReactions() {
+    //  console.log("think");
+    this.netService.get_all_emojiReactions(4, this.reactionPostId).subscribe((data): any => {
+      //    console.log(data);
+      this.numThink = data.length;
+      this.allReactions = data;
     })
   }
-  likeReactions(){
-  //  console.log("like");
-    this.netService.get_all_likeReactions(this.reactionPostId).subscribe((data):any=>{
-  //    console.log(data);
-      this.numLiked=data.length;
-      this.allReactions=data;
+  likeReactions() {
+    //  console.log("like");
+    this.netService.get_all_likeReactions(this.reactionPostId).subscribe((data): any => {
+      //    console.log(data);
+      this.numLiked = data.length;
+      this.allReactions = data;
     })
   }
   // showReactorProfile(profileId){
   //   this.router.navigate
   // }
-  likeReply(replyId,postId){
+  likeReply(replyId, postId) {
     this.netService.like_comment(replyId, postId).subscribe((data): any => {
       console.log(data);
       this.getPostComments(postId);

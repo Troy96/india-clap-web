@@ -1,5 +1,5 @@
 <div class="container">
-        <div class="post" id="{{post?.id}}">
+        <div class="post" id="{{post?.id}}" *ngIf="post">
             <div class="post-image" routerLink="/in/users/{{post?.author_user?.id}}" style="cursor: pointer;">
                 <img src="{{post?.author_user?.photo}}" style="display: block;
                 width: 70px;
@@ -17,7 +17,7 @@
 
                 <div style="display: flex; flex-direction: column;">
 
-                    <p class="teal" *ngIf="post.author_user" routerLink="/in/users/{{post?.author_user?.id}}"
+                    <p class="teal" *ngIf="post?.author_user" routerLink="/in/users/{{post?.author_user?.id}}"
                         style="cursor: pointer; text-decoration: underline;">{{post?.author_user?.first_name}} {{post?.author_user?.last_name}}
                     </p>
                     <p> {{moment(post?.created_on).fromNow()}}</p>
@@ -103,7 +103,7 @@
                 </div>
             </div>
 
-            <div class="sharethis-inline-share-buttons"></div>
+            <!-- <div class="sharethis-inline-share-buttons"></div> -->
 
             <a style="text-decoration: underline; cursor: pointer; position: relative; top: 10px; color: grey;"
                 (click)="getPostComments(post.id)">Load more comments...</a>
@@ -114,7 +114,7 @@
                         <img src="/assets/icons/1x/more-opt.png" width="12px">
                     </div> -->
                     <div class="post-image">
-                        <img src="{{data?.profile}}" style="display: block;
+                        <img src="{{data?.user?.photo}}" style="display: block;
                         width: 55px;
                         height: 55px;
                         border-radius: 50%;" width="47px">
@@ -132,7 +132,7 @@
                                 </div>
                             </div>
                             <div style="display: flex; justify-content: space-between;">
-                                <span id="teal">{{data?.first_name}} {{data?.last_name}}</span>
+                                <span id="teal">{{data?.user?.first_name}} {{data?.user?.last_name}}</span>
                                 <span>{{data?.timestamp | date}}</span>
                             </div>
 
@@ -147,16 +147,16 @@
                         </div>
                         <div style="display: flex;
                         justify-content: flex-end">
-                            <!-- <div class="post-image" *ngIf="data?.replies.length">
-                                <img src="{{data?.replies.length}}" style="display: block;
+                            <div class="post-image" *ngIf="data?.replies.length" style="margin-top: 20px;">
+                                <img src="{{data?.replies[0]?.user?.photo}}" style="display: block;
                             width: 55px;
                             height: 55px;
                             border-radius: 50%;" width="47px">
-                            </div> -->
+                            </div>
                             <div *ngIf="data?.replies.length" style="background-color: #f3f3f3; border-radius: 4px; width: 70%;
                             margin-top: 10px;
-                            margin-bottom: 10px; height: 60px; padding: 5px;">
-                                <span id="teal">Abbesh Chatterjee</span>
+                            margin-bottom: 10px; padding: 5px;">
+                                <span id="teal">{{data?.replies[0]?.user?.first_name}} {{data?.replies[0]?.user?.last_name}}</span>
                                 <small class="float-right">{{data?.replies[0].timestamp | date}}</small>
                                 <!-- <div style="display: flex; justify-content: space-between;"> -->
                                 <!-- <span id="teal">{{data?.reply?.first_name}}
@@ -228,4 +228,6 @@
         </div>
 
     </div>
+
+    <div class="no-data" *ngIf="!post">Loading...</div>
 </div>

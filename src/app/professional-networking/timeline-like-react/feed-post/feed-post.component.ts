@@ -104,10 +104,6 @@ export class FeedPostComponent implements OnInit {
   //     })
   // }
   getPostComments(postId) {
-    // this.netService.get_all_reactions(postId).subscribe((data):any=>{
-    //   console.log(data);
-    // })
-    const post = this.postList.find(post => post.id === postId);
     this.netService.get_post_comments(postId)
       .subscribe(respObj => {
         // this.netService.find_comment_liked().subscribe((data):any=>{
@@ -146,20 +142,14 @@ export class FeedPostComponent implements OnInit {
           if (a.id > b.id) return -1;
         })
 
-        post['comments'] = respObj;
+        this.post['comments'] = respObj;
 
-        post['comments'].forEach(async comment => {
+        this.post['comments'].forEach(async comment => {
           const resp = await this.netService.comment_user_like_status(comment['id'], comment['post']).toPromise();
-          const user = this.users.find(user => user.id === comment.user);
           let isLiked: boolean = false;
           if (resp.detail == 'True') isLiked = true;
-
-          comment['profile'] = user.photo;
-          comment['first_name'] = user.first_name;
-          comment['last_name'] = user.last_name;
           comment['isLiked'] = isLiked;
         })
-        console.log(post)
         // (async function next(i){
         //   console.log(respObj[i])
         //   if(i == respObj.length) return;
@@ -196,7 +186,6 @@ export class FeedPostComponent implements OnInit {
         //     return await next(++i)
         //   }, 2000);
         // }(0))
-        console.log(this.postList)
       })
   }
 

@@ -11,7 +11,7 @@
             <div class="notify-msg">
                 <span>
                     <!-- {{ data.text.split(' ')[0] }} {{ data.text.split(' ').slice(1, data.text.indexOf()).join(' ') }} {{ data.text.substring(data.text.length - 4) }} -->
-                    <span routerLink="/in/users/{{data.profile.id}}" style="cursor: pointer;">{{data.text.split(' ').slice(0, data.text.indexOf()).join(' ')}}</span><a style="cursor: pointer; text-decoration: none; color: #212529"  [routerLink]="['/in/feed']" fragment="{{data.url.split('/')[5]}}"> {{data.text.split(' ').slice(data.text.indexOf())[0]}}</a>
+                    <span routerLink="/in/users/{{data.profile.id}}" style="cursor: pointer;">{{data.text.split(' ').slice(0, data.text.indexOf()).join(' ')}}</span><a style="cursor: pointer; text-decoration: none; color: #212529"  routerLink="/in/feed/{{data.url.split('/')[5]}}"> {{data.text.split(' ').slice(data.text.indexOf())[0]}}</a>
                 </span>
             </div>
         </div>
