@@ -33,6 +33,16 @@
           </a>
         </li>
       </span>
+      <!-- <li class="nav-item active"  [routerLink]="['/professional-networking/me']" >
+        <a class="nav-link">
+          <i class="fa fa-envelope-o">
+            <img src="/assets/icons/1x/homeAsset.png " width="20px" height="25px" >
+          </i>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li> -->
+          <!-- </span> -->
+         
       <span tooltip="Notifications" placement="bottom" show-delay="500">
         <!-- <div id="notification" (click)="displaynotification()" style="display: block;">
           <li class="nav-item">
@@ -68,7 +78,7 @@
           </a>
         </li>
       </span>
-      <span tooltip="Job Center" placement="bottom" show-delay="500">
+      <!-- <span tooltip="Job Center" placement="bottom" show-delay="500">
         <li class="nav-item" [routerLink]="['/jobs/user-account']">
           <a class="nav-link">
             <i class="fa fa-envelope-o">
@@ -76,7 +86,25 @@
             </i>
           </a>
         </li>
-      </span>
+      </span> -->
+      <span  placement="bottom" show-delay="500">
+        <li class="nav-item" >
+          <a class="nav-link">
+            <i class="fa fa-envelope-o">
+              <img src="/assets/icons/1x/jobAsset.png " width="20px" height="25px" >
+            </i>
+          </a>
+          <div class="drop-items">
+            <p [routerLink]="['/jobs/various-sectors']">Search Jobs</p>
+            <hr>
+            <p [routerLink]="['/jobs/saved-jobs']">Saved Jobes</p>
+            <hr>
+            <p [routerLink]="['/jobs/applied-jobs']">Applied Jobs</p>
+            <hr>
+            <p [routerLink]="['/jobs/user-account']">Jobs Dashboard</p>
+          </div>
+        </li>
+            </span>
       <span tooltip="Learning Center" placement="bottom" show-delay="500">
         <li class="nav-item toLeft">
           <a class="nav-link">
@@ -104,6 +132,63 @@
           </a>
         </li>
       </span>
+      <!-- <span tooltip="Provider Center" placement="bottom" show-delay="500">
+        <li class="nav-item">
+          <a class="nav-link">
+            <i class="fa fa-envelope-o">
+              <img src="/assets/icons/1x/provider.png" width="20px" height="25px">
+            </i>
+          </a>
+        </li>
+      </span> -->
+      <span tooltip="Provider Center" placement="bottom" show-delay="500">
+        <li class="nav-item">
+          <a class="nav-link">
+            <i class="fa fa-envelope-o">
+              
+                <img src="/assets/icons/1x/provider.png" width="20px" height="25px">
+               
+            </i>
+          </a>
+          <div class="drop-items">
+            <div class="nav-item nav-item2">Job Provider
+              <div class="drop-items drop-items3">
+                <p>Create JPO</p><hr>
+                <p>Post Job</p><hr>
+                Jpo Dashboard<hr>
+              </div>
+            </div> 
+            <hr>
+            <div class="nav-item nav-item2 " style="margin-top: 10px;">
+              <p>Micro project provider</p>
+              
+            </div>
+            <hr>
+           
+            <div class="nav-item nav-item2">
+              <p>Training provider</p>
+              <div class="drop-items drop-items2">
+                <p>Register as TPO</p><hr>
+                <p>Post Content</p><hr>
+                TPO Dashboard<hr>
+              </div>
+            </div>
+            <hr>
+            <div class="nav-item nav-item2">
+              <p>Finance Provider</p>
+              <div class="drop-items drop-items2">
+                <p>Register as FPO</p><hr>
+                <p>Post Content</p><hr>
+                FPO Dashboard<hr>
+              </div>
+            </div>
+            <hr>
+            
+  
+          </div>
+        </li>
+      </span>
+     
       <li class="nav-item">
         <a class="nav-link">
           <i class="fa fa-envelope-o">

@@ -28,21 +28,21 @@
 
 @font-face {
     font-family: "proximaregular";
-    src: url("./../../../assets/fonts/proximaregular.woff") format("woff");
+    src: url("/assets/fonts/proximaregular.woff") format("woff");
     font-weight: normal;
     font-style: normal;
     }
 
 @font-face {
     font-family: "proximalight";
-    src: url("./../../../assets/fonts/proximalight.woff") format("woff");
+    src: url("/assets/fonts/proximalight.woff") format("woff");
     font-weight: normal;
     font-style: normal;
     }
 
 @font-face {
     font-family: "proximathin";
-    src: url("./../../../assets/fonts/proximathin.woff") format("woff");
+    src: url("/assets/fonts/proximathin.woff") format("woff");
     font-weight: normal;
     font-style: normal;
     }

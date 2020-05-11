@@ -1,4 +1,4 @@
-<div class="main-container">
+<div  class="main-container">
     <div class="container">
         <div class="jumbotron jumbotron-fluid" style="margin-top: 60px;">
             <div class="jumbotron-image" #coverImg [style]="coverImgStyle" *ngIf="userDetails?.photo"
@@ -38,6 +38,97 @@
             </div>
 
         </div>
+        <!-- <div *ngIf="showPdf" class="main-body" id="MyDIv">
+            <div class="float-left cont1">
+                <span class="contact">   
+                <b>Contact</b><br>
+                   www.xyz.com<br>
+                </span>
+                <div class="skills">
+                    <b>Top Skills</b><br>
+                    PHP<br>
+                    Web development<br>
+                    PHP<br>
+                    Web development<br>
+                </div>
+                <div class="skills">
+                    <b>Languages</b><br>
+                    Hindi<br>
+                    English<br>
+                    
+                </div>
+                <div class="skills">
+                    <b>Certificates</b><br>
+                    Python (Basic) Certificate<br>
+                    Python (Basic) Certificate<br>
+                    Python (Basic) Certificate<br>
+                    English<br>
+                    
+                </div>
+                   
+                
+        
+            </div>
+            <div class="float-right cont2">
+                <span class="basic-info">
+                <h4 style="font-size: 40px;">Abbesh Kumar</h4>
+                <b>Software Developer at Infosis,</b><br>
+                Chennai, India
+            </span>
+            <div class="Summary">
+                <h4>Summary</h4>
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                <hr class="hr">
+            </div>
+            <div class="Experience">
+                <h4>Experience</h4>
+                <div class="exp-body">
+                    <b>Reach Technology</b><br>
+                    Web Developer<br>
+                    jan 2020 - Present<br>
+                    <span style="color: gray;">Chennai, India</span>
+                </div>
+                <div class="exp-body">
+                    <b>Reach Technology</b><br>
+                    Web Developer<br>
+                    jan 2020 - Present<br>
+                    <span style="color: gray;">Chennai, India</span>
+                </div>
+                <div class="exp-body">
+                    <b>Reach Technology</b><br>
+                    Web Developer<br>
+                    jan 2020 - Present<br>
+                    <span style="color: gray;">Chennai, India</span>
+                </div>
+                <div class="exp-body">
+                    <b>Reach Technology</b><br>
+                    Web Developer<br>
+                    jan 2020 - Present<br>
+                    <span style="color: gray;">Chennai, India</span>
+                </div>
+                <div class="exp-body">
+                    <b>Reach Technology</b><br>
+                    Web Developer<br>
+                    jan 2020 - Present<br>
+                    <span style="color: gray;">Chennai, India</span>
+                </div>
+                <hr class="hr">
+            </div>
+            <div class="Education">
+                <h4>Education</h4>
+                <div class="edu-body">
+                    <b>SHRI RAM MURTI SMARAK COLLEGE OF ENGINEERING &
+                        TECHNOLOGY</b><br>
+                        Master of Computer Applications (MCA), Computer Science · (2015 - 2017)
+                </div>
+                <div class="edu-body">
+                    <b>SHRI RAM MURTI SMARAK COLLEGE OF ENGINEERING &
+                        TECHNOLOGY</b><br>
+                        Master of Computer Applications (MCA), Computer Science · (2015 - 2017)
+                </div>
+            </div>
+            </div>
+        </div> -->
         <div class="mainbody">
 
             <div class="place">
@@ -253,10 +344,65 @@
                         [attr.src]="videoUrl" (loadedmetadata)="validateVideoDuration($event)">
                     </video>
                 </div>
+               
+                
             </div>
+            <div id="headline" class="recommendation" style="padding: 40px;">
+                <div class="reco-nav">
+                <h3 style="margin-bottom: 20px;">Recommendations</h3>
+                <span class="Recieved" style="color: gray;">Recieved (1)</span><span class="Given" style="margin-left: 35px; color: gray;">Given (2)</span>
+            </div>
+                <div class="reco-body">
+                <div class="float-left  reco-pro">
+                <img src="/assets/icons/1x/dp.png" width="75px" class="float-left  reco-dp">
+                <div class="reco-info">
+                    <b>Web Developer at Tata consultancy</b><br>
+                    Pune<br>
+                    Maharastra
+
+                </div>
+            </div>
+            <div class="reco-txt">
+                <span>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </span>
+            </div>
+        </div>
+        <div class="reco-body">
+            <div class="float-left  reco-pro">
+            <img src="/assets/icons/1x/dp.png" width="75px" class="float-left  reco-dp">
+            <div class="reco-info">
+                <b>Web Developer at Tata consultancy</b><br>
+                Pune<br>
+                Maharastra
+
+            </div>
+        </div>
+        <div class="reco-txt">
+            <span>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </span>
+        </div>
+    </div>
+    <div class="see-all">
+        <h4>See All</h4>
+    </div>
+            </div>
+      
             <div class="interests2" id="headline" style="padding: 40px;">
                 <h3>Interests</h3>
+                <div *ngFor="let company of companiesFollowedArray">
                 <div class="interest-card">
+                    <img *ngIf="company.logo" src={{company.logo}} class="float-left" width="80px" height="80px">
+                    <img *ngIf="!company.logo" alt="" class="float-left" width="80px" height="80px">
+
+                    <div class="interest-followers">
+                        <b>{{company.name}}</b><br>
+                        {{company.followers}} followers
+                    </div>
+                </div>
+            </div>
+                <!-- <div class="interest-card">
                     <img src="/assets/icons/1x/image1.jpg" class="float-left" width="80px" height="80px">
                     <div class="interest-followers">
                         <b>Company_Name</b><br>
@@ -283,38 +429,24 @@
                         <b>Company_Name</b><br>
                         2000 followers
                     </div>
-                </div>
-                <div class="interest-card">
-                    <img src="/assets/icons/1x/image1.jpg" class="float-left" width="80px" height="80px">
-                    <div class="interest-followers">
-                        <b>Company_Name</b><br>
-                        2000 followers
-                    </div>
-                </div>
+                </div> -->
                 <div class="see-all">
                     <h4>See All</h4>
                 </div>
             </div>
             <div class="interests2" id="headline" style="padding: 40px;"><span class="float-right see-all2">See all</span>
                 <h3>Activity</h3><span class="float-left" style="color: gray;">1500 followers</span><br>
-                
+                <div *ngFor="let activity of activityArray">
                 <div class="activity-card">
                     <img src="/assets/icons/1x/image1.jpg" class="float-left" width="80px" height="80px">
                     <div class="activity-text">
-                        <b>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</b><br>
-                        2 reactions<br>
-                        2000 likes
+                        <b>You commented on a post</b><br>
+                        <br>
+                      
                     </div>
                 </div>
-                <div class="activity-card">
-                    <img src="/assets/icons/1x/image1.jpg" class="float-left" width="80px" height="80px">
-                    <div class="activity-text">
-                        <b>"Lorem ipsum dolor sit amet, .</b><br>
-                        2 reactions<br>
-                        2000 reactions
-                    </div>
                 </div>
-                <div class="activity-card">
+                <!-- <div class="activity-card">
                     <img src="/assets/icons/1x/image1.jpg" class="float-left" width="80px" height="80px">
                     <div class="activity-text">
                         <b>"Lorem ipsum dolor sit amet, .</b><br>
@@ -330,6 +462,14 @@
                         2000 reactions
                     </div>
                 </div>
+                <div class="activity-card">
+                    <img src="/assets/icons/1x/image1.jpg" class="float-left" width="80px" height="80px">
+                    <div class="activity-text">
+                        <b>"Lorem ipsum dolor sit amet, .</b><br>
+                        2 reactions<br>
+                        2000 reactions
+                    </div>
+                </div> -->
                
                 
                
@@ -361,5 +501,101 @@
 
 
 </div>
+<!-- <div  id="MyDIv">
+<div  class="main-body">
+    <div class="float-left cont1">
+        <span class="contact">   
+        <b>Contact</b><br>
+           www.xyz.com<br>
+        </span>
+        <div class="skills">
+            <b>Top Skills</b><br>
+            PHP<br>
+            Web development<br>
+            PHP<br>
+            Web development<br>
+        </div>
+        <div class="skills">
+            <b>Languages</b><br>
+            Hindi<br>
+            English<br>
+            
+        </div>
+        <div class="skills">
+            <b>Certificates</b><br>
+            Python (Basic) Certificate<br>
+            Python (Basic) Certificate<br>
+            Python (Basic) Certificate<br>
+            English<br>
+            
+        </div>
+           
+        
+
+    </div>
+    <div class="float-right cont2">
+        <span class="basic-info">
+        <h4 style="font-size: 40px;">Abbesh Kumar</h4>
+        <b>Software Developer at Infosis,</b><br>
+        Chennai, India
+    </span>
+    <div class="Summary">
+        <h4>Summary</h4>
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        <hr class="hr">
+    </div>
+    <div class="Experience">
+        <h4>Experience</h4>
+        <div class="exp-body">
+            <b>Reach Technology</b><br>
+            Web Developer<br>
+            jan 2020 - Present<br>
+            <span style="color: gray;">Chennai, India</span>
+        </div>
+        <div class="exp-body">
+            <b>Reach Technology</b><br>
+            Web Developer<br>
+            jan 2020 - Present<br>
+            <span style="color: gray;">Chennai, India</span>
+        </div>
+        <div class="exp-body">
+            <b>Reach Technology</b><br>
+            Web Developer<br>
+            jan 2020 - Present<br>
+            <span style="color: gray;">Chennai, India</span>
+        </div>
+        <div class="exp-body">
+            <b>Reach Technology</b><br>
+            Web Developer<br>
+            jan 2020 - Present<br>
+            <span style="color: gray;">Chennai, India</span>
+        </div>
+        <div class="exp-body">
+            <b>Reach Technology</b><br>
+            Web Developer<br>
+            jan 2020 - Present<br>
+            <span style="color: gray;">Chennai, India</span>
+        </div>
+        <hr class="hr">
+    </div>
+    <div class="Education">
+        <h4>Education</h4>
+        <div class="edu-body">
+            <b>SHRI RAM MURTI SMARAK COLLEGE OF ENGINEERING &
+                TECHNOLOGY</b><br>
+                Master of Computer Applications (MCA), Computer Science · (2015 - 2017)
+        </div>
+        <div class="edu-body">
+            <b>SHRI RAM MURTI SMARAK COLLEGE OF ENGINEERING &
+                TECHNOLOGY</b><br>
+                Master of Computer Applications (MCA), Computer Science · (2015 - 2017)
+        </div>
+    </div>
+    </div>
+</div>
+</div> -->
+<!-- <input type="button" value="Convert" (click)="exportAsPDF('MyDIv')"/> -->
+
+<!-- <button (click)="exportAsPDF('MyDIv')">pdf</button> -->
 
 <app-contact-info *ngIf="(contactInfo.content$ | async).show"></app-contact-info>

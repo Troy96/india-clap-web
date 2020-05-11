@@ -457,4 +457,11 @@ export class TimelineLikeReactComponent implements OnInit {
       this.getPostComments(postId);
     })
   }
+  savePost(postId){
+    this.netService.save_post(postId)
+    .subscribe(respObj => {
+      console.log(respObj);
+      this.getUserPosts();
+    })
+  }
 }

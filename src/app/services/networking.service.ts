@@ -153,4 +153,15 @@ export class NetworkingService {
 
   }
 
+  save_post(postId){
+    return this.http.get(`${config.base_url}/Networking/timelinePosts/${postId}/save/`);
+
+  }
+  followed_companies(id){
+    return this.http.get(`${config.base_url}/Users/profiles/${id}/companys/followed`);
+
+  }//Networking/activity/user_id
+  show_activity(id){
+    return this.http.get(`${config.base_url}/Networking/activity/${id}`);
+  }
 }

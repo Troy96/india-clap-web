@@ -3,6 +3,7 @@
         <h2>Jobs you have saved</h2>
     </div>
     <div class="place" *ngIf="savedJobList?.length">
+        <h4 style="text-align: center;"> Number of Saved Jobs - {{savedJobList.length}}</h4>  
         <div class="card" style="width: 100%;" *ngFor="let job of jobDetailList">
             <div class="card-body">
                 <div id="symbols">

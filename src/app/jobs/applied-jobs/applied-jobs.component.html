@@ -3,6 +3,7 @@
         <h2>Jobs you have applied for</h2>
     </div>
     <div class="place" *ngIf="appliedJobList?.length">
+     <h4 style="text-align: center;"> Number of Applied Jobs - {{appliedJobList.length}}</h4>  
         <div class="card" style="width: 100%;" *ngFor="let appliedJob of appliedJobList">
             <div class="card-body">
                 <div id="symbols">

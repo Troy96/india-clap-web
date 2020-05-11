@@ -1,5 +1,6 @@
-<div class="mainbody">
-    <div class="header">
+<!-- <div class="container"> -->
+<!-- <div class="mainbody"> -->
+    <!-- <div class="header">
         <h2>Search for jobs</h2>
         <div id="button">
             <button type="submit" class="btn btn-primary hbtn" (click)="getJobsByInstantApply()">Instant Apply</button>
@@ -12,7 +13,37 @@
 
             </button>
         </div>
-    </div>
+    </div> -->
+    <!-- <div class="header">
+        <div class="float-left job-search">
+          <input class="form-control" placeholder="Search">
+          <img src="./../../../assets/icons/1x/Asset 1.png" width="20px" class="float-right" style="margin-top: -30px; margin-right: 10px; z-index: 500; background-color: white;">
+        </div>
+        
+        
+        <div class="float-right dropdown" >
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Instant
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li class="drop-opt" style="padding-left: 10px;"><a href="#">Active</a></li>
+            <li class="drop-opt" style="padding-left: 10px;"><a href="#">Archive</a></li>
+          </ul>
+        </div>
+        <div class="float-right" id="filter" >
+          <button type="button" class="btn ">
+
+          <img src="./../../../assets/icons/1x/Filter.png" alt="" width="22" height="25" >
+
+          </button>
+        </div>
+        
+        
+        
+      </div>
+    <div class="instant-buttons">
+        <button class="btn btn-primary ins-btn">Select all and Apply</button>
+        <button class="btn btn-primary ins-btn">Instant Apply jobs</button>
+      </div>
     <div class="place">
         <form [formGroup]='instantApplyForm'>
             <h3>Salary</h3>
@@ -49,5 +80,123 @@
                 <i class="glyphicon glyphicon-search "><img src="/assets/icons/1x/button.png" width="50px"></i>
             </button>
         </form>
+    </div> -->
+<!-- </div> -->
+<!-- </div> -->
+
+<div class="mainbody">
+    <div class="header">
+      <div class="float-left job-search">
+        <input class="form-control" placeholder="Search">
+        <img src="assets/icons/1x/Asset 1.png" width="20px" class="float-right" style="margin-top: -30px; margin-right: 10px; z-index: 500; background-color: white;">
+      </div>
+      
+      
+      <div class="float-right dropdown" >
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Instant
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li class="drop-opt" style="padding-left: 10px;"><a href="#">Active</a></li>
+          <li class="drop-opt" style="padding-left: 10px;"><a href="#">Archive</a></li>
+        </ul>
+      </div>
+      <div class="float-right" id="filter" >
+        <button type="button" class="btn ">
+
+        <img src="assets/icons/1x/Filter.png" alt="" width="22" height="25" >
+
+        </button>
+      </div>
+      
+      
+      
     </div>
-</div>
+    <div class="instant-buttons">
+    <button class="btn btn-primary ins-btn">Select all and Apply</button>
+    <button class="btn btn-primary ins-btn">Instant Apply jobs</button>
+  </div>
+    <div class="place">
+    <div class="card" style="width: 100%;">
+        <div class="card-body">
+          <div id="symbols">
+            <span id="space1">Apply</span>
+
+              <img src="assets/icons/1x/star.png" alt="" width="14px" height="14px">
+              <span id="space"></span>
+              <img src="assets/icons/1x/save.png" alt="" width="10px" height="15">
+          </div>
+            <img class="card-img" src="assets/icons/1x/bulb.png"  alt="Card image cap">
+
+          <div id="crdtxt">
+          <a href="">  <h4 class="card-title">Accounting</h4>
+          <span class="card-text">Gurgao, India</span><br>
+          <span class="card-text">Creative Head</span>
+        </a>
+        </div>
+        
+        </div>
+      </div>
+      <div class="card" style="width: 100%;">
+        <div class="card-body">
+          <div id="symbols">
+            <span id="space1">Apply</span>
+
+              <img src="icons/1x/star.png" alt="" width="14px" height="14px">
+              <span id="space"></span>
+              <img src="icons/1x/save.png" alt="" width="10px" height="15">
+          </div>
+            <img class="card-img" src="icons/1x/logo1.png"  alt="Card image cap">
+
+          <div id="crdtxt">
+            <a href="">
+            <h4 class="card-title">Magmaven Industries</h4>
+          <span class="card-text">California, USA</span><br>
+          <span class="card-text">UI Designer</span></a>
+        </div>
+        
+        </div>
+      </div>
+      <div class="card" style="width: 100%;">
+        <div class="card-body">
+            <div id="symbols">
+              <span id="space1">Apply</span>
+
+                <img src="icons/1x/star.png" alt="" width="14px" height="14px">
+                <span id="space"></span>
+                <img src="icons/1x/save.png" alt="" width="10px" height="15">
+            </div>
+            <img class="card-img" src="icons/1x/logo3.png"  alt="Card image cap">
+
+          <div id="crdtxt">
+            <a href="">
+            <h4 class="card-title">Crifford Grace</h4>
+          <span class="card-text">Gurgao, India</span><br>
+          <span class="card-text">Creative Head</span></a>
+        </div>
+        
+        </div>
+      </div>
+      <div class="card" style="width: 100%;">
+        <div class="card-body">
+          
+          <div id="symbols">
+            <span id="space1">Apply</span>
+
+              <img src="icons/1x/star.png" alt="" width="14px" height="14px">
+              <span id="space"></span>
+              <img src="icons/1x/save.png" alt="" width="10px" height="15">
+          </div>
+            <img class="card-img" src="icons/1x/Logo4.png"  alt="Card image cap">
+
+          <div id="crdtxt">
+            <a href="">
+            <h4 class="card-title">Gajendra Telecomunication</h4>
+          <span class="card-text">Gurgao, India</span><br>
+          <span class="card-text">Creative Head</span></a>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+      </div>
+ 
