@@ -1,14 +1,14 @@
 <div class="container">
         <div class="post" id="{{post?.id}}">
-            <div class="post-image" routerLink="/in/users/{{post?.author_user}}" style="cursor: pointer;">
-                <img src="{{post?.profile}}" style="display: block;
+            <div class="post-image" routerLink="/in/users/{{post?.author_user?.id}}" style="cursor: pointer;">
+                <img src="{{post?.author_user?.photo}}" style="display: block;
                 width: 70px;
                 height: 70px;
                 border-radius: 50%;" width="47px">
             </div>
             <div class="post-text">
                 <div style="display: flex; justify-content: flex-end; cursor: pointer;" (click)="deletePost(post.id)"
-                    class="post-item" *ngIf="post?.author_user === currentUser"><img
+                    class="post-item" *ngIf="post?.author_user?.id === currentUser"><img
                         src="/assets/icons/1x/more-opt.png">
                     <div class="drop-items">
                         <p>Delete this post</p>
@@ -17,8 +17,8 @@
 
                 <div style="display: flex; flex-direction: column;">
 
-                    <p class="teal" *ngIf="post.author_user" routerLink="/in/users/{{post?.author_user}}"
-                        style="cursor: pointer; text-decoration: underline;">{{post?.first_name}} {{post?.last_name}}
+                    <p class="teal" *ngIf="post.author_user" routerLink="/in/users/{{post?.author_user?.id}}"
+                        style="cursor: pointer; text-decoration: underline;">{{post?.author_user?.first_name}} {{post?.author_user?.last_name}}
                     </p>
                     <p> {{moment(post?.created_on).fromNow()}}</p>
                     <p *ngIf="post?.text"> {{post?.text}}</p>
@@ -193,7 +193,6 @@
                 </div>
             </ng-container>
         </div>
-    </ng-container>
     <div *ngIf="showModal" class="experience" id="resetModal">
         <div class="cont experience-body" style="cursor:pointer;">
             <img (click)="closeAllReactions($event)" src="./../../../assets/icons/1x/cancel.png" width="17px"

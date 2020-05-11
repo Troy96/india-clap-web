@@ -31,6 +31,10 @@ export class NetworkingService {
     return this.http.get<any>(`${config.base_url}/Networking/timelinePosts`);
   }
 
+  get_post_by_id(postId) {
+    return this.http.get<any>(`${config.base_url}/Networking/timelinePosts/${postId}/`);
+  }
+
   create_post($data, userId) {
     const formData = new FormData();
     formData.append('text', $data.text);
@@ -45,7 +49,7 @@ export class NetworkingService {
     return this.http.get(`${config.base_url}/Networking/timelinePosts/${postId}/delete/`);
   }
 
-  delete_comment(postId: number, commentId: number){
+  delete_comment(postId: number, commentId: number) {
     return this.http.get(`${config.base_url}/Networking/timelinePosts/${postId}/comment/${commentId}/delete/`)
   }
 
@@ -124,29 +128,29 @@ export class NetworkingService {
   get_connection_status(userId: number) {
     return this.http.get<any>(`${config.base_url}/Users/profiles/${userId}/status`);
   }
-  like_comment(commentId,postId){
+  like_comment(commentId, postId) {
     return this.http.get<any>(`${config.base_url}/Networking/timelinePosts/${postId}/comment/${commentId}/like`);
 
   }
-  comment_user_like_status(commentId,postId){
+  comment_user_like_status(commentId, postId) {
     return this.http.get<any>(`${config.base_url}/Networking/timelinePosts/${postId}/comment/${commentId}/liked_or_not`);
 
   }
-  post_user_react_status(postId){
+  post_user_react_status(postId) {
     return this.http.get<any>(`${config.base_url}/Networking/timelinePosts/${postId}/reacted_or_not`);
 
   }
-  get_all_reactions(postId){
+  get_all_reactions(postId) {
     return this.http.get<any>(`${config.base_url}/Networking/timelinePosts/${postId}/reactions/all`);
 
   }
-  get_all_emojiReactions(id,postId){
+  get_all_emojiReactions(id, postId) {
     return this.http.get<any>(`${config.base_url}/Networking/timelinePosts/${postId}/reactions/${id}/`);
 
   }
-  get_all_likeReactions(postId){
+  get_all_likeReactions(postId) {
     return this.http.get<any>(`${config.base_url}/Networking/timelinePosts/${postId}/reactions/likes/`);
 
   }
-  
+
 }
