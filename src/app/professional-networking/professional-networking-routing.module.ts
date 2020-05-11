@@ -19,6 +19,7 @@ import { AcceptDeclineRequestComponent } from './accept-decline-request/accept-d
 import { ResetPasswordPageComponent } from './reset-password-page/reset-password-page.component';
 import { MynetworkComponent } from './mynetwork/mynetwork.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { FeedPostComponent } from './timeline-like-react/feed-post/feed-post.component';
 
 const routes: Routes = [
   {
@@ -39,7 +40,8 @@ const routes: Routes = [
       { path: 'change-password', component: ResetPasswordPageComponent },
       { path: 'mynetwork', component: MynetworkComponent },
       { path: 'notifications', component: NotificationsComponent },
-      { path: ':slug', component: MyProfileEditableComponent }
+      { path: ':slug', component: MyProfileEditableComponent },
+      { path: 'feed/:postId', component: FeedPostComponent }
     ]
   },
 ];

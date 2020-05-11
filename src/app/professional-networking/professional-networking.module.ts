@@ -32,6 +32,7 @@ import { MynetworkComponent } from './mynetwork/mynetwork.component';
 import { ContactInfoComponent } from './my-profile-editable/contact-info/contact-info.component';
 import { ContactUsElseComponent } from './someone-else-profile/contact-us-else/contact-us-else/contact-us-else.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { FeedPostComponent } from './timeline-like-react/feed-post/feed-post.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
     MynetworkComponent,
     ContactInfoComponent,
     ContactUsElseComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    FeedPostComponent
   ],
   imports: [
     CommonModule,
