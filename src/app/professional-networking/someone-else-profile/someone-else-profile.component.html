@@ -125,7 +125,7 @@
                                 {{exp.degree}},
                                 {{exp.study_field}}<br>
                                 Grade - {{exp.grade}}<br>
-                                {{exp.link}}<br>
+                                <a href="{{exp.href}}" target="_blank">{{exp.link}}</a><br>
                                 <p *ngIf="exp.is_present">
                                     {{exp?.start_year}} --
                                     Present</p>
