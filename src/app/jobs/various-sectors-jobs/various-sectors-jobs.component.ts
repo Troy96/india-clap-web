@@ -31,7 +31,7 @@ export class VariousSectorsJobsComponent implements OnInit {
   jobFilters:any={};
   jobSort:number=0;
   ngOnInit() {
-    this.jobType='Active'
+   // this.jobType='Active'
     this.jobService.queryJobList$
       .subscribe(jobSearchList => {
         if (!jobSearchList.length) {
@@ -244,7 +244,7 @@ export class VariousSectorsJobsComponent implements OnInit {
     this.jobFilters.ordering="numOpenings"
     let filter = '';
     this.toggleFilter = !this.toggleFilter;
-    (this.toggleFilter) ? filter = 'numOfOpenings' : filter = '-numOfOpenings';
+    (this.toggleFilter) ? filter = 'numOpenings' : filter = '-numOpenings';
     // this.jobService.get_jobs_by_openings(filter)
     //   .subscribe(respObj => {
     //     this.jobList = [...respObj];
@@ -267,10 +267,10 @@ export class VariousSectorsJobsComponent implements OnInit {
        })
   }
   jobsBySearch(){
-    this.jobFilters={}
   console.log(this.searchText)
   if(this.searchText!='')
-  {
+  { 
+    this.jobFilters={}
     this.jobFilters.jobType=this.jobType;
     if(this.searchText&&this.searchText!='')
     this.jobFilters.searchText=this.searchText;
@@ -286,8 +286,17 @@ export class VariousSectorsJobsComponent implements OnInit {
     })
   }
   else{
-    
-    this.ngOnInit();
+    delete this.jobFilters['searchText'];
+    if(this.jobType=='Active'){
+    this.getJobsByActive();
+    }
+    else if(this.jobType=='Instant'){
+    this.getJobsByInstant();
+    }
+    else{
+    this.getJobsByArchive();
+    }
+  //  this.ngOnInit();
   }
 
   }

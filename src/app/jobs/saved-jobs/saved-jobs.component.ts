@@ -59,6 +59,7 @@ export class SavedJobsComponent implements OnInit {
     this.jobService.unsave_job(job.id)
       .subscribe(respObj => {
         console.log(respObj)
+        this.ngOnInit();
       })
   }
 

@@ -174,7 +174,7 @@ export class JobsService {
           return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=job_title&&search=${$data.searchText}&&is_active=false`);
         }
       }
-      if($data.ordering&&$data.ordering=='numOfOpenings')
+      if($data.ordering&&$data.ordering=='numOpenings')
       {
         if($data.jobType=='Active'){
           return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=${$data.filter}&&search=${$data.searchText}&&is_active=true`);
@@ -212,7 +212,7 @@ export class JobsService {
         }
       //  return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=job_title&&is_active=true&&is_instant=true`);
       }
-      if($data.ordering&&$data.ordering=='numOfOpenings')
+      if($data.ordering&&$data.ordering=='numOpenings')
       {
         // return this.http.get<any[]>(`${config.base_url}/JobMarket/jobs?ordering=${$data.filter}&&is_active=true&&is_instant=true`);
         if($data.jobType=='Active'){
