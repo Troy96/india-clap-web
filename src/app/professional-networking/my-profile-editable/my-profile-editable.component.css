@@ -642,3 +642,52 @@ margin: 0;
       word-spacing: 8px;
       font-size: 30px;
   }
+  @media(min-width: 400px){
+      .user-companies{
+         float: right;
+         display: inline !;
+         margin-top: 10px;
+      }
+      #jumbotron-text {
+          border: 1px gray solid;
+          background-color: white;
+          height: 250px;
+          -webkit-box-shadow: 0 8px 6px -6px gray;
+          -moz-box-shadow: 0 8px 6px -6px gray;
+          box-shadow: 0 8px 6px -6px gray;
+          word-wrap: break-word;
+        }
+        .container{
+              max-width: 100%;
+            
+        }
+        .jmb-img{
+          margin-top: 150px;
+      }
+     }
+     @media(min-width: 1100px){
+      .user-companies{
+         float: right;
+         display: flex;
+         flex-direction: column;
+         margin-top: -70px;
+      }
+      #jumbotron-text {
+          border: 1px gray solid;
+          background-color: white;
+          height: 180px;
+          -webkit-box-shadow: 0 8px 6px -6px gray;
+          -moz-box-shadow: 0 8px 6px -6px gray;
+          box-shadow: 0 8px 6px -6px gray;
+        
+        }
+        .container{
+          max-width: 1150px;
+          
+      }
+      .jmb-img{
+          margin-top: 150px;
+      }
+     }
+     .main-container{
+     }
