@@ -65,7 +65,7 @@ export class InputModalComponent implements OnInit {
       }
         break;
       case 'Experience': {
-        this.labels = ['Name of the company/corporation', 'Start date', 'End date', 'Name of Role', 'Job Responibilities'];
+        this.labels = ['Name of the organization', 'Start date', 'End date', 'Name of Role', 'Job Responibilities'];
         this.placeholders = ['', 'YYYY-MM-DD', 'YYYY-MM-DD', '', '']
         if (this.inputData.isInputForm) {
           this.inputForm = this.fb.group({
