@@ -250,12 +250,11 @@ export class InputModalComponent implements OnInit {
           }
             break;
             case 'Award': {
-              this.labels = ['Title', 'Issued by','Issue month','Issue year','Descripion']
-              this.placeholders = ['Enter Award Title', 'Issued by','Enter Month Number (1 for January)','Year (e.g 2020)','Description']
+              this.labels = ['Title', 'Issued by','Issue date','Descripion']
+              this.placeholders = ['Enter Award Title', 'Issued by','Enter date in YYYY-MM (e.g., 2020-04)','Description']
               if (this.inputData.isInputForm) {
                 this.inputForm = this.fb.group({
                   profile: this.fb.array([
-                    this.fb.control(''),
                     this.fb.control(''),
                     this.fb.control(''),
                     this.fb.control(''),
@@ -270,8 +269,7 @@ export class InputModalComponent implements OnInit {
                   profile: this.fb.array([
                     this.fb.control(data['title']),
                     this.fb.control(data['issuer']),
-                    this.fb.control(data['issue_month']),
-                    this.fb.control(data['issue_year']),
+                    this.fb.control(data['issue_time']),
                     this.fb.control(data['desc']),
 
                   ])
@@ -406,9 +404,8 @@ export class InputModalComponent implements OnInit {
         this.authService.add_award({
           title: this.inputForm.get('profile').value[0],
           issuer: this.inputForm.get('profile').value[1],
-          issue_month: this.inputForm.get('profile').value[2],
-          issue_year: this.inputForm.get('profile').value[3],
-          desc: this.inputForm.get('profile').value[4],
+          issue_time: this.inputForm.get('profile').value[2],
+          desc: this.inputForm.get('profile').value[3],
           user: this.currentProfileId
         }).subscribe(_ => {
           this.myProfileService.updateUserDetails();
