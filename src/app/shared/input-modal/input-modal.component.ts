@@ -515,9 +515,8 @@ export class InputModalComponent implements OnInit {
         this.authService.update_award(this.inputData.data.id, {
           title: this.editForm.get('profile').value[0],
           issuer: this.editForm.get('profile').value[1],
-          issue_month: this.editForm.get('profile').value[2],
-          issue_year: this.editForm.get('profile').value[3],
-          desc:this.editForm.get('profile').value[4],
+          issue_time: this.editForm.get('profile').value[2],
+          desc:this.editForm.get('profile').value[3],
           user: this.currentProfileId,
         }).subscribe(_ => {
           this.myProfileService.updateUserDetails();
