@@ -15,7 +15,7 @@
                     <img *ngIf="job?.isFav" src="/assets/icons/1x/bookmark_fill.png" (click)="onUnFavouriteJob($event, job.id)" style="cursor: pointer;" alt="" width="10px" height="12">
 
                 </div>
-                <img class="card-img" src="/assets/icons/1x/bulb.png" alt="Card image cap">
+                <img class="card-img" src={{job?.company?.logo}} alt="Card image cap" style="width: 50px; height: 50px; border-radius: 50%;">
                 <div id="crdtxt">
                     <a style="cursor: pointer;">
                         <h4 class="card-title" routerLink="/jobs/description/{{job?.id}}">{{job?.job_desc}}</h4>

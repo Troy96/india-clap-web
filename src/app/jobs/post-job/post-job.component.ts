@@ -76,7 +76,7 @@ export class PostJobComponent implements OnInit {
       // }
       obj.date_posted = date;
       this.jservice.create_job(obj).subscribe((data: any) => {
-        this.notifService.showSuccess('Company created!', 'Alert')
+        this.notifService.showSuccess('Job Posted!', 'Alert')
       })
     }
     else
