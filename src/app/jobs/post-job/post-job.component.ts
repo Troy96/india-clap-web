@@ -16,7 +16,7 @@ export class PostJobComponent implements OnInit {
   selectedCompany: string;
   industryList: any;
   myCompanyList: any[];
-
+  isInstant:boolean=false;
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -52,16 +52,17 @@ export class PostJobComponent implements OnInit {
     console.log(this.jobPostForm.value);
     if (this.jobPostForm.valid) {
       let obj: any = {};
-      obj.company = (this.jobPostForm.get('company').value);
+      obj.company = parseInt((this.jobPostForm.get('company').value));
       obj.job_role = (this.jobPostForm.get('job_role').value);
       obj.job_title = (this.jobPostForm.get('job_title').value);
       obj.job_desc = (this.jobPostForm.get('desc').value);
-      obj.salary = (this.jobPostForm.get('salary_range').value);
+      obj.salary = parseInt((this.jobPostForm.get('salary_range').value));
       obj.skills = (this.jobPostForm.get('skills_required').value);
       obj.company_mail = (this.jobPostForm.get('emp_email').value);
       obj.location_State = this.jobPostForm.get('job_state').value;
       obj.location_District = this.jobPostForm.get('job_district').value;
-      obj.industry_name = this.getIndustryId(this.jobPostForm.get('company').value)
+      obj.industry = this.getIndustryId(this.jobPostForm.get('company').value)
+      obj.is_instantjob=this.isInstant;
       var today = new Date();
       var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
       console.log(obj);
@@ -111,6 +112,12 @@ export class PostJobComponent implements OnInit {
         this.myCompanyList = [...respObj]
       })
   }
-
+isInstantJob(ev){
+  console.log(ev.currentTarget.checked)
+  if(ev.currentTarget.checked)
+  this.isInstant=true;
+  else
+  this.isInstant=false;
+}
 
 }

@@ -87,7 +87,9 @@
                     [ngClass]="{'is-invalid':jobPostForm.get('job_district').touched && jobPostForm.get('job_district').invalid}">
                 <div class="invalid-feedback">
                     <p class="error">This field is required</p>
-                </div>
+                </div><br>
+                <label for="instantJob" style="margin-right: 10px;">Is Instant Job</label>
+                <input type="checkbox" id="instantJob" name="instantJob"  (change)="isInstantJob($event)" >
             </div>
 
 
