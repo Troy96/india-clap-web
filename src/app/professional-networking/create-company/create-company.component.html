@@ -1,5 +1,4 @@
-
-<div class="container" >
+<div class="container">
     <div class="mainbody" style="margin-top: 150px;">
         <div class="header">
             <h2>Create a company page and let the mass know about you</h2>
@@ -28,9 +27,13 @@
 
                 <h3>Industry <img src="/assets/icons/1x/down-arrow.png" width="20px" class="down"></h3>
                 <div class="form-group">
-                    <input class="form-control" id="frm2" placeholder="Sector the company belongs to"
-                        formControlName="industry"
+                    <select class="form-control" id="frm2"
+                        placeholder="Select industry" formControlName="industry"
                         [ngClass]="{'is-invalid': companyForm.get('industry').touched && companyForm.get('industry').invalid}">
+                        <option *ngFor="let industry of sectorList" [value]="industry.sector_name">
+                            {{industry.sector_name}}</option>
+
+                    </select>
                     <div class="invalid-feedback">
                         <p class="error">This field is required</p>
                     </div>
@@ -38,8 +41,8 @@
 
                 <h3>Logo</h3>
                 <div class="form-group">
-                    <input class="form-control" type="file" id="frm2" placeholder="Upload a logo for the company" (change)="onPhotoUpload($event)"
-                        >
+                    <input class="form-control" type="file" id="frm2" placeholder="Upload a logo for the company"
+                        (change)="onPhotoUpload($event)">
                 </div>
 
                 <button class="btn btn-default btnplc" type="submit">
