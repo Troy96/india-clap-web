@@ -546,6 +546,38 @@ export class InputModalComponent implements OnInit {
           })
         break;
       }
+      case 'Skills': {
+        this.authService.delete_skills(this.inputData.data.id)
+        .subscribe(_ => {
+          this.myProfileService.updateUserDetails();
+          this.closeInputModal();
+        })
+      break;
+      }
+      case 'Award': {
+        this.authService.delete_awards(this.inputData.data.id)
+        .subscribe(_ => {
+          this.myProfileService.updateUserDetails();
+          this.closeInputModal();
+        })
+      break;
+      }
+      case 'Hobby': {
+        this.authService.delete_hobby(this.inputData.data.id)
+        .subscribe(_ => {
+          this.myProfileService.updateUserDetails();
+          this.closeInputModal();
+        })
+      break;
+      }
+      case 'Language': {
+        this.authService.delete_languages(this.inputData.data.id)
+        .subscribe(_ => {
+          this.myProfileService.updateUserDetails();
+          this.closeInputModal();
+        })
+      break;
+      }
     }
   }
 

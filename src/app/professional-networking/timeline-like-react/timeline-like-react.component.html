@@ -99,10 +99,10 @@
                         class="icon-txt">Liked</small>
                 </div>
                 <div *ngIf="post?.isReacted" id="icons" class="react-btn"> <img src="/assets/icons/1x/smiley.png"
-                        (click)="smiley()" (mouseenter)="enter($event,post.id)" width="22px" height="22px"
+                        (click)="smiley()" (mouseenter)="enter($event,post.id)"  (mouseleave)="leaveReact()" width="22px" height="22px"
                         class="like-comment-icon"><small class="icon-txt">Reacted</small></div>
                 <div *ngIf="!post?.isReacted" id="icons" class="react-btn"> <img src="/assets/icons/1x/smiley.png"
-                        (click)="smiley()" (mouseenter)="enter($event,post.id)" width="22px" height="22px"
+                        (click)="smiley()" (mouseenter)="enter($event,post.id)"  (mouseleave)="leaveReact()" width="22px" height="22px"
                         class="like-comment-icon"><small class="icon-txt">React</small></div>
 
                 <!-- <div id="icons"> <img src="/assets/icons/1x/smiley.png" width="22px" height="22px" (click)="smiley()"

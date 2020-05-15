@@ -121,7 +121,18 @@ export class AuthServices {
   delete_certificate(id: number) {
     return this.http.delete<any>(`${config.base_url}/Users/certifications/${id}/`);
   }
-
+  delete_awards(id: number) {
+    return this.http.delete<any>(`${config.base_url}/Users/awards/${id}/`);
+  }
+   delete_skills(id: number) {
+    return this.http.delete<any>(`${config.base_url}/Users/skills/${id}/`);
+  }
+  delete_hobby(id: number) {
+    return this.http.delete<any>(`${config.base_url}/Users/hobbies/${id}/`);
+  }
+  delete_languages(id: number) {
+    return this.http.delete<any>(`${config.base_url}/Users/languages/${id}/`);
+  }
   getuser_privacy_details(id:number) {
     return this.http.get(`${config.base_url}/Users/privacy/${id}`);
   }
