@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: '', component: LayoutComponent, loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
   { path: 'in', loadChildren: () => import('./professional-networking/professional-networking.module').then(m => m.ProfessionalNetworkingModule), canActivate: [AuthGuard] },
   { path: 'jobs', loadChildren: () => import('./jobs/jobs.module').then(m => m.JobsModule), canActivate: [AuthGuard] },
+  { path: 'chat', loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule), canActivate: [AuthGuard] },
   { path: 'online-learning', loadChildren: () => import('./online-learning/online-learning.module').then(m => m.OnlineLearningModule), canActivate: [AuthGuard] },
   { path: 'offline-learning', loadChildren: () => import('./offline-learning/offline-learning.module').then(m => m.OfflineLearningModule), canActivate: [AuthGuard] },
   { path: 'finance-center', loadChildren: () => import('./finance-center/finance-center.module').then(m => m.FinanceCenterModule), canActivate: [AuthGuard] },
