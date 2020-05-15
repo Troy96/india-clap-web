@@ -370,10 +370,8 @@ export class TimelineLikeReactComponent implements OnInit {
   }
   leaveReact(){
   //  this.showEmoji=false
-    setTimeout(function(){
-      console.log("in react")
-     this.smiley();
-    console.log(this.showEmoji)}, 3000);
+   setTimeout(()=>{    
+    this.showEmoji=false}, 3000);
     console.log(this.showEmoji)
   }
   leave(ev, id) {
