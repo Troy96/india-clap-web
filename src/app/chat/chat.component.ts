@@ -13,12 +13,15 @@ export class ChatComponent implements OnInit {
   selectedUser: number = 5; //Will get this after user clicks on a user from sidelist
 
   currentUserDetails: any;
-  selecteduserDetails: any;
+  selectedUserDetails: any;
 
   constructor(
     private _chat: ChatService,
     private _user: AuthServices
-  ) { }
+  ) { 
+    this.getCurrentUserDetails();
+    this.getSelectedUserDetails();
+  }
 
   ngOnInit() {
     this._chat.getMessages(this.selectedUser).
@@ -46,7 +49,7 @@ export class ChatComponent implements OnInit {
   getSelectedUserDetails() {
     this._user.get_user_details(this.selectedUser)
       .subscribe(
-        data => this.selecteduserDetails = { ...data }
+        data => this.selectedUserDetails = { ...data }
       )
   }
 

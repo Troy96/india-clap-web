@@ -154,8 +154,8 @@
        <input class="form-control search-name" placeholder="type a name or multiple name">
        <div class="message-body">
            <div class="message-profile">
-               <img src="/assets/icons/1x/dp.png" class="profile-img" width="100px"><br>
-               <span class="name">Abeesh Chatterjee</span><br>Software Engineer
+               <img src="{{selectedUserDetails?.photo}}" class="profile-img" width="90px" height="90px" style="border-radius: 50%;"><br>
+               <span class="name">{{ selectedUserDetails?.first_name }} {{ selectedUserDetails.last_name }}</span><br>{{ selectedUserDetails?.profession }}
                <div style="width: 100%; height: 20px; border-bottom: 1px solid gray; text-align: center">
                    <span style="font-size: 20px; background-color: white; padding: 0 10px; color: gray;">
                      today <!--Padding is optional-->
