@@ -8,6 +8,7 @@ import { ChatService } from './chat.service';
 })
 export class ChatComponent implements OnInit {
 
+  connectionsList:any=[];
   constructor(
     private _chat: ChatService
   ) { }
@@ -17,8 +18,15 @@ export class ChatComponent implements OnInit {
     this._chat.getMessages().
       subscribe(data => {
         console.log(data);
+        console.log(this._chat.socket)
         this._chat.connect();
       })
+      this._chat.usersList().subscribe((data)=>{
+        console.log(data)
+        this.connectionsList=data;
+      })
   }
-
+  userDetail(detail:any){
+    console.log(detail);
+  }
 }

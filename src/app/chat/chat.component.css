@@ -216,7 +216,7 @@ background: lightgray;
     margin-bottom: 10px;
 }
 .message-details{
-    height: 800px;
+    /* height: 800px; */
     overflow: auto;
 
 }

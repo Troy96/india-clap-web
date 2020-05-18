@@ -1,4 +1,4 @@
-<div  class="main-container">
+<div class="main-container">
     <div class="container">
         <div class="jumbotron jumbotron-fluid" style="margin-top: 60px;">
             <div class="jumbotron-image" #coverImg [style]="coverImgStyle" *ngIf="userDetails?.photo"
@@ -501,9 +501,21 @@
 
 
 </div>
-<!-- <div  id="MyDIv">
+<div >
+<!-- <div  id="Profile_pdf" #Profile_pdf>
 <div  class="main-body">
-    <div class="float-left cont1">
+    <div class="float-left cont1" style=" position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 300%;
+    background-color: teal !important;
+    color: white;
+    
+    width: 30%;
+    overflow-wrap: break-word;
+    padding: 30px;
+    padding-top: 80px;
+    font-size: 20px;">
         <span class="contact">   
         <b>Contact</b><br>
            www.xyz.com<br>
@@ -533,7 +545,11 @@
         
 
     </div>
-    <div class="float-right cont2">
+    <div class="float-right cont2" style=" width: 70%;
+    height: 100%;
+    padding: 30px;
+    padding-top: 80px;
+    font-size: 20px;">
         <span class="basic-info">
         <h4 style="font-size: 40px;">Abbesh Kumar</h4>
         <b>Software Developer at Infosis,</b><br>
@@ -594,7 +610,8 @@
     </div>
 </div>
 </div> -->
-<!-- <input type="button" value="Convert" (click)="exportAsPDF('MyDIv')"/> -->
+</div>
+<!-- <input type="button" value="Convert" (click)="exportAsPDF('Profile_pdf')"/> -->
 
 <!-- <button (click)="exportAsPDF('MyDIv')">pdf</button> -->
 

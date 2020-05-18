@@ -32,6 +32,7 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
   showPdf:boolean=false;
 
   @ViewChild('coverImg', { static: true }) coverImgRef: ElementRef;
+  @ViewChild('Profile_pdf', {static: false}) Profile_pdf: ElementRef;
 
   constructor(
     private authService: AuthServices,
@@ -209,25 +210,45 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     this.activityArray=data;
      })
   }
-  // exportAsPDF(_data)
-  // {
-  //   if(this.showPdf==false)
-  //   this.showPdf=true;
-  //   else
-  //   this.showPdf
-  //   //let data = document.querySelector(_data)
-  //   console.log(document.querySelector(_data))
-  //   let data = document.getElementById("MyDIv");  
-  //   console.log(data);
-  //   html2canvas(data).then(canvas => {
-  //     const contentDataURL = canvas.toDataURL('image/png')  
-  //     console.log(canvas)
-  //     let pdf = new jspdf('l', 'cm', 'a4'); //Generates PDF in landscape mode
-  //     // let pdf = new jspdf('p', 'cm', 'a4'); Generates PDF in portrait mode
-  //     pdf.addImage(contentDataURL, 'PNG', 0, 0, 29.7, 21.0);  
-  //     pdf.save('Filename.pdf');   
-  //   }); 
-  // }
+  exportAsPDF(_data)
+  {
+    if(this.showPdf==false)
+    this.showPdf=true;
+    else
+    this.showPdf
+    console.log(_data)
+   
+    const doc = new jspdf();
+
+    const specialElementHandlers = {
+      '#editor': function (element, renderer) {
+        return true;
+      }
+    };
+
+    const pdfTable = this.Profile_pdf.nativeElement;
+
+    doc.fromHTML(pdfTable.innerHTML, 15, 15, {
+      width: 190,
+      'elementHandlers': specialElementHandlers
+    });
+
+    doc.save('MyProfile.pdf');
+    // var data = document.getElementById('MyDIv');  //Id of the table
+    // html2canvas(data).then(canvas => {  
+    //   // Few necessary setting options  
+    //   let imgWidth = 208;   
+    //   let pageHeight = 295;    
+    //   let imgHeight = canvas.height * imgWidth / canvas.width;  
+    //   let heightLeft = imgHeight;  
+    //   console.log(canvas)
+    //   const contentDataURL = canvas.toDataURL('image/png')  
+    //   let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
+    //   let position = 0;  
+    //   pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
+    //   pdf.save('MYPdf.pdf'); // Generated PDF   
+    // });  
+  }
   // public exportAsPDF(_data)
   // {
   // var data = document.getElementById('MyDIv');

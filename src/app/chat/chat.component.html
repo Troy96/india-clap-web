@@ -8,8 +8,21 @@
            <input type="text" class="form-control search-form" placeholder="Search Message"><h4><i class="fa fa-search"></i>
            <i class="fa fa-sliders"></i></h4>
        </div>
-       <div class="message-details">
-       <a href="#right-body"><div class="user-messages">
+       <div class="message-details" *ngFor="let user of connectionsList">
+           <!-- need to show message screen of person on click -->
+       <a href="/chat"><div class="user-messages">
+           <img src={{user.photo}} width="75px" height="75px" style="border-radius: 50%;" class="user-dp" alt="photo">
+           
+           <div (click)="userDetail(user)" class="message-text" >
+               <small class="time-stamp">25 june</small>
+               <small class="msg-opt"><i class="fa fa-trash"></i>
+                   <i class="fa fa-envelope-open"></i>
+               </small>
+               <h5>{{user.first_name}} {{user.last_name}}</h5>
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a href="">...</a>
+                   </div>
+       </div></a>
+       <!-- <a href="#right-body"><div class="user-messages">
            <img src="/assets/icons/1x/dp.png" width="75px" class="user-dp">
            
            <div class="message-text" >
@@ -128,19 +141,7 @@
                <h5>Abbesh Chatterjee</h5>
            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a href="">...</a>
                    </div>
-       </div></a>
-       <a href="#right-body"><div class="user-messages">
-           <img src="/assets/icons/1x/dp.png" width="75px" class="user-dp">
-           
-           <div class="message-text" >
-               <small class="time-stamp">25 june</small>
-               <small class="msg-opt"><i class="fa fa-trash"></i>
-                   <i class="fa fa-envelope-open"></i>
-               </small>
-               <h5>Abbesh Chatterjee</h5>
-           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a href="">...</a>
-                   </div>
-       </div></a>
+       </div></a> -->
        
        
 
