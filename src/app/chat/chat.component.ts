@@ -25,7 +25,7 @@ export class ChatComponent implements OnInit {
   getUsers() { } //For Side bar users.
 
   onSendMessage(message: string) {
-    console.log(message);
+    this._chat.sendMessage(message);
   }
 
 }
