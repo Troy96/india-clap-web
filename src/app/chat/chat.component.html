@@ -182,7 +182,7 @@
                
            </div>
        </div>
-       <textarea class="form-control" rows="3" placeholder="Write a message.."></textarea>
+       <textarea class="form-control" rows="3" placeholder="Write a message.." #textArea></textarea>
        <div class="attach-section">
            <h3>
            <i class="fa fa-image"></i>
@@ -214,8 +214,7 @@
                
                </svg>
                </i> -->
-               <button class="btn btn-success send-btn disable">Send</button>
-
+               <button class="btn btn-success send-btn disable" (click)="onSendMessage(textArea.value)" (keyup.enter)="onSendMessage(textArea.value)">Send</button> 
            </h3>
        </div>
    </div>
