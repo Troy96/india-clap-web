@@ -28,7 +28,7 @@ export class ChatService {
     })
   }
 
-  getMessages() {
-    return this._http.get(`${config.base_url}/messages/5/`); 
+  getMessages(userId: number) {
+    return this._http.get<any[]>(`${config.base_url}/messages/${userId}/`); 
   }
 }
