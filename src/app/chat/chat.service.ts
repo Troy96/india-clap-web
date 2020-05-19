@@ -15,6 +15,7 @@ export class ChatService {
   private newMessage = new BehaviorSubject<any>('');
   public newMessage$ = this.newMessage.asObservable();
 
+
   constructor(
     private _http: HttpClient
   ) {
@@ -30,6 +31,10 @@ export class ChatService {
     this.socket.asObservable().subscribe(newMessage => {
       this.newMessage.next(newMessage);
     })
+  }
+
+  closeSocket(){
+    this.socket.unsubscribe();
   }
 
   getMessages(userId: number) {

@@ -59,6 +59,7 @@ export class ChatComponent implements OnInit {
   }
 
   selectUser(id: number) {
+    this._chat.closeSocket();
     this.selectedUser = id;
     this._chat.connect(this.selectedUser);
     this.getSelectedUserDetails();
