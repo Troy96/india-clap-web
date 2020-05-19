@@ -22,7 +22,7 @@ export class ChatService {
   }
 
   async connect() { //Take the userId of the other user as argument here
-    this.socket = webSocket('wss://holagraph-indiaclap.herokuapp.com/messages/5/?token=' + this.token); //Replace 5 with the userId
+    this.socket = webSocket('wss://holagraph-indiaclap.herokuapp.com/messages/7/?token=' + this.token); //Replace 5 with the userId
     this.socket.asObservable().subscribe(newMessage => { //Receive the message from backend which was sent and append it in chat body HTML 
       console.log(newMessage);
     })
@@ -30,5 +30,8 @@ export class ChatService {
 
   getMessages(userId: number) {
     return this._http.get<any[]>(`${config.base_url}/messages/${userId}/`); 
+  }
+  usersList() {
+    return this._http.get(`${config.base_url}/messages/connections/`); 
   }
 }

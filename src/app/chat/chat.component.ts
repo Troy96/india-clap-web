@@ -16,6 +16,7 @@ export class ChatComponent implements OnInit {
   currentUserDetails: any;
   selectedUserDetails: any;
 
+  connectionsList:any=[];
   constructor(
     private _chat: ChatService,
     private _user: AuthServices
@@ -30,7 +31,16 @@ export class ChatComponent implements OnInit {
         this.messageList = [...data];
         //Get List of messages. Store it and display it in chat body.
         this._chat.connect(); //Send the userId of the other user here as argument
+        console.log(this._chat.socket)
+        this._chat.connect();
       })
+      this._chat.usersList().subscribe((data)=>{
+        console.log(data)
+        this.connectionsList=data;
+      })
+  }
+  userDetail(detail:any){
+    console.log(detail);
   }
 
   getUsers() { } //For Side bar users.

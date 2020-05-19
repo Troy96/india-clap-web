@@ -75,7 +75,6 @@
 }
 .message-text{
    max-width: 200px;
-   float: right;
    font-size: 15px;
    overflow: hidden;
 }
@@ -83,7 +82,7 @@ h5{
     font-size: 17px;
 }
 .user-messages{
-    height: 170px;
+    height: 100px;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left:5px;
@@ -216,7 +215,7 @@ background: lightgray;
     margin-bottom: 10px;
 }
 .message-details{
-    height: 800px;
+    /* height: 800px; */
     overflow: auto;
 
 }
