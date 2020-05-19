@@ -17,6 +17,8 @@ export class ChatComponent implements OnInit {
   selectedUserDetails: any;
 
   connectionsList: any = [];
+
+  userMap = {};
   @ViewChild('textArea', { static: false }) textAreaRef: ElementRef;
   constructor(
     private _chat: ChatService,
@@ -39,10 +41,15 @@ export class ChatComponent implements OnInit {
     })
     this._chat.newMessage$.subscribe(
       data => {
-        if(!data) return;
+        console.log(data, this.userMap)
+        if (!data) return;
         this.messageList.push({
           message: data.message,
-          user: this.currentUserDetails,
+          user: {
+            photo: this.userMap[data.user]['photo'],
+            first_name: data.first_name,
+            last_name: data.last_name
+          },
           timestamp: new Date()
         })
       }
@@ -75,6 +82,8 @@ export class ChatComponent implements OnInit {
       .subscribe(
         data => {
           this.currentUserDetails = { ...data }
+          this.userMap[data.id] = { ...data };
+          console.log(this.userMap)
           this.getSelectedUserDetails();
         }
       )
@@ -83,7 +92,11 @@ export class ChatComponent implements OnInit {
   getSelectedUserDetails() {
     this._user.get_user_details(this.selectedUser)
       .subscribe(
-        data => this.selectedUserDetails = { ...data }
+        data => {
+          this.selectedUserDetails = { ...data }
+          this.userMap[data.id] = { ...data }
+          console.log(this.userMap)
+        }
       )
   }
 
