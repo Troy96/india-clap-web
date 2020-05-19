@@ -41,6 +41,7 @@ export class AuthServices {
   }
 
   get_user_details(id: number) {
+    console.log(id)
     return this.http.get<any>(`${config.base_url}/Users/profiles/${id}`);
   }
 

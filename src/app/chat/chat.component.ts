@@ -27,10 +27,11 @@ export class ChatComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getCurrentUserDetails();
     this._chat.usersList().subscribe((data) => {
       this.connectionsList = data;
       this.selectedUser = this.connectionsList[0]['id'];
+      this.getCurrentUserDetails();
+
       console.log(this.selectedUser);
       this.getSelectedUserDetails();
       this._chat.getMessages(this.selectedUser).
@@ -46,7 +47,7 @@ export class ChatComponent implements OnInit {
         this.messageList.push({
           message: data.message,
           user: {
-            photo: this.userMap[data.user]['photo'],
+            photo: this.userMap[data.id]['photo'],
             first_name: data.first_name,
             last_name: data.last_name
           },
@@ -78,25 +79,33 @@ export class ChatComponent implements OnInit {
   }
 
   getCurrentUserDetails() {
-    this._user.get_user_details(this.currentUser)
+    this.currentUser== JSON.parse((localStorage.getItem('currentUser')))
+    console.log(this.currentUser)
+    let id=this.currentUser;
+    this._user.get_user_details(id)
       .subscribe(
         data => {
           this.currentUserDetails = { ...data }
           this.userMap[data.id] = { ...data };
           console.log(this.userMap)
           this.getSelectedUserDetails();
+          console.log(data)
+        //  this.getSelectedUserDetails();
         }
       )
   }
 
   getSelectedUserDetails() {
+    this.selectedUser = this.connectionsList[0].id;
+
+    console.log(this.selectedUser)
     this._user.get_user_details(this.selectedUser)
       .subscribe(
         data => {
           this.selectedUserDetails = { ...data }
           this.userMap[data.id] = { ...data }
           console.log(this.userMap)
-        }
+                }
       )
   }
 
