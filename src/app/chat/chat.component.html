@@ -11,7 +11,7 @@
         </div> -->
         <div class="message-details" *ngFor="let user of connectionsList">
             <!-- need to show message screen of person on click -->
-            <a href="/chat">
+            <a (click)="selectUser(user.id)">
                 <div class="user-messages">
                     <img src={{user.photo}} width="75px" height="75px" style="border-radius: 50%;" class="user-dp"
                         alt="photo">
@@ -168,7 +168,7 @@
                 </div>
                 <ng-container *ngFor="let data of messageList">
                     <div class="msg-box">
-                        <img src="/assets/icons/1x/dp.png" class="box-dp" width="50px" height="50px"
+                        <img src="{{data?.user?.photo}}" class="box-dp" width="50px" height="50px"
                             style="border-radius: 50%;">
                         <div class="box-text">
                             <!-- <h6 *ngIf="data?.user == selectedUser">{{selectedUserDetails?.first_name}}
@@ -178,13 +178,14 @@
                                 {{currentUserDetails?.last_name}}<small
                                     class="box-timeStamp">{{data?.timestamp | date: 'medium'}}</small></h6> -->
 
-                            <h6>{{currentUserDetails?.first_name}}
-                                {{currentUserDetails?.last_name}}<small
+                            <h6>{{data?.user?.first_name}}
+                                {{data?.user?.last_name}}<small
                                     class="box-timeStamp">{{data?.timestamp | date: 'shortTime'}}</small></h6>
                             <div class="msg-content">{{data?.message}}</div>
                         </div>
                     </div>
                 </ng-container>
+                <div class="no-data" *ngIf="!!messageList && !messageList.length">No messages</div>
                 <!-- <div class="msg-box">
                      <img src="/assets/icons/1x/dp.png" class="box-dp" width="50px">
                      <div class="box-text">
