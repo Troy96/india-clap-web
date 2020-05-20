@@ -33,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JobsService } from '../services/jobs.service';
 import { JwtTokenIntercelptor } from '../interceptors/jwt-token.interceptor';
 import { CommunicateService } from '../services/communicate.service';
+import { ProfileOverlayComponent } from './view-candidates/profile-overlay/profile-overlay.component';
 
 
 
@@ -60,7 +61,8 @@ import { CommunicateService } from '../services/communicate.service';
     ProfileShareAlertComponent,
     JobPostingsComponent,
     InstantApplySearchComponent,
-    FavSaveApplyComponent
+    FavSaveApplyComponent,
+    ProfileOverlayComponent
   ],
   imports: [
     CommonModule,
