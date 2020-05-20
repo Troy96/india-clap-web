@@ -8,7 +8,7 @@
     align-items: center;
     padding-left: 30px;
   }
-h2{
+  h2{
     font-size: 19px;
     font-weight: normal;
   
@@ -16,11 +16,14 @@ h2{
   .card{
       width: 1000px;
   }
+
+  #crdtxt{
+    padding-left: 30px;
+}
   
   #symbols{
       float: right;
-      margin-top: 20px;
-      
+      max-width: 210px;
   }
   #space{
       padding-left: 10px;
@@ -42,6 +45,25 @@ h2{
       color: gray;
   
   }
+  .card{
+      border: none;
+  }
   .place{
-    border: 1px gray solid;
-}
+      border: 1px gray solid;
+  }
+  h5{
+    font-weight: normal;
+    color: #A9A9A9;
+    font-size: 15px;
+  }
+  .viewCandidates{
+    word-spacing: 1px;
+    letter-spacing: 3px;
+    font-weight: bold;
+  }
+  .viewCandidates:hover{
+    font-weight: bolder;
+    color: teal;
+    text-decoration: underline;
+    cursor: pointer;
+  }
