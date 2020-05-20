@@ -3,6 +3,7 @@ import { JobsService } from 'src/app/services/jobs.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NotificationService } from 'src/app/services/notification.service';
+import { ProfileOverlayService } from './profile-overlay.service';
 
 @Component({
   selector: 'app-view-candidates',
@@ -19,7 +20,8 @@ export class ViewCandidatesComponent implements OnInit {
     private router: ActivatedRoute,
     private jobService: JobsService,
     private http: HttpClient, private _router: Router,
-    private notifService: NotificationService
+    private notifService: NotificationService,
+    public _profile: ProfileOverlayService
   ) {
     this.jobId = +this.router.snapshot.paramMap.get('jobId');
   }

@@ -1,0 +1,1002 @@
+.navbar-icon-top .navbar-nav .nav-link>.fa {
+    position: relative;
+    width: 36px;
+    font-size: 24px;
+}
+
+.navbar-icon-top .navbar-nav .nav-link>.fa>.badge {
+    font-size: 0.75rem;
+    position: absolute;
+    right: 0;
+    font-family: sans-serif;
+}
+
+.navbar-icon-top .navbar-nav .nav-link>.fa {
+    top: 3px;
+    line-height: 12px;
+}
+
+.navbar-icon-top .navbar-nav .nav-link>.fa>.badge {
+    top: -10px;
+}
+
+@media (min-width: 406px) {
+    .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link {
+        text-align: center;
+        display: table-cell;
+        height: 70px;
+        vertical-align: middle;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link>.fa {
+        display: block;
+        width: 48px;
+        margin: 2px auto 4px auto;
+        top: 0;
+        line-height: 24px;
+    }
+
+    .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link>.fa>.badge {
+        top: -7px;
+    }
+
+    .jumbotron {
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        margin-top: 20px;
+        height: 200px;
+    }
+
+    .navbar-brand {
+        margin-left: 0px;
+        margin-right: 0px;
+        color: white;
+    }
+
+    #button {
+        float: right;
+        margin-left: 5px;
+        margin-top: -5px;
+
+    }
+
+    .hbtn {
+        font-size: 7px;
+
+        padding-left: 0px;
+        padding-right: 0px;
+        width: 70px;
+        height: 20px;
+    }
+
+    #vidlink {
+        margin-right: 30px;
+        width: 95px;
+
+    }
+
+    #symbols {
+        width: 80px;
+        margin-right: -35px;
+
+    }
+
+    h5 {
+        padding-left: 0px;
+    }
+
+}
+
+@media (min-width: 768px) {
+    .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link {
+        text-align: center;
+        display: table-cell;
+        height: 70px;
+        vertical-align: middle;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link>.fa {
+        display: block;
+        width: 48px;
+        margin: 2px auto 4px auto;
+        top: 0;
+        line-height: 24px;
+    }
+
+    .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link>.fa>.badge {
+        top: -7px;
+    }
+
+    .jumbotron {
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        margin-top: 20px;
+        height: 200px;
+    }
+
+    #vidlink {
+        margin-right: 20px;
+        width: 105px;
+
+    }
+
+    #symbols {
+        width: 180px;
+        margin-right: -35px;
+
+    }
+
+    h5 {}
+}
+
+@media (min-width: 992px) {
+    .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link {
+        text-align: center;
+        display: table-cell;
+        height: 70px;
+        vertical-align: middle;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link>.fa {
+        display: block;
+        width: 48px;
+        margin: 2px auto 4px auto;
+        top: 0;
+        line-height: 24px;
+    }
+
+    .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link>.fa>.badge {
+        top: -7px;
+    }
+
+    .jumbotron {
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        margin-top: 20px;
+        height: 200px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link {
+        text-align: center;
+        display: table-cell;
+        height: 70px;
+        vertical-align: middle;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link>.fa {
+        display: block;
+        width: 48px;
+        margin: 2px auto 4px auto;
+        top: 0;
+        line-height: 24px;
+    }
+
+    .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link>.fa>.badge {
+        top: -7px;
+    }
+
+    .jumbotron {
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        margin-top: 20px;
+        height: 200px;
+    }
+
+    #button {
+        float: right;
+        margin-left: 250px;
+
+    }
+
+    .hbtn {
+        font-size: 17px;
+        width: 154px;
+        height: 40px;
+        margin-left: 18px;
+    }
+
+    h5 {
+        float: left;
+        padding-left: 12px;
+    }
+
+    #vidlink {
+        margin-right: 20%;
+        width: 190px;
+
+
+    }
+
+    .navbar-brand {
+        margin-left: 20px;
+        margin-right: 20px;
+        color: white;
+    }
+
+    #symbols {
+        width: 200px;
+        margin-right: 0px;
+    }
+
+}
+
+nav {
+    background-color: teal;
+
+}
+
+.input-group-btn {
+    border-left: none;
+    background-color: white;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.input-group-btn:hover {
+    box-shadow: none;
+}
+
+.form-control {
+    border-right: none;
+    border: none;
+    color: white;
+}
+
+.form-control:hover {
+    box-shadow: none;
+}
+
+.nav-link {
+    color: white;
+}
+
+.header {
+    background-color: teal;
+    height: 63px;
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+    padding-left: 30px;
+}
+
+h2 {
+    font-size: 22px;
+    font-weight: normal;
+
+}
+
+.card {
+    width: 1000px;
+}
+
+.card-img {
+    width: 100px;
+    float: left;
+
+}
+
+#symbols {
+    float: right;
+    margin-top: 20px;
+
+}
+
+#space {
+    padding-left: 10px;
+}
+
+h4 {
+    color: teal;
+    font-size: 20px;
+
+}
+
+h5 {
+    float: left;
+}
+
+a {
+    color: gray;
+}
+
+a:hover {
+    text-decoration: none;
+    color: gray;
+
+}
+
+.card {
+    border: none;
+}
+
+.place {
+    border: 1px gray solid;
+}
+
+h5 {
+    font-weight: normal;
+    color: #A9A9A9;
+    font-size: 15px;
+}
+
+.hbtn {
+    background-color: oldlace;
+    color: teal;
+    border: none;
+}
+
+.hbtn:hover {
+    background-color: wheat;
+}
+
+#vidlink {
+    float: right;
+    margin-top: 20px;
+}
+
+h6 {
+    font-weight: normal;
+    color: #A9A9A9;
+    font-size: 15px;
+}
+
+.active {
+    background-color: white !important;
+    color: teal !important;
+}
+
+.candidate-status {
+    display: inline;
+    font-size: large;
+    word-spacing: 2px;
+    letter-spacing: 1px;
+
+}
+
+.ver-hr {
+    border-right: 1px solid lightgray;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.candidate-details {
+    min-width: 300px;
+    display: inline-block;
+}
+
+.candidate-status:hover {
+    font-weight: 450;
+    color: teal;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#crdtxt {
+    margin-left: 115px;
+}
+
+.close {
+    float: right;
+    margin-left: 10px;
+}
+
+.experience {
+    position: fixed;
+    /* Sit on top of the page content */
+    width: 100%;
+    /* Full width (cover the whole page) */
+    height: 100%;
+    /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Black background with opacity */
+    z-index: 2;
+    /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer;
+    padding-top: 10%;
+    overflow: auto;
+
+
+}
+
+.experience-body {
+    background-color: white !important;
+    border: 1px gray solid;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    overflow: auto;
+}
+
+h1 {
+    color: teal;
+    font-size: 25px;
+}
+
+h2 {
+    color: gray;
+    font-size: 20px;
+}
+
+.month,
+.year {
+    max-width: 200px;
+    display: inline;
+}
+
+.save-btn {
+    background-color: teal;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.save-btn:hover {
+    background-color: teal;
+
+}
+
+.experience-section {
+    margin-bottom: 10px;
+}
+
+.teal {
+    color: teal;
+}
+
+.exp-form {
+    border: 1px lightgray solid !important;
+}
+
+@media(min-width: 252px) {
+    .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link {
+        text-align: center;
+        display: table-cell;
+        height: 70px;
+        vertical-align: middle;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link>.fa {
+        display: block;
+        width: 48px;
+        margin: 2px auto 4px auto;
+        top: 0;
+        line-height: 24px;
+    }
+
+    .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link>.fa>.badge {
+        top: -7px;
+    }
+
+    .jumbotron-image {
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 170px;
+    }
+
+    .navbar-brand {
+        margin-left: 0px;
+        margin-right: 0px;
+        color: white;
+    }
+
+    .jmb-img {
+        /*image of jumbotron*/
+        width: 90px;
+        margin-top: 120px;
+        border-radius: 50%;
+        margin-left: 10px;
+    }
+
+    #name {
+        float: left;
+        margin-left: 100px;
+        margin-top: 30px;
+        margin-right: 5px;
+
+    }
+
+    .jbtn {
+        font-size: 5px;
+        margin-bottom: 2px;
+        border-color: teal;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+
+    }
+
+}
+
+@media (min-width: 768px) {
+
+    .jumbotron-image {
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 170px;
+
+    }
+}
+
+@media(min-width: 300px) {
+    #sug-pro {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        float: left;
+        margin-left: 0px;
+
+    }
+
+    .jbtn {
+        font-size: 8px;
+        margin-bottom: 2px;
+        border-color: teal;
+    }
+
+    #sug-head {
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 406px) {
+
+    .jumbotron-image {
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 170px;
+    }
+
+    .navbar-brand {
+        margin-left: 0px;
+        margin-right: 0px;
+        color: white;
+    }
+
+    .jmb-img {
+        /*image of jumbotron*/
+        width: 120px;
+        margin-top: 100px;
+        border-radius: 50%;
+        margin-left: 10px;
+    }
+
+    #name {
+        float: left;
+        margin-left: 130px;
+        margin-top: 30px;
+        margin-right: 10px;
+
+    }
+
+    #sug-pro {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        float: left;
+        margin-left: 2px;
+
+    }
+
+    .jbtn {
+        font-size: 10px;
+        margin-bottom: 2px;
+        border-color: teal;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    #sug-head {
+        margin-top: 20px;
+    }
+
+}
+
+@media (min-width: 768px) {
+
+    .jumbotron-image {
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 170px;
+
+    }
+
+    #name {
+        /*name div in jumbotron*/
+        float: left;
+        margin-left: 200px;
+        margin-top: 30px;
+        margin-right: 250px;
+    }
+
+    .jbtn {
+        font-size: 12px;
+        margin-bottom: 2px;
+        border-color: teal;
+    }
+
+    .edit-icon {
+        margin-right: 200px;
+    }
+
+    #sug-head {
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 992px) {
+
+    .jumbotron-image {
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 170px;
+
+    }
+
+    .jbtn {
+        font-size: 12px;
+        margin-bottom: 2px;
+        border-color: teal;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .edit-icon {
+        margin-right: 500px;
+    }
+
+    #sug-head {
+        margin-top: 20px;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+    .jumbotron-image {
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 170px;
+
+    }
+
+    .navbar-brand {
+        margin-left: 20px;
+        margin-right: 20px;
+        color: white;
+    }
+
+    .jmb-img {
+        /*image of jumbotron*/
+        width: 150px;
+        margin-top: 100px;
+        border-radius: 50%;
+        margin-left: 30px;
+    }
+
+    #name {
+        /*name div in jumbotron*/
+        float: left;
+        margin-left: 200px;
+        margin-top: 30px;
+        margin-right: 400px;
+    }
+
+    #frm2 {
+        background-color: lightgray;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        width: 570px;
+    }
+
+    .float {
+        /*main body*/
+        float: left;
+    }
+
+    .suggestion {
+        width: 250px;
+
+
+        float: left;
+        margin-top: 63px;
+        margin-left: 20px;
+        border-radius: 5px;
+
+    }
+
+    #sug-pro {
+        margin-top: 10px;
+        margin-bottom: 15px;
+        float: left;
+        margin-left: 0px;
+
+    }
+
+    .jbtn {
+        font-size: 15px;
+        margin-bottom: 0px;
+        border-color: teal;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .edit-icon {
+        margin-right: 800px;
+    }
+
+    #sug-head {
+        margin-top: 110px;
+    }
+
+}
+
+nav {
+    background-color: teal;
+
+}
+
+.input-group-btn {
+    border-left: none;
+    background-color: white;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.jumbotron {
+    background-color: white;
+}
+
+.input-group-btn:hover {
+    box-shadow: none;
+}
+
+.form-control {
+    border-right: none;
+    border: none;
+    color: white;
+}
+
+.form-control:hover {
+    box-shadow: none;
+}
+
+.nav-link {
+    color: white;
+}
+
+.header {
+    background-color: teal;
+    height: 63px;
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+    padding-left: 30px;
+}
+
+h2 {
+    font-size: 19px;
+    font-weight: normal;
+
+}
+
+#jumbotron-text {
+    border: 1px gray solid;
+    background-color: white;
+    height: 120px;
+    -webkit-box-shadow: 0 8px 6px -6px gray;
+    -moz-box-shadow: 0 8px 6px -6px gray;
+    box-shadow: 0 8px 6px -6px gray;
+
+}
+
+#j-icons {
+    /*Apply button*/
+    margin-top: 20px;
+    padding-bottom: 10px;
+
+}
+
+.place {
+
+    margin-top: 0px;
+    margin-bottom: 30px;
+
+}
+
+.more-opt {
+    /*more icon*/
+    float: right;
+    margin-right: 20px;
+
+}
+
+#des1 {
+    /*All descriptions */
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: lightgray;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+}
+
+#frm2 {
+    background-color: lightgray;
+
+}
+
+.jbtn {
+    background-color: teal;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+.text {
+    font-size: 14px;
+    float: left;
+    margin-left: 10px;
+    color: gray;
+}
+
+.sug-dp {
+    float: left;
+}
+
+#sug-body {
+    padding-left: 10px;
+
+}
+
+.teal {
+    color: teal !important;
+    font-weight: bolder !important;
+}
+
+#sug-head {
+    background-color: #DCDCDC;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: teal;
+    -webkit-box-shadow: 0 8px 6px -6px gray;
+    -moz-box-shadow: 0 8px 6px -6px gray;
+    box-shadow: 0 8px 6px -6px gray;
+    margin-bottom: 20px;
+
+
+}
+
+h3 {
+    color: grey;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.txt {
+    font-size: 15px;
+    color: gray;
+}
+
+#txt-exp {
+    font-size: 15px;
+    color: gray;
+    margin-left: 10px;
+    margin-bottom: 20px;
+
+}
+
+#headline {
+    border: 1px gray solid;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 10px 6px -6px gray;
+    -moz-box-shadow: 0 10px 6px -6px gray;
+    box-shadow: 0 10px 6px -6px gray;
+    margin-bottom: 30px;
+
+}
+
+.exp-img {
+    float: left;
+    margin-right: 20px;
+}
+
+.teal {
+    color: teal !important;
+    font-weight: bold;
+
+}
+
+#experience {
+    margin-top: 30px;
+}
+
+.plus-icon1 {
+    margin-left: 10px;
+
+}
+
+.edit-icon {
+    float: right;
+}
+
+.project-img {
+    float: left;
+    margin-right: 20px;
+
+}
+
+.project-details {
+    margin-left: 70px;
+}
+
+.project-description {
+    margin-left: 20px;
+    color: gray;
+    font-size: 15px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.edit-icon1 {
+    margin-left: 10px;
+    margin-bottom: 5px;
+
+}
+
+#skill {
+    margin-bottom: 10px;
+}
+
+.resume {
+    color: gray;
+
+}
+
+.place11 {
+    margin-top: 180px;
+}

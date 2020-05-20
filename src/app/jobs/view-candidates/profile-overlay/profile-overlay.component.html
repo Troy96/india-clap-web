@@ -1,1 +1,129 @@
-<p>profile-overlay works!</p>
+<div class="experience">
+    <div class="container experience-body">
+        <img src="/assets/icons/1x/close.png" (click)="_profile.closeProfileOverlay()" class="float-right" width="30px">
+        <div class="container float">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="jumbotron-image" [style]="coverImgStyle">
+                    <img class="jmb-img" src="{{userDetails?.photo}}" alt="">
+                </div>
+                <div id="jumbotron-text">
+                    <div id="name">
+                        <h2><span class="teal">{{userDetails?.first_name}} {{userDetails?.last_name}}</span></h2>
+                        <span>{{userDetails?.location_district}}, {{userDetails?.location_country}}</span><br>
+                        {{userDetails?.profession}}
+                    </div>
+
+                    <div id="j-icons"><a>
+                            <img class="more-opt" src="/assets/icons/1x/more-opt.png" alt=""><br>
+                        </a>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="mainbody">
+
+                <div class="place11">
+                    <div id="headline">
+                        <h3>About</h3>
+                        <span class="txt">{{userDetails?.brief_Desc}}</span>
+                    </div>
+                    <div id="headline">
+                        <h3>Experience</h3>
+
+                        <div id="experience" *ngFor="let exp of userDetails?.experiences">
+                            <div id="txt-exp">
+                                <img src="{{exp?.company_logo}}" width="50px" class="exp-img">
+
+                                <span class="teal">{{exp?.company_name}}</span><br>
+                                {{exp?.title}}<br>
+                                {{exp?.start_date}} -- {{exp?.end_date}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="headline" *ngIf="privacySettingsMap?.projects" style="padding: 40px;">
+                        <h3>Projects
+                        </h3>
+                        <div id="experience">
+                            <div id="txt-exp" *ngFor="let project of userDetails?.projects">
+                                <div style="display: flex;">
+                                    <img src="/assets/icons/1x/logo3.png" width="70px" height="70px"
+                                        class="project-img">
+                                    <div style="margin-left: 35px;">
+                                        <div id="txt-exp">
+
+                                            <div class="project-details">
+
+                                                <span class="teal">{{project?.project_name}}</span><br />
+                                                <a *ngIf="project?.link" href="{{project.link}}"
+                                                    target="_blank">{{project.link}}<br /></a>
+                                                {{project?.start_date}} - {{project?.end_date}}
+                                            </div>
+                                        </div>
+                                        <div class="project-description" *ngIf="privacySettingsMap?.project_desc">
+                                            <div class="pro-des">
+                                                {{project?.description}}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div style="margin-left:85px">
+                                    <hr />
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div id="headline">
+                        <h3>Certificates</h3>
+                        <div class="project-description" *ngIf="userDetails?.certifications.length">
+
+                            <div id="skill" *ngFor="let certification of userDetails?.certifications"
+                                style="margin-bottom: 10px;">
+                                <span class="teal">{{certification?.certification_name}} </span>
+                                {{certification?.description}}<br />
+                                Valid till - {{certification?.validity_date}}
+                                <div>
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="headline">
+                        <h3>Skills</h3>
+
+
+
+                        <div class="project-description">
+
+                            <div id="skill" *ngFor="let skill of userDetails?.skills">
+                                {{skill.skill}} ({{skill.level}})
+                                <hr />
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- <div id="headline">
+                        <h3>Upload Resume <img src="/assets/icons/1x/video.png" width="35px" class="edit-icon1"></h3>
+                        <small class="resume">Upload your resume video (Not more than 30 secs)</small>
+
+
+
+
+
+                    </div> -->
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
