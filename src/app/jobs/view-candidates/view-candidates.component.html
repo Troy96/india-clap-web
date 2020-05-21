@@ -57,7 +57,7 @@
                         <img class="card-img" src="{{candidate?.applicant?.photo}}"
                             style="width: 80px; height: 80px; border-radius: 50%;" alt="Card image cap">
                         <div id="crdtxt">
-                            <a routerLink="/users/{{candidat?.applicant?.id}}">
+                            <a routerLink="/users/{{candidate?.applicant?.id}}">
                                 <h4 class="card-title">{{candidate?.applicant?.first_name}}
                                     {{candidate?.applicant?.last_name}}</h4>
                                 <!-- <span class="card-text">Gurgao, India</span><br> -->
@@ -91,4 +91,4 @@
     </div>
 </div>
 
-<app-profile-overlay *ngIf="(_profile.profileOverlay | async).toShow"></app-profile-overlay>
+<app-profile-overlay *ngIf="(_profile.profileOverlay$ | async).toShow"></app-profile-overlay>

@@ -17,7 +17,7 @@ export class ProfileOverlayComponent implements OnInit {
 
 
   constructor(
-    private _profile: ProfileOverlayService,
+    public _profile: ProfileOverlayService,
     private authService: AuthServices,
     private sanitizer: DomSanitizer,
 
