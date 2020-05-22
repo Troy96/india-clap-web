@@ -43,7 +43,7 @@
                         </div>
                     </div>
 
-                    <div id="headline" style="padding: 40px;">
+                    <div id="headline" >
                         <h3>Projects
                         </h3>
                         <div id="experience">
@@ -51,16 +51,16 @@
                                 <div style="display: flex;">
                                     <img src="/assets/icons/1x/logo3.png" width="70px" height="70px"
                                         class="project-img">
-                                    <div style="margin-left: 35px;">
+                                    <div style="margin-left: 15px;">
                                         <div id="txt-exp">
 
-                                            <div class="project-details">
+                                            <!-- <div class="project-details"> -->
 
                                                 <span class="teal">{{project?.project_name}}</span><br />
                                                 <a *ngIf="project?.link" href="{{project.link}}"
                                                     target="_blank">{{project.link}}<br /></a>
                                                 {{project?.start_date}} - {{project?.end_date}}
-                                            </div>
+                                            <!-- </div> -->
                                         </div>
                                         <div class="project-description">
                                             <div class="pro-des">

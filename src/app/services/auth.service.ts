@@ -199,4 +199,9 @@ export class AuthServices {
     return this.http.patch(`${config.base_url}/Users/hobbies/${id}/`, $data);
 
   }
+  update_project_logo(id, logo) {
+    const formData = new FormData();
+    formData.append('logo', logo);
+    return this.http.patch(`${config.base_url}/Users/projects/${id}/`, formData)
+}
 }

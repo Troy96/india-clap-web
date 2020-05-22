@@ -25,6 +25,7 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
   coverFile: any;
   companyLogoFile: any;
   educationLogoFile: any;
+  projectLogoFile:any;
   videoUrl: SafeUrl;
   videoSizeError: any;
   companiesFollowedArray:any=[];
@@ -65,11 +66,24 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     this.authService.get_user_details(this.profileId)
       .subscribe(respObj => {
         this.userDetails = { ...respObj }
+        console.log(this.userDetails)
         this.setinitCover();
         this.getConnectionDetailList();
       })
   }
+  projectLogoUpload(event, expId){
+    if (event.target.files && event.target.files.length) {
+      let selectedFiles = event.target.files;
 
+      this.projectLogoFile = selectedFiles[0];
+      console.log(this.projectLogoFile)
+      this.authService.update_project_logo(expId, this.projectLogoFile)
+        .subscribe(respObj => {
+          this.notifService.showSuccess('Project logo changed successfully', 'Profile Alert')
+          this.getUserDetails();
+        });
+    }
+  }
   setinitCover() {
     if (!this.userDetails.cover_photo) {
       this.coverImgStyle = this.getSanitizedPhoto(`background-image: url("./assets/icons/1x/Asset 2.png")`);

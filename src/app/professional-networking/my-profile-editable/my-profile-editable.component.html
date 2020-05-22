@@ -30,12 +30,23 @@
 
                 </div>
                 <div class="user-companies">
+
                     <span style="margin-bottom: 10px;"><img src="{{userDetails?.experiences[0]?.company_logo}}"
                             width="20px" height="20px"> {{userDetails?.experiences[0].company_name}}</span>
                     <span><img src="{{userDetails?.education[0]?.institute_logo}}" width="20px" height="20px">
                         {{userDetails?.education[0]?.institute}}</span>
                 </div>
-            </div>
+                <!-- <div style="
+                height: 50px; position: relative;
+                        bottom: 10px;">
+                        <a style="position: relative;
+                        top: 5px;
+                        left: 5px;
+                    "> -->
+                            <img class="more-opt" src="/assets/icons/1x/more-opt.png" alt="" style="margin-top: 80px;margin-right: 150px;"><br>
+                        <!-- </a>
+
+            </div> -->
 
         </div>
         <!-- <div *ngIf="showPdf" class="main-body" id="MyDIv">
@@ -227,12 +238,22 @@
                     </h3>
                     <div id="experience" *ngFor="let project of userDetails?.projects">
                         <div id="txt-exp">
-                            <img src="/assets/icons/1x/logo3.png" width="60px" height="60px" class="project-img">
-                            <img src="/assets/icons/1x/Edit.png" width="22px" style="cursor: pointer;"
+                            <div>
+                                <img *ngIf="project.logo" src="{{project.logo}}" width="50px"
+                                    height="50px" style="display: block; border-radius: 50%; cursor: pointer;"
+                                    (click)="projectLogoInput.click()" class="exp-img">
+                                <img *ngIf="!project.logo" src="/assets/icons/1x/no_company.jpg" width="50px"
+                                    height="50px" style="display: block; border-radius: 50%; cursor: pointer;"
+                                    (click)="projectLogoInput.click()" class="exp-img">
+
+                                <input type="file" style="display: none;" #projectLogoInput
+                                    (change)="projectLogoUpload($event, project.id)">
+                            </div>                            <img src="/assets/icons/1x/Edit.png" width="22px" style="cursor: pointer;"
                                 (click)="openEditModal('Projects', project)" class="edit-icon">
                             <div class="project-details">
 
-                                <span class="teal">{{project?.project_name}}</span><br>
+                                <span class="teal">{{project?.project_name}}</span> {{project?.start_date}} - {{project?.end_date}}
+                                <br>
                                 <a href="{{project.link}}" target="_blank">{{project.link}}</a><br>
                                 {{project?.start_date}} - {{project?.end_date}}
                             </div>
