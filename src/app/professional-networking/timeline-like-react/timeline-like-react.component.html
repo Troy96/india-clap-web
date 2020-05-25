@@ -272,5 +272,6 @@
         </div>
 
     </div>
-    <div *ngIf="!postList || !postList.length" class="no-data">Loading...</div>
+    <div *ngIf="!postList" class="no-data">Loading...</div>
+    <div *ngIf="!!postList && !postList.length" class="no-data">No posts!</div>
 </div>
