@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MyprofileEditableService } from 'src/app/professional-networking/my-profile-editable/myprofile-editable.service';
 import { MyProfile } from 'src/app/professional-networking/my-profile-editable/myprofle';
 import { FormBuilder, FormArray, FormGroup } from '@angular/forms';
-import { AuthServices} from 'src/app/services/auth.service';
+import { AuthServices } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-input-modal',
@@ -65,11 +65,12 @@ export class InputModalComponent implements OnInit {
       }
         break;
       case 'Experience': {
-        this.labels = ['Name of the organization', 'Start date', 'End date', 'Name of Role', 'Job Responibilities'];
-        this.placeholders = ['', 'YYYY-MM-DD', 'YYYY-MM-DD', '', '']
+        this.labels = ['Name of the organization', 'Start date', 'End date', 'Is Present', 'Name of Role', 'Job Responibilities'];
+        this.placeholders = ['', 'YYYY-MM-DD', 'YYYY-MM-DD', '(True/False)', '', '']
         if (this.inputData.isInputForm) {
           this.inputForm = this.fb.group({
             profile: this.fb.array([
+              this.fb.control(''),
               this.fb.control(''),
               this.fb.control(''),
               this.fb.control(''),
@@ -90,7 +91,7 @@ export class InputModalComponent implements OnInit {
             ])
           })
         }
-      }``
+      } ``
         break;
       case 'Projects': {
         this.labels = ['Name of the project', 'Start date', 'End date', 'Description', 'Link to project'];
@@ -122,10 +123,12 @@ export class InputModalComponent implements OnInit {
         break;
       case 'Certifications': {
         this.labels = ['Certification'];
-        this.placeholders = ['Certification Name', 'Validity in YYYY-MM-DD', 'Description'];
+        this.placeholders = ['Certification Name', 'Issue date in YYYY-MM-DD', 'Expiration date in YYYY-MM-DD', 'This credential does not expire (True/False)', 'Description'];
         if (this.inputData.isInputForm) {
           this.inputForm = this.fb.group({
             profile: this.fb.array([
+              this.fb.control(''),
+              this.fb.control(''),
               this.fb.control(''),
               this.fb.control(''),
               this.fb.control('')
@@ -137,8 +140,10 @@ export class InputModalComponent implements OnInit {
           this.editForm = this.fb.group({
             profile: this.fb.array([
               this.fb.control(data['certification_name']),
-              this.fb.control(data['validity_date']),
-              this.fb.control(data['description'])
+              this.fb.control(data['issue_date']),
+              this.fb.control(data['expiration_date']),
+              this.fb.control(data['not_expire']),
+              this.fb.control(data['description']),
             ])
           })
         }
@@ -146,7 +151,7 @@ export class InputModalComponent implements OnInit {
       }
       case 'Education': {
         this.labels = ['Education'];
-        this.placeholders = ['Institute', 'Degree', 'Study Field','Start Year (e.g. - 2015)','End Year (e.g. - 2020)','Is Present (True/False)','Grade (In Numbers)','Description','Link'];
+        this.placeholders = ['Institute', 'Degree', 'Study Field', 'Start Year (e.g. - 2015)', 'End Year (e.g. - 2020)', 'Is Present (True/False)', 'Grade (In Numbers)', 'Description', 'Link'];
         if (this.inputData.isInputForm) {
           this.inputForm = this.fb.group({
             profile: this.fb.array([
@@ -200,84 +205,84 @@ export class InputModalComponent implements OnInit {
             ])
           })
         }
-     
+
       }
         break;
-        case 'Language': {
-          this.labels = ['Language', 'Proficiency']
-          this.placeholders = ['Enter language name', 'Enter proficiency level (1-10)']
-          if (this.inputData.isInputForm) {
-            this.inputForm = this.fb.group({
-              profile: this.fb.array([
-                this.fb.control(''),
-                this.fb.control('')
-              ])
-            });
-          }
-          else {
-            const data = this.inputData.data;
-            this.editForm = this.fb.group({
-              profile: this.fb.array([
-                this.fb.control(data['language']),
-                this.fb.control(data['proficiency']),
-              ])
-            })
-          }
-       
+      case 'Language': {
+        this.labels = ['Language', 'Proficiency']
+        this.placeholders = ['Enter language name', 'Enter proficiency level (1-10)']
+        if (this.inputData.isInputForm) {
+          this.inputForm = this.fb.group({
+            profile: this.fb.array([
+              this.fb.control(''),
+              this.fb.control('')
+            ])
+          });
         }
-          break;
-      case 'Hobby': {
-            this.labels = ['Title', 'Description']
-            this.placeholders = ['Enter Hobby Title', 'Description of Hobby']
-            if (this.inputData.isInputForm) {
-              this.inputForm = this.fb.group({
-                profile: this.fb.array([
-                  this.fb.control(''),
-                  this.fb.control('')
-                ])
-              });
-            }
-            else {
-              const data = this.inputData.data;
-              this.editForm = this.fb.group({
-                profile: this.fb.array([
-                  this.fb.control(data['title']),
-                  this.fb.control(data['desc']),
-                ])
-              })
-            }
-         
-          }
-            break;
-            case 'Award': {
-              this.labels = ['Title', 'Issued by','Issue date','Descripion']
-              this.placeholders = ['Enter Award Title', 'Issued by','Enter date in YYYY-MM (e.g., 2020-04)','Description']
-              if (this.inputData.isInputForm) {
-                this.inputForm = this.fb.group({
-                  profile: this.fb.array([
-                    this.fb.control(''),
-                    this.fb.control(''),
-                    this.fb.control(''),
-                    this.fb.control(''),
-                    
-                  ])
-                });
-              }
-              else {
-                const data = this.inputData.data;
-                this.editForm = this.fb.group({
-                  profile: this.fb.array([
-                    this.fb.control(data['title']),
-                    this.fb.control(data['issuer']),
-                    this.fb.control(data['issue_time']),
-                    this.fb.control(data['desc']),
+        else {
+          const data = this.inputData.data;
+          this.editForm = this.fb.group({
+            profile: this.fb.array([
+              this.fb.control(data['language']),
+              this.fb.control(data['proficiency']),
+            ])
+          })
+        }
 
-                  ])
-                })
-              }
-           
-            }
-              break;
+      }
+        break;
+      case 'Hobby': {
+        this.labels = ['Title', 'Description']
+        this.placeholders = ['Enter Hobby Title', 'Description of Hobby']
+        if (this.inputData.isInputForm) {
+          this.inputForm = this.fb.group({
+            profile: this.fb.array([
+              this.fb.control(''),
+              this.fb.control('')
+            ])
+          });
+        }
+        else {
+          const data = this.inputData.data;
+          this.editForm = this.fb.group({
+            profile: this.fb.array([
+              this.fb.control(data['title']),
+              this.fb.control(data['desc']),
+            ])
+          })
+        }
+
+      }
+        break;
+      case 'Award': {
+        this.labels = ['Title', 'Issued by', 'Issue date', 'Descripion']
+        this.placeholders = ['Enter Award Title', 'Issued by', 'Enter date in YYYY-MM (e.g., 2020-04)', 'Description']
+        if (this.inputData.isInputForm) {
+          this.inputForm = this.fb.group({
+            profile: this.fb.array([
+              this.fb.control(''),
+              this.fb.control(''),
+              this.fb.control(''),
+              this.fb.control(''),
+
+            ])
+          });
+        }
+        else {
+          const data = this.inputData.data;
+          this.editForm = this.fb.group({
+            profile: this.fb.array([
+              this.fb.control(data['title']),
+              this.fb.control(data['issuer']),
+              this.fb.control(data['issue_time']),
+              this.fb.control(data['desc']),
+
+            ])
+          })
+        }
+
+      }
+        break;
     }
   }
 
@@ -285,11 +290,11 @@ export class InputModalComponent implements OnInit {
     switch (description) {
       case 'Profile': {
         let updateObj = {};
-       
-        if(!!this.inputForm.get('profile').value[0]) updateObj['first_name'] = this.inputForm.get('profile').value[0];
-        if(!!this.inputForm.get('profile').value[1]) updateObj['last_name'] = this.inputForm.get('profile').value[1];
-        if(!!this.inputForm.get('profile').value[2]) updateObj['location'] = this.inputForm.get('profile').value[2];
-        if(!!this.inputForm.get('profile').value[3]) updateObj['profession'] = this.inputForm.get('profile').value[3];
+
+        if (!!this.inputForm.get('profile').value[0]) updateObj['first_name'] = this.inputForm.get('profile').value[0];
+        if (!!this.inputForm.get('profile').value[1]) updateObj['last_name'] = this.inputForm.get('profile').value[1];
+        if (!!this.inputForm.get('profile').value[2]) updateObj['location'] = this.inputForm.get('profile').value[2];
+        if (!!this.inputForm.get('profile').value[3]) updateObj['profession'] = this.inputForm.get('profile').value[3];
 
         this.authService.update_user_details(
           this.currentProfileId, updateObj)
@@ -313,8 +318,9 @@ export class InputModalComponent implements OnInit {
           company_name: this.inputForm.get('profile').value[0],
           start_date: this.inputForm.get('profile').value[1],
           end_date: this.inputForm.get('profile').value[2],
-          title: this.inputForm.get('profile').value[3],
-          responsibilities: this.inputForm.get('profile').value[4],
+          is_present: this.inputForm.get('profile').value[3],
+          title: this.inputForm.get('profile').value[4],
+          responsibilities: this.inputForm.get('profile').value[5],
           user: this.currentProfileId,
         }).subscribe(_ => {
           this.myProfileService.updateUserDetails();
@@ -339,8 +345,10 @@ export class InputModalComponent implements OnInit {
       case 'Certifications': {
         this.authService.add_certificate({
           certification_name: this.inputForm.get('profile').value[0],
-          validity_date: this.inputForm.get('profile').value[1],
-          description: this.inputForm.get('profile').value[2],
+          issue_date: this.inputForm.get('profile').value[1],
+          expiration_date: this.inputForm.get('profile').value[2],
+          not_expire: this.inputForm.get('profile').value[3],
+          description: this.inputForm.get('profile').value[4],
           user: this.currentProfileId
         }).subscribe(_ => {
           this.myProfileService.updateUserDetails();
@@ -420,9 +428,11 @@ export class InputModalComponent implements OnInit {
     switch (description) {
       case 'Certifications': {
         this.authService.update_certificate(this.inputData.data.id, {
-          certification_name: this.editForm.get('profile').value[0],
-          validity_date: this.editForm.get('profile').value[1],
-          description: this.editForm.get('profile').value[2],
+          certification_name: this.inputForm.get('profile').value[0],
+          issue_date: this.inputForm.get('profile').value[1],
+          expiration_date: this.inputForm.get('profile').value[2],
+          not_expire: this.inputForm.get('profile').value[3],
+          description: this.inputForm.get('profile').value[4],
           user: this.currentProfileId
         })
           .subscribe(_ => {
@@ -500,7 +510,7 @@ export class InputModalComponent implements OnInit {
         })
         break;
       }
-      case 'Hobby' :{
+      case 'Hobby': {
         this.authService.update_hobby(this.inputData.data.id, {
           title: this.editForm.get('profile').value[0],
           desc: this.editForm.get('profile').value[1],
@@ -511,12 +521,12 @@ export class InputModalComponent implements OnInit {
         })
         break;
       }
-      case 'Award' :{
+      case 'Award': {
         this.authService.update_award(this.inputData.data.id, {
           title: this.editForm.get('profile').value[0],
           issuer: this.editForm.get('profile').value[1],
           issue_time: this.editForm.get('profile').value[2],
-          desc:this.editForm.get('profile').value[3],
+          desc: this.editForm.get('profile').value[3],
           user: this.currentProfileId,
         }).subscribe(_ => {
           this.myProfileService.updateUserDetails();
@@ -557,35 +567,35 @@ export class InputModalComponent implements OnInit {
       }
       case 'Skills': {
         this.authService.delete_skills(this.inputData.data.id)
-        .subscribe(_ => {
-          this.myProfileService.updateUserDetails();
-          this.closeInputModal();
-        })
-      break;
+          .subscribe(_ => {
+            this.myProfileService.updateUserDetails();
+            this.closeInputModal();
+          })
+        break;
       }
       case 'Award': {
         this.authService.delete_awards(this.inputData.data.id)
-        .subscribe(_ => {
-          this.myProfileService.updateUserDetails();
-          this.closeInputModal();
-        })
-      break;
+          .subscribe(_ => {
+            this.myProfileService.updateUserDetails();
+            this.closeInputModal();
+          })
+        break;
       }
       case 'Hobby': {
         this.authService.delete_hobby(this.inputData.data.id)
-        .subscribe(_ => {
-          this.myProfileService.updateUserDetails();
-          this.closeInputModal();
-        })
-      break;
+          .subscribe(_ => {
+            this.myProfileService.updateUserDetails();
+            this.closeInputModal();
+          })
+        break;
       }
       case 'Language': {
         this.authService.delete_languages(this.inputData.data.id)
-        .subscribe(_ => {
-          this.myProfileService.updateUserDetails();
-          this.closeInputModal();
-        })
-      break;
+          .subscribe(_ => {
+            this.myProfileService.updateUserDetails();
+            this.closeInputModal();
+          })
+        break;
       }
     }
   }

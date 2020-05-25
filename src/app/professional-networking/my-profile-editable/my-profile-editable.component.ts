@@ -31,6 +31,7 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
   companiesFollowedArray:any=[];
   coverImgStyle: SafeStyle;
   showPdf:boolean=false;
+  isLoading: boolean = true;
 
   @ViewChild('coverImg', { static: true }) coverImgRef: ElementRef;
   @ViewChild('Profile_pdf', {static: false}) Profile_pdf: ElementRef;
@@ -66,9 +67,13 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     this.authService.get_user_details(this.profileId)
       .subscribe(respObj => {
         this.userDetails = { ...respObj }
+        console.log(typeof this.userDetails.certifications[0].not_expire);
         console.log(this.userDetails)
         this.setinitCover();
         this.getConnectionDetailList();
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 3000);
       })
   }
   projectLogoUpload(event, expId){
