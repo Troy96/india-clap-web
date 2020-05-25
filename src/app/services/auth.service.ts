@@ -119,6 +119,10 @@ export class AuthServices {
     return this.http.patch<any>(`${config.base_url}/Users/certifications/${id}/`, $data);
   }
 
+  delete_education(id: number){
+    return this.http.delete<any>(`${config.base_url}/Users/education/${id}/`)
+  }
+
   delete_certificate(id: number) {
     return this.http.delete<any>(`${config.base_url}/Users/certifications/${id}/`);
   }

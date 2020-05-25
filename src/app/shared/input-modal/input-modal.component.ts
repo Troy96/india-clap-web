@@ -90,7 +90,7 @@ export class InputModalComponent implements OnInit {
             ])
           })
         }
-      }
+      }``
         break;
       case 'Projects': {
         this.labels = ['Name of the project', 'Start date', 'End date', 'Description', 'Link to project'];
@@ -529,7 +529,16 @@ export class InputModalComponent implements OnInit {
   }
 
   onDelete(description) {
+    console.log(description)
     switch (description) {
+      case 'Education': {
+        this.authService.delete_education(this.inputData.data.id)
+          .subscribe(_ => {
+            this.myProfileService.updateUserDetails();
+            this.closeInputModal();
+          })
+        break;
+      }
       case 'Certifications': {
         this.authService.delete_certificate(this.inputData.data.id)
           .subscribe(_ => {
