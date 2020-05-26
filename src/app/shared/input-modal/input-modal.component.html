@@ -30,7 +30,7 @@
             <div formArrayName="profile">
                 <div *ngFor="let control of editForm.get('profile')?.controls; let i=index">
                     {{labels[i]}}
-                    <input type="text" placeholder="{{placeholders[i]}}" [formControlName]="i" class="form-control"
+                    <input type="text"   placeholder="{{placeholders[i]}}" [formControlName]="i" class="form-control"
                         style="margin-top: 20px;">
                 </div>
             </div>

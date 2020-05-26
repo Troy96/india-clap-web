@@ -75,7 +75,7 @@ h2 {
   /*more icon*/
   float: right;
   margin-right: 20px;
-
+  margin-top:-50px;
 }
 
 #des1 {
@@ -670,7 +670,10 @@ margin: 0;
          float: right;
          display: flex;
          flex-direction: column;
-         margin-top: -70px;
+         /* margin-top: -70px; */
+         padding-right: 33px;
+    /* padding-bottom: 33px; */
+    margin-bottom: 50px;
       }
       #jumbotron-text {
           border: 1px gray solid;

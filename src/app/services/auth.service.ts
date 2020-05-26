@@ -44,11 +44,15 @@ export class AuthServices {
     console.log(id)
     return this.http.get<any>(`${config.base_url}/Users/profiles/${id}`);
   }
-
   update_user_details(userId, data) {
     return this.http.patch(`${config.base_url}/Users/profiles/${userId}/`, data)
   }
-
+  update_phone_details(phoneId, data) {
+    return this.http.patch(`${config.base_url}/Users/phones/${phoneId}/`, data)
+  }
+  add_user_details(userId, data) {
+    return this.http.post(`${config.base_url}/Users/phones/`, data)
+  }
   upload_user_video_resume(userId, data) {
     const formData = new FormData();
     formData.append('video_resume', data);
