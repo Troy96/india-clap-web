@@ -1,42 +1,195 @@
-@media(min-width: 407px){
-    .nav-btn{
-      margin-left: 20%;
-      margin-right: 10px !important;
-  }   
-  .footer{
-      font-size: 10px;
-  }
-  }
-  @media(min-width: 707px){
-    .nav-btn{
-      margin-left: 30%;
-      margin-right: 10px !important;
-  } 
-  }
+@media(min-width: 1000px) {
+    #place1 {
+        text-align: center;
+        display: inline-table;
+        float: right;
+        margin-top: -200px;
+        margin-bottom: 50px;
+    }
 
-  @media(min-width: 1207px){
+    #place {
+        text-align: center;
+        display: inline-table;
+        float: right;
+        margin-top: 100px;
 
-  .nav-btn{
-      margin-left: 40%;
-      margin-right: 10px !important;
-  }
-  .footer{
-      font-size: 15px;
-  }
-  }
-  .navbar-brand{
-      margin-left: 15%;
-      font-size: 55px;
-  }
-  .navbar{
-      background-color: white;
-  }
-  .holo-img{
-    margin-top: 100px;
-  }
-  .btn1{
-      height: 50px;
-      background-color: white;
-      border-color: teal;
-      color: teal;
-  }
+    }
+}
+
+@media(max-width: 500px) {
+
+    #place {
+        margin-top: 50px;
+
+    }
+
+    #place1 {
+        margin-top: 50px;
+    }
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    color: teal;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 50px;
+}
+
+bold {
+    font-weight: bolder;
+}
+
+.RegLogin {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+.RegLogin button {
+    margin-left: 10px;
+    background-color: white;
+    border: 1px solid teal;
+    color: teal;
+    font-size: 20px;
+
+}
+
+.holo-img {
+    margin-top: 70px;
+    text-align: center;
+    line-height: 35px;
+    width: 450px;
+    display: inline-table;
+}
+
+.holo-img img {
+    width: 180px;
+    cursor: pointer;
+}
+
+.holo-img img:hover {}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: teal;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+.holo-img span {
+    font-size: 18px;
+    letter-spacing: 1px;
+    word-spacing: 1.5px;
+    color: rgb(83, 83, 83);
+}
+
+.holo-img h1 {
+    font-weight: normal;
+    color: teal;
+}
+
+
+#form {
+
+    width: 400px;
+    margin: auto;
+    margin-top: 30px;
+
+}
+
+.form-control {
+    margin-bottom: 15px;
+    background-color: #DCDCDC;
+}
+
+.pass_show {
+    position: relative
+}
+
+.pass_show .ptxt {
+
+    position: absolute;
+
+    top: 50%;
+
+    right: 10px;
+
+    z-index: 1;
+
+    color: teal;
+
+    margin-top: -10px;
+
+    cursor: pointer;
+
+    transition: .3s ease all;
+
+}
+
+h1,
+h2 {
+    color: teal;
+}
+
+#forpass {
+    color: teal;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+a {
+    color: teal;
+    font-weight: bolder;
+}
+
+.btn-form {
+    width: 400px;
+    background-color: teal;
+    border-color: teal;
+}
+
+.container {
+    margin-bottom: 80px;
+}
+
+#form {
+
+    width: 400px;
+    margin: auto;
+    margin-top: 30px;
+    text-align: left !important;
+
+}
+
+.form-control {
+    margin-bottom: 15px;
+    background-color: #DCDCDC;
+}
+
+.btn {
+    width: 400px;
+    background-color: teal;
+    border-color: teal;
+}
+
+.txt {
+    font-size: 18px;
+    color: rgb(1, 104, 104);
+}
+
+#place1 h3 {
+    font-size: 15px;
+
+}
+
+#place {
+    border-bottom: 1px solid teal;
+    padding-bottom: 70px;
+}

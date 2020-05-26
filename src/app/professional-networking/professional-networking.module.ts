@@ -33,6 +33,7 @@ import { ContactInfoComponent } from './my-profile-editable/contact-info/contact
 import { ContactUsElseComponent } from './someone-else-profile/contact-us-else/contact-us-else/contact-us-else.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { FeedPostComponent } from './timeline-like-react/feed-post/feed-post.component';
+import { ProjectComponent } from './my-profile-editable/modals/project/project.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { FeedPostComponent } from './timeline-like-react/feed-post/feed-post.com
     ContactInfoComponent,
     ContactUsElseComponent,
     NotificationsComponent,
-    FeedPostComponent
+    FeedPostComponent,
+    ProjectComponent
   ],
   imports: [
     CommonModule,

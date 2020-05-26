@@ -7,6 +7,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 import { ContactInfoService } from './contact-info/contact-info.service';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
+import { ProjectService } from './modals/project/project.service';
 
 @Component({
   selector: 'app-my-profile-editable',
@@ -44,6 +45,7 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     private notifService: NotificationService,
     public contactInfo: ContactInfoService,
     private renderer: Renderer2,
+    public _project: ProjectService
   ) { }
 
   ngOnInit() {

@@ -539,65 +539,67 @@ export class InputModalComponent implements OnInit {
   }
 
   onDelete(description) {
-    console.log(description)
-    switch (description) {
-      case 'Education': {
-        this.authService.delete_education(this.inputData.data.id)
-          .subscribe(_ => {
-            this.myProfileService.updateUserDetails();
-            this.closeInputModal();
-          })
-        break;
-      }
-      case 'Certifications': {
-        this.authService.delete_certificate(this.inputData.data.id)
-          .subscribe(_ => {
-            this.myProfileService.updateUserDetails();
-            this.closeInputModal();
-          })
-        break;
-      }
-      case 'Experience': {
-        this.authService.delete_experience(this.inputData.data.id)
-          .subscribe(_ => {
-            this.myProfileService.updateUserDetails();
-            this.closeInputModal();
-          })
-        break;
-      }
-      case 'Skills': {
-        this.authService.delete_skills(this.inputData.data.id)
-          .subscribe(_ => {
-            this.myProfileService.updateUserDetails();
-            this.closeInputModal();
-          })
-        break;
-      }
-      case 'Award': {
-        this.authService.delete_awards(this.inputData.data.id)
-          .subscribe(_ => {
-            this.myProfileService.updateUserDetails();
-            this.closeInputModal();
-          })
-        break;
-      }
-      case 'Hobby': {
-        this.authService.delete_hobby(this.inputData.data.id)
-          .subscribe(_ => {
-            this.myProfileService.updateUserDetails();
-            this.closeInputModal();
-          })
-        break;
-      }
-      case 'Language': {
-        this.authService.delete_languages(this.inputData.data.id)
-          .subscribe(_ => {
-            this.myProfileService.updateUserDetails();
-            this.closeInputModal();
-          })
-        break;
+    if (confirm('Do you want to delete?')) {
+      switch (description) {
+        case 'Education': {
+          this.authService.delete_education(this.inputData.data.id)
+            .subscribe(_ => {
+              this.myProfileService.updateUserDetails();
+              this.closeInputModal();
+            })
+          break;
+        }
+        case 'Certifications': {
+          this.authService.delete_certificate(this.inputData.data.id)
+            .subscribe(_ => {
+              this.myProfileService.updateUserDetails();
+              this.closeInputModal();
+            })
+          break;
+        }
+        case 'Experience': {
+          this.authService.delete_experience(this.inputData.data.id)
+            .subscribe(_ => {
+              this.myProfileService.updateUserDetails();
+              this.closeInputModal();
+            })
+          break;
+        }
+        case 'Skills': {
+          this.authService.delete_skills(this.inputData.data.id)
+            .subscribe(_ => {
+              this.myProfileService.updateUserDetails();
+              this.closeInputModal();
+            })
+          break;
+        }
+        case 'Award': {
+          this.authService.delete_awards(this.inputData.data.id)
+            .subscribe(_ => {
+              this.myProfileService.updateUserDetails();
+              this.closeInputModal();
+            })
+          break;
+        }
+        case 'Hobby': {
+          this.authService.delete_hobby(this.inputData.data.id)
+            .subscribe(_ => {
+              this.myProfileService.updateUserDetails();
+              this.closeInputModal();
+            })
+          break;
+        }
+        case 'Language': {
+          this.authService.delete_languages(this.inputData.data.id)
+            .subscribe(_ => {
+              this.myProfileService.updateUserDetails();
+              this.closeInputModal();
+            })
+          break;
+        }
       }
     }
+
   }
 
   closeInputModal() {

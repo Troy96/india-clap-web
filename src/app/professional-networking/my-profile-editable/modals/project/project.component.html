@@ -1,0 +1,40 @@
+<div class="experience">
+    <div class="container experience-body">
+        <h1>Add Project</h1>
+        <img src="/assets/icons/1x/close.png" width="20px" class="cancel-icon" (click)="_project.closeModal()">
+        <hr>
+        <form [formGroup]='projectForm'>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Project Name" formControlName="project_name"
+                [ngClass]="{'is-invalid':projectForm.get('project_name').touched && projectForm.get('project_name').invalid}">
+            <div
+                *ngIf="(projectForm.get('project_name').invalid && projectForm.get('project_name').touched) || projectForm.get('project_name').dirty">
+                <small *ngIf="projectForm.get('project_name').errors?.required" class="text-danger"> Project Name is
+                    required</small>
+            </div>
+
+            <input placeholder="Start Date" type="text" class="form-control" formControlName="start_date"
+                onfocus="(this.type='date')" onblur="(this.type='text')" id="start_date" style="width: 100%;" />
+
+            <input placeholder="End Date" type="text" class="form-control" formControlName="end_date"
+                onfocus="(this.type='date')" onblur="(this.type='text')" id="end_date" style="width: 100%;" />
+
+            <textarea class="form-control" placeholder="Description" formControlName="description"></textarea>
+
+
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Project Link" formControlName="link"
+                [ngClass]="{'is-invalid':projectForm.get('link').touched && projectForm.get('link').invalid}">
+            <div
+                *ngIf="(projectForm.get('link').invalid && projectForm.get('link').touched) || projectForm.get('link').dirty">
+                <small *ngIf="projectForm.get('link').errors?.required" class="text-danger"> Project Name is
+                    required</small>
+            </div>
+
+            <button class="btn btn-primary" (click)="onSubmit()" style="width: 100%;">Add</button><br>
+
+
+
+        </form>
+    </div>
+</div>
