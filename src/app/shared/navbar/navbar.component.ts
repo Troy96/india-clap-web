@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2, ElementRef, ViewChild, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { AuthServices} from 'src/app/services/auth.service';
+import { AuthServices } from 'src/app/services/auth.service';
 import { NotificationService } from '../../services/notification.service';
 
 import { Router } from '@angular/router';
@@ -73,14 +73,7 @@ export class NavbarComponent implements OnInit {
 
   onLogout() {
     this.authService.logout();
-    //this.signOut();
-    this.router.navigateByUrl('/login');
-
+    this.router.navigateByUrl('/');
   }
-//  signOut(): void {
-//     this.auth_Service.signOut().catch(err=>{
-//       console.log(err)
-//     });
-//   }
 
 }
