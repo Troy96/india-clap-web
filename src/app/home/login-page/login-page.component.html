@@ -1,40 +1,34 @@
-<div class="container">
-    <div id="place">
-        <h2>Welcome Back</h2>
-        <p class="txt">log in to stay updated with your seekers and providers</p><br>
-        <div id="form">
-            <form  [formGroup]='loginForm'>
+<div id="place">
+    <span class='txt'>If you are already registered on holagraph, please log in below</span>
+    <div id="form">
+        <form [formGroup]='loginForm'>
+
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Email ID"  formControlName="email"
-                [ngClass]="{'is-invalid':loginForm.get('email').touched && loginForm.get('email').invalid}">
-                <div *ngIf="(primEmail.invalid && primEmail.touched) || primEmail.dirty">
-                    <small *ngIf="primEmail.errors?.required" class="text-danger"> Email is required</small>
-                    <!--question mark(?) is a safe navigation operator-->
-                    <small *ngIf="primEmail.errors?.pattern" class="text-danger">Please provide a valid email address</small>
-                  </div>
+                placeholder="Email ID" formControlName="email"
+                [ngClass]="{'is-invalid':loginForm.get('email').touched && loginForm.get('email').invalid}"
+                placeholder="Email ID">
+            <div *ngIf="(primEmail.invalid && primEmail.touched) || primEmail.dirty">
+                <small *ngIf="primEmail.errors?.required" class="text-danger"> Email is required</small>
+                <small *ngIf="primEmail.errors?.pattern" class="text-danger">Please provide a valid email
+                    address</small>
+            </div>
 
             <div class="form-group pass_show">
-                <input type="password" class="form-control" placeholder="Password"  formControlName="password"
-                [ngClass]="{'is-invalid':loginForm.get('password').touched && loginForm.get('password').invalid}">
-                <!-- <div class="invalid-feedback">
-                    <p class="error">This field is required</p>
-                 </div> -->
-                 <!-- <button class="view-btn signin-pass-view-btn ptxt" (click)="togglepass($event)" type="button"> -->
-                    <span class="ptxt view-btn signin-pass-view-btn ptxt" (click)="togglepass($event)" type="button" >Show</span>
-                <!-- </button>  -->
+                <input type="password" class="form-control" placeholder="Password" formControlName="password"
+                    [ngClass]="{'is-invalid':loginForm.get('password').touched && loginForm.get('password').invalid}">
+
+                <span class="ptxt view-btn signin-pass-view-btn ptxt" (click)="togglepass($event)"
+                    type="button">Show</span>
                 <div *ngIf="(pass.invalid && pass.touched) || pass.dirty">
                     <small *ngIf="pass.errors?.required" class="text-danger"> Password is required</small>
-                    <!--question mark(?) is a safe navigation operator-->
-                    <small *ngIf="pass.errors?.pattern" class="text-danger">Please follow the given pattern for password </small>
-                  </div>
+                    <small *ngIf="pass.errors?.pattern" class="text-danger">Please follow the given pattern for
+                        password </small>
+                </div>
             </div>
+
+            <button class="btn btn-primary btn-form" (click)="submit()">Log in</button><br>
+            <span id="forpass" class="float-left" routerLink="/forgot-password">forgot password?</span>
         </form>
-        </div>
-        <button class="btn btn-primary" (click)="submit()">Log in</button><br>
-        <span id="forpass" routerLink="/forgot-password"><span id="forgot_password_text">forgot password?</span><span class="space"></span>click here to <a routerLink="/register">register now</a></span>
 
     </div>
-    <!-- <button class="btn btn-primary" (click)="signInWithFB()">Log in with Facebook</button><br>
-    <button class="btn btn-primary" (click)="signOut()">Log out</button><br> -->
-
 </div>

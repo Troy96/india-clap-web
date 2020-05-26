@@ -1,64 +1,129 @@
-#place{
+@media(min-width: 1000px) {
+  #place {
     text-align: center;
-    margin-top: 10%;
+    display: inline-table;
+    float: right;
+    margin-top: 100px;
+
   }
-  #form{
-    
-    width: 400px;
-    margin: auto;
-    margin-top: 30px;
-    
+}
+
+@media(max-width: 500px) {
+  #place {
+    margin-top: 50px;
+
   }
-  .form-control{
-    margin-bottom: 15px;
-    background-color: #DCDCDC;
-  }
-  .btn{
-    width: 400px;
-    background-color: teal;
-    border-color: teal;
-  }
-  .pass_show{position: relative} 
-
-  .pass_show .ptxt { 
-
-  position: absolute; 
-
-  top: 50%; 
-
-  right: 10px; 
-
-  z-index: 1; 
-
-  color: teal; 
-
-  margin-top: -10px; 
-
-  cursor: pointer; 
-
-  transition: .3s ease all; 
-
-} 
-h1, h2{
-color: teal;
 }
-.txt{
-color: gray;
+
+.RegLogin {
+  position: absolute;
+  top: 30px;
+  right: 30px;
 }
-#forpass{
-font-size: 12px;
+
+.RegLogin button {
+  margin-left: 10px;
+  background-color: white;
+  border: 1px solid teal;
+  color: teal;
+  font-size: 20px;
+
 }
-#forgot_password_text{
-    cursor: pointer;
+
+#form {
+
+  width: 400px;
+  margin: auto;
+  margin-top: 30px;
+
 }
-#forgot_password_text:hover{
-    color: teal;
-    text-decoration: underline;
+
+.form-control {
+  margin-bottom: 15px;
+  background-color: #DCDCDC;
 }
-.space{
-margin-left: 140px;
+
+.pass_show {
+  position: relative
 }
-a{
-color: teal;
-font-weight: bolder;
+
+.pass_show .ptxt {
+
+  position: absolute;
+
+  top: 50%;
+
+  right: 10px;
+
+  z-index: 1;
+
+  color: teal;
+
+  margin-top: -10px;
+
+  cursor: pointer;
+
+  transition: .3s ease all;
+
+}
+
+h1,
+h2 {
+  color: teal;
+}
+
+#forpass {
+  color: teal;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+a {
+  color: teal;
+  font-weight: bolder;
+}
+
+.btn-form {
+  width: 400px;
+  background-color: teal;
+  border-color: teal;
+}
+
+.container {
+  margin-bottom: 80px;
+}
+
+#form {
+
+  width: 400px;
+  margin: auto;
+  margin-top: 30px;
+  text-align: left !important;
+
+}
+
+.form-control {
+  margin-bottom: 15px;
+  background-color: #DCDCDC;
+}
+
+.btn {
+  width: 400px;
+  background-color: teal;
+  border-color: teal;
+}
+
+.txt {
+  font-size: 18px;
+  color: rgb(1, 104, 104);
+}
+
+#place1 h3 {
+  font-size: 15px;
+
+}
+
+#place {
+  border-bottom: 1px solid teal;
+  padding-bottom: 70px;
 }
