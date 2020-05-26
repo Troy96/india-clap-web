@@ -1,65 +1,123 @@
-#place{
+@media(min-width: 1000px) {
+  #place1 {
     text-align: center;
+    display: inline-table;
+    float: right;
+    margin-top: -200px;
+    margin-bottom: 50px;
   }
-  #form{
-    
-    width: 400px;
-    margin: auto;
-    text-align: left !important;
-    
+}
+
+@media(max-width: 500px) {
+  #place1 {
+    margin-top: 50px;
   }
-  .form-control{
-    margin-bottom: 15px;
-    background-color: #DCDCDC
-;
-  }
-  .btn{
-    width: 400px;
-    background-color: teal;
-    border-color: teal;
-  }
-  
-h1, h2{
-color: teal;
 }
-h3{
-font-size: 15px;
+
+.RegLogin {
+  position: absolute;
+  top: 30px;
+  right: 30px;
 }
-.txt{
-color: gray;
+
+.RegLogin button {
+  margin-left: 10px;
+  background-color: white;
+  border: 1px solid teal;
+  color: teal;
+  font-size: 20px;
+
 }
-#forpass{
-font-size: 12px;
+
+#form {
+
+  width: 400px;
+  margin: auto;
+  margin-top: 30px;
+
 }
-.space{
-margin-left: 140px;
+
+.form-control {
+  margin-bottom: 15px;
+  background-color: #DCDCDC;
 }
-a{
-color: teal;
-font-weight: bolder;
+
+.pass_show {
+  position: relative
 }
-.left{ /*for first and last name*/
-float: left;
-width: 200px;
+
+.pass_show .ptxt {
+
+  position: absolute;
+
+  top: 50%;
+
+  right: 10px;
+
+  z-index: 1;
+
+  color: teal;
+
+  margin-top: -10px;
+
+  cursor: pointer;
+
+  transition: .3s ease all;
+
 }
-.password{
-margin-bottom: 0 !important;
+
+h1,
+h2 {
+  color: teal;
 }
-.agreement{
-font-size: 13px;
-color: gray;
-text-align: left !important;
-width: 400px;
-margin: auto;
-margin-bottom: 10px;
+
+#forpass {
+  color: teal;
+  cursor: pointer;
+  font-size: 15px;
 }
-h3{
-color: teal;
+
+a {
+  color: teal;
+  font-weight: bolder;
 }
-#forgot_password_text{
-    cursor: pointer;
+
+.btn-form {
+  width: 400px;
+  background-color: teal;
+  border-color: teal;
 }
-#forgot_password_text:hover{
-    color: teal;
-    text-decoration: underline;
+
+.container {
+  margin-bottom: 80px;
+}
+
+#form {
+
+  width: 400px;
+  margin: auto;
+  margin-top: 30px;
+  text-align: left !important;
+
+}
+
+.form-control {
+  margin-bottom: 15px;
+  background-color: #DCDCDC;
+}
+
+.btn {
+  width: 400px;
+  background-color: teal;
+  border-color: teal;
+}
+
+.txt {
+  font-size: 18px;
+  color: rgb(1, 104, 104);
+}
+
+#place1 h3 {
+  font-size: 15px;
+
 }
