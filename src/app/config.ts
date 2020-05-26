@@ -1,3 +1,3 @@
 export const config = {
-    base_url: 'https://holagraph-back.herokuapp.com',
+    base_url: 'http://holagraph-indiaclap.herokuapp.com',
 };
