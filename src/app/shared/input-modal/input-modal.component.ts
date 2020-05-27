@@ -290,12 +290,15 @@ export class InputModalComponent implements OnInit {
               this.fb.control(data['title']),
               this.fb.control(data['issuer']),
               this.fb.control(data['issue_time']),
-              this.fb.control(data['desc'])])
-          }),
-                }
+              this.fb.control(data['desc']),
+            ])
+          })
+        }
+
       }
         break;
     }
+
   }
 
   onSave(description) {
