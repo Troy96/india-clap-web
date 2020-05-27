@@ -40,17 +40,31 @@ export class InputModalComponent implements OnInit {
   createDynamicFormControls() {
     switch (this.inputData.description) {
       case 'Profile': {
-        this.labels = ['Enter your first name', 'Enter your last name', 'Enter your location', 'Enter your profession'];
-        this.placeholders = ['first name', 'last name', '', '']
+        this.labels = ['Enter your first name', 'Enter your last name', 'Enter your district', 'Enter your Country', 'Enter your profession'];
+        this.placeholders = ['first name', 'last name', 'Kolkata', 'India', 'Developer']
         if (this.inputData.isInputForm) {
           this.inputForm = this.fb.group({
             profile: this.fb.array([
               this.fb.control(''),
               this.fb.control(''),
               this.fb.control(''),
+              this.fb.control(''),
               this.fb.control('')
             ])
           });
+        }
+        else {
+          const data = this.inputData.data;
+          console.log(CharacterData)
+          this.editForm = this.fb.group({
+            profile: this.fb.array([
+              this.fb.control(data['first_name']),
+              this.fb.control(data['last_name']),
+              this.fb.control(data['location_district']),
+              this.fb.control(data['location_country']),
+              this.fb.control(data['profession']),
+            ])
+          })
         }
         break;
       }
@@ -81,6 +95,7 @@ export class InputModalComponent implements OnInit {
         }
         else {
           const data = this.inputData.data;
+          console.log(data)
           this.editForm = this.fb.group({
             profile: this.fb.array([
               this.fb.control(data['company_name']),
@@ -255,7 +270,7 @@ export class InputModalComponent implements OnInit {
       }
         break;
       case 'Award': {
-        this.labels = ['Title', 'Issued by', 'Issue date', 'Descripion']
+        this.labels = ['Title', 'Issued by', 'Issue date', 'Description']
         this.placeholders = ['Enter Award Title', 'Issued by', 'Enter date in YYYY-MM (e.g., 2020-04)', 'Description']
         if (this.inputData.isInputForm) {
           this.inputForm = this.fb.group({
@@ -275,12 +290,9 @@ export class InputModalComponent implements OnInit {
               this.fb.control(data['title']),
               this.fb.control(data['issuer']),
               this.fb.control(data['issue_time']),
-              this.fb.control(data['desc']),
-
-            ])
-          })
-        }
-
+              this.fb.control(data['desc'])])
+          }),
+                }
       }
         break;
     }
@@ -293,8 +305,9 @@ export class InputModalComponent implements OnInit {
 
         if (!!this.inputForm.get('profile').value[0]) updateObj['first_name'] = this.inputForm.get('profile').value[0];
         if (!!this.inputForm.get('profile').value[1]) updateObj['last_name'] = this.inputForm.get('profile').value[1];
-        if (!!this.inputForm.get('profile').value[2]) updateObj['location'] = this.inputForm.get('profile').value[2];
-        if (!!this.inputForm.get('profile').value[3]) updateObj['profession'] = this.inputForm.get('profile').value[3];
+        if (!!this.inputForm.get('profile').value[2]) updateObj['location_district'] = this.inputForm.get('profile').value[2];
+        if (!!this.inputForm.get('profile').value[2]) updateObj['location_district'] = this.inputForm.get('profile').value[3];
+        if (!!this.inputForm.get('profile').value[3]) updateObj['profession'] = this.inputForm.get('profile').value[4];
 
         this.authService.update_user_details(
           this.currentProfileId, updateObj)
@@ -426,6 +439,30 @@ export class InputModalComponent implements OnInit {
 
   onEdit(description) {
     switch (description) {
+      case 'Profile': {
+        //  let updateObj = {};
+
+        // if(!!this.inputForm.get('profile').value[0]) updateObj['first_name'] = this.inputForm.get('profile').value[0];
+        // if(!!this.inputForm.get('profile').value[1]) updateObj['last_name'] = this.inputForm.get('profile').value[1];
+        // if(!!this.inputForm.get('profile').value[2]) updateObj['location'] = this.inputForm.get('profile').value[2];
+        // if(!!this.inputForm.get('profile').value[3]) updateObj['profession'] = this.inputForm.get('profile').value[3];
+
+
+        this.authService.update_user_details(
+          this.currentProfileId, {
+          first_name: this.editForm.get('profile').value[0],
+          last_name: this.editForm.get('profile').value[1],
+          location_district: this.editForm.get('profile').value[2],
+          location_country: this.editForm.get('profile').value[3],
+          profession: this.editForm.get('profile').value[4],
+          user: this.currentProfileId
+        })
+          .subscribe(_ => {
+            this.myProfileService.updateUserDetails();
+            this.closeInputModal();
+          })
+        break;
+      }
       case 'Certifications': {
         this.authService.update_certificate(this.inputData.data.id, {
           certification_name: this.inputForm.get('profile').value[0],

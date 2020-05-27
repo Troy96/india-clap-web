@@ -10,19 +10,21 @@
         <div class="item">
             <h6>Your Profile</h6>
             <!-- <span>{{user?.phone[0]}}</span> -->
-            <span>{{profileUrl}} / <input type="text" [(ngModel)]="slug" placeholder="{{slug}}"><button class="btn btn-primary" style="height: 35px;
+            <span>{{profileUrl}} /{{slug}} </span>
+        </div>
+        <div class="item">
+            <h6><span><i class="fas fa-phone" aria-hidden="true"></i></span>Phone</h6>
+            <span *ngIf="contactData?.phone[0]"><input type="text" [(ngModel)]="phone_num" name="phone_num" value="{{phone_num}}"><button class="btn btn-primary" style="height: 35px;
+                margin-left: 10px;
+                background: teal;" (click)="updateSlug()">Save</button></span>
+            <span *ngIf="!contactData?.phone[0]"><input type="text"[(ngModel)]="phone_num" placeholder="N/A"><button class="btn btn-primary" style="height: 35px;
                 margin-left: 10px;
                 background: teal;" (click)="updateSlug()">Save</button></span>
         </div>
         <div class="item">
-            <h6><span><i class="fas fa-phone" aria-hidden="true"></i></span>Phone</h6>
-            <!-- <span>{{user?.phone[0]}}</span> -->
-            <span>(+91) 9090909099 (Mobile)</span>
-        </div>
-        <div class="item">
             <h6>Email</h6>
             <!-- <span>{{user?.phone[0]}}</span> -->
-            <!-- <span>{{user?.email}}</span>  -->
+            <span>{{contactData?.email}}</span> 
         </div>
     </div>
 </div>
