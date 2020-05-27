@@ -167,7 +167,7 @@
                                         (change)="onCompanyLogoUpload($event, exp.id)">
 
                                 </div>
-                                <div style="margin-left: 35px;">
+                                <div class="exp-workWrap" style="margin-left: 35px;">
                                     <span class="teal">{{exp.company_name}}</span><br>
                                     {{exp.title}}<br>
                                     {{exp.responsibilities}}
@@ -205,7 +205,7 @@
                                     <input type="file" style="display: none;" #educationLogoInput
                                         (change)="educationLogoUpload($event, exp.id)">
                                 </div>
-                                <div style="margin-left: 35px;">
+                                <div class="exp-workWrap" style="margin-left: 35px;">
                                     <span class="teal">{{exp.institute}}</span><br>
                                     {{exp.degree}},
                                     {{exp.study_field}}<br>
@@ -250,7 +250,7 @@
                                     (change)="projectLogoUpload($event, project.id)">
                             </div>                            <img src="/assets/icons/1x/Edit.png" width="22px" style="cursor: pointer;"
                                 (click)="openEditModal('Projects', project)" class="edit-icon">
-                            <div class="project-details">
+                            <div class="project-details exp-workWrap">
 
                                 <span class="teal">{{project?.project_name}}</span> {{project?.start_date}} - {{project?.end_date}}
                                 <br>
@@ -258,7 +258,7 @@
                                 {{project?.start_date}} - {{project?.end_date}}
                             </div>
                         </div>
-                        <div class="project-description" style="margin-left: 100px;">
+                        <div class="project-description exp-workWrap" style="margin-left: 100px;">
                             <h3 style="font-size: 15px !important;">Project description
                             </h3>
                             <div class="pro-des">
@@ -273,7 +273,7 @@
                 <div id="headline" style="padding: 40px;">
                     <h3>Certification<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
                             (click)="openAddModal('Certifications')" style="cursor: pointer;"></h3>
-                    <div class="project-description" *ngIf="userDetails?.certifications.length">
+                    <div class="project-description exp-workWrap" *ngIf="userDetails?.certifications.length">
 
                         <div id="skill" *ngFor="let certification of userDetails?.certifications">
                             <span class="teal">{{certification?.certification_name}} <img
@@ -291,7 +291,7 @@
                             (click)="openAddModal('Skills')" style="cursor: pointer;"></h3>
                     <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
 
-                    <div class="project-description" style="margin-top: 20px;">
+                    <div class="project-description exp-workWrap" style="margin-top: 20px;">
 
                         <div id="skill" *ngFor="let skill of userDetails?.skills">
                             {{skill.skill}} ({{skill.level}}) <img src="/assets/icons/1x/Edit.png"
@@ -307,7 +307,7 @@
                             (click)="openAddModal('Award')" style="cursor: pointer;"></h3>
                     <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
 
-                    <div class="project-description" style="margin-top: 20px;">
+                    <div class="project-description exp-workWrap" style="margin-top: 20px;">
 
                         <div id="skill" *ngFor="let award of userDetails?.awards">
                             {{award.title}} ({{award.issuer}}) <img src="/assets/icons/1x/Edit.png"
@@ -327,7 +327,7 @@
                             (click)="openAddModal('Hobby')" style="cursor: pointer;"></h3>
                     <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
 
-                    <div class="project-description" style="margin-top: 20px;">
+                    <div class="project-description exp-workWrap" style="margin-top: 20px;">
 
                         <div id="skill" *ngFor="let hobby of userDetails?.hobbies">
                             {{hobby.title}} - {{hobby.desc}} <img src="/assets/icons/1x/Edit.png"
@@ -343,7 +343,7 @@
                             (click)="openAddModal('Language')" style="cursor: pointer;"></h3>
                     <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
 
-                    <div class="project-description" style="margin-top: 20px;">
+                    <div  class="project-description exp-workWrap" style="margin-top: 20px;">
 
                         <div id="skill" *ngFor="let lang of userDetails?.languages">
                             {{lang.language}} - ({{lang.proficiency}}) <img src="/assets/icons/1x/Edit.png"
