@@ -49,7 +49,7 @@ export class ResetPasswordComponent implements OnInit {
       this.authService.reset_password(this.obj).subscribe((data)=>{
         console.log(data);
         this.showToasterSuccess()
-        setTimeout(() => { this.router.navigate(['/login']) }, 7000);
+        setTimeout(() => { this.router.navigate(['/']) }, 7000);
 
       },
       err=>{
