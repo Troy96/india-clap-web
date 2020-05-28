@@ -13,6 +13,8 @@ export class InputModalComponent implements OnInit {
 
   inputForm: FormGroup;
   editForm: FormGroup;
+  inputHeadlineForm:FormGroup;
+  editHeadlineForm:FormGroup
   currentUserId: number;
   currentProfileId: number;
   inputData: MyProfile

@@ -692,3 +692,7 @@ margin: 0;
      }
      .main-container{
      }
+     .exp-workWrap{
+       width: 200px;
+       word-wrap: break-word;
+     }
