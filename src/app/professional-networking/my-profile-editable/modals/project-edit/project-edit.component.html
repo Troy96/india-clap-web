@@ -1,0 +1,40 @@
+<div class="experience">
+    <div class="container experience-body">
+        <h1>Edit Project</h1>
+        <img src="/assets/icons/1x/close.png" width="20px" class="cancel-icon" (click)="_projectEdit.closeModal()">
+        <hr>
+        <form [formGroup]='projectEditForm'>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Project Name" formControlName="project_name"
+                [ngClass]="{'is-invalid':projectEditForm.get('project_name').touched && projectEditForm.get('project_name').invalid}">
+            <div
+                *ngIf="(projectEditForm.get('project_name').invalid && projectEditForm.get('project_name').touched) || projectEditForm.get('project_name').dirty">
+                <small *ngIf="projectEditForm.get('project_name').errors?.required" class="text-danger"> Project Name is
+                    required</small>
+            </div>
+
+            <input placeholder="Start Date" type="text" class="form-control" formControlName="start_date"
+                onfocus="(this.type='date')" onblur="(this.type='text')" id="start_date" style="width: 100%;" />
+
+            <input placeholder="End Date" type="text" class="form-control" formControlName="end_date"
+                onfocus="(this.type='date')" onblur="(this.type='text')" id="end_date" style="width: 100%;" />
+
+            <textarea class="form-control" placeholder="Description" formControlName="description"></textarea>
+
+
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Project Link" formControlName="link"
+                [ngClass]="{'is-invalid':projectEditForm.get('link').touched && projectEditForm.get('link').invalid}">
+            <div
+                *ngIf="(projectEditForm.get('link').invalid && projectEditForm.get('link').touched) || projectEditForm.get('link').dirty">
+                <small *ngIf="projectEditForm.get('link').errors?.required" class="text-danger"> Project Name is
+                    required</small>
+            </div>
+
+            <button class="btn btn-primary" (click)="onSave()" style="width: 100%;">Save</button><br>
+
+
+
+        </form>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-<div class="main-container" *ngIf="!isLoading">
+<div class="main-container">
     <div class="container">
         <div class="jumbotron jumbotron-fluid" style="margin-top: 60px;">
             <div class="jumbotron-image" #coverImg [style]="coverImgStyle" *ngIf="userDetails?.photo"
@@ -20,13 +20,14 @@
             <div id="jumbotron-text">
                 <div id="name">
                     <h2><span class="teal">{{userDetails?.first_name}} {{userDetails?.last_name}} <img
-                                src="/assets/icons/1x/Edit.png" (click)="openEditModal('Profile',userDetails)" width="22px"
-                                style="cursor: pointer;" class="edit-icon1"></span></h2>
+                                src="/assets/icons/1x/Edit.png" (click)="openEditModal('Profile',userDetails)"
+                                width="22px" style="cursor: pointer;" class="edit-icon1"></span></h2>
                     <span *ngIf="userDetails?.experiences">{{userDetails?.experiences[0].title}} at
                         {{userDetails?.experiences[0].company_name}}</span><br>
                     <span>{{userDetails?.location_district}}, {{userDetails?.location_country}}</span>
 
-                    <a style="margin-left: 10px; cursor: pointer; color: #0073b1; font-weight: 600;" (click)="openContactInfo()">Contact Info</a>
+                    <a style="margin-left: 10px; cursor: pointer; color: #0073b1; font-weight: 600;"
+                        (click)="openContactInfo()">Contact Info</a>
 
                 </div>
                 <div class="user-companies">
@@ -43,13 +44,13 @@
                         top: 5px;
                         left: 5px;
                     "> -->
-                            <img class="more-opt" src="/assets/icons/1x/more-opt.png" alt="" style="margin-right: 150px;"><br>
-                        <!-- </a>
+                <img class="more-opt" src="/assets/icons/1x/more-opt.png" alt="" style="margin-right: 150px;"><br>
+                <!-- </a>
 
             </div> -->
 
-        </div>
-        <!-- <div *ngIf="showPdf" class="main-body" id="MyDIv">
+            </div>
+            <!-- <div *ngIf="showPdf" class="main-body" id="MyDIv">
             <div class="float-left cont1">
                 <span class="contact">   
                 <b>Contact</b><br>
@@ -140,149 +141,153 @@
             </div>
             </div>
         </div> -->
-        <div class="mainbody">
+            <div class="mainbody">
 
-            <div class="place">
-                <div id="headline" style="padding: 40px;">
-                    <h3>About<img src="/assets/icons/1x/Edit.png" (click)="openAddModal('Headline')" width="22px"
-                            style="cursor: pointer;" class="edit-icon1"></h3>
-                    <span class="txt">{{userDetails?.brief_Desc}}</span>
-                </div>
-                <div id="headline" style="padding: 40px;">
-                    <h3>Experience<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
-                            (click)="openAddModal('Experience')" style="cursor: pointer;"></h3>
+                <div class="place">
+                    <div id="headline" style="padding: 40px;">
+                        <h3>About<img src="/assets/icons/1x/Edit.png" (click)="openAddModal('Headline')" width="22px"
+                                style="cursor: pointer;" class="edit-icon1"></h3>
+                        <span class="txt">{{userDetails?.brief_Desc}}</span>
+                    </div>
+                    <div id="headline" style="padding: 40px;">
+                        <h3>Experience<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
+                                (click)="openAddModal('Experience')" style="cursor: pointer;"></h3>
 
-                    <div id="experience">
-                        <div id="txt-exp" *ngFor="let exp of userDetails?.experiences">
-                            <div style="display: flex">
-                                <div>
-                                    <img *ngIf="exp.company_logo" src="{{exp.company_logo}}" width="70px" height="70px"
-                                        style="display: block; border-radius: 50%; cursor: pointer; "
-                                        (click)="companyLogoInput.click()" class="exp-img">
-                                    <img *ngIf="!exp.company_logo" src="/assets/icons/1x/no_company.jpg" width="70px"
-                                        height="70px" style="display: block; border-radius: 50%; cursor: pointer; "
-                                        (click)="companyLogoInput.click()" class="exp-img">
+                        <div id="experience">
+                            <div id="txt-exp" *ngFor="let exp of userDetails?.experiences">
+                                <div style="display: flex">
+                                    <div>
+                                        <img *ngIf="exp.company_logo" src="{{exp.company_logo}}" width="70px"
+                                            height="70px" style="display: block; border-radius: 50%; cursor: pointer; "
+                                            (click)="companyLogoInput.click()" class="exp-img">
+                                        <img *ngIf="!exp.company_logo" src="/assets/icons/1x/no_company.jpg"
+                                            width="70px" height="70px"
+                                            style="display: block; border-radius: 50%; cursor: pointer; "
+                                            (click)="companyLogoInput.click()" class="exp-img">
 
-                                    <input type="file" style="display: none;" #companyLogoInput
-                                        (change)="onCompanyLogoUpload($event, exp.id)">
+                                        <input type="file" style="display: none;" #companyLogoInput
+                                            (change)="onCompanyLogoUpload($event, exp.id)">
+
+                                    </div>
+                                    <div style="margin-left: 35px;">
+                                        <span class="teal">{{exp.company_name}}</span><br>
+                                        {{exp.title}}<br>
+                                        {{exp.responsibilities}}
+                                        <p *ngIf="exp.is_present">{{exp?.start_date}} -- Present</p>
+                                        <p *ngIf="!exp.is_present">{{exp?.start_date}} -- {{exp?.end_date}}</p>
+                                    </div>
+                                    <div>
+                                        <img src="/assets/icons/1x/Edit.png" style="cursor: pointer;"
+                                            (click)="openEditModal('Experience', exp)" style="cursor: pointer;"
+                                            width="22px" class="edit-icon">
+                                    </div>
 
                                 </div>
-                                <div style="margin-left: 35px;">
-                                    <span class="teal">{{exp.company_name}}</span><br>
-                                    {{exp.title}}<br>
-                                    {{exp.responsibilities}}
-                                    <p *ngIf="exp.is_present">{{exp?.start_date}} -- Present</p>
-                                    <p *ngIf="!exp.is_present">{{exp?.start_date}} -- {{exp?.end_date}}</p>
+                                <div style="margin-left: 12%;">
+                                    <hr />
                                 </div>
-                                <div>
-                                    <img src="/assets/icons/1x/Edit.png" style="cursor: pointer;"
-                                        (click)="openEditModal('Experience', exp)" style="cursor: pointer;" width="22px"
-                                        class="edit-icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="headline" style="padding: 40px;">
+                        <h3>Education<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
+                                (click)="openAddModal('Education')" style="cursor: pointer;"></h3>
+
+                        <div id="experience">
+                            <div id="txt-exp" *ngFor="let exp of userDetails?.education">
+                                <div style="display: flex">
+                                    <div>
+                                        <img *ngIf="exp.institute_logo" src="{{exp.institute_logo}}" width="50px"
+                                            height="50px" style="display: block; border-radius: 50%; cursor: pointer;"
+                                            (click)="educationLogoInput.click()" class="exp-img">
+                                        <img *ngIf="!exp.institute_logo" src="/assets/icons/1x/no_company.jpg"
+                                            width="50px" height="50px"
+                                            style="display: block; border-radius: 50%; cursor: pointer;"
+                                            (click)="educationLogoInput.click()" class="exp-img">
+
+                                        <input type="file" style="display: none;" #educationLogoInput
+                                            (change)="educationLogoUpload($event, exp.id)">
+                                    </div>
+                                    <div style="margin-left: 35px;">
+                                        <span class="teal">{{exp.institute}}</span><br>
+                                        {{exp.degree}},
+                                        {{exp.study_field}}<br>
+                                        Grade - {{exp.grade}}<br>
+                                        <a href={{exp.link}}> {{exp.link}}</a><br>
+                                        <p *ngIf="exp.is_present">
+                                            {{exp?.start_year}} --
+                                            Present</p>
+                                        <p *ngIf="!exp.is_present">
+                                            {{exp?.start_year}} --
+                                            {{exp?.end_year}}</p>
+                                    </div>
+                                    <div>
+                                        <img src="/assets/icons/1x/Edit.png" style="cursor: pointer;"
+                                            (click)="openEditModal('Education', exp)" style="cursor: pointer;"
+                                            width="22px" class="edit-icon">
+                                    </div>
+                                </div>
+                                <div style="margin-left: 12%;">
+                                    <hr />
                                 </div>
 
                             </div>
-                            <div style="margin-left: 12%;">
+                        </div>
+                    </div>
+
+                    <div id="headline">
+                        <h3>Projects <img src="/assets/icons/1x/plus.png" width="22px" style="cursor: pointer;"
+                                class="plus-icon1" (click)="_project.openModal()">
+                        </h3>
+                        <div id="experience" *ngFor="let project of userDetails?.projects">
+                            <div id="txt-exp">
+                                <div>
+                                    <img *ngIf="project.logo" src="{{project.logo}}" width="50px" height="50px"
+                                        style="display: block; border-radius: 50%; cursor: pointer;"
+                                        (click)="projectLogoInput.click()" class="exp-img">
+                                    <img *ngIf="!project.logo" src="/assets/icons/1x/no_company.jpg" width="50px"
+                                        height="50px" style="display: block; border-radius: 50%; cursor: pointer;"
+                                        (click)="projectLogoInput.click()" class="exp-img">
+
+                                    <input type="file" style="display: none;" #projectLogoInput
+                                        (change)="projectLogoUpload($event, project.id)">
+                                </div> <img src="/assets/icons/1x/Edit.png" width="22px" style="cursor: pointer;"
+                                    (click)="_projectEdit.openModal(project)" class="edit-icon">
+                                <div class="project-details">
+
+                                    <span class="teal">{{project?.project_name}}</span> {{project?.start_date}} -
+                                    {{project?.end_date}}
+                                    <br>
+                                    <a href="{{project.link}}" target="_blank">{{project.link}}</a><br>
+                                    {{project?.start_date}} - {{project?.end_date}}
+                                </div>
+                            </div>
+                            <div class="project-description" style="margin-left: 100px;">
+                                <h3 style="font-size: 15px !important;">Project description
+                                </h3>
+                                <div class="pro-des">
+                                    {{project?.description}}
+                                </div>
+                            </div>
+                            <div style="margin-left: 10%;">
                                 <hr />
                             </div>
                         </div>
                     </div>
-                </div>
-                <div id="headline" style="padding: 40px;">
-                    <h3>Education<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
-                            (click)="openAddModal('Education')" style="cursor: pointer;"></h3>
+                    <div id="headline" style="padding: 40px;">
+                        <h3>Certification<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
+                                (click)="openAddModal('Certifications')" style="cursor: pointer;"></h3>
+                        <div class="project-description" *ngIf="userDetails?.certifications.length">
 
-                    <div id="experience">
-                        <div id="txt-exp" *ngFor="let exp of userDetails?.education">
-                            <div style="display: flex">
-                                <div>
-                                    <img *ngIf="exp.institute_logo" src="{{exp.institute_logo}}" width="50px"
-                                        height="50px" style="display: block; border-radius: 50%; cursor: pointer;"
-                                        (click)="educationLogoInput.click()" class="exp-img">
-                                    <img *ngIf="!exp.institute_logo" src="/assets/icons/1x/no_company.jpg" width="50px"
-                                        height="50px" style="display: block; border-radius: 50%; cursor: pointer;"
-                                        (click)="educationLogoInput.click()" class="exp-img">
-
-                                    <input type="file" style="display: none;" #educationLogoInput
-                                        (change)="educationLogoUpload($event, exp.id)">
-                                </div>
-                                <div style="margin-left: 35px;">
-                                    <span class="teal">{{exp.institute}}</span><br>
-                                    {{exp.degree}},
-                                    {{exp.study_field}}<br>
-                                    Grade - {{exp.grade}}<br>
-                                   <a href={{exp.link}}> {{exp.link}}</a><br>
-                                    <p *ngIf="exp.is_present">
-                                        {{exp?.start_year}} --
-                                        Present</p>
-                                    <p *ngIf="!exp.is_present">
-                                        {{exp?.start_year}} --
-                                        {{exp?.end_year}}</p>
-                                </div>
-                                <div>
-                                    <img src="/assets/icons/1x/Edit.png" style="cursor: pointer;"
-                                        (click)="openEditModal('Education', exp)" style="cursor: pointer;" width="22px"
-                                        class="edit-icon">
-                                </div>
-                            </div>
-                            <div style="margin-left: 12%;">
-                                <hr />
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div id="headline">
-                    <h3>Projects <img src="/assets/icons/1x/plus.png" width="22px" style="cursor: pointer;"
-                            class="plus-icon1" (click)="_project.openModal()">
-                    </h3>
-                    <div id="experience" *ngFor="let project of userDetails?.projects">
-                        <div id="txt-exp">
-                            <div>
-                                <img *ngIf="project.logo" src="{{project.logo}}" width="50px"
-                                    height="50px" style="display: block; border-radius: 50%; cursor: pointer;"
-                                    (click)="projectLogoInput.click()" class="exp-img">
-                                <img *ngIf="!project.logo" src="/assets/icons/1x/no_company.jpg" width="50px"
-                                    height="50px" style="display: block; border-radius: 50%; cursor: pointer;"
-                                    (click)="projectLogoInput.click()" class="exp-img">
-
-                                <input type="file" style="display: none;" #projectLogoInput
-                                    (change)="projectLogoUpload($event, project.id)">
-                            </div>                            <img src="/assets/icons/1x/Edit.png" width="22px" style="cursor: pointer;"
-                                (click)="openEditModal('Projects', project)" class="edit-icon">
-                            <div class="project-details">
-
-                                <span class="teal">{{project?.project_name}}</span> {{project?.start_date}} - {{project?.end_date}}
-                                <br>
-                                <a href="{{project.link}}" target="_blank">{{project.link}}</a><br>
-                                {{project?.start_date}} - {{project?.end_date}}
-                            </div>
-                        </div>
-                        <div class="project-description" style="margin-left: 100px;">
-                            <h3 style="font-size: 15px !important;">Project description
-                            </h3>
-                            <div class="pro-des">
-                                {{project?.description}}
-                            </div>
-                        </div>
-                        <div style="margin-left: 10%;">
-                            <hr />
-                        </div>
-                    </div>
-                </div>
-                <div id="headline" style="padding: 40px;">
-                    <h3>Certification<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
-                            (click)="openAddModal('Certifications')" style="cursor: pointer;"></h3>
-                    <div class="project-description" *ngIf="userDetails?.certifications.length">
-
-                        <div id="skill" *ngFor="let certification of userDetails?.certifications">
-                            <span class="teal">{{certification?.certification_name}} <img
-                                    src="/assets/icons/1x/Edit.png" style="cursor: pointer;"
-                                    (click)="openEditModal('Certifications', certification)" width="22px"
-                                    class="edit-icon1"></span><br />
-                            <p>Date of Issue - {{certification?.issue_date}}</p>
-                            <p *ngIf="!certification?.not_expire">Valid till - {{certification?.expiration_date}}</p>
-                            <p *ngIf="certification?.not_expire">Valid till - No expiration</p>
+                            <div id="skill" *ngFor="let certification of userDetails?.certifications">
+                                <span class="teal">{{certification?.certification_name}} <img
+                                        src="/assets/icons/1x/Edit.png" style="cursor: pointer;"
+                                        (click)="openEditModal('Certifications', certification)" width="22px"
+                                        class="edit-icon1"></span><br />
+                                <p>Date of Issue - {{certification?.issue_date}}</p>
+                                <p *ngIf="!certification?.not_expire">Valid till - {{certification?.expiration_date}}
+                                </p>
+                                <p *ngIf="certification?.not_expire">Valid till - No expiration</p>
                             </div>
                             <hr />
                         </div>
@@ -315,10 +320,10 @@
                             {{award.title}} ({{award.issuer}}) <img src="/assets/icons/1x/Edit.png"
                                 style="cursor: pointer;" (click)="openEditModal('Award', award)" width="22px"
                                 class="edit-icon1">
-                                <br />
-                                {{award?.desc}}
-                                <br />
-                                Awarded in - {{award?.issue_time}}
+                            <br />
+                            {{award?.desc}}
+                            <br />
+                            Awarded in - {{award?.issue_time}}
                             <hr />
                         </div>
 
@@ -367,8 +372,8 @@
                         [attr.src]="videoUrl" (loadedmetadata)="validateVideoDuration($event)">
                     </video>
                 </div>
-               
-                
+
+
             </div>
             <!-- <div id="headline" class="recommendation" style="padding: 40px;">
                 <div class="reco-nav">
@@ -411,7 +416,7 @@
         <h4>See All</h4>
     </div>
             </div> -->
-      
+
             <!-- <div class="interests2" id="headline" style="padding: 40px;">
                 <h3>Interests</h3>
                 <div *ngFor="let company of companiesFollowedArray">
@@ -472,7 +477,7 @@
             </div> -->
         </div>
     </div>
-    
+
 
     <div class="suggestion container" routerLink="/in/mynetwork">
         <div id="sug-head" style="cursor: pointer;">
@@ -501,4 +506,6 @@
 
 <app-project *ngIf="(_project.content$ | async).show"></app-project>
 
-<div *ngIf="isLoading" class="no-data" style="margin-top: 100px;">Loading...</div>
+<app-project-edit *ngIf="(_projectEdit.content$ | async).show"></app-project-edit>
+
+<!-- <div *ngIf="isLoading" class="no-data" style="margin-top: 100px;">Loading...</div> -->

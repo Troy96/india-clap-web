@@ -34,6 +34,7 @@ import { ContactUsElseComponent } from './someone-else-profile/contact-us-else/c
 import { NotificationsComponent } from './notifications/notifications.component';
 import { FeedPostComponent } from './timeline-like-react/feed-post/feed-post.component';
 import { ProjectComponent } from './my-profile-editable/modals/project/project.component';
+import { ProjectEditComponent } from './my-profile-editable/modals/project-edit/project-edit.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { ProjectComponent } from './my-profile-editable/modals/project/project.c
     ContactUsElseComponent,
     NotificationsComponent,
     FeedPostComponent,
-    ProjectComponent
+    ProjectComponent,
+    ProjectEditComponent
   ],
   imports: [
     CommonModule,

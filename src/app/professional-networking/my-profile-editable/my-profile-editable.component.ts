@@ -8,6 +8,7 @@ import { ContactInfoService } from './contact-info/contact-info.service';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import { ProjectService } from './modals/project/project.service';
+import { ProjectEditService } from './modals/project-edit/project-edit.service';
 
 @Component({
   selector: 'app-my-profile-editable',
@@ -45,7 +46,8 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     private notifService: NotificationService,
     public contactInfo: ContactInfoService,
     private renderer: Renderer2,
-    public _project: ProjectService
+    public _project: ProjectService,
+    public _projectEdit: ProjectEditService
   ) { }
 
   ngOnInit() {
@@ -69,13 +71,11 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     this.authService.get_user_details(this.profileId)
       .subscribe(respObj => {
         this.userDetails = { ...respObj }
-        console.log(typeof this.userDetails.certifications[0].not_expire);
-        console.log(this.userDetails)
         this.setinitCover();
         this.getConnectionDetailList();
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 3000);
+        // setTimeout(() => {
+        //   this.isLoading = false;
+        // }, 3000);
       })
   }
   projectLogoUpload(event, expId){
