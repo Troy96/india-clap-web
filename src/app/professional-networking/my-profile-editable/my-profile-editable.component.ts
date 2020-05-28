@@ -9,6 +9,7 @@ import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import { ProjectService } from './modals/project/project.service';
 import { ProjectEditService } from './modals/project-edit/project-edit.service';
+import { CertificateService } from './modals/certificate/certificate.service';
 
 @Component({
   selector: 'app-my-profile-editable',
@@ -47,7 +48,8 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     public contactInfo: ContactInfoService,
     private renderer: Renderer2,
     public _project: ProjectService,
-    public _projectEdit: ProjectEditService
+    public _projectEdit: ProjectEditService,
+    public _certificate: CertificateService
   ) { }
 
   ngOnInit() {

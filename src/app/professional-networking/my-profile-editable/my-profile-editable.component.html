@@ -276,7 +276,7 @@
                     </div>
                     <div id="headline" style="padding: 40px;">
                         <h3>Certification<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
-                                (click)="openAddModal('Certifications')" style="cursor: pointer;"></h3>
+                                (click)="_certificate.openModal()" style="cursor: pointer;"></h3>
                         <div class="project-description" *ngIf="userDetails?.certifications.length">
 
                             <div id="skill" *ngFor="let certification of userDetails?.certifications">
@@ -507,5 +507,7 @@
 <app-project *ngIf="(_project.content$ | async).show"></app-project>
 
 <app-project-edit *ngIf="(_projectEdit.content$ | async).show"></app-project-edit>
+
+<app-certificate *ngIf="(_certificate.content$ | async).show"></app-certificate>
 
 <!-- <div *ngIf="isLoading" class="no-data" style="margin-top: 100px;">Loading...</div> -->

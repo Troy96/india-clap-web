@@ -35,6 +35,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { FeedPostComponent } from './timeline-like-react/feed-post/feed-post.component';
 import { ProjectComponent } from './my-profile-editable/modals/project/project.component';
 import { ProjectEditComponent } from './my-profile-editable/modals/project-edit/project-edit.component';
+import { CertificateComponent } from './my-profile-editable/modals/certificate/certificate.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { ProjectEditComponent } from './my-profile-editable/modals/project-edit/
     NotificationsComponent,
     FeedPostComponent,
     ProjectComponent,
-    ProjectEditComponent
+    ProjectEditComponent,
+    CertificateComponent
   ],
   imports: [
     CommonModule,
