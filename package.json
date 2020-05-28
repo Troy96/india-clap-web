@@ -7,7 +7,8 @@
     "postinstall": "ng build --aot --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "bash deploy.sh"
   },
   "engines": {
     "node": "13.5.0",
