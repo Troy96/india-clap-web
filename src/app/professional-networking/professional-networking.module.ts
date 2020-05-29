@@ -34,6 +34,13 @@ import { ContactUsElseComponent } from './someone-else-profile/contact-us-else/c
 import { NotificationsComponent } from './notifications/notifications.component';
 import { FeedPostComponent } from './timeline-like-react/feed-post/feed-post.component';
 import { ProjectComponent } from './my-profile-editable/modals/project/project.component';
+import { ProjectEditComponent } from './my-profile-editable/modals/project-edit/project-edit.component';
+import { CertificateComponent } from './my-profile-editable/modals/certificate/certificate.component';
+import { CertificateEditComponent } from './my-profile-editable/modals/certificate-edit/certificate-edit.component';
+import { SkillComponent } from './my-profile-editable/modals/skill/skill.component';
+import { SkillEditComponent } from './my-profile-editable/modals/skill-edit/skill-edit.component';
+import { HobbyComponent } from './my-profile-editable/modals/hobby/hobby.component';
+import { HobbyEditComponent } from './my-profile-editable/modals/hobby-edit/hobby-edit.component';
 
 
 @NgModule({
@@ -60,7 +67,14 @@ import { ProjectComponent } from './my-profile-editable/modals/project/project.c
     ContactUsElseComponent,
     NotificationsComponent,
     FeedPostComponent,
-    ProjectComponent
+    ProjectComponent,
+    ProjectEditComponent,
+    CertificateComponent,
+    CertificateEditComponent,
+    SkillComponent,
+    SkillEditComponent,
+    HobbyComponent,
+    HobbyEditComponent
   ],
   imports: [
     CommonModule,

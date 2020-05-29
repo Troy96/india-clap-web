@@ -8,6 +8,14 @@ import { ContactInfoService } from './contact-info/contact-info.service';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import { ProjectService } from './modals/project/project.service';
+import { ProjectEditService } from './modals/project-edit/project-edit.service';
+import { CertificateService } from './modals/certificate/certificate.service';
+import { CertificateEditService } from './modals/certificate-edit/certificate-edit.service';
+import { SkillComponent } from './modals/skill/skill.component';
+import { SkillService } from './modals/skill/skill.service';
+import { SkillEditService } from './modals/skill-edit/skill-edit.service';
+import { HobbyService } from './modals/hobby/hobby.service';
+import { HobbyEditService } from './modals/hobby-edit/hobby-edit.service';
 
 @Component({
   selector: 'app-my-profile-editable',
@@ -45,7 +53,14 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     private notifService: NotificationService,
     public contactInfo: ContactInfoService,
     private renderer: Renderer2,
-    public _project: ProjectService
+    public _project: ProjectService,
+    public _projectEdit: ProjectEditService,
+    public _certificate: CertificateService,
+    public _certificateEdit: CertificateEditService,
+    public _skill: SkillService,
+    public _skillEdit: SkillEditService,
+    public _hobby: HobbyService,
+    public _hobbyEdit: HobbyEditService
   ) { }
 
   ngOnInit() {
@@ -69,13 +84,11 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     this.authService.get_user_details(this.profileId)
       .subscribe(respObj => {
         this.userDetails = { ...respObj }
-        console.log(typeof this.userDetails.certifications[0].not_expire);
-        console.log(this.userDetails)
         this.setinitCover();
         this.getConnectionDetailList();
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 3000);
+        // setTimeout(() => {
+        //   this.isLoading = false;
+        // }, 3000);
       })
   }
   projectLogoUpload(event, expId){

@@ -1,0 +1,23 @@
+<div class="experience">
+    <div class="container experience-body">
+        <h1>Add Skill</h1>
+        <img src="/assets/icons/1x/close.png" width="20px" class="cancel-icon" (click)="_skill.closeModal()">
+        <hr>
+        <form [formGroup]='skillForm'>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Skill Name" formControlName="skill"
+                [ngClass]="{'is-invalid':skillForm.get('skill').touched && skillForm.get('skill').invalid}">
+            <div
+                *ngIf="(skillForm.get('skill').invalid && skillForm.get('skill').touched) || skillForm.get('skill').dirty">
+                <small *ngIf="skillForm.get('skill').errors?.required" class="text-danger"> Skill Name is
+                    required</small>
+            </div>
+
+            <input type="number" class="form-control" formControlName="level" placeholder="Level">
+
+
+            <button class="btn btn-primary" (click)="onSubmit()" style="width: 100%;">Add</button><br>
+
+        </form>
+    </div>
+</div>

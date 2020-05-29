@@ -1,0 +1,36 @@
+<div class="experience">
+    <div class="container experience-body">
+        <h1>Add Certification</h1>
+        <img src="/assets/icons/1x/close.png" width="20px" class="cancel-icon" (click)="_certificate.closeModal()">
+        <hr>
+        <form [formGroup]='certificateForm'>
+
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Certification Name" formControlName="certification_name"
+                [ngClass]="{'is-invalid':certificateForm.get('certification_name').touched && certificateForm.get('certification_name').invalid}">
+            <div
+                *ngIf="(certificateForm.get('certification_name').invalid && certificateForm.get('certification_name').touched) || certificateForm.get('certification_name').dirty">
+                <small *ngIf="certificateForm.get('certification_name').errors?.required" class="text-danger"> Project
+                    Name is
+                    required</small>
+            </div>
+
+            <input type="checkbox" #doesExpre formControlName="not_expire" style="margin-bottom: 15px;"> This certificate does not expire.
+            {{not_expire}}
+            <div>
+                <input placeholder="Issue Date" type="text" class="form-control" formControlName="issue_date"
+                    onfocus="(this.type='date')" onblur="(this.type='text')" id="issue_date" style="width: 100%;" />
+
+
+                <input placeholder="Expiration Date" type="text" *ngIf="!doesExpre.checked" class="form-control" formControlName="expiration_date"
+                    onfocus="(this.type='date')" onblur="(this.type='text')" id="expiration_date" style="width: 100%;" />
+                <p *ngIf="doesExpre.checked">No expiry</p>
+            </div>
+
+            <textarea class="form-control" placeholder="Description" formControlName="description"></textarea>
+
+            <button class="btn btn-primary" (click)="onSubmit()" style="width: 100%;">Add</button><br>
+
+        </form>
+    </div>
+</div>

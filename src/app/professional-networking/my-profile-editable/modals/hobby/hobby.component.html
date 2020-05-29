@@ -1,0 +1,23 @@
+<div class="experience">
+    <div class="container experience-body">
+        <h1>Add Hobby</h1>
+        <img src="/assets/icons/1x/close.png" width="20px" class="cancel-icon" (click)="_hobby.closeModal()">
+        <hr>
+        <form [formGroup]='hobbyForm'>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Title" formControlName="title"
+                [ngClass]="{'is-invalid':hobbyForm.get('title').touched && hobbyForm.get('title').invalid}">
+            <div
+                *ngIf="(hobbyForm.get('title').invalid && hobbyForm.get('title').touched) || hobbyForm.get('title').dirty">
+                <small *ngIf="hobbyForm.get('title').errors?.required" class="text-danger"> title  is
+                    required</small>
+            </div>
+
+            <textarea class="form-control" formControlName="desc" placeholder="Description"></textarea>
+
+
+            <button class="btn btn-primary" (click)="onSubmit()" style="width: 100%;">Add</button><br>
+
+        </form>
+    </div>
+</div>

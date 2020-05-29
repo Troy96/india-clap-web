@@ -1,0 +1,23 @@
+<div class="experience">
+    <div class="container experience-body">
+        <h1>Edit Skill</h1>
+        <img src="/assets/icons/1x/close.png" width="20px" class="cancel-icon" (click)="_skillEdit.closeModal()">
+        <hr>
+        <form [formGroup]='skillEditForm'>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Skill Name" formControlName="skill"
+                [ngClass]="{'is-invalid':skillEditForm.get('skill').touched && skillEditForm.get('skill').invalid}">
+            <div
+                *ngIf="(skillEditForm.get('skill').invalid && skillEditForm.get('skill').touched) || skillEditForm.get('skill').dirty">
+                <small *ngIf="skillEditForm.get('skill').errors?.required" class="text-danger"> Skill Name is
+                    required</small>
+            </div>
+
+            <input type="number" class="form-control" formControlName="level" placeholder="Level">
+
+
+            <button class="btn btn-primary" (click)="onSave()" style="width: 100%;">Save</button><br>
+
+        </form>
+    </div>
+</div>
