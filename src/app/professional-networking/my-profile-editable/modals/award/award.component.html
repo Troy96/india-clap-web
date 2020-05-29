@@ -1,0 +1,31 @@
+<div class="experience">
+    <div class="container experience-body">
+        <h1>Add Award</h1>
+        <img src="/assets/icons/1x/close.png" width="20px" class="cancel-icon" (click)="_certificate.closeModal()">
+        <hr>
+        <form [formGroup]='awardForm'>
+
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Title" formControlName="title"
+                [ngClass]="{'is-invalid':awardForm.get('title').touched && awardForm.get('title').invalid}">
+            <div
+                *ngIf="(awardForm.get('title').invalid && awardForm.get('title').touched) || awardForm.get('title').dirty">
+                <small *ngIf="awardForm.get('title').errors?.required" class="text-danger">
+                    Title is
+                    required</small>
+            </div>
+
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Issuer" formControlName="issuer">
+
+
+            <input placeholder="Issue Date" type="text" class="form-control" formControlName="issue_time"
+                onfocus="(this.type='date')" onblur="(this.type='text')" id="issue_time" style="width: 100%;" />
+
+            <textarea formControlName="desc" placeholder="Description" class="form-control"></textarea>
+
+            <button class="btn btn-primary" (click)="onSubmit()" style="width: 100%;">Add</button><br>
+
+        </form>
+    </div>
+</div>

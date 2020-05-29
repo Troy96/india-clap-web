@@ -221,7 +221,7 @@
                 </div>
                 <div id="headline" style="padding: 40px;">
                     <h3>Awards <img src="/assets/icons/1x/plus.png" width="22px" class="edit-icon1"
-                            (click)="openAddModal('Award')" style="cursor: pointer;"></h3>
+                            (click)="_award.openModal()" style="cursor: pointer;"></h3>
                     <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
 
                     <div class="project-description exp-workWrap" style="margin-top: 20px;">
@@ -433,5 +433,7 @@
 <app-language *ngIf="(_language.content$ | async).show"></app-language>
 
 <app-language-edit *ngIf="(_languageEdit.content$ | async).show"></app-language-edit>
+
+<app-award *ngIf="(_award.content$ | async).show"></app-award>
 
 <!-- <div *ngIf="isLoading" class="no-data" style="margin-top: 100px;">Loading...</div> -->
