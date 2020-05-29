@@ -228,7 +228,7 @@
 
                         <div id="skill" *ngFor="let award of userDetails?.awards">
                             {{award.title}} ({{award.issuer}}) <img src="/assets/icons/1x/Edit.png"
-                                style="cursor: pointer;" (click)="openEditModal('Award', award)" width="22px"
+                                style="cursor: pointer;" (click)="_awardEdit.openModal(award)" width="22px"
                                 class="edit-icon1">
                             <br />
                             {{award?.desc}}
@@ -435,5 +435,7 @@
 <app-language-edit *ngIf="(_languageEdit.content$ | async).show"></app-language-edit>
 
 <app-award *ngIf="(_award.content$ | async).show"></app-award>
+
+<app-award-edit *ngIf="(_awardEdit.content$ | async).show"></app-award-edit>
 
 <!-- <div *ngIf="isLoading" class="no-data" style="margin-top: 100px;">Loading...</div> -->

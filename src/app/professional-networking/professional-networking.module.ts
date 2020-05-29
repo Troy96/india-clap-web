@@ -44,6 +44,7 @@ import { HobbyEditComponent } from './my-profile-editable/modals/hobby-edit/hobb
 import { LanguageComponent } from './my-profile-editable/modals/language/language.component';
 import { LanguageEditComponent } from './my-profile-editable/modals/language-edit/language-edit.component';
 import { AwardComponent } from './my-profile-editable/modals/award/award.component';
+import { AwardEditComponent } from './my-profile-editable/modals/award-edit/award-edit.component';
 
 
 @NgModule({
@@ -80,7 +81,8 @@ import { AwardComponent } from './my-profile-editable/modals/award/award.compone
     HobbyEditComponent,
     LanguageComponent,
     LanguageEditComponent,
-    AwardComponent
+    AwardComponent,
+    AwardEditComponent
   ],
   imports: [
     CommonModule,

@@ -19,6 +19,7 @@ import { HobbyEditService } from './modals/hobby-edit/hobby-edit.service';
 import { LanguageService } from './modals/language/language.service';
 import { LanguageEditService } from './modals/language-edit/language-edit.service';
 import { AwardService } from './modals/award/award.service';
+import { AwardEditService } from './modals/award-edit/award-edit.service';
 
 @Component({
   selector: 'app-my-profile-editable',
@@ -66,7 +67,8 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     public _hobbyEdit: HobbyEditService,
     public _language: LanguageService,
     public _languageEdit: LanguageEditService,
-    public _award: AwardService
+    public _award: AwardService,
+    public _awardEdit: AwardEditService
   ) { }
 
   ngOnInit() {
