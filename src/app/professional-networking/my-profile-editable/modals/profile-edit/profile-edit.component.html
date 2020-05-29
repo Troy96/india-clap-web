@@ -1,0 +1,57 @@
+<div class="experience">
+    <div class="container experience-body">
+        <h1>Edit Profile</h1>
+        <img src="/assets/icons/1x/close.png" width="20px" class="cancel-icon" (click)="_certificate.closeModal()">
+        <hr>
+        <form [formGroup]='profileForm'>
+
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="First Name" formControlName="first_name"
+                [ngClass]="{'is-invalid':profileForm.get('first_name').touched && profileForm.get('first_name').invalid}">
+            <div
+                *ngIf="(profileForm.get('first_name').invalid && profileForm.get('first_name').touched) || profileForm.get('first_name').dirty">
+                <small *ngIf="profileForm.get('first_name').errors?.required" class="text-danger"> 
+                   First Name is
+                    required</small>
+            </div>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Last Name" formControlName="last_name"
+                [ngClass]="{'is-invalid':profileForm.get('last_name').touched && profileForm.get('last_name').invalid}">
+            <div
+                *ngIf="(profileForm.get('last_name').invalid && profileForm.get('first_name').touched) || profileForm.get('last_name').dirty">
+                <small *ngIf="profileForm.get('last_name').errors?.required" class="text-danger"> 
+                   Last Name is
+                    required</small>
+            </div>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="District" formControlName="location_district"
+                [ngClass]="{'is-invalid':profileForm.get('location_district').touched && profileForm.get('location_district').invalid}">
+            <div
+                *ngIf="(profileForm.get('location_district').invalid && profileForm.get('location_district').touched) || profileForm.get('location_district').dirty">
+                <small *ngIf="profileForm.get('location_district').errors?.required" class="text-danger"> 
+                  District  is
+                    required</small>
+            </div>
+           
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Country" formControlName="location_country"
+                [ngClass]="{'is-invalid':profileForm.get('location_country').touched && profileForm.get('location_country').invalid}">
+            <div
+                *ngIf="(profileForm.get('location_country').invalid && profileForm.get('location_country').touched) || profileForm.get('location_country').dirty">
+                <small *ngIf="profileForm.get('location_country').errors?.required" class="text-danger"> 
+                   Country is
+                    required</small>
+            </div>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="Profession" formControlName="profession"
+            [ngClass]="{'is-invalid':profileForm.get('profession').touched && profileForm.get('profession').invalid}">
+        <div
+            *ngIf="(profileForm.get('profession').invalid && profileForm.get('profession').touched) || profileForm.get('profession').dirty">
+            <small *ngIf="profileForm.get('profession').errors?.required" class="text-danger"> Profession is required</small>
+        </div>
+
+            <button class="btn btn-primary" (click)="onSave()" style="width: 100%;">Save</button><br>
+
+        </form>
+    </div>
+</div>

@@ -20,7 +20,10 @@ import { LanguageService } from './modals/language/language.service';
 import { LanguageEditService } from './modals/language-edit/language-edit.service';
 import { AwardService } from './modals/award/award.service';
 import { AwardEditService } from './modals/award-edit/award-edit.service';
-
+import { EducationService} from './modals/education/education.service';
+import { EducationEditComponent } from './modals/education-edit/education-edit.component';
+import { EducationEditService } from './modals/education-edit/education-edit.service';
+import {ProfileEditService} from './modals/profile-edit/profile-edit.service'
 @Component({
   selector: 'app-my-profile-editable',
   templateUrl: './my-profile-editable.component.html',
@@ -57,6 +60,9 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     private notifService: NotificationService,
     public contactInfo: ContactInfoService,
     private renderer: Renderer2,
+    public _profileEdit:ProfileEditService,
+    public _education:EducationService,
+    public _educationEdit:EducationEditService,
     public _project: ProjectService,
     public _projectEdit: ProjectEditService,
     public _certificate: CertificateService,

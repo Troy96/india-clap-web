@@ -16,11 +16,11 @@
                 <img class="jmb-img" src="/assets/icons/1x/dp.png" style="cursor: pointer;"
                     (click)="photoInput.click()">
 
-            </div>
+            </div> 
             <div id="jumbotron-text">
                 <div id="name">
                     <h2><span class="teal">{{userDetails?.first_name}} {{userDetails?.last_name}} <img
-                                src="/assets/icons/1x/Edit.png" (click)="openEditModal('Profile',userDetails)"
+                                src="/assets/icons/1x/Edit.png" (click)="_profileEdit.openModal(userDetails)"
                                 width="22px" style="cursor: pointer;" class="edit-icon1"></span></h2>
                     <span *ngIf="userDetails?.experiences">{{userDetails?.experiences[0].title}} at
                         {{userDetails?.experiences[0].company_name}}</span><br>
@@ -101,7 +101,7 @@
                     </div>
                     <div id="headline" style="padding: 40px;">
                         <h3>Education<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
-                                (click)="openAddModal('Education')" style="cursor: pointer;"></h3>
+                                (click)="_education.openModal()" style="cursor: pointer;"></h3>
 
                         <div id="experience">
                             <div id="txt-exp" *ngFor="let exp of userDetails?.education">
@@ -133,7 +133,7 @@
                                     </div>
                                     <div>
                                         <img src="/assets/icons/1x/Edit.png" style="cursor: pointer;"
-                                            (click)="openEditModal('Education', exp)" style="cursor: pointer;"
+                                            (click)="_educationEdit.openModal( exp)" style="cursor: pointer;"
                                             width="22px" class="edit-icon">
                                     </div>
                                 </div>
@@ -411,9 +411,10 @@
 
 
 </div>
-
+<app-profile-edit *ngIf="(_profileEdit.content$ | async).show"></app-profile-edit>
 <app-contact-info *ngIf="(contactInfo.content$ | async).show"></app-contact-info>
-
+<app-education *ngIf="(_education.content$ | async).show"></app-education>
+<app-education-edit *ngIf="(_educationEdit.content$ | async).show"></app-education-edit>
 <app-project *ngIf="(_project.content$ | async).show"></app-project>
 
 <app-project-edit *ngIf="(_projectEdit.content$ | async).show"></app-project-edit>

@@ -45,6 +45,9 @@ import { LanguageComponent } from './my-profile-editable/modals/language/languag
 import { LanguageEditComponent } from './my-profile-editable/modals/language-edit/language-edit.component';
 import { AwardComponent } from './my-profile-editable/modals/award/award.component';
 import { AwardEditComponent } from './my-profile-editable/modals/award-edit/award-edit.component';
+import { ProfileEditComponent } from './my-profile-editable/modals/profile-edit/profile-edit.component';
+import { EducationComponent } from './my-profile-editable/modals/education/education.component';
+import { EducationEditComponent } from './my-profile-editable/modals/education-edit/education-edit.component';
 
 
 @NgModule({
@@ -82,7 +85,10 @@ import { AwardEditComponent } from './my-profile-editable/modals/award-edit/awar
     LanguageComponent,
     LanguageEditComponent,
     AwardComponent,
-    AwardEditComponent
+    AwardEditComponent,
+    ProfileEditComponent,
+    EducationComponent,
+    EducationEditComponent
   ],
   imports: [
     CommonModule,

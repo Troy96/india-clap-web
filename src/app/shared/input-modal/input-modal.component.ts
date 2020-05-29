@@ -311,7 +311,7 @@ export class InputModalComponent implements OnInit {
         if (!!this.inputForm.get('profile').value[0]) updateObj['first_name'] = this.inputForm.get('profile').value[0];
         if (!!this.inputForm.get('profile').value[1]) updateObj['last_name'] = this.inputForm.get('profile').value[1];
         if (!!this.inputForm.get('profile').value[2]) updateObj['location_district'] = this.inputForm.get('profile').value[2];
-        if (!!this.inputForm.get('profile').value[2]) updateObj['location_district'] = this.inputForm.get('profile').value[3];
+        if (!!this.inputForm.get('profile').value[2]) updateObj['location_country'] = this.inputForm.get('profile').value[3];
         if (!!this.inputForm.get('profile').value[3]) updateObj['profession'] = this.inputForm.get('profile').value[4];
 
         this.authService.update_user_details(

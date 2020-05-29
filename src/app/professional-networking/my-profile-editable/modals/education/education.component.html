@@ -1,0 +1,82 @@
+<div class="experience">
+    <div class="container experience-body">
+        <h1>Add Certification</h1>
+        <img src="/assets/icons/1x/close.png" width="20px" class="cancel-icon" (click)="_education.closeModal()">
+        <hr>
+        <form [formGroup]='EducationForm'>
+
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Institute  Name" formControlName="institute"
+                [ngClass]="{'is-invalid':EducationForm.get('institute').touched && EducationForm.get('institute').invalid}">
+            <div
+                *ngIf="(EducationForm.get('institute').invalid && EducationForm.get('institute').touched) || EducationForm.get('institute').dirty">
+                <small *ngIf="EducationForm.get('institute').errors?.required" class="text-danger"> Project
+                    Institute is
+                    required</small>
+            </div>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Degree Name" formControlName="degree"
+                [ngClass]="{'is-invalid':EducationForm.get('degree').touched && EducationForm.get('degree').invalid}">
+            <div
+                *ngIf="(EducationForm.get('degree').invalid && EducationForm.get('degree').touched) || EducationForm.get('degree').dirty">
+                <small *ngIf="EducationForm.get('degree').errors?.required" class="text-danger"> Project
+                    Degree is
+                    required</small>
+            </div>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Study Field" formControlName="study_field"
+                [ngClass]="{'is-invalid':EducationForm.get('study_field').touched && EducationForm.get('study_field').invalid}">
+            <div
+                *ngIf="(EducationForm.get('study_field').invalid && EducationForm.get('study_field').touched) || EducationForm.get('study_field').dirty">
+                <small *ngIf="EducationForm.get('study_field').errors?.required" class="text-danger"> Project
+                    Study Field is
+                    required</small>
+            </div>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Grade" formControlName="grade"
+                [ngClass]="{'is-invalid':EducationForm.get('grade').touched && EducationForm.get('grade').invalid}">
+            <div
+                *ngIf="(EducationForm.get('grade').invalid && EducationForm.get('grade').touched) || EducationForm.get('grade').dirty">
+                <small *ngIf="EducationForm.get('grade').errors?.required" class="text-danger"> Project
+                    Grade is
+                    required</small>
+            </div>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Link of Institute" formControlName="link"
+                [ngClass]="{'is-invalid':EducationForm.get('link').touched && EducationForm.get('link').invalid}">
+            <div
+                *ngIf="(EducationForm.get('link').invalid && EducationForm.get('link').touched) || EducationForm.get('link').dirty">
+                <small *ngIf="EducationForm.get('link').errors?.required" class="text-danger"> Project
+                    Link is
+                    required</small>
+            </div>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Field of Study" formControlName="study_field"
+                [ngClass]="{'is-invalid':EducationForm.get('study_field').touched && EducationForm.get('study_field').invalid}">
+            <div
+                *ngIf="(EducationForm.get('study_field').invalid && EducationForm.get('study_field').touched) || EducationForm.get('study_field').dirty">
+                <small *ngIf="EducationForm.get('study_field').errors?.required" class="text-danger"> Project
+                    Description is
+                    required</small>
+            </div>
+          
+            <input type="checkbox" #doesExpre formControlName="is_present" style="margin-bottom: 15px;"> You are still stydying
+            {{not_expire}}
+            <div>
+                <input placeholder="Start Date" type="text" class="form-control" formControlName="start_year"
+                    id="start_date" style="width: 100%;" />
+
+
+                <input placeholder="End Date" type="text" *ngIf="!doesExpre.checked" class="form-control"
+                    formControlName="end_year"
+                    id="end_date" style="width: 100%;" />
+                <p *ngIf="doesExpre.checked">Still studying</p>
+            </div>
+
+            <textarea class="form-control" placeholder="Description" formControlName="desc"></textarea>
+
+            <button class="btn btn-primary" (click)="onSubmit()" style="width: 100%;">Add</button><br>
+
+        </form>
+    </div>
+</div>
