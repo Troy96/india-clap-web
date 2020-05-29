@@ -264,7 +264,7 @@
 
                         <div id="skill" *ngFor="let lang of userDetails?.languages">
                             {{lang.language}} - ({{lang.proficiency}}) <img src="/assets/icons/1x/Edit.png"
-                                style="cursor: pointer;" (click)="openEditModal('Language', lang)" width="22px"
+                                style="cursor: pointer;" (click)="_languageEdit.openModal(lang)" width="22px"
                                 class="edit-icon1">
                             <hr />
                         </div>
@@ -431,5 +431,7 @@
 <app-hobby-edit *ngIf="(_hobbyEdit.content$ | async).show"></app-hobby-edit>
 
 <app-language *ngIf="(_language.content$ | async).show"></app-language>
+
+<app-language-edit *ngIf="(_languageEdit.content$ | async).show"></app-language-edit>
 
 <!-- <div *ngIf="isLoading" class="no-data" style="margin-top: 100px;">Loading...</div> -->

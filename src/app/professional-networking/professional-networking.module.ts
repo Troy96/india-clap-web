@@ -42,6 +42,7 @@ import { SkillEditComponent } from './my-profile-editable/modals/skill-edit/skil
 import { HobbyComponent } from './my-profile-editable/modals/hobby/hobby.component';
 import { HobbyEditComponent } from './my-profile-editable/modals/hobby-edit/hobby-edit.component';
 import { LanguageComponent } from './my-profile-editable/modals/language/language.component';
+import { LanguageEditComponent } from './my-profile-editable/modals/language-edit/language-edit.component';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { LanguageComponent } from './my-profile-editable/modals/language/languag
     SkillEditComponent,
     HobbyComponent,
     HobbyEditComponent,
-    LanguageComponent
+    LanguageComponent,
+    LanguageEditComponent
   ],
   imports: [
     CommonModule,

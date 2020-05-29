@@ -1,0 +1,23 @@
+<div class="experience">
+    <div class="container experience-body">
+        <h1>Edit Language</h1>
+        <img src="/assets/icons/1x/close.png" width="20px" class="cancel-icon" (click)="_language.closeModal()">
+        <hr>
+        <form [formGroup]='languageEditForm'>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Language" formControlName="language"
+                [ngClass]="{'is-invalid':languageEditForm.get('language').touched && languageEditForm.get('language').invalid}">
+            <div
+                *ngIf="(languageEditForm.get('language').invalid && languageEditForm.get('language').touched) || languageEditForm.get('language').dirty">
+                <small *ngIf="languageEditForm.get('language').errors?.required" class="text-danger"> language Name is
+                    required</small>
+            </div>
+
+            <input type="number" class="form-control" formControlName="proficiency" placeholder="Proficiency" max="10">
+
+
+            <button class="btn btn-primary" (click)="onSave()" style="width: 100%;">Save</button><br>
+
+        </form>
+    </div>
+</div>
