@@ -40,6 +40,7 @@ import { CertificateEditComponent } from './my-profile-editable/modals/certifica
 import { SkillComponent } from './my-profile-editable/modals/skill/skill.component';
 import { SkillEditComponent } from './my-profile-editable/modals/skill-edit/skill-edit.component';
 import { HobbyComponent } from './my-profile-editable/modals/hobby/hobby.component';
+import { HobbyEditComponent } from './my-profile-editable/modals/hobby-edit/hobby-edit.component';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { HobbyComponent } from './my-profile-editable/modals/hobby/hobby.compone
     CertificateEditComponent,
     SkillComponent,
     SkillEditComponent,
-    HobbyComponent
+    HobbyComponent,
+    HobbyEditComponent
   ],
   imports: [
     CommonModule,

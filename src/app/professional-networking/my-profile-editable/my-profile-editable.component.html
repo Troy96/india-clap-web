@@ -338,7 +338,7 @@
 
                         <div id="skill" *ngFor="let hobby of userDetails?.hobbies">
                             {{hobby.title}} - {{hobby.desc}} <img src="/assets/icons/1x/Edit.png"
-                                style="cursor: pointer;" (click)="openEditModal('Hobby', hobby)" width="22px"
+                                style="cursor: pointer;" (click)="_hobbyEdit.openModal(hobby)" width="22px"
                                 class="edit-icon1">
                             <hr />
                         </div>
@@ -517,5 +517,7 @@
 <app-skill-edit *ngIf="(_skillEdit.content$ | async).show"></app-skill-edit>
 
 <app-hobby *ngIf="(_hobby.content$ | async).show"></app-hobby>
+
+<app-hobby-edit *ngIf="(_hobbyEdit.content$ | async).show"></app-hobby-edit>
 
 <!-- <div *ngIf="isLoading" class="no-data" style="margin-top: 100px;">Loading...</div> -->
