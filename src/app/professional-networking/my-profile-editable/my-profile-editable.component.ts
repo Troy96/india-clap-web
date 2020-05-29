@@ -10,6 +10,9 @@ import html2canvas from 'html2canvas';
 import { ProjectService } from './modals/project/project.service';
 import { ProjectEditService } from './modals/project-edit/project-edit.service';
 import { CertificateService } from './modals/certificate/certificate.service';
+import { CertificateEditService } from './modals/certificate-edit/certificate-edit.service';
+import { SkillComponent } from './modals/skill/skill.component';
+import { SkillService } from './modals/skill/skill.service';
 
 @Component({
   selector: 'app-my-profile-editable',
@@ -49,7 +52,9 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     private renderer: Renderer2,
     public _project: ProjectService,
     public _projectEdit: ProjectEditService,
-    public _certificate: CertificateService
+    public _certificate: CertificateService,
+    public _certificateEdit: CertificateEditService,
+    public _skill: SkillService
   ) { }
 
   ngOnInit() {

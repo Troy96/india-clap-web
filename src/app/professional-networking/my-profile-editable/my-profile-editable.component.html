@@ -282,7 +282,7 @@
                             <div id="skill" *ngFor="let certification of userDetails?.certifications">
                                 <span class="teal">{{certification?.certification_name}} <img
                                         src="/assets/icons/1x/Edit.png" style="cursor: pointer;"
-                                        (click)="openEditModal('Certifications', certification)" width="22px"
+                                        (click)="_certificateEdit.openModal(certification)" width="22px"
                                         class="edit-icon1"></span><br />
                                 <p>Date of Issue - {{certification?.issue_date}}</p>
                                 <p *ngIf="!certification?.not_expire">Valid till - {{certification?.expiration_date}}
@@ -295,7 +295,7 @@
                 </div>
                 <div id="headline" style="padding: 40px;">
                     <h3>Skills and Endorsements <img src="/assets/icons/1x/plus.png" width="22px" class="edit-icon1"
-                            (click)="openAddModal('Skills')" style="cursor: pointer;"></h3>
+                            (click)="_skill.openModal()" style="cursor: pointer;"></h3>
                     <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
 
                     <div class="project-description" style="margin-top: 20px;">
@@ -509,5 +509,9 @@
 <app-project-edit *ngIf="(_projectEdit.content$ | async).show"></app-project-edit>
 
 <app-certificate *ngIf="(_certificate.content$ | async).show"></app-certificate>
+
+<app-certificate-edit *ngIf="(_certificateEdit.content$ | async).show"></app-certificate-edit>
+
+<app-skill *ngIf="(_skill.content$ | async).show"></app-skill>
 
 <!-- <div *ngIf="isLoading" class="no-data" style="margin-top: 100px;">Loading...</div> -->

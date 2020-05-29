@@ -36,6 +36,8 @@ import { FeedPostComponent } from './timeline-like-react/feed-post/feed-post.com
 import { ProjectComponent } from './my-profile-editable/modals/project/project.component';
 import { ProjectEditComponent } from './my-profile-editable/modals/project-edit/project-edit.component';
 import { CertificateComponent } from './my-profile-editable/modals/certificate/certificate.component';
+import { CertificateEditComponent } from './my-profile-editable/modals/certificate-edit/certificate-edit.component';
+import { SkillComponent } from './my-profile-editable/modals/skill/skill.component';
 
 
 @NgModule({
@@ -64,7 +66,9 @@ import { CertificateComponent } from './my-profile-editable/modals/certificate/c
     FeedPostComponent,
     ProjectComponent,
     ProjectEditComponent,
-    CertificateComponent
+    CertificateComponent,
+    CertificateEditComponent,
+    SkillComponent
   ],
   imports: [
     CommonModule,
