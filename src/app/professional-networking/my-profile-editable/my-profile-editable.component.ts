@@ -16,6 +16,7 @@ import { SkillService } from './modals/skill/skill.service';
 import { SkillEditService } from './modals/skill-edit/skill-edit.service';
 import { HobbyService } from './modals/hobby/hobby.service';
 import { HobbyEditService } from './modals/hobby-edit/hobby-edit.service';
+import { LanguageService } from './modals/language/language.service';
 
 @Component({
   selector: 'app-my-profile-editable',
@@ -60,7 +61,8 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     public _skill: SkillService,
     public _skillEdit: SkillEditService,
     public _hobby: HobbyService,
-    public _hobbyEdit: HobbyEditService
+    public _hobbyEdit: HobbyEditService,
+    public _language: LanguageService
   ) { }
 
   ngOnInit() {

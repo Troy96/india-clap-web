@@ -43,7 +43,7 @@
             </div> -->
 
             </div>
-            
+
             <div class="mainbody">
 
                 <div class="place">
@@ -92,12 +92,12 @@
                                     {{exp.responsibilities}}
                                     <p *ngIf="exp.is_present">{{exp?.start_date}} -- Present</p>
                                     <p *ngIf="!exp.is_present">{{exp?.start_date}} -- {{exp?.end_date}}</p>
-                                <div style="margin-left: 12%;">
-                                    <hr />
+                                    <div style="margin-left: 12%;">
+                                        <hr />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </div>
                     <div id="headline" style="padding: 40px;">
                         <h3>Education<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
@@ -152,20 +152,21 @@
                         <div id="experience" *ngFor="let project of userDetails?.projects">
                             <div id="txt-exp">
                                 <div>
-                                    <img *ngIf="project.logo" src="{{project.logo}}" width="50px"
-                                        height="50px" style="display: block; border-radius: 50%; cursor: pointer;"
+                                    <img *ngIf="project.logo" src="{{project.logo}}" width="50px" height="50px"
+                                        style="display: block; border-radius: 50%; cursor: pointer;"
                                         (click)="projectLogoInput.click()" class="exp-img">
                                     <img *ngIf="!project.logo" src="/assets/icons/1x/no_company.jpg" width="50px"
                                         height="50px" style="display: block; border-radius: 50%; cursor: pointer;"
                                         (click)="projectLogoInput.click()" class="exp-img">
-    
+
                                     <input type="file" style="display: none;" #projectLogoInput
                                         (change)="projectLogoUpload($event, project.id)">
-                                </div>                            <img src="/assets/icons/1x/Edit.png" width="22px" style="cursor: pointer;"
+                                </div> <img src="/assets/icons/1x/Edit.png" width="22px" style="cursor: pointer;"
                                     (click)="_projectEdit.openModal(project)" class="edit-icon">
                                 <div class="project-details exp-workWrap">
-    
-                                    <span class="teal">{{project?.project_name}}</span> {{project?.start_date}} - {{project?.end_date}}
+
+                                    <span class="teal">{{project?.project_name}}</span> {{project?.start_date}} -
+                                    {{project?.end_date}}
                                     <br>
                                     <a href="{{project.link}}" target="_blank">{{project.link}}</a><br>
                                     {{project?.start_date}} - {{project?.end_date}}
@@ -256,10 +257,10 @@
                 </div>
                 <div id="headline" style="padding: 40px;">
                     <h3>Languages <img src="/assets/icons/1x/plus.png" width="22px" class="edit-icon1"
-                            (click)="openAddModal('Language')" style="cursor: pointer;"></h3>
+                            (click)="_language.openModal()" style="cursor: pointer;"></h3>
                     <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
 
-                    <div  class="project-description exp-workWrap" style="margin-top: 20px;">
+                    <div class="project-description exp-workWrap" style="margin-top: 20px;">
 
                         <div id="skill" *ngFor="let lang of userDetails?.languages">
                             {{lang.language}} - ({{lang.proficiency}}) <img src="/assets/icons/1x/Edit.png"
@@ -428,5 +429,7 @@
 <app-hobby *ngIf="(_hobby.content$ | async).show"></app-hobby>
 
 <app-hobby-edit *ngIf="(_hobbyEdit.content$ | async).show"></app-hobby-edit>
+
+<app-language *ngIf="(_language.content$ | async).show"></app-language>
 
 <!-- <div *ngIf="isLoading" class="no-data" style="margin-top: 100px;">Loading...</div> -->
