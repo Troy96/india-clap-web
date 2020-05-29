@@ -13,6 +13,7 @@ import { CertificateService } from './modals/certificate/certificate.service';
 import { CertificateEditService } from './modals/certificate-edit/certificate-edit.service';
 import { SkillComponent } from './modals/skill/skill.component';
 import { SkillService } from './modals/skill/skill.service';
+import { SkillEditService } from './modals/skill-edit/skill-edit.service';
 
 @Component({
   selector: 'app-my-profile-editable',
@@ -54,7 +55,8 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     public _projectEdit: ProjectEditService,
     public _certificate: CertificateService,
     public _certificateEdit: CertificateEditService,
-    public _skill: SkillService
+    public _skill: SkillService,
+    public _skillEdit: SkillEditService
   ) { }
 
   ngOnInit() {

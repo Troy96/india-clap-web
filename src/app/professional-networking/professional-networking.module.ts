@@ -38,6 +38,7 @@ import { ProjectEditComponent } from './my-profile-editable/modals/project-edit/
 import { CertificateComponent } from './my-profile-editable/modals/certificate/certificate.component';
 import { CertificateEditComponent } from './my-profile-editable/modals/certificate-edit/certificate-edit.component';
 import { SkillComponent } from './my-profile-editable/modals/skill/skill.component';
+import { SkillEditComponent } from './my-profile-editable/modals/skill-edit/skill-edit.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { SkillComponent } from './my-profile-editable/modals/skill/skill.compone
     ProjectEditComponent,
     CertificateComponent,
     CertificateEditComponent,
-    SkillComponent
+    SkillComponent,
+    SkillEditComponent
   ],
   imports: [
     CommonModule,

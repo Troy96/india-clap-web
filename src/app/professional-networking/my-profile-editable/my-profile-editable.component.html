@@ -302,7 +302,7 @@
 
                         <div id="skill" *ngFor="let skill of userDetails?.skills">
                             {{skill.skill}} ({{skill.level}}) <img src="/assets/icons/1x/Edit.png"
-                                style="cursor: pointer;" (click)="openEditModal('Skills', skill)" width="22px"
+                                style="cursor: pointer;" (click)="_skillEdit.openModal(skill)" width="22px"
                                 class="edit-icon1">
                             <hr />
                         </div>
@@ -513,5 +513,7 @@
 <app-certificate-edit *ngIf="(_certificateEdit.content$ | async).show"></app-certificate-edit>
 
 <app-skill *ngIf="(_skill.content$ | async).show"></app-skill>
+
+<app-skill-edit *ngIf="(_skillEdit.content$ | async).show"></app-skill-edit>
 
 <!-- <div *ngIf="isLoading" class="no-data" style="margin-top: 100px;">Loading...</div> -->
