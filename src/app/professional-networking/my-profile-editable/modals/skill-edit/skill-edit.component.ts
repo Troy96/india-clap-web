@@ -51,8 +51,11 @@ export class SkillEditComponent implements OnInit {
       })
   }
   onDelete(){
-    this._toast.showSuccess('Skill Deleted!', 'Update alert');
-    this._myProfile.updateUserDetails();
-    this._skillEdit.closeModal();
+    this._auth.delete_skills(this.content.id).subscribe((data:any)=>{
+      this._toast.showSuccess('Skill Deleted!', 'Update alert');
+      this._myProfile.updateUserDetails();
+      this._skillEdit.closeModal();
+    })
+   
   }
 }
