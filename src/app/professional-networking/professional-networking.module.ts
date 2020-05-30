@@ -50,6 +50,7 @@ import { EducationComponent } from './my-profile-editable/modals/education/educa
 import { EducationEditComponent } from './my-profile-editable/modals/education-edit/education-edit.component';
 import { AboutEditComponent } from './my-profile-editable/modals/about-edit/about-edit.component';
 import { ExperienceComponent } from './my-profile-editable/modals/experience/experience.component';
+import { ExperienceEditComponent } from './my-profile-editable/modals/experience-edit/experience-edit.component';
 
 
 @NgModule({
@@ -93,6 +94,7 @@ import { ExperienceComponent } from './my-profile-editable/modals/experience/exp
     EducationEditComponent,
     AboutEditComponent,
     ExperienceComponent,
+    ExperienceEditComponent,
   ],
   imports: [
     CommonModule,
