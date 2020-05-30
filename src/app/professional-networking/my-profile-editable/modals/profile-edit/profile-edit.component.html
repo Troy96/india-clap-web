@@ -24,7 +24,7 @@
                     required</small>
             </div>
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="District" formControlName="location_district"
+                placeholder="District/Town" formControlName="location_district"
                 [ngClass]="{'is-invalid':profileForm.get('location_district').touched && profileForm.get('location_district').invalid}">
             <div
                 *ngIf="(profileForm.get('location_district').invalid && profileForm.get('location_district').touched) || profileForm.get('location_district').dirty">

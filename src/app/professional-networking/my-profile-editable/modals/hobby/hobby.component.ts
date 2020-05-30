@@ -45,7 +45,9 @@ export class HobbyComponent implements OnInit {
         this._myProfile.updateUserDetails();
         this._hobby.closeModal();
       }
-    )
+    ), err=>{
+      console.log(err)
+    }
   }
 
 }
