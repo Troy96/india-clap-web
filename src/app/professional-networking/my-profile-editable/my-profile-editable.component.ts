@@ -24,6 +24,7 @@ import { EducationService} from './modals/education/education.service';
 import { EducationEditComponent } from './modals/education-edit/education-edit.component';
 import { EducationEditService } from './modals/education-edit/education-edit.service';
 import {ProfileEditService} from './modals/profile-edit/profile-edit.service'
+import { AboutEditService } from './modals/about-edit/about-edit.service';
 @Component({
   selector: 'app-my-profile-editable',
   templateUrl: './my-profile-editable.component.html',
@@ -74,7 +75,8 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     public _language: LanguageService,
     public _languageEdit: LanguageEditService,
     public _award: AwardService,
-    public _awardEdit: AwardEditService
+    public _awardEdit: AwardEditService,
+    public _aboutEdit: AboutEditService
   ) { }
 
   ngOnInit() {

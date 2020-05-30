@@ -41,17 +41,17 @@ export class AwardEditComponent implements OnInit {
       )
   }
 
-  onSave() {
-    if (this.awardEditForm.invalid) return
-    this._auth.update_award(this.content.id, {
-      ...this.awardEditForm.value,
-      userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
-    })
-      .subscribe(res => {
-        this._toast.showSuccess('Award details updated!', 'Update alert');
-        this._myProfile.updateUserDetails();
-        this._awardEdit.closeModal();
+    onSave() {
+      if (this.awardEditForm.invalid) return
+      this._auth.update_award(this.content.id, {
+        ...this.awardEditForm.value,
+        userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
       })
-  }
+        .subscribe(res => {
+          this._toast.showSuccess('Award details updated!', 'Update alert');
+          this._myProfile.updateUserDetails();
+          this._awardEdit.closeModal();
+        })
+    }
 
 }

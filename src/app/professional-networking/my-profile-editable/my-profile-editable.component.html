@@ -48,9 +48,9 @@
 
                 <div class="place">
                     <div id="headline" style="padding: 40px;">
-                        <h3>About<img src="/assets/icons/1x/Edit.png" (click)="openAddModal('Headline')" width="22px"
+                        <h3>About<img src="/assets/icons/1x/Edit.png" (click)="_aboutEdit.openModal(userDetails)" width="22px"
                                 style="cursor: pointer;" class="edit-icon1"></h3>
-                        <span class="txt">{{userDetails?.brief_Desc}}</span>
+                        <span class="txt" style="word-break: break-word;">{{userDetails?.brief_Desc}}</span>
                     </div>
                     <div id="headline" style="padding: 40px;">
                         <h3>Experience<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
@@ -438,5 +438,7 @@
 <app-award *ngIf="(_award.content$ | async).show"></app-award>
 
 <app-award-edit *ngIf="(_awardEdit.content$ | async).show"></app-award-edit>
+
+<app-about-edit *ngIf="(_aboutEdit.content$ | async).show"></app-about-edit>
 
 <!-- <div *ngIf="isLoading" class="no-data" style="margin-top: 100px;">Loading...</div> -->

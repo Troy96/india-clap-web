@@ -1,0 +1,14 @@
+<div class="experience">
+    <div class="container experience-body">
+        <h1>Add/Edit About</h1>
+        <img src="/assets/icons/1x/close.png" width="20px" class="cancel-icon" (click)="_aboutEdit.closeModal()">
+        <hr>
+        <form [formGroup]='aboutEditForm'>
+
+            <textarea class="form-control" placeholder="Description" formControlName="brief_Desc"></textarea>
+
+            <button class="btn btn-primary" (click)="onSave()" style="width: 100%;">Save</button><br>
+
+        </form>
+    </div>
+</div>
