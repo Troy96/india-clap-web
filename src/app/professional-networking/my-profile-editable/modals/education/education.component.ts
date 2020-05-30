@@ -11,7 +11,7 @@ import { EducationService } from './education.service';
 })
 export class EducationComponent implements OnInit {
 
- 
+
   EducationForm: FormGroup
   user_id = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
   constructor(
@@ -26,20 +26,19 @@ export class EducationComponent implements OnInit {
     this.EducationForm = this._fb.group({
       institute: [''],
       degree: [''],
-      is_present:[false],
+      is_present: [false],
       study_field: [''],
       start_year: [''],
       end_year: [''],
-      grade:[''],
-      link:[''],
-      desc:[''],
+      grade: [''],
+      link: [''],
+      desc: [''],
 
     })
   }
 
   onSubmit() {
     if (this.EducationForm.get('is_present').value) this.EducationForm.removeControl('end_year');
-console.log(this.EducationForm.value)
 
     this._authService.add_education({
       ...this.EducationForm.value,
