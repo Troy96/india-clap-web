@@ -7,7 +7,7 @@
 
 
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Company Name" formControlName="company_name"
+                placeholder="Organization Name" formControlName="company_name"
                 [ngClass]="{'is-invalid':experienceEditForm.get('company_name').touched && experienceEditForm.get('company_name').invalid}">
             <div
                 *ngIf="(experienceEditForm.get('company_name').invalid && experienceEditForm.get('company_name').touched) || experienceEditForm.get('company_name').dirty">
@@ -21,8 +21,7 @@
                 [ngClass]="{'is-invalid':experienceEditForm.get('title').touched && experienceEditForm.get('title').invalid}">
 
 
-            <input type="checkbox" #doesExpre formControlName="is_present" style="margin-bottom: 15px;"> Are you still
-            working?
+            <input type="checkbox" #doesExpre formControlName="is_present" style="margin-bottom: 15px;"> Are you currently working here?
             <div>
                 <input placeholder="Start Date" type="text" class="form-control" formControlName="start_date"
                     onfocus="(this.type='date')" onblur="(this.type='text')" id="start_date" style="width: 100%;" />
