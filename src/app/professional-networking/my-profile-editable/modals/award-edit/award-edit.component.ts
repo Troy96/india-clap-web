@@ -53,5 +53,11 @@ export class AwardEditComponent implements OnInit {
           this._awardEdit.closeModal();
         })
     }
-
+    onDelete(){
+      this._auth.delete_awards(this.content.id).subscribe((data:any)=>{
+        this._toast.showSuccess('Award deleted!', 'Update alert');
+        this._myProfile.updateUserDetails();
+        this._awardEdit.closeModal();
+      })
+    }
 }

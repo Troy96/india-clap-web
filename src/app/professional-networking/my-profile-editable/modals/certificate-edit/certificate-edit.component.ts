@@ -52,5 +52,11 @@ export class CertificateEditComponent implements OnInit {
         this._certificateEdit.closeModal();
       })
   }
-
+  onDelete(){
+    this._auth.delete_certificate(this.content.id).subscribe((data:any)=>{
+      this._toast.showSuccess('Certificate deleted!', 'Update alert');
+      this._myProfile.updateUserDetails();
+      this._certificateEdit.closeModal();
+    })
+  }
 }

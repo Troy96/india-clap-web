@@ -50,5 +50,11 @@ export class HobbyEditComponent implements OnInit {
         this._hobbyEdit.closeModal();
       })
   }
-
+  onDelete(){
+    this._auth.delete_hobby(this.content.id).subscribe((data)=>{
+      this._toast.showSuccess('Hobby Deleted!', 'Update alert');
+      this._myProfile.updateUserDetails();
+      this._hobbyEdit.closeModal();
+    })
+  }
 }

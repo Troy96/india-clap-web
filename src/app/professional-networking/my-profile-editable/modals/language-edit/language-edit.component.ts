@@ -50,5 +50,11 @@ export class LanguageEditComponent implements OnInit {
         this._languageEdit.closeModal();
       })
   }
-
+  onDelete(){
+    this._auth.delete_languages(this.content.id).subscribe((data:any)=>{
+      this._toast.showSuccess('Language Deleted!', 'Update alert');
+      this._myProfile.updateUserDetails();
+      this._languageEdit.closeModal();
+    })
+  }
 }
