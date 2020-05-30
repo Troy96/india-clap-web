@@ -1,0 +1,43 @@
+<div class="experience">
+    <div class="container experience-body">
+        <h1>Add Experience</h1>
+        <img src="/assets/icons/1x/close.png" width="20px" class="cancel-icon" (click)="_experience.closeModal()">
+        <hr>
+        <form [formGroup]='experienceForm'>
+
+
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Company Name" formControlName="company_name"
+                [ngClass]="{'is-invalid':experienceForm.get('company_name').touched && experienceForm.get('company_name').invalid}">
+            <div
+                *ngIf="(experienceForm.get('company_name').invalid && experienceForm.get('company_name').touched) || experienceForm.get('company_name').dirty">
+                <small *ngIf="experienceForm.get('company_name').errors?.required" class="text-danger"> 
+                    CompanyName is
+                    required</small>
+            </div>
+
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Title" formControlName="title"
+                [ngClass]="{'is-invalid':experienceForm.get('title').touched && experienceForm.get('title').invalid}">
+
+
+            <input type="checkbox" #doesExpre formControlName="is_present" style="margin-bottom: 15px;"> Are you still
+            working?
+            <div>
+                <input placeholder="Start Date" type="text" class="form-control" formControlName="start_date"
+                    onfocus="(this.type='date')" onblur="(this.type='text')" id="start_date" style="width: 100%;" />
+
+
+                <input placeholder="End Date" type="text" *ngIf="!doesExpre.checked" class="form-control"
+                    formControlName="end_date" onfocus="(this.type='date')" onblur="(this.type='text')" id="end_date"
+                    style="width: 100%;" />
+                <p *ngIf="doesExpre.checked"> - Present</p>
+            </div>
+
+            <textarea class="form-control" placeholder="Responsibilities" formControlName="responsibilities"></textarea>
+
+            <button class="btn btn-primary" (click)="onSubmit()" style="width: 100%;">Add</button><br>
+
+        </form>
+    </div>
+</div>

@@ -16,18 +16,18 @@
                 <img class="jmb-img" src="/assets/icons/1x/dp.png" style="cursor: pointer;"
                     (click)="photoInput.click()">
 
-            </div> 
+            </div>
             <div id="jumbotron-text">
                 <div id="name">
                     <h2><span class="teal">{{userDetails?.first_name}} {{userDetails?.last_name}} <img
                                 src="/assets/icons/1x/Edit.png" (click)="_profileEdit.openModal(userDetails)"
                                 width="22px" style="cursor: pointer;" class="edit-icon1"></span></h2>
-                    <span *ngIf="userDetails?.experiences">{{userDetails?.experiences[0].title}}<br/>
+                    <span *ngIf="userDetails?.experiences">{{userDetails?.experiences[0].title}}<br />
                         {{userDetails?.experiences[0].company_name}}</span><br>
-                        <span>{{userDetails?.education[0]?.institute}}</span><br/>
-                    <span>{{userDetails?.location_district}}, {{userDetails?.location_country}}</span><br/>
-                    <a style="cursor: pointer; color: #0073b1; font-weight: 600;"
-                        (click)="openContactInfo()">Contact Info</a>
+                    <span>{{userDetails?.education[0]?.institute}}</span><br />
+                    <span>{{userDetails?.location_district}}, {{userDetails?.location_country}}</span><br />
+                    <a style="cursor: pointer; color: #0073b1; font-weight: 600;" (click)="openContactInfo()">Contact
+                        Info</a>
 
                 </div>
                 <!-- <div class="user-companies">
@@ -37,7 +37,8 @@
                     <span><img src="{{userDetails?.education[0]?.institute_logo}}" width="20px" height="20px">
                         {{userDetails?.education[0]?.institute}}</span>
                 </div> -->
-                <img class="more-opt" src="/assets/icons/1x/more-opt.png" alt="" style="margin-right: 150px; margin-top: 100px;"><br>
+                <img class="more-opt" src="/assets/icons/1x/more-opt.png" alt=""
+                    style="margin-right: 150px; margin-top: 100px;"><br>
                 <!-- </a>
 
             </div> -->
@@ -48,13 +49,13 @@
 
                 <div class="place">
                     <div id="headline" style="padding: 40px;">
-                        <h3>About<img src="/assets/icons/1x/Edit.png" (click)="_aboutEdit.openModal(userDetails)" width="22px"
-                                style="cursor: pointer;" class="edit-icon1"></h3>
+                        <h3>About<img src="/assets/icons/1x/Edit.png" (click)="_aboutEdit.openModal(userDetails)"
+                                width="22px" style="cursor: pointer;" class="edit-icon1"></h3>
                         <span class="txt" style="word-break: break-word;">{{userDetails?.brief_Desc}}</span>
                     </div>
                     <div id="headline" style="padding: 40px;">
                         <h3>Experience<img src="/assets/icons/1x/plus.png" width="22px" class="plus-icon1"
-                                (click)="openAddModal('Experience')" style="cursor: pointer;"></h3>
+                                (click)="_experience.openModal()" style="cursor: pointer;"></h3>
 
                         <div id="experience">
                             <div id="txt-exp" *ngFor="let exp of userDetails?.experiences">
@@ -85,16 +86,6 @@
                                             width="22px" class="edit-icon">
                                     </div>
 
-                                </div>
-                                <div class="exp-workWrap" style="margin-left: 35px;">
-                                    <span class="teal">{{exp.company_name}}</span><br>
-                                    {{exp.title}}<br>
-                                    {{exp.responsibilities}}
-                                    <p *ngIf="exp.is_present">{{exp?.start_date}} -- Present</p>
-                                    <p *ngIf="!exp.is_present">{{exp?.start_date}} -- {{exp?.end_date}}</p>
-                                    <div style="margin-left: 12%;">
-                                        <hr />
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -165,7 +156,7 @@
                                     (click)="_projectEdit.openModal(project)" class="edit-icon">
                                 <div class="project-details exp-workWrap">
 
-                                    <span class="teal">{{project?.project_name}}</span> 
+                                    <span class="teal">{{project?.project_name}}</span>
                                     <br>
                                     <a href="{{project.link}}" target="_blank">{{project.link}}</a><br>
                                     {{project?.start_date}} - {{project?.end_date}}
@@ -439,5 +430,7 @@
 <app-award-edit *ngIf="(_awardEdit.content$ | async).show"></app-award-edit>
 
 <app-about-edit *ngIf="(_aboutEdit.content$ | async).show"></app-about-edit>
+
+<app-experience *ngIf="(_experience.content$ | async).show"></app-experience>
 
 <!-- <div *ngIf="isLoading" class="no-data" style="margin-top: 100px;">Loading...</div> -->
