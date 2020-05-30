@@ -188,6 +188,7 @@
                                 <p *ngIf="!certification?.not_expire">Valid till - {{certification?.expiration_date}}
                                 </p>
                                 <p *ngIf="certification?.not_expire">Valid till - No expiration</p>
+                                <p *ngIf="certification?.description">{{certification?.description}}</p>
                             </div>
                             <hr />
                         </div>

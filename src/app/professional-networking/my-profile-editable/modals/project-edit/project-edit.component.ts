@@ -53,11 +53,13 @@ export class ProjectEditComponent implements OnInit {
         this._projectEdit.closeModal();
       })
   }
-  onDelete(){
-    this._auth.delete_project((data:any)=>{
-      this._toast.showSuccess('Project Deleted!', 'Update alert');
-      this._myProfile.updateUserDetails();
-      this._projectEdit.closeModal();
-    })
+  onDelete() {
+    this._auth.delete_project(this.content.id)
+      .subscribe(res => {
+        this._toast.showSuccess('Project Deleted!', 'Update alert');
+        this._myProfile.updateUserDetails();
+        this._projectEdit.closeModal();
+      })
+
   }
 }
