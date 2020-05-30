@@ -64,5 +64,11 @@ export class EducationEditComponent implements OnInit {
         console.log(err)
       })
   }
- 
+ onDelete(){
+   this._auth.delete_education(this.content.id).subscribe((data):any=>{
+    this._toast.showSuccess('Education Deleted!', 'Update alert');
+    this._myProfile.updateUserDetails();
+    this._educationEdit.closeModal();
+   })
+ }
 }
