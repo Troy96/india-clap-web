@@ -22,22 +22,22 @@
                     <h2><span class="teal">{{userDetails?.first_name}} {{userDetails?.last_name}} <img
                                 src="/assets/icons/1x/Edit.png" (click)="_profileEdit.openModal(userDetails)"
                                 width="22px" style="cursor: pointer;" class="edit-icon1"></span></h2>
-                    <span *ngIf="userDetails?.experiences">{{userDetails?.experiences[0].title}} at
+                    <span *ngIf="userDetails?.experiences">{{userDetails?.experiences[0].title}}<br/>
                         {{userDetails?.experiences[0].company_name}}</span><br>
-                    <span>{{userDetails?.location_district}}, {{userDetails?.location_country}}</span>
-
-                    <a style="margin-left: 10px; cursor: pointer; color: #0073b1; font-weight: 600;"
+                        <span>{{userDetails?.education[0]?.institute}}</span><br/>
+                    <span>{{userDetails?.location_district}}, {{userDetails?.location_country}}</span><br/>
+                    <a style="cursor: pointer; color: #0073b1; font-weight: 600;"
                         (click)="openContactInfo()">Contact Info</a>
 
                 </div>
-                <div class="user-companies">
+                <!-- <div class="user-companies">
 
                     <span style="margin-bottom: 10px;"><img src="{{userDetails?.experiences[0]?.company_logo}}"
                             width="20px" height="20px"> {{userDetails?.experiences[0].company_name}}</span>
                     <span><img src="{{userDetails?.education[0]?.institute_logo}}" width="20px" height="20px">
                         {{userDetails?.education[0]?.institute}}</span>
-                </div>
-                <img class="more-opt" src="/assets/icons/1x/more-opt.png" alt="" style="margin-right: 150px;"><br>
+                </div> -->
+                <img class="more-opt" src="/assets/icons/1x/more-opt.png" alt="" style="margin-right: 150px; margin-top: 100px;"><br>
                 <!-- </a>
 
             </div> -->

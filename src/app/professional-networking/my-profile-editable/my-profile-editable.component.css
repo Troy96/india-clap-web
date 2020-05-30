@@ -80,7 +80,7 @@ h2 {
 
 #des1 {
   /*All descriptions */
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 30px;
   background-color: lightgray;
   border-radius: 5px;
@@ -198,7 +198,7 @@ h3 {
 }
 
 #experience {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .plus-icon1 {
@@ -272,7 +272,7 @@ h3 {
   #name {
     float: left;
     margin-left: 100px;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-right: 5px;
 
   }
@@ -337,7 +337,7 @@ h3 {
   #name {
     float: left;
     margin-left: 130px;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-right: 10px;
 
   }
@@ -381,7 +381,7 @@ h3 {
     /*name div in jumbotron*/
     float: left;
     margin-left: 200px;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-right: 250px;
   }
 
@@ -454,7 +454,7 @@ h3 {
     /*name div in jumbotron*/
     float: left;
     margin-left: 200px;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-right: 400px;
   }
 
@@ -534,7 +534,7 @@ b{
   background-color: lightgray;
 }
 .activity-card{
-  margin-top: 30px;
+  margin-top: 20px;
   display: inline-table;
   width: 510px;
   color: gray;
@@ -558,7 +558,7 @@ b{
   color: gray;
 }
 .reco-body{
-  margin-top: 30px;
+  margin-top: 20px;
   border-bottom: 1px solid gray;
   padding-bottom: 20px;
 }
@@ -631,13 +631,13 @@ margin: 0;
       margin-top: 20px;
   }
   .Summary{
-      margin-top: 30px;
+      margin-top: 20px;
   }
   .Experience{
-      margin-top: 30px;
+      margin-top: 20px;
   }
   .Education{
-      margin-top: 30px;
+      margin-top: 20px;
   }
   h4{
       letter-spacing: 2px;
