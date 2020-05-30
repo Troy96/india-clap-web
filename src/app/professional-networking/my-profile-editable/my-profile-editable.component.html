@@ -152,11 +152,13 @@
 
                                     <input type="file" style="display: none;" #projectLogoInput
                                         (change)="projectLogoUpload($event, project.id)">
-                                </div> <img src="/assets/icons/1x/Edit.png" width="22px" style="cursor: pointer;"
-                                    (click)="_projectEdit.openModal(project)" class="edit-icon">
+                                </div> 
+                               
                                 <div class="project-details exp-workWrap">
 
                                     <span class="teal">{{project?.project_name}}</span>
+                                    <img src="/assets/icons/1x/Edit.png" width="22px" style="cursor: pointer;  float: right;"
+                                    (click)="_projectEdit.openModal(project)" >
                                     <br>
                                     <a href="{{project.link}}" target="_blank">{{project.link}}</a><br>
                                     {{project?.start_date}} - {{project?.end_date}}
@@ -169,6 +171,7 @@
                                     {{project?.description}}
                                 </div>
                             </div>
+                            
                             <div style="margin-left: 10%;">
                                 <hr />
                             </div>
