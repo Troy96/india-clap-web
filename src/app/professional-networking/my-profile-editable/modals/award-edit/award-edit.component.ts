@@ -18,7 +18,7 @@ export class AwardEditComponent implements OnInit {
   content: any;
 
   constructor(
-    private _awardEdit: AwardEditService,
+    public _awardEdit: AwardEditService,
     private _fb: FormBuilder,
     private _auth: AuthServices,
     private _toast: NotificationService,

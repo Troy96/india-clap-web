@@ -15,7 +15,7 @@ export class ProfileEditComponent implements OnInit {
   content: any;
 
   constructor(
-    private _profileEdit: ProfileEditService,
+    public _profileEdit: ProfileEditService,
     private _fb: FormBuilder,
     private _auth: AuthServices,
     private _toast: NotificationService,

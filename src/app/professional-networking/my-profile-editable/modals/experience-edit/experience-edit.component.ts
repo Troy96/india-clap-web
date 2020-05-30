@@ -17,7 +17,7 @@ export class ExperienceEditComponent implements OnInit {
   content: any;
 
   constructor(
-    private _experienceEdit: ExperienceEditService,
+    public _experienceEdit: ExperienceEditService,
     private _fb: FormBuilder,
     private _auth: AuthServices,
     private _toast: NotificationService,

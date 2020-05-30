@@ -20,7 +20,7 @@ export class CertificateComponent implements OnInit {
     private _authService: AuthServices,
     private notifService: NotificationService,
     private _myProfile: MyprofileEditableService,
-    private _certificate: CertificateService
+    public _certificate: CertificateService
   ) { }
 
   ngOnInit() {

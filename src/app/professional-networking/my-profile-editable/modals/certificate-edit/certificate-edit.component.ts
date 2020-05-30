@@ -16,7 +16,7 @@ export class CertificateEditComponent implements OnInit {
   content: any;
 
   constructor(
-    private _certificateEdit: CertificateEditService,
+    public _certificateEdit: CertificateEditService,
     private _fb: FormBuilder,
     private _auth: AuthServices,
     private _toast: NotificationService,

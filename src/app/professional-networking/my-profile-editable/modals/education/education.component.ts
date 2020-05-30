@@ -19,7 +19,7 @@ export class EducationComponent implements OnInit {
     private _authService: AuthServices,
     private notifService: NotificationService,
     private _myProfile: MyprofileEditableService,
-    private _education: EducationService
+    public _education: EducationService
   ) { }
 
   ngOnInit() {

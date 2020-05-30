@@ -15,7 +15,7 @@ export class EducationEditComponent implements OnInit {
   content: any;
 
   constructor(
-    private _educationEdit: EducationEditService,
+    public _educationEdit: EducationEditService,
     private _fb: FormBuilder,
     private _auth: AuthServices,
     private _toast: NotificationService,

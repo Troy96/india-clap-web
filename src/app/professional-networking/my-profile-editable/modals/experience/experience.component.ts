@@ -21,7 +21,7 @@ export class ExperienceComponent implements OnInit {
     private _authService: AuthServices,
     private notifService: NotificationService,
     private _myProfile: MyprofileEditableService,
-    private _experience: ExperienceService
+    public _experience: ExperienceService
   ) { }
 
   ngOnInit() {
