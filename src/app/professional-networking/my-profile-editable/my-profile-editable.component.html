@@ -380,25 +380,15 @@
     </div>
 
 
-    <div class="suggestion container" routerLink="/in/mynetwork">
-        <div id="sug-head" style="cursor: pointer;">
+    <div class="suggestion container" >
+        <div id="sug-head" style="cursor: pointer;" routerLink="/in/mynetwork">
             <h4>Your Connections</h4>
         </div>
-        <!-- <div id="sug-body" *ngIf="userConnections.length">
-            <div id="sug-pro" *ngFor="let connection of userConnections">
-                <img src="/assets/icons/1x/close.png" width="10px" style="cursor: pointer;" class="close"
-                    (click)="removeConnection(connection.id)">
-                <img src="{{connection?.photo}}" class="sug-dp" alt="" width="55px" height="55px">
-                <div class="text"><span class="teal" style="cursor: pointer;"
-                        [routerLink]="['/professional-networking/users/', connection.id]">{{connection?.first_name}}
-                        {{connection?.last_name}}</span><br>
-                </div>
-                <br>
-            </div>
-
+        <div id="sug-head" style="cursor: pointer; text-align: center;">
+            <p><i class="fa fa-envelope-open"></i>Invite others via email</p>
         </div>
-        <div class="no-data" *ngIf="!userConnections.length">No connections!</div> -->
     </div>
+   
 
 
 </div>
