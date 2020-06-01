@@ -384,7 +384,7 @@
         <div id="sug-head" style="cursor: pointer;" routerLink="/in/mynetwork">
             <h4>Your Connections</h4>
         </div>
-        <div id="sug-head" style="cursor: pointer; text-align: center;">
+        <div id="sug-head" style="cursor: pointer; text-align: center;" (click)="_emailInvite.openModal()">
             <p><i class="fa fa-envelope-open"></i>Invite others via email</p>
         </div>
     </div>
@@ -425,5 +425,7 @@
 <app-experience *ngIf="(_experience.content$ | async).show"></app-experience>
 
 <app-experience-edit *ngIf="(_experienceEdit.content$ | async).show"></app-experience-edit>
+
+<app-email-invite *ngIf="(_emailInvite.content$ | async).show"></app-email-invite>
 
 <!-- <div *ngIf="isLoading" class="no-data" style="margin-top: 100px;">Loading...</div> -->

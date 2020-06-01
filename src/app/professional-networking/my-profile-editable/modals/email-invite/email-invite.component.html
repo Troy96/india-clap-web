@@ -1,1 +1,28 @@
-<p>email-invite works!</p>
+<div class="experience">
+    <div class="container experience-body">
+        <h1>Invite others via Email</h1>
+        <img src="/assets/icons/1x/close.png" width="20px" class="cancel-icon" (click)="_emailInvite.closeModal()">
+        <hr>
+        <form [formGroup]='emailInviteForm'>
+
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="From" formControlName="from"
+                [ngClass]="{'is-invalid':emailInviteForm.get('from').touched && emailInviteForm.get('from').invalid}">
+
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="To" formControlName="to"
+                [ngClass]="{'is-invalid':emailInviteForm.get('to').touched && emailInviteForm.get('to').invalid}">
+            <div
+                *ngIf="(emailInviteForm.get('to').invalid && emailInviteForm.get('to').touched) || emailInviteForm.get('to').dirty">
+                <small *ngIf="emailInviteForm.get('to').errors?.required" class="text-danger"> Project
+                    To is
+                    required</small>
+            </div>
+
+            <textarea class="form-control" placeholder="Message" formControlName="message"></textarea>
+
+            <button class="btn btn-primary" (click)="onSubmit()" style="width: 100%;">Send Invite</button><br>
+
+        </form>
+    </div>
+</div>
