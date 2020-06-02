@@ -1,3 +1,5 @@
+<app-featured-post></app-featured-post>
+
 <div class="container">
     <div class="status">
         <div id="heading">
@@ -33,6 +35,7 @@
         <!-- <button class="btn btn-success right" (click)="onSubmit()">onSubmit</button> -->
 
     </div>
+
     <ng-container *ngFor="let post of postList">
         <div class="post" id="{{post?.id}}">
             <div class="post-image" routerLink="/in/users/{{post?.author_user}}" style="cursor: pointer;">
@@ -273,5 +276,6 @@
 
     </div>
     <div *ngIf="!postList" class="no-data">Loading...</div>
+    
     <div *ngIf="!!postList && !postList.length" class="no-data">No posts!</div>
 </div>
