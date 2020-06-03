@@ -20,6 +20,7 @@ import { ResetPasswordPageComponent } from './reset-password-page/reset-password
 import { MynetworkComponent } from './mynetwork/mynetwork.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { FeedPostComponent } from './timeline-like-react/feed-post/feed-post.component';
+import { FeaturedDetailsComponent } from './timeline-like-react/featured-details/featured-details.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,7 @@ const routes: Routes = [
       { path: 'mynetwork', component: MynetworkComponent },
       { path: 'notifications', component: NotificationsComponent },
       { path: ':slug', component: MyProfileEditableComponent },
+      { path: 'featured-detail',component: FeaturedDetailsComponent},
       { path: 'feed/:postId', component: FeedPostComponent }
     ]
   },

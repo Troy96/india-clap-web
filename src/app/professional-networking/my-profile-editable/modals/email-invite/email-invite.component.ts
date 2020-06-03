@@ -25,7 +25,7 @@ export class EmailInviteComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _authService: AuthServices,
-    private notifService: NotificationService,
+    private notifyService: NotificationService,
     private _myProfile: MyprofileEditableService,
     public _emailInvite: EmailInviteService
   ) {
@@ -51,9 +51,18 @@ export class EmailInviteComponent implements OnInit {
         message:this.emailInviteForm.get('message').value
       }).subscribe((data):any=>{
         console.log(data)
+        this.showToasterSuccess('Invitation Sent!')
       },err=>{
+        this.showToasterError('Please check details properly')
         console.log(err)
       })
     }
+  }
+  
+  showToasterSuccess(str: any) {
+    this.notifyService.showSuccess("Successful", str)
+  }
+  showToasterError(str: any) {
+    this.notifyService.showError("Something is wrong", str)
   }
 }
