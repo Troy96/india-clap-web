@@ -212,4 +212,7 @@ export class AuthServices {
     formData.append('logo', logo);
     return this.http.patch(`${config.base_url}/Users/projects/${id}/`, formData)
 }
+  emailInvite($data:any){
+    return this.http.post(`${config.base_url}/Users/invitemail/`, $data)
+  }
 }
