@@ -27,6 +27,7 @@ const routes: Routes = [
     path: '', component: ProfessionalNetworkingComponent,
     children: [
       { path: 'feed', component: TimelineLikeReactComponent, },
+      { path: 'featured-detail',component: FeaturedDetailsComponent},
       { path: 'users/:id', component: SomeoneElseProfileComponent },
       { path: 'privacy/settings', component: PrivacySettingsComponent },
       { path: 'company-management', component: CompanyManagementComponent },
@@ -42,7 +43,6 @@ const routes: Routes = [
       { path: 'mynetwork', component: MynetworkComponent },
       { path: 'notifications', component: NotificationsComponent },
       { path: ':slug', component: MyProfileEditableComponent },
-      { path: 'featured-detail',component: FeaturedDetailsComponent},
       { path: 'feed/:postId', component: FeedPostComponent }
     ]
   },
