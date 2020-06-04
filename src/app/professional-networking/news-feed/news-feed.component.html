@@ -1,0 +1,41 @@
+<div class="news-feed float-left">
+    <div class="news-card">
+        <span class="news">Today's News and views</span>
+        <hr>
+        <ul class="round" id="myDivId">
+            <ng-container *ngFor="let news of newsList">
+                <a style="cursor: pointer;" href="{{news.url}}" target="_blank">{{news.title}} </a>
+                <span>{{news.description}}</span><br>
+                <small>{{moment(news.publishedAt).fromNow()}}</small>
+                <hr>
+            </ng-container>
+
+            <!-- <li>Sed ut perspiciatis unde omnis iste natus </li>
+            <span> Lorem ipsum amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commod</span><br>
+            <small>25 mins ago<span class="ver-hr"></span>500 readers </small>
+            <hr>
+            
+            <li>Sed ut perspiciatis unde omnis iste natus </li>
+            <span> Lorem ipsum amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commod</span><br>
+            <small>25 mins ago<span class="ver-hr"></span>500 readers </small>
+            <hr>
+            <li>Sed ut perspiciatis unde omnis iste natus </li>
+            <span> Lorem ipsum amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commod</span><br>
+            <small>25 mins ago<span class="ver-hr"></span>500 readers </small>
+            <hr>
+            <li>Sed ut perspiciatis unde omnis iste natus </li>
+            <span> Lorem ipsum amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commod</span><br>
+            <small>25 mins ago<span class="ver-hr"></span>500 readers </small>
+            <hr> -->
+
+        </ul>
+    </div>
+</div>

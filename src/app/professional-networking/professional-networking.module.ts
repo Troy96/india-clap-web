@@ -54,6 +54,7 @@ import { ExperienceEditComponent } from './my-profile-editable/modals/experience
 import { EmailInviteComponent } from './my-profile-editable/modals/email-invite/email-invite.component';
 import { FeaturedPostComponent } from './timeline-like-react/featured-post/featured-post.component';
 import { FeaturedDetailsComponent } from './timeline-like-react/featured-details/featured-details.component';
+import { NewsFeedComponent } from './news-feed/news-feed.component';
 
 
 @NgModule({
@@ -101,6 +102,7 @@ import { FeaturedDetailsComponent } from './timeline-like-react/featured-details
     EmailInviteComponent,
     FeaturedPostComponent,
     FeaturedDetailsComponent,
+    NewsFeedComponent,
   ],
   imports: [
     CommonModule,
