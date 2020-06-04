@@ -181,11 +181,10 @@ hr {
 
 }
 
-.comm-cam {
+.comm-cam{
   height: 40px;
 }
-
-.comment-box {
+.comment-box{
   border-right: none;
 }
 
@@ -228,7 +227,7 @@ hr {
     color: white;
   }
 
-  .comm-icons {
+  .comm-icons{
     height: 40px;
     margin-left: -5px;
     border-right: 1px gray solid;
@@ -237,8 +236,7 @@ hr {
     border-top: 1px gray solid;
     border-bottom: 1px gray solid;
   }
-
-  .comment-box {
+  .comment-box{
     width: 50%;
     margin-left: 5px;
     float: left;
@@ -262,7 +260,16 @@ hr {
     border-bottom: 1px gray solid;
   }
 
-  .comment-box {
+  .comm-icons{
+    height: 40px;
+    margin-left: -5px;
+    border-right: 1px gray solid;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top: 1px gray solid;
+    border-bottom: 1px gray solid;
+  }
+  .comment-box{
     width: 80%;
     margin-left: 5px;
     float: left;
@@ -286,7 +293,16 @@ hr {
     border-bottom: 1px gray solid;
   }
 
-  .comment-box {
+  .comm-icons{
+    height: 40px;
+    margin-left: -5px;
+    border-right: 1px gray solid;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top: 1px gray solid;
+    border-bottom: 1px gray solid;
+  }
+  .comment-box{
     width: 80%;
     margin-left: 5px;
     float: left;
@@ -322,7 +338,7 @@ hr {
     margin-left: 20px;
   }
 
-  .comm-icons {
+  .comm-icons{
     height: 40px;
     margin-left: -5px;
     border-right: 1px gray solid;
@@ -331,9 +347,8 @@ hr {
     border-top: 1px gray solid;
     border-bottom: 1px gray solid;
   }
-
-  .comment-box {
-    width: 80%;
+  .comment-box{
+    width: 60%;
     margin-left: 5px;
     float: left;
     border: none;
@@ -551,4 +566,8 @@ h2 {
   position: relative;
   left: 3%;
   top: 30px;
+}
+
+.comment{
+  margin-top: 80px;
 }
