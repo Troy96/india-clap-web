@@ -13,6 +13,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { NotificationService } from '../services/notification.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtTokenIntercelptor } from '../interceptors/jwt-token.interceptor';
+import { HomepageComponent } from './homepage/homepage.component';
 //import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 //import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
 
@@ -38,7 +39,8 @@ import { JwtTokenIntercelptor } from '../interceptors/jwt-token.interceptor';
     RegistrationPageComponent,
     HomePageComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    HomepageComponent
   ],
   imports: [
     CommonModule,
