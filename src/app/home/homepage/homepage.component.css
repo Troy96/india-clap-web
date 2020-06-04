@@ -1,0 +1,131 @@
+h1{
+    text-align: center; 
+    margin-bottom: 50px;
+    color: teal;
+ }
+ .cont{
+     margin: 0 auto;
+     max-width: 100%;
+     padding: 50px;
+     display: inline-table;
+ }
+ .col-sm{
+     margin-right: 150px;
+ }
+ .holagraph-img{
+   max-width: 500px;
+   margin-bottom: 30px;
+
+ }
+ .health-img{
+   max-width: 400px;
+ }
+
+ @media(min-width: 1100px){
+     .health-img{
+       margin-top: 100px;
+
+     }
+     .health{
+   width: 50%;
+ }
+     .holagraph-img{
+   max-width: 500px;
+   margin-bottom: 30px;
+
+ }
+ .health-img{
+   max-width: 400px;
+   margin-left: 100px;
+ }
+ .holagraph{
+text-align: center;
+width: 50%;
+}
+.submit{
+margin-right: 240px;
+margin-top: -35px;
+}
+ }
+ @media(max-width: 800px){
+   .holagraph-img{
+   max-width: 200px;
+   margin-bottom: 30px;
+
+ }
+ .health-img{
+   max-width: 200px;
+   margin-right: 50px;
+   margin-top: 50px;
+ }
+ .holagraph{
+text-align: center;
+}
+.submit{
+margin-right: 40px;
+margin-top: -35px;
+}
+
+.health{
+margin-top: 50px;
+}
+ }
+ .dot {
+height: 8px;
+width: 8px;
+background-color: teal;
+display: inline-block;
+margin-left: 7px;
+margin-right: 7px;
+}
+span{
+font-size: 18px;
+letter-spacing: 1px;
+word-spacing: 1.5px;
+color: rgb(83, 83, 83);
+}
+
+input[type="text"]{font: 15px/24px 'Muli', sans-serif; color: #333; width: 50%; box-sizing: border-box; letter-spacing: 1px;}
+
+
+
+
+input:focus,
+textarea:focus{
+/* sizes for the 2 images (focus state) */
+background-size: 100% 2px, 100% 1px;
+outline: none;
+}
+input,
+textarea {
+display: block;
+border: 0;
+padding: 10px 5px;
+background: white no-repeat;
+
+/*
+* IMPORTANT PART HERE
+*/
+
+/* 2 imgs : 1px gray line (normal state) AND 2px green line (focus state) */
+background-image: linear-gradient(to bottom, #1abc9c, #1abc9c), linear-gradient(to bottom, silver, silver);
+/* sizes for the 2 images (default state) */
+background-size: 0 2px, 100% 1px;
+/* positions for the 2 images. Change both "50%" to "0%" or "100%" and tri again */
+background-position: 50% 100%, 50% 100%;
+
+/* animation solely on background-size */
+transition: background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+
+}
+.submit{
+border: 1px solid gray;
+background-color: teal;
+color: white;
+}
+.submit:hover{
+color: white;
+}
+h2{
+ color: rgb(7, 150, 150);
+}
