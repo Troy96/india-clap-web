@@ -1,12 +1,12 @@
 <div class="news-feed float-left">
     <div class="news-card">
-        <span class="news">Today's News and views</span>
+        <span class="news">Today's News</span>
         <hr>
         <ul class="round" id="myDivId">
             <ng-container *ngFor="let news of newsList">
-                <a style="cursor: pointer;" href="{{news.url}}" target="_blank">{{news.title}} </a>
-                <span>{{news.description}}</span><br>
-                <small>{{moment(news.publishedAt).fromNow()}}</small>
+                <a style="cursor: pointer;" href="{{news.url}}" target="_blank" [innerHTML]="news['title']['#text']"></a>
+                <span [innerHTML]="news['content']['#text']"></span><br>
+                <small>{{moment(news.published).fromNow()}}</small>
                 <hr>
             </ng-container>
 
