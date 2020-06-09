@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="jumbotron jumbotron-fluid">
         <div class="jumbotron-image">
             <img class="jmb-img" src="{{userDetails?.photo}}" alt="">
@@ -40,45 +40,185 @@
 
                     </p>
                     </div>
-                    <!-- <p>
-                        <label for="test2" class="label">Headline</label>
-                        <input type="checkbox" class="sect" name="radio-group" (change)="getmenuCheckboxValues($event,2)">
-
-                    </p>
-                    <p>
-                        <label for="test3" class="label">Experience</label>
-                        <input type="checkbox" class="sect" name="radio-group" (change)="getmenuCheckboxValues($event,3)">
-
-                    </p>
-                    <p>
-                        <label for="test3" class="label">Projects</label>
-                        <input type="checkbox" class="sect" name="radio-group" (change)="getmenuCheckboxValues($event,4)">
-
-                    </p>
-                    <p>
-                        <label for="test3" class="label">Project Descriptions</label>
-                        <input type="checkbox" class="sect" name="radio-group" (change)="getmenuCheckboxValues($event,5)">
-
-                    </p>
-                    <p>
-                        <label for="test3" class="label">Certificates</label>
-                        <input type="checkbox" class="sect" name="radio-group" (change)="getmenuCheckboxValues($event,6)">
-
-                    </p>
-                    <p>
-                        <label for="test3" class="label">Skills</label>
-                        <input type="checkbox" class="sect" name="radio-group" (change)="getmenuCheckboxValues($event,7)">
-
-                    </p>
-                    <p>
-                        <label for="test3" class="label">Resume</label>
-                        <input type="checkbox" class="sect" name="radio-group" (change)="getmenuCheckboxValues($event,8)">
-
-                    </p> -->
+                
                     <button type="submit" (click)="submit()">Submit</button>
                 </form>
             </div>
         </div>
 
     </div>
+</div> -->
+<div class="acc-header">
+    <h1>Privacy Settings</h1>
+    <div class="container user-info-body">
+        <div class="float-right connections">
+            {{userDetails?.connections?.length}} connections
+        </div>
+        <div *ngIf="userDetails.photo">
+         <img src={{userDetails?.photo}} width="90px" height="90px" style="border-radius: 50%;" class="float-left">
+         <div class="user-info">
+             <b>{{userDetails?.first_name}} {{userDetails?.last_name}}</b><br>
+             {{userDetails?.experiences[0]?.title}} at {{userDetails?.experiences[0]?.company_name}}<br>
+             {{userDetails?.location_district}}, {{userDetails?.location_country}}
+         </div>
+        </div>
+    </div>
+   
+</div>
+<div class="container privacy-set-body">
+<h2>Account Settings</h2>
+<div class="privacy-set">
+   <span class="float-right" routerLink="/in/change-password"><b>Change</b></span>
+   <b>Change password</b><br>
+   Choose a unique password to protect your account
+</div>
+<h2>How others see your profile</h2>
+<div *ngFor="let Item of privacy_menu; let i=index">
+<div class="privacy-set">
+   <span class="float-right">
+
+    <label class="switch m5">
+        <input type="checkbox"   (change)="getmenuCheckboxValues($event,i)"  [checked]="checkifmatchmenu(i)">
+<small></small>
+      </label>
+    
+  </span>
+   <b>{{Item}}</b><br>
+</div>
+</div>
+<!-- <div class="privacy-set">
+   <span class="float-right">
+
+    <label class="switch m5">
+        <input type="checkbox">
+        <small></small>
+      </label>
+    
+  </span>
+   <b>Headline</b><br>
+   Manage who can see your Headline.
+</div>
+<div class="privacy-set">
+   <span class="float-right">
+
+    <label class="switch m5">
+        <input type="checkbox">
+        <small></small>
+      </label>
+    
+  </span>
+   <b>Experience</b><br>
+   Manage who can see your Experience.
+</div>
+<div class="privacy-set">
+   <span class="float-right">
+
+    <label class="switch m5">
+        <input type="checkbox">
+        <small></small>
+      </label>
+    
+  </span>
+   <b>Projects</b><br>
+   Manage who can see your Projects.
+</div>
+<div class="privacy-set">
+   <span class="float-right">
+
+    <label class="switch m5">
+        <input type="checkbox">
+        <small></small>
+      </label>
+    
+  </span>
+   <b>Project Description</b><br>
+   Manage who can see your Project Description.
+</div>
+<div class="privacy-set">
+   <span class="float-right">
+
+    <label class="switch m5">
+        <input type="checkbox">
+        <small></small>
+      </label>
+    
+  </span>
+   <b>Certificates</b><br>
+   Manage who can see your Certificates.
+</div>
+<div class="privacy-set">
+   <span class="float-right">
+
+    <label class="switch m5">
+        <input type="checkbox">
+        <small></small>
+      </label>
+    
+  </span>
+   <b>Skills</b><br>
+   Manage who can see your Skills.
+</div>
+<div class="privacy-set">
+   <span class="float-right">
+
+    <label class="switch m5">
+        <input type="checkbox">
+        <small></small>
+      </label>
+    
+  </span>
+   <b>Resume</b><br>
+   Manage who can see your Resume.
+</div>
+<div class="privacy-set">
+<span class="float-right">
+
+    <label class="switch m5">
+        <input type="checkbox">
+        <small></small>
+      </label>
+ 
+</span>
+<b>Hobbies</b><br>
+Manage who can see your Hobbies.
+</div>
+<div class="privacy-set">
+<span class="float-right">
+
+    <label class="switch m5">
+        <input type="checkbox">
+        <small></small>
+      </label>
+</span>
+<b>Awards</b><br>
+Manage who can see your Awards.
+</div>
+<div class="privacy-set">
+   <span class="float-right">
+
+    <label class="switch m5">
+        <input type="checkbox">
+        <small></small>
+      </label>
+    
+  </span>
+   <b>Languages</b><br>
+   Manage who can see your Languages.
+</div>
+<div class="privacy-set">
+   <span class="float-right">
+
+    <label class="switch m5">
+        <input type="checkbox" >
+        <small></small>
+      </label>
+    
+  </span>
+   <b>Education</b><br>
+   Manage who can see your Education.
+</div> -->
+
+<button class="btn save-btn" (click)="submit()">
+   Save Changes
+</button>
 </div>

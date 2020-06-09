@@ -50,7 +50,7 @@ export class PrivacySettingsComponent implements OnInit {
     this.authService.get_user_details(this.userId)
       .subscribe(respObj => {
         this.userDetails = { ...respObj };
-
+        console.log(this.userDetails)
       })
     // this.authService.get_user_profiles().subscribe((data:any)=>{
     // console.log(data);
@@ -176,7 +176,7 @@ export class PrivacySettingsComponent implements OnInit {
 
 
     this.authService.edit_privacy_details(this.menuObj).subscribe((data: any) => {
-      this.showToasterSuccess()
+      this.showToasterSuccess();
       this.router.navigateByUrl('/in/me')
     })
   }

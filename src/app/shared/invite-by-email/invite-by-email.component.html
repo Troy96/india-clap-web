@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+<div *ngIf="receivedItems" class="container share-form">
+    <h1>Invite others via mail<img src="assets/icons/1x/mail.png" width="70px" class="mail-png"></h1>
+    <hr class="hr-4">
+    <!-- <input class="form-control" value="xyz@gmail.com">
+    <input class="form-control" value="xyz@gmail.com">
+    <textarea class="form-control">Please Visit holagraph.com to explore unlimited opportunities</textarea> -->
+    <form [formGroup]='emailInviteForm'>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        placeholder="Name" formControlName="name"
+        [ngClass]="{'is-invalid':emailInviteForm.get('name').touched && emailInviteForm.get('name').invalid}">
+
+        <div
+        *ngIf="(emailInviteForm.get('name').invalid && emailInviteForm.get('name').touched) || emailInviteForm.get('name').dirty">
+        <small *ngIf="emailInviteForm.get('name').errors?.required" class="text-danger"> Project
+            To is
+            required</small>
+    </div>
+
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="From" formControlName="from"
+            [ngClass]="{'is-invalid':emailInviteForm.get('from').touched && emailInviteForm.get('from').invalid}">
+
+            <div
+            *ngIf="(emailInviteForm.get('from').invalid && emailInviteForm.get('from').touched) || emailInviteForm.get('from').dirty">
+            <small *ngIf="emailInviteForm.get('from').errors?.required" class="text-danger"> Project
+                This field is
+                required</small>
+        </div>
+
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="To" formControlName="to"
+            [ngClass]="{'is-invalid':emailInviteForm.get('to').touched && emailInviteForm.get('to').invalid}">
+        <div
+            *ngIf="(emailInviteForm.get('to').invalid && emailInviteForm.get('to').touched) || emailInviteForm.get('to').dirty">
+            <small *ngIf="emailInviteForm.get('to').errors?.required" class="text-danger"> Project
+                This field  is
+                required</small>
+        </div>
+
+        <textarea class="form-control" placeholder="Message" formControlName="message"></textarea>
+        <div
+        *ngIf="(emailInviteForm.get('message').invalid && emailInviteForm.get('message').touched) || emailInviteForm.get('message').dirty">
+        <small *ngIf="emailInviteForm.get('message').errors?.required" class="text-danger"> Project
+            This filed is required is
+            required</small>
+    </div>
+
+        <!-- <button class="btn btn-primary" (click)="onSubmit()" style="width: 100%;">Send Invite</button><br> -->
+        <button class="btn" (click)="onSubmit()">Send Invite</button>
+
+    </form>
+</div>

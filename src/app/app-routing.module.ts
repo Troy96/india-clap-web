@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LayoutComponent } from './layout/layout/layout.component';
 import { AuthGuard } from './guards/Auth.guard';
+import { InviteByEmailComponent } from './shared/invite-by-email/invite-by-email.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'online-learning', loadChildren: () => import('./online-learning/online-learning.module').then(m => m.OnlineLearningModule), canActivate: [AuthGuard] },
   { path: 'offline-learning', loadChildren: () => import('./offline-learning/offline-learning.module').then(m => m.OfflineLearningModule), canActivate: [AuthGuard] },
   { path: 'finance-center', loadChildren: () => import('./finance-center/finance-center.module').then(m => m.FinanceCenterModule), canActivate: [AuthGuard] },
+  { path: 'email-invite',component:InviteByEmailComponent},
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
 

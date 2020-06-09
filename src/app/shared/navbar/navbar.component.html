@@ -33,6 +33,24 @@
           </a>
         </li>
       </span>
+      <span tooltip="Networking" placement="bottom" show-delay="500">
+
+        <li class="nav-item active" >
+          <a class="nav-link">
+            <i class="fa fa-envelope-o">
+              <img src="/assets/icons/1x/Asset 6.png " width="20px" height="25px">
+            </i>
+          </a>
+            <div class="drop-items">
+              <p [routerLink]="['/in/mynetwork']">My Connections</p>
+              <hr>
+              <p (click)="_emailInvite.openModal()">Invite Contact</p>
+              <hr>
+              <p [routerLink]="['/jobs/applied-jobs']">Import Contact</p>
+             
+            </div>        
+        </li>
+      </span>
       <!-- <li class="nav-item active"  [routerLink]="['/professional-networking/me']" >
         <a class="nav-link">
           <i class="fa fa-envelope-o">
@@ -238,7 +256,7 @@
 
               </div>
             </div>
-
+           
             <div class="nav-item nav-item2 " style="margin-top: 10px;">
               <p class="drop-content">Micro project provider</p>
 

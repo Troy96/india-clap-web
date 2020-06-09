@@ -1,4 +1,4 @@
-@media(min-width: 406px){
+/* @media(min-width: 406px){
     .formcont{
         background-color: #DCDCDC;
         width: 400px;
@@ -51,4 +51,296 @@
   select {
      border: 1px solid #DCDCDC !important; 
      color: black !important;
-  }
+  } */
+
+
+  .header{
+    background-color: teal;
+    padding: 5px;
+    color: white;
+}
+.header h3{
+    margin-left: 30px;
+    font-size: 25px;
+    text-decoration: none;
+    letter-spacing: 2px;
+    word-spacing: 4px;
+
+}
+input[type="text"]{font: 15px/24px 'Muli', sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 1px;}
+
+
+.effect-1{
+    border: 0; 
+    padding: 7px 0; 
+    border-bottom: 1px solid #ccc;
+    }
+
+
+
+
+.post-a-job label{
+    font-size: 20px;
+    color: teal;
+    letter-spacing: 1.5px;
+    word-spacing: 3px;
+    font-weight: 500;
+    
+
+}
+.post-a-job input, textarea{
+    margin-bottom: 20px;
+
+}
+.effect-1{
+}
+.post-a-job{
+    padding: 40px;
+    border: 1px solid gray;
+    position: relative;
+}
+input:focus,
+textarea:focus{
+/* sizes for the 2 images (focus state) */
+background-size: 100% 2px, 100% 1px;
+outline: none;
+}
+input,
+textarea {
+display: block;
+width: 100%;
+border: 0;
+padding: 10px 5px;
+background: white no-repeat;
+
+/*
+* IMPORTANT PART HERE
+*/
+
+/* 2 imgs : 1px gray line (normal state) AND 2px green line (focus state) */
+background-image: linear-gradient(to bottom, #1abc9c, #1abc9c), linear-gradient(to bottom, silver, silver);
+/* sizes for the 2 images (default state) */
+background-size: 0 2px, 100% 1px;
+/* positions for the 2 images. Change both "50%" to "0%" or "100%" and tri again */
+background-position: 50% 100%, 50% 100%;
+
+/* animation solely on background-size */
+transition: background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+
+}
+.cbx {
+-webkit-user-select: none;
+user-select: none;
+-webkit-tap-highlight-color: transparent;
+cursor: pointer;
+}
+.cbx span {
+display: inline-block;
+vertical-align: middle;
+}
+.cbx span:first-child {
+position: relative;
+width: 24px;
+height: 24px;
+border-radius: 50%;
+transform: scale(1);
+vertical-align: middle;
+border: 1px solid #B9B8C3;
+transition: all 0.2s ease;
+}
+.cbx span:first-child svg {
+position: absolute;
+z-index: 1;
+top: 8px;
+left: 6px;
+fill: none;
+stroke: white;
+stroke-width: 2;
+stroke-linecap: round;
+stroke-linejoin: round;
+stroke-dasharray: 16px;
+stroke-dashoffset: 16px;
+transition: all 0.3s ease;
+transition-delay: 0.1s;
+transform: translate3d(0, 0, 0);
+}
+.cbx span:first-child:before {
+content: "";
+width: 100%;
+height: 100%;
+background: rgb(119, 175, 175);
+display: block;
+transform: scale(0);
+opacity: 1;
+border-radius: 50%;
+transition-delay: 0.2s;
+}
+.cbx span:last-child {
+margin-left: 8px;
+}
+.cbx span:last-child:after {
+content: "";
+position: absolute;
+top: 8px;
+left: 0;
+height: 1px;
+width: 100%;
+background: #B9B8C3;
+transform-origin: 0 0;
+transform: scaleX(0);
+}
+.cbx:hover span:first-child {
+border-color: rgb(2, 105, 105);
+}
+
+.inp-cbx:checked + .cbx span:first-child {
+border-color: teal;
+background: teal;
+animation: check 0.6s ease;
+}
+.inp-cbx:checked + .cbx span:first-child svg {
+stroke-dashoffset: 0;
+}
+.inp-cbx:checked + .cbx span:first-child:before {
+transform: scale(2.2);
+opacity: 0;
+transition: all 0.6s ease;
+}
+.inp-cbx:checked + .cbx span:last-child {
+color: rgb(31, 31, 32);
+transition: all 0.3s ease;
+}
+.inp-cbx:checked + .cbx span:last-child:after {
+transform: scaleX(1);
+transition: all 0.3s ease;
+}
+
+@keyframes check {
+50% {
+transform: scale(1.2);
+}
+}
+@media (max-width: 1100px){
+.post-a-job select{
+    width: 200px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+}
+@media (min-width: 1100px){
+.post-a-job select{
+    width: 500px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+}
+.pure-material-button-contained {
+position: relative;
+display: inline-block;
+box-sizing: border-box;
+border: none;
+border-radius: 4px;
+padding: 0 16px;
+min-width: 64px;
+height: 36px;
+vertical-align: middle;
+text-align: center;
+text-overflow: ellipsis;
+text-transform: uppercase;
+color: rgb(var(--pure-material-onprimary-rgb, 255, 255, 255));
+background-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
+box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+font-family: var(--pure-material-font, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
+font-size: 14px;
+font-weight: 500;
+line-height: 36px;
+overflow: hidden;
+outline: none;
+cursor: pointer;
+transition: box-shadow 0.2s;
+}
+
+.pure-material-button-contained::-moz-focus-inner {
+border: none;
+}
+
+/* Overlay */
+.pure-material-button-contained::before {
+content: "";
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+background-color: rgb(var(--pure-material-onprimary-rgb, 255, 255, 255));
+opacity: 0;
+transition: opacity 0.2s;
+}
+
+/* Ripple */
+.pure-material-button-contained::after {
+content: "";
+position: absolute;
+left: 50%;
+top: 50%;
+border-radius: 50%;
+padding: 50%;
+width: 32px; /* Safari */
+height: 32px; /* Safari */
+background-color: rgb(var(--pure-material-onprimary-rgb, 255, 255, 255));
+opacity: 0;
+transform: translate(-50%, -50%) scale(1);
+transition: opacity 1s, transform 0.5s;
+}
+
+/* Hover, Focus */
+.pure-material-button-contained:hover,
+.pure-material-button-contained:focus {
+box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.pure-material-button-contained:hover::before {
+opacity: 0.08;
+}
+
+.pure-material-button-contained:focus::before {
+opacity: 0.24;
+}
+
+.pure-material-button-contained:hover:focus::before {
+opacity: 0.3;
+}
+
+/* Active */
+.pure-material-button-contained:active {
+box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.pure-material-button-contained:active::after {
+opacity: 0.32;
+transform: translate(-50%, -50%) scale(0);
+transition: transform 0s;
+}
+
+/* Disabled */
+.pure-material-button-contained:disabled {
+color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38);
+background-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.12);
+box-shadow: none;
+cursor: initial;
+}
+
+.pure-material-button-contained:disabled::before {
+opacity: 0;
+}
+
+.pure-material-button-contained:disabled::after {
+opacity: 0;
+}
+.post-a-job button{
+margin-top: 20px;
+letter-spacing: 5px;
+width: 150px;
+background-color: teal;
+}

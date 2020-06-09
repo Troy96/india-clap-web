@@ -1,19 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { AuthServices } from 'src/app/services/auth.service';
 import { NotificationService } from 'src/app/services/notification.service';
-import { MyprofileEditableService } from '../../myprofile-editable.service';
-import { EducationService } from '../education/education.service';
-import { EmailInviteService } from './email-invite.service';
-
 
 @Component({
-  selector: 'app-email-invite',
-  templateUrl: './email-invite.component.html',
-  styleUrls: ['./email-invite.component.css']
+  selector: 'app-invite-by-email',
+  templateUrl: './invite-by-email.component.html',
+  styleUrls: ['./invite-by-email.component.css']
 })
-export class EmailInviteComponent implements OnInit {
+export class InviteByEmailComponent implements OnInit {
 
   emailInviteForm: FormGroup;
 
@@ -28,8 +23,6 @@ export class EmailInviteComponent implements OnInit {
     private _fb: FormBuilder,
     private _authService: AuthServices,
     private notifyService: NotificationService,
-    private _myProfile: MyprofileEditableService,
-    public _emailInvite: EmailInviteService
   ) {
     this.profileId=JSON.parse(localStorage.getItem('currentUser')).profile_id; 
     this._authService.get_user_details(this.profileId).subscribe((data):any=>{
@@ -67,4 +60,5 @@ export class EmailInviteComponent implements OnInit {
   showToasterError(str: any) {
     this.notifyService.showError("Something is wrong", str)
   }
+
 }

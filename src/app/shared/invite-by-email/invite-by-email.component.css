@@ -1,0 +1,56 @@
+.share-form .form-control{
+    margin-bottom: 25px;
+    font-size: 20px;
+
+}
+.share-form{
+    width: 800px;
+    margin-top: 10%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.share-form button{
+    background-color: teal;
+    border: 1px solid teal;
+    color: white;
+    width: 100%;
+    font-size: 30px;
+    letter-spacing: 5px;
+    word-spacing: 15px;
+
+}
+.share-form button:hover{
+    background-color: teal;
+    border: 1px solid teal;
+    color: white;
+}
+.share-form h1{
+    color: rgb(1, 99, 99);
+    font-size: 50px;
+}
+.mail-png{
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+.mail-png:hover{
+    transform: scale(1.10);
+}
+hr.hr-4 {
+padding: 0;
+border: none;
+border-top: medium double #087e74;
+color: teal;
+text-align: center;
+margin-bottom: 35px;
+}
+
+hr.hr-4:after {
+content: "ยง";
+display: inline-block;
+position: relative;
+top: -0.7em;
+font-size: 1.5em;
+padding: 0 0.25em;
+background: #fff;
+}
