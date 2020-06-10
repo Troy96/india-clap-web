@@ -123,7 +123,7 @@ export class AuthServices {
     return this.http.patch<any>(`${config.base_url}/Users/certifications/${id}/`, $data);
   }
 
-  delete_education(id: number){
+  delete_education(id: number) {
     return this.http.delete<any>(`${config.base_url}/Users/education/${id}/`)
   }
 
@@ -133,7 +133,7 @@ export class AuthServices {
   delete_awards(id: number) {
     return this.http.delete<any>(`${config.base_url}/Users/awards/${id}/`);
   }
-   delete_skills(id: number) {
+  delete_skills(id: number) {
     return this.http.delete<any>(`${config.base_url}/Users/skills/${id}/`);
   }
   delete_hobby(id: number) {
@@ -142,7 +142,7 @@ export class AuthServices {
   delete_languages(id: number) {
     return this.http.delete<any>(`${config.base_url}/Users/languages/${id}/`);
   }
-  getuser_privacy_details(id:number) {
+  getuser_privacy_details(id: number) {
     return this.http.get(`${config.base_url}/Users/privacy/${id}`);
   }
   get_privacy_details() {
@@ -171,39 +171,39 @@ export class AuthServices {
     return this.http.post(`${config.base_url}/accounts/fblogin/`, $data, { headers: this.headers });
 
   }
-  add_education( $data){
+  add_education($data) {
     return this.http.post(`${config.base_url}/Users/education/`, $data);
 
   }
-  update_education(id, $data){
+  update_education(id, $data) {
     return this.http.patch(`${config.base_url}/Users/education/${id}/`, $data);
 
   }
-  education_company_logo(id,logo){
+  education_company_logo(id, logo) {
     const formData = new FormData();
     formData.append('institute_logo', logo);
     return this.http.patch(`${config.base_url}/Users/education/${id}/`, formData);
   }
-  add_language($data){
+  add_language($data) {
     return this.http.post(`${config.base_url}/Users/languages/`, $data);
 
   }
-  update_language(id,$data){
+  update_language(id, $data) {
     return this.http.patch(`${config.base_url}/Users/languages/${id}/`, $data);
   }
-  add_award($data){
+  add_award($data) {
     return this.http.post(`${config.base_url}/Users/awards/`, $data);
 
   }
-  update_award(id,$data){
+  update_award(id, $data) {
     return this.http.patch(`${config.base_url}/Users/awards/${id}/`, $data);
 
   }
-  add_hobby($data){
+  add_hobby($data) {
     return this.http.post(`${config.base_url}/Users/hobbies/`, $data);
 
   }
-  update_hobby(id,$data){
+  update_hobby(id, $data) {
     return this.http.patch(`${config.base_url}/Users/hobbies/${id}/`, $data);
 
   }
@@ -211,8 +211,12 @@ export class AuthServices {
     const formData = new FormData();
     formData.append('logo', logo);
     return this.http.patch(`${config.base_url}/Users/projects/${id}/`, formData)
-}
-  emailInvite($data:any){
+  }
+  emailInvite($data: any) {
     return this.http.post(`${config.base_url}/Users/invitemail/`, $data)
+  }
+
+  storeEmail(email) {
+    return this.http.post(`${config.base_url}/accounts/email/`, { email })
   }
 }
