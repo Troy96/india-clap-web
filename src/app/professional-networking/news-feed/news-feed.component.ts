@@ -3,6 +3,7 @@ import { config } from '../../config';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
+import { NetworkingService } from 'src/app/services/networking.service';
 
 @Component({
   selector: 'app-news-feed',
@@ -14,7 +15,7 @@ export class NewsFeedComponent implements OnInit {
   newsUrl: string = `http://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=${config.news_api_key}`;
   newsList: any[];
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _netService: NetworkingService) { }
 
   ngOnInit() {
     this.moment = moment;
@@ -22,8 +23,8 @@ export class NewsFeedComponent implements OnInit {
   }
 
   async fetchNews() {
-    const resp = await this._http.get<any>(this.newsUrl).toPromise();
-    this.newsList = resp.articles;
+    const resp: any = await this._netService.get_news_feed().toPromise();
+    this.newsList = resp.data.feed.entry;
   }
 
 }

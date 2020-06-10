@@ -164,4 +164,8 @@ export class NetworkingService {
   show_activity(id){
     return this.http.get(`${config.base_url}/Networking/activity/${id}`);
   }
+
+  get_news_feed(){
+    return this.http.get(`${config.base_url}/Networking/heathcarenews/`);
+  }
 }
