@@ -1,4 +1,41 @@
-<div class="jumbotron jumbotron-fluid">
+<div class="container job-offer-page">
+  <img src={{jobObj?.company?.logo}} width="100px" height="100px" style="border-radius: 50%;" class="float-left">
+  <button class="btn float-right Apply-btn" (click)="apply()">Apply</button>
+  <div class="job-txt">
+      <span>{{jobObj?.company?.name}}</span><br>
+      <i class="fas fa-map-marker-alt"></i> {{jobObj?.location_District}}, {{jobObj?.location_State}}
+  </div>
+  <div class="job-details">
+      <span class="info-label"><i class="fab fa-black-tie"></i> Job Description</span><br>
+
+  <div class="job-description">
+    {{jobObj?.job_desc}}
+  </div>
+
+  <span class="info-label"> Job Title</span><br>
+  <div class="job-description">
+    {{jobObj?.job_title}}
+  </div>
+
+  <span class="info-label">Skills Required</span><br>
+
+  <div class="job-description">
+      <!-- HTML<span class="ver-hr"></span>CSS<span class="ver-hr"></span>JavaScript<span class="ver-hr"></span>Jquery<span class="ver-hr"></span>PHP<span class="ver-hr"></span> -->
+      {{jobObj?.skills}}
+  </div>
+  <span class="info-label">Salary</span><br>
+
+  <div class="job-description">
+      ₹ {{jobObj?.salary}}
+  </div>
+</div>
+</div>
+<div id="profile-share" style="display: none;" (click)="displayProfileShareAlert()" #profileShare>
+  Your profile will be shared with the company and the employer.
+  <button class="btn btn-primary cont" routerLink="/jobs/upload-resume/{{jobId}}">Continue</button>
+</div>
+
+<!-- <div class="jumbotron jumbotron-fluid">
   <div class="jumbotron-image">
     <img class="jmb-img" src="/assets/icons/1x/dp2.png" alt="">
   </div>
@@ -53,4 +90,4 @@
 <div id="profile-share" style="display: none;" (click)="displayProfileShareAlert()" #profileShare>
   Your profile will be shared with the company and the employer.
   <button class="btn btn-primary cont" routerLink="/jobs/upload-resume/{{jobId}}">Continue</button>
-</div>
+</div> -->

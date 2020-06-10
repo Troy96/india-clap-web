@@ -5,6 +5,7 @@ import { NotificationService } from '../../services/notification.service';
 
 import { Router } from '@angular/router';
 import { CommunicateService } from 'src/app/services/communicate.service';
+import { EmailInviteService } from 'src/app/professional-networking/my-profile-editable/modals/email-invite/email-invite.service';
 //import { AuthService } from 'angularx-social-login';
 
 @Component({
@@ -30,7 +31,9 @@ export class NavbarComponent implements OnInit {
     private authService: AuthServices,
     private router: Router,
     private notificationService: NotificationService,
-    private commService: CommunicateService
+    private commService: CommunicateService,
+    public _emailInvite: EmailInviteService
+
   ) {
   }
   ngOnInit() {

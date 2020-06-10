@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { InputModalComponent } from './input-modal/input-modal.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InviteByEmailComponent } from './invite-by-email/invite-by-email.component';
 // import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 // import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
 
@@ -31,7 +32,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     NavbarComponent,
     BannerComponent,
-    InputModalComponent
+    InputModalComponent,
+    InviteByEmailComponent,
+    
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,4 @@
-.header{
+/* .header{
     background-color: teal;
     height: 63px;
     color: white;
@@ -25,11 +25,11 @@
               box-shadow: 0 8px 6px -6px gray;
     
   }
-  #j-icons{ /*Apply button*/
+  #j-icons{ 
     margin-top: 20px;
     padding-bottom: 10px;
   }
-  .more-opt{/*more icon*/
+  .more-opt{
     margin-left: 50px;
     margin-bottom: 20px;
   }
@@ -43,7 +43,7 @@
     padding-right: 15px;
     border-radius: 7px;
   }
-  #des1{  /*All descriptions */
+  #des1{  
     margin-top: 30px;
     margin-bottom: 30px;
     background-color: lightgray;
@@ -70,7 +70,7 @@
         background-size: cover;
         height: 170px;
       }
-      .jmb-img{/*image of jumbotron*/
+      .jmb-img{
         width: 120px;
         margin-top: 100px;
         border-radius: 50%;
@@ -95,7 +95,7 @@
         height: 170px;
       
       }
-      #name{/*name div in jumbotron*/
+      #name{
         float: left;
         margin-left: 200px;
         margin-top: 30px;
@@ -125,13 +125,13 @@
         height: 170px;
         
       }
-    .jmb-img{/*image of jumbotron*/
+    .jmb-img{
         width: 150px;
         margin-top: 100px;
         border-radius: 50%;
         margin-left: 30px;
       }
-      #name{/*name div in jumbotron*/
+      #name{
         float: left;
         margin-left: 200px;
         margin-top: 30px;
@@ -164,4 +164,66 @@
     height: 30px;
     background-color: teal;
     font-size: 12px;
+  } */
+  #profile-share{
+    width: 286px;
+    height: 90px;
+    border: 1px gray solid;
+    padding-left: 5px;
+    padding-top: 5px;
+    border-radius: 5px;
+    float: right;
+    background-color: white;
+    
+    position: absolute;
+    top: 45%;
+     right: 25px;
   }
+  .job-txt span{
+    font-size: 25px;
+    letter-spacing: 2px;
+    word-spacing: 1px;
+    color: teal;
+    font-weight: 500;
+}
+.job-txt{
+    color: rgb(70, 69, 69);
+    margin-left: 120px;
+    font-size: 20px;
+}
+.job-txt i{
+    color: teal !important;
+    margin-right: 5px;
+}
+.job-details{
+    margin-top: 60px;
+    border-top: 1px solid teal;
+    padding-top: 50px;
+}
+.info-label{
+    font-size: 25px;
+    color: rgb(3, 151, 151);
+}
+.job-description{
+    background-color: rgb(243, 240, 240);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.ver-hr{
+    border-right: 1px solid gray;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.job-offer-page{
+    border: 1px solid gray;
+    padding: 25px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.Apply-btn{
+    border: 1.5px solid teal;
+    color: teal;
+    letter-spacing: 1px;
+    font-size: 18px;
+}

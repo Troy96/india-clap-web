@@ -1,4 +1,4 @@
-.header{
+/* .header{
   background-color: teal;
   height: 63px;
   color: white;
@@ -26,7 +26,7 @@ h2{
             box-shadow: 0 8px 6px -6px gray;
   
 }
-#j-icons{ /*Apply button*/
+#j-icons{ 
   margin-top: 20px;
   padding-bottom: 10px;
   
@@ -91,7 +91,7 @@ ex-img{
 }
 
 @media(min-width: 252px){
-  .jmb-img{/*image of jumbotron*/
+  .jmb-img{
       width: 90px;
       margin-top: 120px;
       border-radius: 50%;
@@ -163,7 +163,7 @@ ex-img{
 }
 
 @media (min-width: 406px) {
-  .jmb-img{/*image of jumbotron*/
+  .jmb-img{
       width: 120px;
       margin-top: 100px;
       border-radius: 50%;
@@ -236,7 +236,7 @@ ex-img{
       height: 170px;
     
     }
-    #name{/*name div in jumbotron*/
+    #name{
       float: left;
       margin-left: 200px;
       margin-top: 30px;
@@ -283,13 +283,13 @@ ex-img{
       margin-right: 20px;
       color: white;
     }
-    .jmb-img{/*image of jumbotron*/
+    .jmb-img{
       width: 150px;
       margin-top: 100px;
       border-radius: 50%;
       margin-left: 30px;
     }
-    #name{/*name div in jumbotron*/
+    #name{
       float: left;
       margin-left: 200px;
       margin-top: 30px;
@@ -309,7 +309,7 @@ ex-img{
       padding-left: 5px;
       padding-right: 5px;
     }
-    .more-opt{/*more icon*/
+    .more-opt{
       margin-left: 180px;
       margin-bottom: 20px;
     }
@@ -347,4 +347,135 @@ ex-img{
       border-radius: 5px;
       font-weight: bold;
     }
+} */
+
+
+
+.acc-header h1{
+  text-align: center;
+}
+.user-info{
+  margin-left: 110px;
+  font-size: 20px;
+  color: white !important;
+}
+.acc-header{
+  background: #11998e;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #38efb2, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #38efb2, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  color: rgb(217, 247, 234);
+  padding: 20px;
+  margin-top:65px;
+}
+.connections{
+  font-size: 20px;
+  margin-right: 50px;
+  margin-top: 20px;
+  border-bottom: 1px solid white;
+}
+.user-info-body{
+  margin-top: 40px;
+}
+.user-info b{
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  color: rgb(217, 247, 234);
+
+
+}
+.privacy-set{
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  font-size: 17px;
+  line-height: 30px;
+  border-bottom:1px solid darkgrey;
+}
+.privacy-set-body h2{
+  border-bottom: 1px solid gray;
+  padding-bottom: 15px;
+  color: teal;
+}
+.m5 {
+margin: 0 5px;
+margin-top: 10px;
+
+}
+
+.switch {
+display: inline-block;
+}
+.switch input {
+display: none;
+}
+.switch small {
+display: inline-block;
+width: 53px;
+height: 25px;
+background: #455a64;
+border-radius: 30px;
+position: relative;
+cursor: pointer;
+}
+.switch small:after {
+content: "Nobody";
+position: absolute;
+color: #fff;
+font-size: 11px;
+font-weight: 600;
+width: 100%;
+left: 0px;
+text-align: right;
+padding: 0 6px;
+box-sizing: border-box;
+line-height: 18px;
+margin-left: -100px;
+color: gray !important;
+font-size: 20px;
+}
+.switch small:before {
+content: "";
+position: absolute;
+width: 25px;
+height: 25px;
+background: rgb(211, 247, 241);
+border-radius: 50%;
+top: 0px;
+left: 0px;
+transition: .3s;
+box-shadow: -3px 0 3px rgba(0,0,0,0.1);
+}
+.switch input:checked ~ small {
+background: teal;
+transition: .3s;
+}
+.switch input:checked ~ small:before {
+transform: translate(30px, 0px);
+transition: .3s;
+}
+.switch input:checked ~ small:after {
+content: "Everyone";
+margin-left: -100px;
+color: gray !important;
+font-size: 20px;
+text-align: left;
+}
+.privacy-set-body{
+border: 1px solid gray;
+margin-top: 50px;
+padding: 20px;
+margin-bottom: 20px;
+color: rgb(85, 84, 84);
+}
+.privacy-set b{
+cursor: pointer;
+}
+.save-btn{
+font-size: 20px;
+letter-spacing: 1px;
+background-color: white;
+border: 1px solid teal;
+color: teal;
+font-weight: 500;
 }
