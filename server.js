@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 
-const app = express();
+const app = require('https-localhost')();
 
 app.use(express.static('./dist/india-clap-web'));
 
