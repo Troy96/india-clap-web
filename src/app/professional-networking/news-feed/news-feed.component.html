@@ -4,7 +4,7 @@
         <hr>
         <ul class="round" id="myDivId">
             <ng-container *ngFor="let news of newsList">
-                <a style="cursor: pointer;" href="{{news.url}}" target="_blank" [innerHTML]="news['title']['#text']"></a>
+                <a style="cursor: pointer;" href="{{news['link']['@href']}}" target="_blank" [innerHTML]="news['title']['#text']"></a>
                 <span [innerHTML]="news['content']['#text']"></span><br>
                 <small>{{moment(news.published).fromNow()}}</small>
                 <hr>
