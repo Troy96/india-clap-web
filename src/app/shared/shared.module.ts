@@ -8,6 +8,8 @@ import { InputModalComponent } from './input-modal/input-modal.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InviteByEmailComponent } from './invite-by-email/invite-by-email.component';
+import { ImportContactComponent } from './import-contact/import-contact.component';
+import { InviteContactComponent } from './invite-contact/invite-contact.component';
 // import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 // import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
 
@@ -34,6 +36,8 @@ import { InviteByEmailComponent } from './invite-by-email/invite-by-email.compon
     BannerComponent,
     InputModalComponent,
     InviteByEmailComponent,
+    ImportContactComponent,
+    InviteContactComponent,
     
   ],
   imports: [
