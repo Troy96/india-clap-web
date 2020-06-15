@@ -16,8 +16,8 @@ import { ToastrService, ToastrModule } from 'ngx-toastr';
 import { NotificationService } from './services/notification.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TestComponent } from './test/test.component';
-// import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
-// import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
+//  import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+//  import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
 
 // let config = new AuthServiceConfig([
 //   {
@@ -48,7 +48,7 @@ import { TestComponent } from './test/test.component';
     HttpClientModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    // SocialLoginModule
+   //  SocialLoginModule
   ],
   providers: [AuthGuard, {
     provide: HTTP_INTERCEPTORS, useClass: JwtTokenIntercelptor, multi: true

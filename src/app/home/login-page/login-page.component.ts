@@ -3,9 +3,9 @@ import { Validators, FormControl, FormGroup } from '@angular/forms';
 import { AuthServices} from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notification.service';
-//import { Au } from "angularx-social-login";
-// import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
-// import { SocialUser } from "angularx-social-login";
+// import { AuthService } from "angularx-social-login";
+//  import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+//  import { SocialUser } from "angularx-social-login";
 
 @Component({
   selector: 'app-login-page',
@@ -18,7 +18,7 @@ export class LoginPageComponent implements OnInit {
   private loggedIn: boolean;
   obj: any = {};
   constructor(
-    private authService: AuthServices,//private auth_Service: AuthService,
+    private authService: AuthServices,
     private router: Router,private notifyService : NotificationService
   ) {
     if (!!JSON.parse(localStorage.getItem('currentUser'))) {
