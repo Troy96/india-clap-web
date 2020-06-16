@@ -64,10 +64,6 @@
     display: inline-table;
 }
 
-.holo-img img {
-    width: 180px;
-    cursor: pointer;
-}
 
 .holo-img img:hover {}
 
