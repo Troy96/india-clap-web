@@ -7,6 +7,7 @@ import { AuthGuard } from './guards/Auth.guard';
 import { InviteByEmailComponent } from './shared/invite-by-email/invite-by-email.component';
 import { ImportContactComponent } from './shared/import-contact/import-contact.component';
 import { InviteContactComponent } from './shared/invite-contact/invite-contact.component';
+import { InviteLocalComponent } from './shared/invite-local/invite-local.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'import-contact',component:ImportContactComponent},
   { path: 'email-invite',component:InviteByEmailComponent},
   { path: 'invite-contact',component:InviteContactComponent},
+  { path: 'invite-local',component:InviteLocalComponent},
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
 

@@ -1,0 +1,68 @@
+.user-info{
+    text-align: center;
+}
+.user-contact{
+    border: 1px solid rgb(190, 189, 189);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 200px;
+    overflow: hidden;
+}
+.user-contact:hover{
+    background-color: rgb(238, 234, 234);
+    cursor: pointer;
+}
+@media(max-width: 800px){
+    .user-contact{
+        width: 50%;
+    }
+}
+@media(min-width: 1000px){
+    .user-contact{
+        width: 16.6666%;
+    }
+}
+.user-contact input{
+  
+    transform: scale(1.5);
+    position: relative;
+    right: 10px;
+}
+.user-info span{
+    font-size: 20px;
+    font-weight: 400;
+    color: rgb(2, 92, 92);
+}
+.header-user{
+    padding: 10px;
+}
+.Connect-body{
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);       
+    border-radius: 5px;
+     }
+.skip-btn{
+    background-color: teal;
+    color: white;
+    margin-left: 15px;
+}
+.invite-btn{
+    background-color: teal;
+    color: white;
+    margin-left: 15px;
+}
+.skip-btn:hover{
+    background-color: teal;
+    color: white;
+    margin-left: 15px;
+}
+.invite-btn:hover{
+    background-color: teal;
+    color: white;
+    margin-left: 15px;
+}
+.header-desp{
+    margin-top: 5%;
+    padding-left: 0px;
+    padding-bottom: 10px;
+    color: teal;
+}

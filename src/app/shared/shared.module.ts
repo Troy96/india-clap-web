@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InviteByEmailComponent } from './invite-by-email/invite-by-email.component';
 import { ImportContactComponent } from './import-contact/import-contact.component';
 import { InviteContactComponent } from './invite-contact/invite-contact.component';
+import { InviteLocalComponent } from './invite-local/invite-local.component';
 // import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 // import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
 
@@ -38,6 +39,7 @@ import { InviteContactComponent } from './invite-contact/invite-contact.componen
     InviteByEmailComponent,
     ImportContactComponent,
     InviteContactComponent,
+    InviteLocalComponent,
     
   ],
   imports: [
