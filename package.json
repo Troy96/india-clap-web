@@ -26,6 +26,7 @@
     "@angular/router": "~8.2.14",
     "bootstrap": "^4.4.1",
     "express": "^4.17.1",
+    "heroku-ssl-redirect": "0.0.4",
     "html2canvas": "^1.0.0-rc.5",
     "https-localhost": "^4.6.0",
     "jspdf": "^1.5.3",
