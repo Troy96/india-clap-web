@@ -31,7 +31,10 @@ export class AuthServices {
   login($data) {
     return this.http.post(`${config.base_url}/accounts/login/`, $data, { headers: this.headers });
   }
+  gmail_login($data:any){
+    return this.http.get(`${config.base_url}/accounts/googlelogin/?access_token=${$data.Token}`, { headers: this.headers });
 
+  }
   get_user_profiles() {
     return this.http.get<any>(`${config.base_url}/Users/users`);
   }
