@@ -21,12 +21,14 @@ import { MynetworkComponent } from './mynetwork/mynetwork.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { FeedPostComponent } from './timeline-like-react/feed-post/feed-post.component';
 import { FeaturedDetailsComponent } from './timeline-like-react/featured-details/featured-details.component';
+import { ImportContactComponent } from '../shared/import-contact/import-contact.component';
 
 const routes: Routes = [
   {
     path: '', component: ProfessionalNetworkingComponent,
     children: [
       { path: 'feed', component: TimelineLikeReactComponent, },
+      { path: 'import-contact', component: ImportContactComponent},
       { path: 'featured-detail',component: FeaturedDetailsComponent},
       { path: 'users/:id', component: SomeoneElseProfileComponent },
       { path: 'privacy/settings', component: PrivacySettingsComponent },
