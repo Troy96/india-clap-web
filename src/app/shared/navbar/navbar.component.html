@@ -236,7 +236,7 @@
 </div>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light " style="top:0px;">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light " >
   <a class="navbar-brand" routerLink="professional-networking/me">holagraph</a>
   <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2 search-form" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchKey" name="search">
@@ -271,6 +271,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" [routerLink]="['/jobs/various-sectors']">Search Jobs</a>
             <a class="dropdown-item" [routerLink]="['/jobs/saved-jobs']">Saved Jobs</a>
+            <a class="dropdown-item" [routerLink]="['/jobs/applied-jobs']">Applied Jobs</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" [routerLink]="['/jobs/user-account']">Jobs Dashboard</a>
           </div>
