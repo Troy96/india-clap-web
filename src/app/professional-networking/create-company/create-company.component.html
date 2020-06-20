@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="mainbody" style="margin-top: 150px;">
         <div class="header">
             <h2>Create a company page and let the mass know about you</h2>
@@ -50,5 +50,73 @@
                 </button>
             </form>
         </div>
+    </div>
+</div> -->
+<div class="container" style="margin-top: 50px;     border: 1px solid gray;  padding: 0;  ">
+    <div class="header">
+        <h3>Create a company page and let the mass know about you
+        </h3>
+    </div>
+    <div class="post-a-job">
+        <form [formGroup]="companyForm" (ngSubmit)="onSubmit();">
+        <label>Name of the company</label>
+         <!-- <input class="effect-1" type="text" placeholder="XYZ company, etc"> -->
+         <div class="form-group">
+            <input class="form-control effect-1" type="text" id="frm2" placeholder="Abc Exam, XYZ test" formControlName="name"
+                [ngClass]="{'is-invalid': companyForm.get('name').touched && companyForm.get('name').invalid}">
+            <div class="invalid-feedback">
+                <p class="error">This field is required</p>
+            </div>
+        </div>
+        <label >Size of company</label>
+        <div class="form-group">
+            <input class="form-control effect-1" type="text" id="frm2" placeholder="Abc Exam, XYZ test" formControlName="company_size"
+                [ngClass]="{'is-invalid': companyForm.get('company_size').touched && companyForm.get('company_size').invalid}">
+            <div class="invalid-feedback">
+                <p class="error">This field is required</p>
+            </div>
+        </div>
+        <!-- <input class="effect-1" type="text" placeholder="Size of your company"> -->
+        <label>Industry</label>
+        <div class="form-group">
+            <select class="form-control effect-1" id="frm2"
+                placeholder="Select industry" formControlName="industry"
+                [ngClass]="{'is-invalid': companyForm.get('industry').touched && companyForm.get('industry').invalid}">
+                <option *ngFor="let industry of sectorList" [value]="industry.sector_name">
+                    {{industry.sector_name}}</option>
+
+            </select>
+            <div class="invalid-feedback">
+                <p class="error">This field is required</p>
+            </div>
+        </div>
+        <!-- <select class="effect-1">
+          <option value="0">Your Company:</option>
+          <option value="1">Audi</option>
+          <option value="2">BMW</option>
+          <option value="3">Citroen</option>
+          <option value="4">Ford</option>
+          <option value="5">Honda</option>
+          <option value="6">Jaguar</option>
+          <option value="7">Land Rover</option>
+          <option value="8">Mercedes</option>
+          <option value="9">Mini</option>
+          <option value="10">Nissan</option>
+          <option value="11">Toyota</option>
+          <option value="12">Volvo</option>
+      </select> -->
+      <br>          
+        <label>Logo</label>
+        <!-- <input class="effect-1" type="text" placeholder=""> -->
+        <div class="form-group">
+            <input class="form-control effect-1" type="file" id="frm2" placeholder="Upload a logo for the company"
+                (change)="onPhotoUpload($event)">
+        </div>
+       
+        
+      
+
+        <button class="pure-material-button-contained" type="submit">SUBMIT</button>
+        </form>        
     </div>
 </div>
