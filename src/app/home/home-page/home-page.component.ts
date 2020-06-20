@@ -35,6 +35,7 @@ export class HomePageComponent implements OnInit {
         console.log('Access Token ' + googleUser.getAuthResponse().access_token)
         console.log(googleUser)
         console.log('Token || ' + googleUser.getAuthResponse().id_token);
+        localStorage.setItem('googleAccessToken', googleUser.getAuthResponse().id_token)
         console.log('ID: ' + profile.getId());
         console.log('Name: ' + profile.getName());
         console.log('Image URL: ' + profile.getImageUrl());

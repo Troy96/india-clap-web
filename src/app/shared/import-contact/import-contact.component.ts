@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthServices } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-import-contact',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImportContactComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _user: AuthServices
+  ) { }
+
+  accessToken: string = localStorage.getItem('googleAccessToken');
 
   ngOnInit() {
+    this._user.fetchGoogleContacts(this.accessToken)
+      .subscribe(data => {
+        console.log(data);
+      })
   }
 
 }

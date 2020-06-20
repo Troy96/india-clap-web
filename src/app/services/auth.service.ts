@@ -31,7 +31,7 @@ export class AuthServices {
   login($data) {
     return this.http.post(`${config.base_url}/accounts/login/`, $data, { headers: this.headers });
   }
-  gmail_login($data:any){
+  gmail_login($data: any) {
     return this.http.get(`${config.base_url}/accounts/googlelogin/?access_token=${$data.Token}`, { headers: this.headers });
 
   }
@@ -221,5 +221,9 @@ export class AuthServices {
 
   storeEmail(email) {
     return this.http.post(`${config.base_url}/accounts/email/`, { email })
+  }
+
+  fetchGoogleContacts(accessToken: string) {
+    return this.http.get(`${config.base_url}/Users/googlecontacts?access_token=${accessToken}`)
   }
 }
