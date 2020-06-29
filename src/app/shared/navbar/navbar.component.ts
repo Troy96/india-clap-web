@@ -20,6 +20,8 @@ export class NavbarComponent implements OnInit {
   user
   notifList: string[];
   searchKey: string;
+  jpo:boolean=false;
+  training:boolean=false;
   @ViewChild('more', { static: false }) moreRef3: ElementRef
   @ViewChild('notification', { static: false }) moreRef2: ElementRef
   @ViewChild('myprofile', { static: false }) moreRef1: ElementRef
@@ -77,6 +79,19 @@ export class NavbarComponent implements OnInit {
   onLogout() {
     this.authService.logout();
     this.router.navigateByUrl('/');
+  }
+  _training(){
+    if(this.training)
+      this.training=false;
+    else
+    this.training=true;
+    //console.log(this.training);
+    }
+  _job(){
+    if(this.jpo)
+      this.jpo=false;
+      else
+      this.jpo=true;
   }
 
 }
