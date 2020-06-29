@@ -237,7 +237,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light " style="top:0px;">
-  <a class="navbar-brand" routerLink="professional-networking/me">holagraph</a>
+  <a class="navbar-brand" routerLink="professional-networking/me"><img src="assets/icons/1x//hola_logo.png" width="35px" style="margin-top: -7px;">holagraph</a>
   <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2 search-form" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchKey" name="search">
       <button class="btn search-icon " type="submit"><img src="assets/icons/1x/newAsset3.png" width="20px" (click)="displaysearch()"></button>
@@ -317,7 +317,7 @@
           </div>
         </li>
         </span>
-        <span tooltip="provider Center" placement="bottom" show-delay="500">
+        <!-- <span tooltip="provider Center" placement="bottom" show-delay="500">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="assets/icons/1x/nav_icon1.png" width="26px" height="26px"><span class="nav-text">Provider</span>
@@ -333,8 +333,8 @@
             </div>
             <a class="dropdown-item" href="#">Micro Project Provider</a>
             
-            <a class="dropdown-item" href="#" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Training Provider</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item tpo" (mouseenter)="_training()" (mouseleave)="_training()" href="#" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Training Provider</a>
+            <div *ngIf="training" aria-labelledby="navbarDropdown">
               <button class="dropdown-item" type="button">Create TPO</button>
               <button class="dropdown-item" type="button">Post TPO</button>
               <div class="dropdown-divider"></div>
@@ -344,7 +344,38 @@
      
           </div>
         </li>
-        </span>
+        </span> -->
+        <span tooltip="provider Center" placement="bottom" show-delay="500">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="assets/icons/1x/nav_icon1.png" width="26px" height="26px"><span class="nav-text">Provider</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+  
+              <a class="dropdown-item jpo" (mouseenter)="_job()"  type="button" id="dropdownMenu2" >Job Provider</a>
+              <div *ngIf="jpo" (mouseleave)="_job()" class="jpo-drop">
+                <a class="dropdown-item"  routerLink="/in/create-company" >Create JPO</a>
+                <a class="dropdown-item" routerLink="/jobs/post-job">Post JPO</a>
+                <div class="dropdown-divider"></div>
+              <a class="dropdown-item" routerLink="/jobs/job-postings">JPO Dashboard</a>
+              </div>
+              <a class="dropdown-item" href="#">Micro Project Provider</a>
+              
+              <a class="dropdown-item tpo" (mouseenter)="_training()" style="cursor: pointer;"  id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Training Provider</a>
+              <div *ngIf="training">
+              <div class="tpo-drop" (mouseleave)="_training()" aria-labelledby="navbarDropdown">
+                <button class="dropdown-item" type="button">Create TPO</button>
+                <button class="dropdown-item" type="button">Post TPO</button>
+                <div class="dropdown-divider"></div>
+              <button class="dropdown-item" type="button">TPO Dashboard</button>
+              </div>
+            </div>
+              <a class="dropdown-item" href="#">Finance Provider</a>
+       
+            </div>
+          </li>
+          </span>
+       
         <span tooltip="More" placement="bottom" show-delay="500">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

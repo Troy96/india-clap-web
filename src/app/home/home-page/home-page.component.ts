@@ -64,6 +64,7 @@ export class HomePageComponent implements OnInit {
           client_id: '1044965227209-dmp3inndqit0dg4ott66u71nv6phpsq4.apps.googleusercontent.com',
           cookiepolicy: 'single_host_origin',
           scope: 'profile email https://www.googleapis.com/auth/contacts.readonly'
+          //contact
         });
         this.prepareLoginButton();
       });
