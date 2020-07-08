@@ -306,7 +306,7 @@ svg>path {
 .navbar{
   background-color: teal !important;
   padding: 0px;
-  z-index: 500000000 !important;
+  z-index: 5000 !important;
 }
 
 .navbar-nav li{

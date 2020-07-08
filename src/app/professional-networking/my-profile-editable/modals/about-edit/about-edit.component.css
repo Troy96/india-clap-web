@@ -86,3 +86,7 @@ h2 {
     display: flex;
     justify-content: space-between;
 }
+
+textarea {
+    height: 256px;
+}
