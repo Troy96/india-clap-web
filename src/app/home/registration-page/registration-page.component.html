@@ -6,12 +6,22 @@
             <input type="text" class="form-control left" id="exampleInputEmail1" placeholder="First"
                 formControlName="first_name"
                 [ngClass]="{'is-invalid':registerForm.get('first_name').touched && registerForm.get('first_name').invalid}">
+            <div class="invalid-feedback">
+                <p class="error">This field is required</p>
+            </div>
+            <ng-container *ngIf="(registerForm.get('first_name').invalid && registerForm.get('first_name').touched) || registerForm.get('first_name').dirty">
+                <small *ngIf="registerForm.get('first_name').errors?.minlength" class="text-danger"> Min. length of first name is 4 characters</small>
+            </ng-container>
             <input type="text" class="form-control left" id="exampleInputEmail1" placeholder="Last"
-                formControlName="last_name">
+                formControlName="last_name" [ngClass]="{'is-invalid':registerForm.get('last_name').touched && registerForm.get('last_name').invalid}">
 
             <div class="invalid-feedback">
                 <p class="error">This field is required</p>
             </div>
+
+            <ng-container *ngIf="(registerForm.get('last_name').invalid && registerForm.get('last_name').touched) || registerForm.get('last_name').dirty">
+                <small *ngIf="registerForm.get('last_name').errors?.minlength" class="text-danger"> Min. length of last name is 4 characters</small>
+            </ng-container>
 
             <h3>Email ID</h3>
             <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Email ID"
@@ -47,10 +57,10 @@
     <!-- <button (click)="showToasterSuccess()">
             Success Toaster
         </button> -->
-        <div class="agreement">
-            By clicking Register, you agree to holagraph <a>User Agreement</a><br></div>
+    <div class="agreement">
+        By clicking Register, you agree to holagraph <a>User Agreement</a><br></div>
     <button class="btn btn-primary" (click)="submit()">Register</button><br>
-    
+
 </div>
 
 <!-- <div id="place1">

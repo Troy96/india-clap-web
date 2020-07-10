@@ -20,14 +20,14 @@ export class RegistrationPageComponent implements OnInit {
 
   constructor(private authService: AuthServices, private notifyService: NotificationService) {
     this.registerForm = new FormGroup({
-      first_name: new FormControl("", Validators.required),
+      first_name: new FormControl("", [Validators.required, Validators.minLength(4)]),
       email: new FormControl("", [
         Validators.required,
         Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
       // password: new FormControl("", Validators.required),
       password: new FormControl("", [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}')]),
 
-      last_name: new FormControl(""),
+      last_name: new FormControl("", [Validators.required, Validators.minLength(4)]),
 
     });
   }
@@ -89,7 +89,7 @@ export class RegistrationPageComponent implements OnInit {
           }
           try {
             console.log(err.error.last_name[0]);
-            this.showToasterError("last name must be atleast 4 letters")
+            this.showToasterError("first and last name must be atleast 4 letters")
 
           }
           catch (e) {

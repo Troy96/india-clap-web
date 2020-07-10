@@ -249,6 +249,10 @@ hr {
   }
 }
 
+@media (min-width: 1185px) {
+  
+}
+
 @media (min-width: 768px) {
   .comm-icons {
     height: 40px;
@@ -336,6 +340,10 @@ hr {
 
   #status-icons {
     margin-left: 20px;
+  }
+
+  .cont5 {
+    width: 300px;
   }
 
   .comm-icons{
