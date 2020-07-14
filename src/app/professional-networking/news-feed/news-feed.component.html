@@ -2,40 +2,15 @@
     <div class="news-card">
         <span class="news">Today's News</span>
         <hr>
-        <ul class="round" id="myDivId">
+        <ul class="round" id="myDivId" *ngIf="!loading">
+            <ng-container class="no-data" *ngIf="loading">Loading...</ng-container>
             <ng-container *ngFor="let news of newsList">
                 <a style="cursor: pointer;" href="{{news['link']['@href']}}" target="_blank" [innerHTML]="news['title']['#text']"></a>
                 <span [innerHTML]="news['content']['#text']"></span><br>
                 <small>{{moment(news.published).fromNow()}}</small>
                 <hr>
             </ng-container>
-
-            <!-- <li>Sed ut perspiciatis unde omnis iste natus </li>
-            <span> Lorem ipsum amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commod</span><br>
-            <small>25 mins ago<span class="ver-hr"></span>500 readers </small>
-            <hr>
-            
-            <li>Sed ut perspiciatis unde omnis iste natus </li>
-            <span> Lorem ipsum amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commod</span><br>
-            <small>25 mins ago<span class="ver-hr"></span>500 readers </small>
-            <hr>
-            <li>Sed ut perspiciatis unde omnis iste natus </li>
-            <span> Lorem ipsum amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commod</span><br>
-            <small>25 mins ago<span class="ver-hr"></span>500 readers </small>
-            <hr>
-            <li>Sed ut perspiciatis unde omnis iste natus </li>
-            <span> Lorem ipsum amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commod</span><br>
-            <small>25 mins ago<span class="ver-hr"></span>500 readers </small>
-            <hr> -->
-
         </ul>
     </div>
 </div>
+

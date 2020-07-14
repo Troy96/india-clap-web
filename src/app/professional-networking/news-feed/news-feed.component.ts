@@ -14,6 +14,7 @@ export class NewsFeedComponent implements OnInit {
   moment;
   newsUrl: string = `http://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=${config.news_api_key}`;
   newsList: any[];
+  loading = true;
 
   constructor(private _netService: NetworkingService) { }
 
@@ -23,8 +24,10 @@ export class NewsFeedComponent implements OnInit {
   }
 
   async fetchNews() {
+    this.loading = true;
     const resp: any = await this._netService.get_news_feed().toPromise();
     this.newsList = resp.data.feed.entry;
+    this.loading = false;
   }
 
 }

@@ -1,38 +1,96 @@
-.featured {
-  width: 340px;
-  border: 1px solid gray;
-  margin-top: 35px;
-  margin-right: 30px;
-  -webkit-box-shadow: 0 8px 6px -6px gray;
-  -moz-box-shadow: 0 8px 6px -6px gray;
-  box-shadow: 0 8px 6px -6px gray;
-}
-
-.featured-dp {
+.featured-dp{
   margin-left: 10px;
-}
-
-.featured-info {
+  }
+  .featured-info{
   min-height: 100px;
   margin-left: 95px;
   margin-top: 12px;
   margin-bottom: 10px;
-}
-
-.featured-heading {
+  }
+  .featured-heading{
   margin-top: 10px;
   margin-left: 10px;
   margin-bottom: 15px;
-
-}
-
-.right-div {
-  width: 360px;
-  margin-bottom: 30px;
-}
-
-@media (max-width: 500px) {
-  .featured {
-    display: none;
+  
   }
-}
+  .right-div{
+  margin-bottom: 30px;
+  }
+  @media (max-width: 1030px){
+  .featured{
+  width: 300px;
+  border: 1px solid gray;
+  margin: 0 auto ;
+  
+  -webkit-box-shadow: 0 8px 6px -6px gray;
+  -moz-box-shadow: 0 8px 6px -6px gray;
+    box-shadow: 0 8px 6px -6px gray;
+  }
+  .news-feed{
+  display: none;
+  }
+  
+  }
+  @media(min-width: 1100px){
+  .right-div{
+  float: right;
+  }
+  .featured{
+  width: 320px;
+  border: 1px solid gray;
+  margin-right: 20px;
+  -webkit-box-shadow: 0 8px 6px -6px gray;
+  -moz-box-shadow: 0 8px 6px -6px gray;
+    box-shadow: 0 8px 6px -6px gray;
+  }
+  
+  }
+  /* Featured-end */
+  /* News card */
+  .news-card{
+  max-width: 300px;
+  margin-left: 50px;
+  color: rgb(66, 64, 64);
+  border: 1px solid gray;
+  padding: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  
+  }
+  .news-card li{
+  font-weight: 550;
+  font-size: 17px;
+  color: teal;
+  }
+  .news{
+  font-size: 20px;
+  font-weight: 500;
+  color: rgb(4, 82, 82);
+  padding-bottom: 10px;
+  }
+  .ver-hr{
+  border-right: 1px solid gray;
+  margin-left: 5px;
+  margin-right: 5px;
+  }
+  .news-card hr{
+  margin-top: 10px;
+  }
+  .round{
+  list-style: square;
+  height: 600px;
+  overflow: auto;
+  
+  }
+  #myDivId::-webkit-scrollbar {
+  width: 10px;
+  }
+  
+  #myDivId::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: rgb(236, 233, 233);
+  }
+  
+  #myDivId::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgb(175, 172, 172);
+  }
