@@ -35,18 +35,24 @@ export class ExperienceComponent implements OnInit {
     })
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.experienceForm.get('is_present').value) this.experienceForm.removeControl('end_date');
 
-    this._authService.add_experience({
-      ...this.experienceForm.value,
-      user: this.user_id
-    }).subscribe(
-      data => {
-        this.notifService.showSuccess('Experience added!', 'Experience alert');
-        this._myProfile.updateUserDetails();
-        this._experience.closeModal();
-      })
+    try {
+      const resp = await this._authService.add_experience({
+        ...this.experienceForm.value,
+        user: this.user_id
+      }).toPromise();
+
+      this.notifService.showSuccess('Experience added!', 'Experience alert');
+      this._myProfile.updateUserDetails();
+      this._experience.closeModal();
+
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
   }
+
+
 
 }

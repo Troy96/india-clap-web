@@ -38,23 +38,30 @@ export class HobbyEditComponent implements OnInit {
       )
   }
 
-  onSave() {
+  async onSave() {
     if (this.hobbyEditForm.invalid) return
-    this._auth.update_hobby(this.content.id, {
-      ...this.hobbyEditForm.value,
-      userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
-    })
-      .subscribe(res => {
-        this._toast.showSuccess('Hobby details updated!', 'Update alert');
-        this._myProfile.updateUserDetails();
-        this._hobbyEdit.closeModal();
-      })
+    try {
+      const resp = await this._auth.update_hobby(this.content.id, {
+        ...this.hobbyEditForm.value,
+        userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
+      }).toPromise();
+      this._toast.showSuccess('Hobby details updated!', 'Update alert');
+      this._myProfile.updateUserDetails();
+      this._hobbyEdit.closeModal();
+
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
   }
-  onDelete(){
-    this._auth.delete_hobby(this.content.id).subscribe((data)=>{
+  async onDelete() {
+    try {
+      const resp = await this._auth.delete_hobby(this.content.id);
       this._toast.showSuccess('Hobby Deleted!', 'Update alert');
       this._myProfile.updateUserDetails();
       this._hobbyEdit.closeModal();
-    })
+
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
   }
 }

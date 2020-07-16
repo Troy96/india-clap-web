@@ -29,6 +29,8 @@ import { ExperienceService } from './modals/experience/experience.service';
 import { ExperienceEditService } from './modals/experience-edit/experience-edit.service';
 import { EmailInviteComponent } from './modals/email-invite/email-invite.component';
 import { EmailInviteService } from './modals/email-invite/email-invite.service';
+import { NavbarComponent } from 'src/app/shared/navbar/navbar.component';
+import { NavbarService } from 'src/app/shared/navbar/navbar.service';
 @Component({
   selector: 'app-my-profile-editable',
   templateUrl: './my-profile-editable.component.html',
@@ -83,7 +85,8 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     public _aboutEdit: AboutEditService,
     public _experience: ExperienceService,
     public _experienceEdit: ExperienceEditService,
-    public _emailInvite: EmailInviteService
+    public _emailInvite: EmailInviteService,
+    private _navbar: NavbarService
   ) { }
 
   ngOnInit() {
@@ -183,7 +186,6 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
   }
 
   onPhotoUpload(event) {
-    console.log("hello")
     if (event.target.files && event.target.files.length) {
       let selectedFiles = event.target.files;
       this.imageFile = selectedFiles[0];
@@ -192,18 +194,17 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
         .subscribe(respObj => {
           this.notifService.showSuccess('Photo changed successfully', 'Profile Alert');
           this.userDetails.photo = respObj['photo'];
+          this._navbar.refreshUser.next(true);
         })
 
     }
     this.showCover = true;
   }
   onlyCover() {
-    console.log("only cover")
     this.showCover = false;
   }
 
   onCoverUpload(event) {
-    console.log("hi")
     if (event.target.files && event.target.files.length) {
       let selectedFiles = event.target.files;
 
@@ -273,7 +274,6 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     this.showPdf=true;
     else
     this.showPdf
-    console.log(_data)
    
     const doc = new jspdf();
 

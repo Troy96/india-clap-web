@@ -38,24 +38,37 @@ export class SkillEditComponent implements OnInit {
       )
   }
 
-  onSave() {
-    if (this.skillEditForm.invalid) return
-    this._auth.update_skill(this.content.id, {
-      ...this.skillEditForm.value,
-      userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
-    })
-      .subscribe(res => {
-        this._toast.showSuccess('Skill details updated!', 'Update alert');
-        this._myProfile.updateUserDetails();
-        this._skillEdit.closeModal();
-      })
+  async onSave() {
+    if (this.skillEditForm.invalid) return;
+
+    try {
+      const resp = await this._auth.update_skill(this.content.id, {
+        ...this.skillEditForm.value,
+        userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
+      }).toPromise();
+
+      this._toast.showSuccess('Skill details updated!', 'Update alert');
+      this._myProfile.updateUserDetails();
+      this._skillEdit.closeModal();
+
+
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
   }
-  onDelete(){
-    this._auth.delete_skills(this.content.id).subscribe((data:any)=>{
+
+  async onDelete() {
+
+    try {
+      const resp = await this._auth.delete_skills(this.content.id).toPromise();
+
       this._toast.showSuccess('Skill Deleted!', 'Update alert');
       this._myProfile.updateUserDetails();
       this._skillEdit.closeModal();
-    })
-   
+
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
+
   }
 }

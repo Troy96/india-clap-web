@@ -33,19 +33,23 @@ export class SkillComponent implements OnInit {
     this.user_id = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.skillForm.invalid) return;
 
-    this._authService.add_skill({
-      ...this.skillForm.value,
-      user: this.user_id
-    }).subscribe(
-      data => {
-        this.notifService.showSuccess('Skill added!', 'Skill alert');
-        this._myProfile.updateUserDetails();
-        this._skill.closeModal();
-      }
-    )
+    try {
+      const resp = await this._authService.add_skill({
+        ...this.skillForm.value,
+        user: this.user_id
+      }).toPromise();
+
+      this.notifService.showSuccess('Skill added!', 'Skill alert');
+      this._myProfile.updateUserDetails();
+      this._skill.closeModal();;
+
+
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
   }
 
 }

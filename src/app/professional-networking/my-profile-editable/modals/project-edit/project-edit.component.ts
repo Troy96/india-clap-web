@@ -41,25 +41,37 @@ export class ProjectEditComponent implements OnInit {
       )
   }
 
-  onSave() {
-    if (this.projectEditForm.invalid) return
-    this._auth.update_project(this.content.id, {
-      ...this.projectEditForm.value,
-      userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
-    })
-      .subscribe(res => {
-        this._toast.showSuccess('Project details updated!', 'Update alert');
-        this._myProfile.updateUserDetails();
-        this._projectEdit.closeModal();
-      })
+  async onSave() {
+    if (this.projectEditForm.invalid) return;
+
+    try {
+      const resp = await this._auth.update_project(this.content.id, {
+        ...this.projectEditForm.value,
+        userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
+      }).toPromise();
+
+      this._toast.showSuccess('Project details updated!', 'Update alert');
+      this._myProfile.updateUserDetails();
+      this._projectEdit.closeModal();
+
+
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
   }
-  onDelete() {
-    this._auth.delete_project(this.content.id)
-      .subscribe(res => {
-        this._toast.showSuccess('Project Deleted!', 'Update alert');
-        this._myProfile.updateUserDetails();
-        this._projectEdit.closeModal();
-      })
+
+  async onDelete() {
+
+    try {
+      const resp = await this._auth.delete_project(this.content.id).toPromise();
+
+      this._toast.showSuccess('Project Deleted!', 'Update alert');
+      this._myProfile.updateUserDetails();
+      this._projectEdit.closeModal();
+
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
 
   }
 }

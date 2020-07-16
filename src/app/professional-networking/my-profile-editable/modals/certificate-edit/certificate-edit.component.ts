@@ -41,22 +41,34 @@ export class CertificateEditComponent implements OnInit {
   }
 
   onSave() {
-    if (this.certificateEditForm.invalid) return
-    this._auth.update_certificate(this.content.id, {
-      ...this.certificateEditForm.value,
-      userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
-    })
-      .subscribe(res => {
-        this._toast.showSuccess('Certificate details updated!', 'Update alert');
-        this._myProfile.updateUserDetails();
-        this._certificateEdit.closeModal();
-      })
+    if (this.certificateEditForm.invalid) return;
+    try {
+      this._auth.update_certificate(this.content.id, {
+        ...this.certificateEditForm.value,
+        userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
+      }).toPromise();
+
+      this._toast.showSuccess('Certificate details updated!', 'Update alert');
+      this._myProfile.updateUserDetails();
+      this._certificateEdit.closeModal();
+
+
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
   }
-  onDelete(){
-    this._auth.delete_certificate(this.content.id).subscribe((data:any)=>{
+
+  async onDelete() {
+
+    try {
+      const resp = await this._auth.delete_certificate(this.content.id).toPromise();
+
       this._toast.showSuccess('Certificate deleted!', 'Update alert');
       this._myProfile.updateUserDetails();
       this._certificateEdit.closeModal();
-    })
+
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
   }
 }

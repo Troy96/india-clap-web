@@ -25,33 +25,38 @@ export class ProfileEditComponent implements OnInit {
   ngOnInit() {
     this._profileEdit.content$
       .subscribe(
-       (editData:any) => {
+        (editData: any) => {
           if (!editData) return
           this.content = editData.data;
           console.log(this.content)
           this.profileForm = this._fb.group({
             first_name: [editData.data.first_name],
             last_name: [editData.data.last_name],
-            location_district:[editData.data.location_district],
+            location_district: [editData.data.location_district],
             location_country: [editData.data.location_country],
             profession: [editData.data.profession],
-           
+
           })
         }
       )
   }
 
-  onSave() {
+  async onSave() {
+
     if (this.profileForm.invalid) return
-    this._auth.update_user_details(this.content.id, {
-      ...this.profileForm.value,
-      // userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
-    })
-      .subscribe(res => {
-        this._toast.showSuccess('Profile details updated!', 'Update alert');
-        this._myProfile.updateUserDetails();
-        this._profileEdit.closeModal();
-      })
+
+    try {
+      const resp = await this._auth.update_user_details(this.content.id, {
+        ...this.profileForm.value,
+      }).toPromise();
+
+      this._toast.showSuccess('Profile details updated!', 'Update alert');
+      this._myProfile.updateUserDetails();
+      this._profileEdit.closeModal();
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
+
   }
 
 }

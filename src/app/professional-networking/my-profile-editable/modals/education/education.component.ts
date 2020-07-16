@@ -37,18 +37,23 @@ export class EducationComponent implements OnInit {
     })
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.EducationForm.get('is_present').value) this.EducationForm.removeControl('end_year');
 
-    this._authService.add_education({
-      ...this.EducationForm.value,
-      user: this.user_id
-    }).subscribe(
-      data => {
-        this.notifService.showSuccess('Institute added!', 'Institute alert');
-        this._myProfile.updateUserDetails();
-        this._education.closeModal();
-      })
+    try {
+      const resp = await this._authService.add_education({
+        ...this.EducationForm.value,
+        user: this.user_id
+      }).toPromise();
+
+      this.notifService.showSuccess('Institute added!', 'Institute alert');
+      this._myProfile.updateUserDetails();
+      this._education.closeModal();
+
+
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
   }
 
 }

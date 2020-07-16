@@ -6,7 +6,10 @@ import { NotificationService } from '../../services/notification.service';
 import { Router } from '@angular/router';
 import { CommunicateService } from 'src/app/services/communicate.service';
 import { EmailInviteService } from 'src/app/professional-networking/my-profile-editable/modals/email-invite/email-invite.service';
+import { MyprofileEditableService } from 'src/app/professional-networking/my-profile-editable/myprofile-editable.service';
+import { NavbarService } from './navbar.service';
 //import { AuthService } from 'angularx-social-login';
+
 
 @Component({
   selector: 'app-navbar',
@@ -20,8 +23,10 @@ export class NavbarComponent implements OnInit {
   user
   notifList: string[];
   searchKey: string;
-  jpo:boolean=false;
-  training:boolean=false;
+  jpo: boolean = false;
+  training: boolean = false;
+
+
   @ViewChild('more', { static: false }) moreRef3: ElementRef
   @ViewChild('notification', { static: false }) moreRef2: ElementRef
   @ViewChild('myprofile', { static: false }) moreRef1: ElementRef
@@ -34,7 +39,9 @@ export class NavbarComponent implements OnInit {
     private router: Router,
     private notificationService: NotificationService,
     private commService: CommunicateService,
-    public _emailInvite: EmailInviteService
+    public _emailInvite: EmailInviteService,
+    private _profile: MyprofileEditableService,
+    private _navbar: NavbarService
 
   ) {
   }
@@ -44,6 +51,11 @@ export class NavbarComponent implements OnInit {
       data => {
         this.userlist = data;
         this.commService.setUserList(this.userlist);
+      }
+    )
+    this._navbar.refreshUser$.subscribe(
+      toRefresh => {
+        if (toRefresh) this.getUserDetails();
       }
     )
   }
@@ -80,18 +92,18 @@ export class NavbarComponent implements OnInit {
     this.authService.logout();
     this.router.navigateByUrl('/');
   }
-  _training(){
-    if(this.training)
-      this.training=false;
+  _training() {
+    if (this.training)
+      this.training = false;
     else
-    this.training=true;
+      this.training = true;
     //console.log(this.training);
-    }
-  _job(){
-    if(this.jpo)
-      this.jpo=false;
-      else
-      this.jpo=true;
+  }
+  _job() {
+    if (this.jpo)
+      this.jpo = false;
+    else
+      this.jpo = true;
   }
 
 }

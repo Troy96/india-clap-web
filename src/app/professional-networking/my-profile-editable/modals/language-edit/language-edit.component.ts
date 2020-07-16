@@ -38,23 +38,31 @@ export class LanguageEditComponent implements OnInit {
       )
   }
 
-  onSave() {
-    if (this.languageEditForm.invalid) return
-    this._auth.update_language(this.content.id, {
-      ...this.languageEditForm.value,
-      userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
-    })
-      .subscribe(res => {
-        this._toast.showSuccess('Language details updated!', 'Update alert');
-        this._myProfile.updateUserDetails();
-        this._languageEdit.closeModal();
-      })
+  async onSave() {
+    if (this.languageEditForm.invalid) return;
+
+    try {
+      const resp = await this._auth.update_language(this.content.id, {
+        ...this.languageEditForm.value,
+        userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
+      }).toPromise();
+
+      this._toast.showSuccess('Language details updated!', 'Update alert');
+      this._myProfile.updateUserDetails();
+      this._languageEdit.closeModal();
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
   }
-  onDelete(){
-    this._auth.delete_languages(this.content.id).subscribe((data:any)=>{
+  async onDelete() {
+    try {
+      const resp = await this._auth.delete_languages(this.content.id).toPromise();
       this._toast.showSuccess('Language Deleted!', 'Update alert');
       this._myProfile.updateUserDetails();
       this._languageEdit.closeModal();
-    })
+
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
   }
 }

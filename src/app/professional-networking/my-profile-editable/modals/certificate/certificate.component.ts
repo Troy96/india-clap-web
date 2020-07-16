@@ -33,19 +33,23 @@ export class CertificateComponent implements OnInit {
     })
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.certificateForm.get('not_expire').value) this.certificateForm.removeControl('expiration_date');
 
+    try {
+      const resp = await this._authService.add_certificate({
+        ...this.certificateForm.value,
+        user: this.user_id
+      }).toPromise();
 
-    this._authService.add_certificate({
-      ...this.certificateForm.value,
-      user: this.user_id
-    }).subscribe(
-      data => {
-        this.notifService.showSuccess('Certificate added!', 'Certificate alert');
-        this._myProfile.updateUserDetails();
-        this._certificate.closeModal();
-      })
+      this.notifService.showSuccess('Certificate added!', 'Certificate alert');
+      this._myProfile.updateUserDetails();
+      this._certificate.closeModal();
+
+
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
   }
 
 

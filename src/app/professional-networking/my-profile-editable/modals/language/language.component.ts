@@ -32,19 +32,19 @@ export class LanguageComponent implements OnInit {
   ngOnInit() {
     this.user_id = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
   }
-  onSubmit() {
+  async onSubmit() {
     if (this.languageForm.invalid) return;
-
-    this._authService.add_language({
-      ...this.languageForm.value,
-      user: this.user_id
-    }).subscribe(
-      data => {
-        this.notifService.showSuccess('Language added!', 'alert');
-        this._myProfile.updateUserDetails();
-        this._language.closeModal();
-      }
-    )
+    try {
+      const resp = await this._authService.add_language({
+        ...this.languageForm.value,
+        user: this.user_id
+      }).toPromise();
+      this.notifService.showSuccess('Language added!', 'alert');
+      this._myProfile.updateUserDetails();
+      this._language.closeModal();
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
   }
 
 }

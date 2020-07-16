@@ -35,19 +35,24 @@ export class ProjectComponent implements OnInit {
     this.user_id = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.projectForm.invalid) return;
 
-    this._authService.add_project({
-      ...this.projectForm.value,
-      user: this.user_id
-    }).subscribe(
-      data => {
-        this.notifService.showSuccess('Project added!', 'alert');
-        this._myProfile.updateUserDetails();
-        this._project.closeModal();
-      }
-    )
+    try {
+      const resp = await this._authService.add_project({
+        ...this.projectForm.value,
+        user: this.user_id
+      }).toPromise();
+
+      this.notifService.showSuccess('Project added!', 'alert');
+      this._myProfile.updateUserDetails();
+      this._project.closeModal();
+
+
+    } catch (err) {
+      this._myProfile.handleError(err)
+
+    };
   }
 
 }

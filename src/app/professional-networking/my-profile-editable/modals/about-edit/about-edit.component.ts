@@ -37,19 +37,22 @@ export class AboutEditComponent implements OnInit {
       )
   }
 
-  onSave() {
-    if (this.aboutEditForm.invalid) return
-    this._auth.update_user_details(this.content.id, {
-      ...this.aboutEditForm.value,
-      userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
-    })
-      .subscribe(res => {
-        this._toast.showSuccess('About details updated!', 'Update alert');
-        this._myProfile.updateUserDetails();
-        this._aboutEdit.closeModal();
-      }, err => {
-        this._toast.showError(err.error.brief_Desc[0], 'Error alert')
-      })
+  async onSave() {
+    if (this.aboutEditForm.invalid) return;
+
+    try {
+      const resp = await this._auth.update_user_details(this.content.id, {
+        ...this.aboutEditForm.value,
+        userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
+      }).toPromise();
+
+      this._toast.showSuccess('About details updated!', 'Update alert');
+      this._myProfile.updateUserDetails();
+      this._aboutEdit.closeModal();
+
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
   }
 
 }

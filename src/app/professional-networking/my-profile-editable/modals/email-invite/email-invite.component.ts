@@ -17,13 +17,13 @@ export class EmailInviteComponent implements OnInit {
 
   emailInviteForm: FormGroup;
 
-  ngOnInit() { 
+  ngOnInit() {
     console.log("in component")
   }
   isExpire: boolean = true;
-  link:any= "http://angular-holagraph.herokuapp.com/";
-  profileId:any;
-  receivedItems:any;
+  link: any = "http://angular-holagraph.herokuapp.com/";
+  profileId: any;
+  receivedItems: any;
   constructor(
     private _fb: FormBuilder,
     private _authService: AuthServices,
@@ -31,36 +31,38 @@ export class EmailInviteComponent implements OnInit {
     private _myProfile: MyprofileEditableService,
     public _emailInvite: EmailInviteService
   ) {
-    this.profileId=JSON.parse(localStorage.getItem('currentUser')).profile_id; 
-    this._authService.get_user_details(this.profileId).subscribe((data):any=>{
-      console.log(data);
-      this.receivedItems=data;
+    this.profileId = JSON.parse(localStorage.getItem('currentUser')).profile_id;
+    this._authService.get_user_details(this.profileId).subscribe((data): any => {
+      this.receivedItems = data;
       this.emailInviteForm = this._fb.group({
-        name:[this.receivedItems.first_name+' '+this.receivedItems.last_name],
+        name: [this.receivedItems.first_name + ' ' + this.receivedItems.last_name],
         from: [this.receivedItems.email],
         to: [''],
-        message: ['Please visit '+this.link+' to explore unlimited opportunities'],
+        message: ['Please visit ' + this.link + ' to explore unlimited opportunities'],
       })
     })
-   
+
   }
-  onSubmit(){
-    if(this.emailInviteForm.valid){
-      this._authService.emailInvite({
-        name:this.emailInviteForm.get('name').value,
-        from_email:this.emailInviteForm.get('from').value,
-        to_mail:this.emailInviteForm.get('to').value,
-        message:this.emailInviteForm.get('message').value
-      }).subscribe((data):any=>{
-        console.log(data)
-        this.showToasterSuccess('Invitation Sent!')
-      },err=>{
-        this.showToasterError('Please check details properly')
-        console.log(err)
-      })
+  async onSubmit() {
+    if (this.emailInviteForm.invalid) return;
+
+
+    try {
+      const resp = await this._authService.emailInvite({
+        name: this.emailInviteForm.get('name').value,
+        from_email: this.emailInviteForm.get('from').value,
+        to_mail: this.emailInviteForm.get('to').value,
+        message: this.emailInviteForm.get('message').value
+      }).toPromise();
+
+      this.showToasterSuccess('Invitation Sent!')
+
+    } catch (err) {
+      this._myProfile.handleError(err)
+
     }
   }
-  
+
   showToasterSuccess(str: any) {
     this.notifyService.showSuccess("Successful", str)
   }

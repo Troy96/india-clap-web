@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MyProfile } from './myprofle';
 import { BehaviorSubject } from 'rxjs';
 import { InputModalComponent } from 'src/app/shared/input-modal/input-modal.component';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,9 @@ export class MyprofileEditableService {
   public inputModal$ = this.inputModal.asObservable();
 
 
-  constructor() { }
+  constructor(
+    private notifService: NotificationService
+  ) { }
 
   setInputModal(description, isInputForm, data) {
     this.inputModal.next({
@@ -44,6 +47,14 @@ export class MyprofileEditableService {
 
   updateUserDetails() {
     this.toRefreshUserDetails.next(true);
+  }
+
+  handleError(err) {
+    for (let obj in err.error) {
+      const error = err.error[obj];
+      console.log(error)
+      this.notifService.showError(error, obj);
+    }
   }
 
 

@@ -42,24 +42,33 @@ export class ExperienceEditComponent implements OnInit {
       )
   }
 
-  onSave() {
-    if (this.experienceEditForm.invalid) return
-    this._auth.update_experience(this.content.id, {
-      ...this.experienceEditForm.value,
-      userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
-    })
-      .subscribe(res => {
-        this._toast.showSuccess('Experience details updated!', 'Update alert');
-        this._myProfile.updateUserDetails();
-        this._experienceEdit.closeModal();
-      })
+  async onSave() {
+    if (this.experienceEditForm.invalid) return;
+
+    try {
+      const resp = await this._auth.update_experience(this.content.id, {
+        ...this.experienceEditForm.value,
+        userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
+      }).toPromise();
+
+      this._toast.showSuccess('Experience details updated!', 'Update alert');
+      this._myProfile.updateUserDetails();
+      this._experienceEdit.closeModal();
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
   }
-  onDelete() {
-    this._auth.delete_experience(this.content.id).subscribe((data: any) => {
+
+  async onDelete() {
+    try {
+      const resp = await this._auth.delete_experience(this.content.id).toPromise();
+
       this._toast.showSuccess('Experience Deleted!', 'Update alert');
       this._myProfile.updateUserDetails();
       this._experienceEdit.closeModal();
-    })
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
   }
 
 }

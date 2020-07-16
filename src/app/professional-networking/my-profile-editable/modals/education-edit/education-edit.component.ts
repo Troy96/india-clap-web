@@ -25,7 +25,7 @@ export class EducationEditComponent implements OnInit {
   ngOnInit() {
     this._educationEdit.content$
       .subscribe(
-       (editData:any) => {
+        (editData: any) => {
           if (!editData) return
           this.content = editData.data;
           console.log(editData)
@@ -37,38 +37,49 @@ export class EducationEditComponent implements OnInit {
             // description: [editData.data.description],
             institute: [editData.data.institute],
             degree: [editData.data.degree],
-            is_present:[editData.data.is_present],
+            is_present: [editData.data.is_present],
             study_field: [editData.data.study_field],
             start_year: [editData.data.start_year],
             end_year: [editData.data.end_year],
-            grade:[editData.data.grade],
-            link:[editData.data.link],
-            desc:[editData.data.desc],
-      
+            grade: [editData.data.grade],
+            link: [editData.data.link],
+            desc: [editData.data.desc],
+
           })
         }
       )
   }
 
-  onSave() {
-    if (this.educationEditForm.invalid) return
-    this._auth.update_education(this.content.id, {
-      ...this.educationEditForm.value,
-      userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
-    })
-      .subscribe(res => {
-        this._toast.showSuccess('Education details updated!', 'Update alert');
-        this._myProfile.updateUserDetails();
-        this._educationEdit.closeModal();
-      },err=>{
-        console.log(err)
-      })
+  async onSave() {
+    if (this.educationEditForm.invalid) return;
+
+    try {
+      const resp = await this._auth.update_education(this.content.id, {
+        ...this.educationEditForm.value,
+        userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
+      }).toPromise();
+
+      this._toast.showSuccess('Education details updated!', 'Update alert');
+      this._myProfile.updateUserDetails();
+      this._educationEdit.closeModal();
+
+
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
   }
- onDelete(){
-   this._auth.delete_education(this.content.id).subscribe((data):any=>{
-    this._toast.showSuccess('Education Deleted!', 'Update alert');
-    this._myProfile.updateUserDetails();
-    this._educationEdit.closeModal();
-   })
- }
+
+  async onDelete() {
+
+    try {
+      const resp = await this._auth.delete_education(this.content.id).toPromise();
+
+      this._toast.showSuccess('Education Deleted!', 'Update alert');
+      this._myProfile.updateUserDetails();
+      this._educationEdit.closeModal();
+    } catch (err) {
+      this._myProfile.handleError(err)
+
+    }
+  }
 }

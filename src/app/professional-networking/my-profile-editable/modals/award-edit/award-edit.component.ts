@@ -41,23 +41,37 @@ export class AwardEditComponent implements OnInit {
       )
   }
 
-    onSave() {
-      if (this.awardEditForm.invalid) return
-      this._auth.update_award(this.content.id, {
+  async onSave() {
+    if (this.awardEditForm.invalid) return;
+
+    try {
+      const resp = await this._auth.update_award(this.content.id, {
         ...this.awardEditForm.value,
         userId: JSON.parse(localStorage.getItem('currentUser'))['user_id']
-      })
-        .subscribe(res => {
-          this._toast.showSuccess('Award details updated!', 'Update alert');
-          this._myProfile.updateUserDetails();
-          this._awardEdit.closeModal();
-        })
+      }).toPromise();
+
+      this._toast.showSuccess('Award details updated!', 'Update alert');
+      this._myProfile.updateUserDetails();
+      this._awardEdit.closeModal();
+
+
+    } catch (err) {
+      this._myProfile.handleError(err)
     }
-    onDelete(){
-      this._auth.delete_awards(this.content.id).subscribe((data:any)=>{
-        this._toast.showSuccess('Award deleted!', 'Update alert');
-        this._myProfile.updateUserDetails();
-        this._awardEdit.closeModal();
-      })
+  }
+
+  async onDelete() {
+
+    try {
+      const resp = await this._auth.delete_awards(this.content.id).toPromise();
+
+      this._toast.showSuccess('Award deleted!', 'Update alert');
+      this._myProfile.updateUserDetails();
+      this._awardEdit.closeModal();
+
+
+    } catch (err) {
+      this._myProfile.handleError(err)
     }
+  }
 }

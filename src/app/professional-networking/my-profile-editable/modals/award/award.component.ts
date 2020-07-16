@@ -33,19 +33,22 @@ export class AwardComponent implements OnInit {
     })
   }
 
-  onSubmit() {
-    if(this.awardForm.invalid) return;
+  async onSubmit() {
+    if (this.awardForm.invalid) return;
 
-    this._authService.add_award({
-      ...this.awardForm.value,
-      user: this.user_id
-    }).subscribe(
-      data => {
-        this.notifService.showSuccess('Award added!', 'add alert');
-        this._myProfile.updateUserDetails();
-        this._award.closeModal();
-      })
+    try {
+      const resp = await this._authService.add_award({
+        ...this.awardForm.value,
+        user: this.user_id
+      }).toPromise();
+
+      this.notifService.showSuccess('Award added!', 'add alert');
+      this._myProfile.updateUserDetails();
+      this._award.closeModal();
+
+
+    } catch (err) {
+      this._myProfile.handleError(err)
+    }
   }
-
-
 }

@@ -22,7 +22,7 @@ export class HobbyComponent implements OnInit {
     private _authService: AuthServices,
     private _myProfile: MyprofileEditableService,
     public _hobby: HobbyService
-  ) { 
+  ) {
     this.hobbyForm = this._fb.group({
       title: [''],
       desc: [''],
@@ -33,20 +33,18 @@ export class HobbyComponent implements OnInit {
     this.user_id = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
   }
 
-  onSubmit() {
-    if (this.hobbyForm.invalid) return;
-
-    this._authService.add_hobby({
-      ...this.hobbyForm.value,
-      user: this.user_id
-    }).subscribe(
-      data => {
-        this.notifService.showSuccess('Hobby added!', 'Hobby alert');
-        this._myProfile.updateUserDetails();
-        this._hobby.closeModal();
-      }
-    ), err=>{
-      console.log(err)
+  async onSubmit() {
+    try {
+      if (this.hobbyForm.invalid) return;
+      const resp = await this._authService.add_hobby({
+        ...this.hobbyForm.value,
+        user: this.user_id
+      }).toPromise();
+      this.notifService.showSuccess('Hobby added!', 'Hobby alert');
+      this._myProfile.updateUserDetails();
+      this._hobby.closeModal();
+    } catch (err) {
+      this._myProfile.handleError(err)
     }
   }
 
