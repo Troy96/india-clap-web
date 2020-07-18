@@ -14,7 +14,7 @@ import { SkillService } from './skill.service';
 export class SkillComponent implements OnInit {
 
   skillForm: FormGroup;
-  user_id: any;
+  profile_id: any;
 
   constructor(
     private _fb: FormBuilder,
@@ -30,7 +30,7 @@ export class SkillComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user_id = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
+    this.profile_id = JSON.parse(localStorage.getItem('currentUser'))['profile_id'];
   }
 
   async onSubmit() {
@@ -39,7 +39,7 @@ export class SkillComponent implements OnInit {
     try {
       const resp = await this._authService.add_skill({
         ...this.skillForm.value,
-        user: this.user_id
+        user: this.profile_id
       }).toPromise();
 
       this.notifService.showSuccess('Skill added!', 'Skill alert');

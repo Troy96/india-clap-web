@@ -13,7 +13,7 @@ import { MyprofileEditableService } from '../../myprofile-editable.service';
 export class ProjectComponent implements OnInit {
 
   projectForm: FormGroup;
-  user_id: any;
+  profile_id: any;
 
   constructor(
     private _fb: FormBuilder,
@@ -32,7 +32,7 @@ export class ProjectComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user_id = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
+    this.profile_id = JSON.parse(localStorage.getItem('currentUser'))['profile_id'];
   }
 
   async onSubmit() {
@@ -41,7 +41,7 @@ export class ProjectComponent implements OnInit {
     try {
       const resp = await this._authService.add_project({
         ...this.projectForm.value,
-        user: this.user_id
+        user: this.profile_id
       }).toPromise();
 
       this.notifService.showSuccess('Project added!', 'alert');

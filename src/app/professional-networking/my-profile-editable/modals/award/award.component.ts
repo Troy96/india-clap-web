@@ -14,7 +14,7 @@ import { AwardService } from './award.service';
 export class AwardComponent implements OnInit {
 
   awardForm: FormGroup
-  user_id = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
+  profile_id = JSON.parse(localStorage.getItem('currentUser'))['profile_id'];
 
   constructor(
     private _fb: FormBuilder,
@@ -39,7 +39,7 @@ export class AwardComponent implements OnInit {
     try {
       const resp = await this._authService.add_award({
         ...this.awardForm.value,
-        user: this.user_id
+        user: this.profile_id
       }).toPromise();
 
       this.notifService.showSuccess('Award added!', 'add alert');

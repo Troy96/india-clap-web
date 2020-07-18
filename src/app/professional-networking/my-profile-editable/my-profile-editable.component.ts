@@ -98,7 +98,10 @@ export class MyProfileEditableComponent implements OnInit, AfterViewInit {
     this.companiesFollowed();
     this.showActivity();
     this.inputModal.toRefreshDetails$.subscribe(toRefresh => {
-      if (toRefresh) this.getUserDetails();
+      if (toRefresh) 
+      setTimeout(() => {
+        this.getUserDetails();
+      }, 0);
     })
   }
 

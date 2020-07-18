@@ -14,7 +14,7 @@ import { LanguageService } from './language.service';
 export class LanguageComponent implements OnInit {
 
   languageForm: FormGroup;
-  user_id: any;
+  profile_id: any;
 
   constructor(
     private _fb: FormBuilder,
@@ -30,14 +30,14 @@ export class LanguageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user_id = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
+    this.profile_id = JSON.parse(localStorage.getItem('currentUser'))['profile_id'];
   }
   async onSubmit() {
     if (this.languageForm.invalid) return;
     try {
       const resp = await this._authService.add_language({
         ...this.languageForm.value,
-        user: this.user_id
+        user: this.profile_id
       }).toPromise();
       this.notifService.showSuccess('Language added!', 'alert');
       this._myProfile.updateUserDetails();

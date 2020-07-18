@@ -14,7 +14,7 @@ export class CertificateComponent implements OnInit {
 
 
   certificateForm: FormGroup
-  user_id = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
+  profile_id = JSON.parse(localStorage.getItem('currentUser'))['profile_id'];
   constructor(
     private _fb: FormBuilder,
     private _authService: AuthServices,
@@ -39,7 +39,7 @@ export class CertificateComponent implements OnInit {
     try {
       const resp = await this._authService.add_certificate({
         ...this.certificateForm.value,
-        user: this.user_id
+        user: this.profile_id
       }).toPromise();
 
       this.notifService.showSuccess('Certificate added!', 'Certificate alert');

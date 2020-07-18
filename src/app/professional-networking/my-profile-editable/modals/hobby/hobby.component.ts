@@ -14,7 +14,7 @@ import { HobbyService } from './hobby.service';
 export class HobbyComponent implements OnInit {
 
   hobbyForm: FormGroup;
-  user_id: any;
+  profile_id: any;
 
   constructor(
     private _fb: FormBuilder,
@@ -30,7 +30,7 @@ export class HobbyComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user_id = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
+    this.profile_id = JSON.parse(localStorage.getItem('currentUser'))['profile_id'];
   }
 
   async onSubmit() {
@@ -38,7 +38,7 @@ export class HobbyComponent implements OnInit {
       if (this.hobbyForm.invalid) return;
       const resp = await this._authService.add_hobby({
         ...this.hobbyForm.value,
-        user: this.user_id
+        user: this.profile_id
       }).toPromise();
       this.notifService.showSuccess('Hobby added!', 'Hobby alert');
       this._myProfile.updateUserDetails();

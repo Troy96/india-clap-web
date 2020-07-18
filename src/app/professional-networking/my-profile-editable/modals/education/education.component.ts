@@ -13,7 +13,7 @@ export class EducationComponent implements OnInit {
 
 
   EducationForm: FormGroup
-  user_id = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
+  profile_id = JSON.parse(localStorage.getItem('currentUser'))['profile_id'];
   constructor(
     private _fb: FormBuilder,
     private _authService: AuthServices,
@@ -43,10 +43,10 @@ export class EducationComponent implements OnInit {
     try {
       const resp = await this._authService.add_education({
         ...this.EducationForm.value,
-        user: this.user_id
+        user: this.profile_id
       }).toPromise();
 
-      this.notifService.showSuccess('Institute added!', 'Institute alert');
+      this.notifService.showSuccess('Education added!', 'Education alert');
       this._myProfile.updateUserDetails();
       this._education.closeModal();
 

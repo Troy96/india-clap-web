@@ -14,7 +14,7 @@ import { ExperienceService } from './experience.service';
 export class ExperienceComponent implements OnInit {
 
   experienceForm: FormGroup
-  user_id = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
+  profile_id = JSON.parse(localStorage.getItem('currentUser'))['profile_id'];
 
   constructor(
     private _fb: FormBuilder,
@@ -41,7 +41,7 @@ export class ExperienceComponent implements OnInit {
     try {
       const resp = await this._authService.add_experience({
         ...this.experienceForm.value,
-        user: this.user_id
+        user: this.profile_id
       }).toPromise();
 
       this.notifService.showSuccess('Experience added!', 'Experience alert');
