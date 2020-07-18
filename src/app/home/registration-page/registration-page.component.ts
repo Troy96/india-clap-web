@@ -17,6 +17,7 @@ export class RegistrationPageComponent implements OnInit {
   obj: any = {};
   emailValidation: boolean = false;
   passwordValidation: boolean = false;
+  registering = false;
 
   constructor(private authService: AuthServices, private notifyService: NotificationService) {
     this.registerForm = new FormGroup({
@@ -47,7 +48,7 @@ export class RegistrationPageComponent implements OnInit {
     this.registerForm.controls["email"].markAsTouched();
     this.registerForm.controls["password"].markAsTouched();
     if (this.registerForm.valid) {
-
+      this.registering = true;
       this.obj.first_name = (this.registerForm.get('first_name').value);
       this.obj.last_name = (this.registerForm.get('last_name').value);
       //this.obj.username = this.obj.first_name + " " + this.obj.last_name;
@@ -57,8 +58,11 @@ export class RegistrationPageComponent implements OnInit {
       this.authService.register(this.obj).subscribe((data: any) => {
         this.notifyService.showSuccess('You can now verify your email by clicking the link that was sent', 'Registration successful');
         console.log(data);
+        this.registering = false;
+
       },
         err => {
+          this.registering = false;
           console.log(err)
           try {
 

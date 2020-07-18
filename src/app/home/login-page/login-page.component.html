@@ -26,7 +26,8 @@
                 </div>
             </div>
 
-            <button class="btn btn-primary btn-form" (click)="submit()">Log in</button><br>
+            <button class="btn btn-primary btn-form" (click)="submit()" *ngIf="!loggingIn">Log in</button>
+            <button class="btn btn-primary btn-form" *ngIf="loggingIn">Logging in...</button>
             <span id="forpass" class="float-left" routerLink="/forgot-password">forgot password?</span>
             <!-- <button class="btn btn-primary btn-form" (click)="signInWithGoogle()">Log in using Google</button><br> -->
         </form>

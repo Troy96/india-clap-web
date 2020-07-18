@@ -14,6 +14,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class LoginPageComponent implements OnInit {
   loginForm: FormGroup;
+  loggingIn = false;
   //private user: SocialUser;
   private loggedIn: boolean;
   obj: any = {};
@@ -43,6 +44,7 @@ export class LoginPageComponent implements OnInit {
     this.loginForm.controls["email"].markAsTouched();
     this.loginForm.controls["password"].markAsTouched();
     if (this.loginForm.valid) {
+      this.loggingIn = true;
       this.obj.email = this.loginForm.get('email').value;
       this.obj.password = this.loginForm.get('password').value;
       this.obj.confirm_password = this.obj.password;
@@ -50,8 +52,10 @@ export class LoginPageComponent implements OnInit {
         this.notifyService.showSuccess('You are now logged in','Login successful');
         await localStorage.setItem('currentUser', JSON.stringify(data));
         this.router.navigateByUrl('/in/feed');
+        
       },
       err=>{
+        this.loggingIn = false;
         if(err.error.error=="Invalid Credentials")
           this.showToasterError("Invalid Credentials")
       
