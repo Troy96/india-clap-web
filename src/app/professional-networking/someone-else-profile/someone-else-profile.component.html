@@ -3,70 +3,65 @@
         <div class="jumbotron-image" [style]="coverImgStyle">
             <img class="jmb-img" src="{{userDetails?.photo}}" alt="">
         </div>
-        <div id="jumbotron-text" style="display: flex;">
-            <div id="name" style="position: relative;
-            bottom: 20px;">
+        <div id="jumbotron-text" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px;">
+            <div style="margin-left: 55%;">
                 <h2>{{userDetails?.first_name}} {{userDetails?.last_name}}</h2>
-                <p *ngIf="userDetails?.experiences" style="overflow-wrap: normal; width: 200px;">
+                <p *ngIf="userDetails?.experiences && userDetails?.experiences.length" style="overflow-wrap: normal; width: 200px;">
                     {{userDetails?.experiences[0].title}} at
                     {{userDetails?.experiences[0].company_name}}</p>
 
                 <span>{{userDetails?.location_district}}, {{userDetails?.location_country}}</span>
 
-                <a style="margin-left: 10px; cursor: pointer; color: #0073b1; font-weight: 600; display: block; position: absolute;
-                left: -10px;"
+                <a style="cursor: pointer;
+                color: #0073b1;
+                font-weight: 600;
+                display: block;
+                position: absolute;"
                     (click)="openContactInfo()">Contact Info</a>
             </div>
 
-            <div id="j-icons">
-                <div style="display: flex; margin-top: 20px; position: relative;
-                right: 50%;">
-                    <span style="display: flex; flex-direction: column;">
-                        <div style="display: flex;">
-                            <img style="display: inline-block;
-                        position: relative;
-                        top: 5px;
-                        right: 5px;" src="{{userDetails?.experiences[0].company_logo}}" width="20px" height="20px">
-                            <p style="width: 200px;">{{userDetails?.experiences[0].company_name}}</p>
-                        </div>
-                        <div style="display: flex;">
-                            <img style="display: inline-block;
-                        position: relative;
-                        top: 5px;
-                        right: 5px;" *ngIf="userDetails?.education.length"
-                                src="{{userDetails?.education[0].institute_logo}}" width="20px" height="20px">
-                            <p style="width: 200px;" *ngIf="userDetails?.education.length">{{userDetails?.education[0].institute}}</p>
-                        </div>
-                    </span>
-                    <div style="
-                height: 35px; position: relative;
-                        bottom: 10px;">
-                        <a style="position: relative;
-                        top: 5px;
-                        left: 5px;
-                    ">
-                            <img class="more-opt" src="/assets/icons/1x/more-opt.png" alt=""><br>
-                        </a>
-                        <button *ngIf="profileConnectionStatus === 'Not Connected'" (click)="onConnectRequest()"
-                            class="btn btn-primary jbtn connect-btn">
-                            Connect</button>
-                        <button *ngIf="profileConnectionStatus === 'Pending on FROM side'" (click)="onCancelRequest()"
-                            class="btn btn-primary jbtn connect-btn">
-                            Cancel Request</button>
-                        <button *ngIf="profileConnectionStatus === 'Pending on TO side'" (click)="onDeleteRequest()"
-                            class="btn btn-primary jbtn connect-btn">
-                            Delete Request</button>
-                        <button *ngIf="profileConnectionStatus === 'Pending on TO side'" (click)="onAcceptRequest()"
-                            class="btn btn-primary jbtn connect-btn">
-                            Accept Request</button>
-                        <button *ngIf="profileConnectionStatus === 'Already Connected'"
-                            class="btn btn-primary jbtn connect-btn">
-                            Connected</button>
-                        <!-- <button class="btn btn-primary jbtn">
-                        Message</button> -->
-                    </div>
+            <div style="display: flex; flex-direction: column;">
+                <div style="display: flex;" *ngIf="userDetails?.experiences && userDetails.experiences.length">
+                    <img style="display: inline-block;
+                position: relative;
+                top: 5px;
+                right: 5px;" src="{{userDetails?.experiences[0].company_logo}}" width="20px" height="20px">
+                    <p style="width: 200px;">{{userDetails?.experiences[0].company_name}}</p>
                 </div>
+                <div style="display: flex;">
+                    <img style="display: inline-block;
+                position: relative;
+                top: 5px;
+                right: 5px;" *ngIf="userDetails?.education.length"
+                        src="{{userDetails?.education[0].institute_logo}}" width="20px" height="20px">
+                    <p style="width: 200px;" *ngIf="userDetails?.education.length">{{userDetails?.education[0].institute}}</p>
+                </div>
+            </div>
 
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 20px;" >
+                <!-- <a style="position: relative;
+                top: 5px;
+                left: 5px;
+            ">
+                    <img class="more-opt" src="/assets/icons/1x/more-opt.png" alt=""><br>
+                </a> -->
+                <button *ngIf="profileConnectionStatus === 'Not Connected'" (click)="onConnectRequest()"
+                    class="btn btn-primary jbtn connect-btn">
+                    Connect</button>
+                <button *ngIf="profileConnectionStatus === 'Pending on FROM side'" (click)="onCancelRequest()"
+                    class="btn btn-primary jbtn connect-btn">
+                    Cancel Request</button>
+                <button *ngIf="profileConnectionStatus === 'Pending on TO side'" (click)="onDeleteRequest()"
+                    class="btn btn-primary jbtn connect-btn">
+                    Delete Request</button>
+                <button *ngIf="profileConnectionStatus === 'Pending on TO side'" (click)="onAcceptRequest()"
+                    class="btn btn-primary jbtn connect-btn">
+                    Accept Request</button>
+                <button *ngIf="profileConnectionStatus === 'Already Connected'"
+                    class="btn btn-primary jbtn connect-btn">
+                    Connected</button>
+                <!-- <button class="btn btn-primary jbtn">
+                Message</button> -->
             </div>
 
         </div>

@@ -15,6 +15,7 @@ import { ContactUsElseService } from './contact-us-else/contact-us-else/contact-
 export class SomeoneElseProfileComponent implements OnInit {
 
   userId: any;
+  user: any;
   userDetails: any;
   userList = [];
   contactList: any[];
@@ -41,7 +42,7 @@ export class SomeoneElseProfileComponent implements OnInit {
       this.getUserDetails();
       this.getUserContacts();
       this.getPrivacySettings();
-      this.getProfileConnectionStatus();
+
     })
   }
 
@@ -53,14 +54,16 @@ export class SomeoneElseProfileComponent implements OnInit {
     this.authService.get_user_details(this.userId)
       .subscribe(respObj => {
         this.userDetails = respObj;
+        console.log(this.userDetails)
+        this.user = respObj.user;
         this.setinitCover();
-        console.log(this.userDetails);
+        this.getProfileConnectionStatus();
         // this.userDetails = this.userList.find(obj => obj['user'] == this.userId);
       })
   }
 
   getProfileConnectionStatus() {
-    this.netService.get_connection_status(this.userId)
+    this.netService.get_connection_status(this.user)
       .subscribe(respObj => {
         this.profileConnectionStatus = respObj.status;
       })
@@ -83,7 +86,7 @@ export class SomeoneElseProfileComponent implements OnInit {
   }
 
   onFollowRequest() {
-    this.netService.follow_request(this.userId)
+    this.netService.follow_request(this.user)
       .subscribe(respObj => {
         this.getProfileConnectionStatus();
         this.notifyService.showSuccess('Your request has been sent to the user', 'Connection Alert');
@@ -91,7 +94,7 @@ export class SomeoneElseProfileComponent implements OnInit {
   }
 
   onCancelRequest() {
-    this.netService.cancel_request(this.userId)
+    this.netService.cancel_request(this.user)
       .subscribe(respObj => {
         this.getProfileConnectionStatus();
         this.notifyService.showInfo('Connection request rejected!', 'Connection Alert');
@@ -100,7 +103,7 @@ export class SomeoneElseProfileComponent implements OnInit {
 
 
   onAcceptRequest() {
-    this.netService.accept_request(this.userId)
+    this.netService.accept_request(this.user)
       .subscribe(respObj => {
         this.getProfileConnectionStatus();
         this.notifyService.showInfo('Connection request accepted!', 'Connection Alert');
@@ -108,7 +111,7 @@ export class SomeoneElseProfileComponent implements OnInit {
   }
 
   onDeleteRequest() {
-    this.netService.delete_request(this.userId)
+    this.netService.delete_request(this.user)
       .subscribe(respObj => {
         this.getProfileConnectionStatus();
         this.notifyService.showInfo('Connection request deleted!', 'Connection Alert');
