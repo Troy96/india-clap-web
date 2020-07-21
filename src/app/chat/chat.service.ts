@@ -27,7 +27,7 @@ export class ChatService {
   }
 
   async connect(userId: number) { //Take the userId of the other user as argument here
-    this.socket = webSocket('wss://holagraph-indiaclap.herokuapp.com/messages/' + userId + '/?token=' + this.token); //Replace 5 with the userId
+    this.socket = webSocket('wss://holagraph-back.herokuapp.com/messages/' + userId + '/?token=' + this.token); //Replace 5 with the userId
     this.socket.asObservable().subscribe(newMessage => {
       this.newMessage.next(newMessage);
     })

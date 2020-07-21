@@ -45,7 +45,7 @@ export class ChatComponent implements OnInit {
         this.messageList.push({
           message: data.message,
           user: {
-            photo: this.userMap[data.id]['photo'],
+            photo: this.userMap[data.id] ? this.userMap[data.id]['photo'] : 'assets/icons/1x/dp.png',
             first_name: data.first_name,
             last_name: data.last_name
           },
@@ -59,12 +59,14 @@ export class ChatComponent implements OnInit {
   }
 
   selectUser(id: number) {
+    this.messageList = [];
     this._chat.closeSocket();
     this.selectedUser = id;
     this._chat.connect(this.selectedUser);
     this.getSelectedUserDetails();
     this._chat.getMessages(this.selectedUser)
       .subscribe(data => {
+        if(!data[0].thread) return;
         this.messageList = [...data];
       })
   }
