@@ -12,11 +12,11 @@ export class MynetworkComponent implements OnInit {
   connectionIdList: number[];
   connectionDetailList: any[] = [];
   term: string;
+  loading = true;
 
   constructor(
     private userService: AuthServices
   ) {
-    console.log('fgghtntnnt');
     this.userId = JSON.parse(localStorage.getItem('currentUser'))['user_id'];
   }
 
@@ -37,6 +37,7 @@ export class MynetworkComponent implements OnInit {
       const detail = await this.userService.get_user_details(id).toPromise();
       this.connectionDetailList.push(detail);
     })
+    this.loading = false;
   }
 
 }

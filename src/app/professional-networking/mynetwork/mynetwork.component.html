@@ -21,10 +21,7 @@
         </div>
         <hr class="hr2">
     </div>
-    <div class="no-data" *ngIf="!connectionDetailList">
+    <div class="no-data" *ngIf="loading">
         Loading...
-    </div>
-    <div class="no-data" *ngIf="!connectionDetailList.length">
-        No connections!
     </div>
 </div>
