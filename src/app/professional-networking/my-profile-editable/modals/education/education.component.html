@@ -50,15 +50,7 @@
                     Link is
                     required</small>
             </div>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Field of Study" formControlName="study_field"
-                [ngClass]="{'is-invalid':EducationForm.get('study_field').touched && EducationForm.get('study_field').invalid}">
-            <div
-                *ngIf="(EducationForm.get('study_field').invalid && EducationForm.get('study_field').touched) || EducationForm.get('study_field').dirty">
-                <small *ngIf="EducationForm.get('study_field').errors?.required" class="text-danger"> Project
-                    Description is
-                    required</small>
-            </div>
+           
           
             <input type="checkbox" #doesExpre formControlName="is_present" style="margin-bottom: 15px;">Are you currently studying here?
             <div>

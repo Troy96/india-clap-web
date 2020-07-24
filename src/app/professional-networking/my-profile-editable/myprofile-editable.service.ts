@@ -52,7 +52,6 @@ export class MyprofileEditableService {
   handleError(err) {
     for (let obj in err.error) {
       const error = err.error[obj];
-      console.log(error)
       this.notifService.showError(error, obj);
     }
   }
