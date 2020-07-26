@@ -22,9 +22,9 @@
                     <h2><span class="teal">{{userDetails?.first_name}} {{userDetails?.last_name}} <img
                                 src="/assets/icons/1x/Edit.png" (click)="_profileEdit.openModal(userDetails)"
                                 width="22px" style="cursor: pointer;" class="edit-icon1"></span></h2>
-                    <span *ngIf="userDetails?.experiences">{{userDetails?.experiences[0].title}}<br />
+                    <span *ngIf="userDetails?.experiences && userDetails?.experiences.length">{{userDetails?.experiences[0].title}}<br />
                         {{userDetails?.experiences[0].company_name}}</span><br>
-                    <span>{{userDetails?.education[0]?.institute}}</span><br />
+                    <span *ngIf="userDetails?.education && userDetails?.education.length">{{userDetails?.education[0]?.institute}}</span><br />
                     <span>{{userDetails?.location_district}}, {{userDetails?.location_country}}</span><br />
                     <a style="cursor: pointer; color: #0073b1; font-weight: 600;" (click)="openContactInfo()">Contact
                         Info</a>
@@ -77,8 +77,8 @@
                                         <span class="teal">{{exp.company_name}}</span><br>
                                         {{exp.title}}<br>
                                         {{exp.responsibilities}}
-                                        <p *ngIf="exp.is_present">{{exp?.start_date}} -- Present</p>
-                                        <p *ngIf="!exp.is_present">{{exp?.start_date}} -- {{exp?.end_date}}</p>
+                                        <p *ngIf="exp.is_present">{{exp?.start_date}} - Present</p>
+                                        <p *ngIf="!exp.is_present">{{exp?.start_date}} - {{exp?.end_date}}</p>
                                     </div>
                                     <div>
                                         <img src="/assets/icons/1x/Edit.png" style="cursor: pointer;"
