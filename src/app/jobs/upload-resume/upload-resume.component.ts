@@ -30,8 +30,8 @@ export class UploadResumeComponent implements OnInit {
     this.jobId = Number(this.route.snapshot.paramMap.get('jobId'));
     this.getJobDetails(this.jobId);
     this.uploadResumeForm = new FormGroup({
-      text: new FormControl("", Validators.required),
-      video: new FormControl("")
+      text: new FormControl(null, Validators.required),
+      video: new FormControl(null)
     })
   }
 
@@ -53,12 +53,12 @@ export class UploadResumeComponent implements OnInit {
   // }
 
   onSubmit() {
-    if (!this.uploadResumeForm.valid) return;
-
+    if(!this.uploadResumeForm.get('text')) return this.notifService.showError('')
     this.jobService.upload_resume(this.jobId, this.uploadResumeForm.value)
       .subscribe(respObj => {
-        console.log(respObj);
         this.notifService.showSuccess('Applied', 'job alert');
+      }, err=> {
+        console.log(err)
       })
   }
 
