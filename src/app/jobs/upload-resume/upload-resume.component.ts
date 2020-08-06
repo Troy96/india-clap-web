@@ -55,7 +55,7 @@ export class UploadResumeComponent implements OnInit {
   onSubmit() {
     this.jobService.upload_resume(this.jobId, this.uploadResumeForm.value)
       .subscribe(respObj => {
-        this.notifService.showSuccess('Applied', 'job alert');
+        this.notifService.showSuccess(respObj['details'], 'job alert');
       }, err=> {
         console.log(err)
       })

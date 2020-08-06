@@ -36,7 +36,7 @@ export class ViewShortlistTabComponent implements OnInit {
   changeJobStatus(state, postId, candidateId) {
     this.jobService.change_job_application_state(postId, candidateId, state)
       .subscribe(respObj => {
-        this.notifService.showSuccess(`You ${state}ed the candidate`, 'job alert')
+        this.notifService.showInfo(respObj['detail'], 'job alert')
         this.ngOnInit();
       })
   }
