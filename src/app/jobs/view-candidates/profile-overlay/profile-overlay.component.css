@@ -508,6 +508,7 @@ h2 {
     .jmb-img {
         /*image of jumbotron*/
         width: 90px;
+        height: 90px;
         margin-top: 120px;
         border-radius: 50%;
         margin-left: 10px;
@@ -585,6 +586,7 @@ h2 {
     .jmb-img {
         /*image of jumbotron*/
         width: 120px;
+        height: 120px;
         margin-top: 100px;
         border-radius: 50%;
         margin-left: 10px;
@@ -703,6 +705,7 @@ h2 {
     .jmb-img {
         /*image of jumbotron*/
         width: 150px;
+        height: 150px;
         margin-top: 100px;
         border-radius: 50%;
         margin-left: 30px;

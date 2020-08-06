@@ -43,6 +43,40 @@
                         </div>
                     </div>
 
+                    <div id="headline">
+                        <h3>Education</h3>
+        
+                        <div id="experience">
+                            <div id="txt-exp" *ngFor="let exp of userDetails?.education">
+                                <div style="display: flex">
+                                    <div>
+                                        <img *ngIf="exp.institute_logo" src="{{exp.institute_logo}}" width="70px" height="70px"
+                                            style="display: block; border-radius: 50%;" class="exp-img">
+                                        <img *ngIf="!exp.institute_logo" src="/assets/icons/1x/no_company.jpg" width="70px"
+                                            height="70px" style="display: block; border-radius: 50%;" class="exp-img">
+                                    </div>
+                                    <div style="margin-left: 35px;">
+                                        <span class="teal">{{exp.institute}}</span><br>
+                                        {{exp.degree}},
+                                        {{exp.study_field}}<br>
+                                        Grade - {{exp.grade}}<br>
+                                        <a href="http://{{exp.link}}" target="_blank" rel="noopener">{{exp.link}}</a><br>
+                                        <p *ngIf="exp.is_present">
+                                            {{exp?.start_year}} --
+                                            Present</p>
+                                        <p *ngIf="!exp.is_present">
+                                            {{exp?.start_year}} --
+                                            {{exp?.end_year}}</p>
+                                    </div>
+                                </div>
+                                <div style="margin-left:85px">
+                                    <hr />
+                                </div>
+        
+                            </div>
+                        </div>
+                    </div>
+
                     <div id="headline" >
                         <h3>Projects
                         </h3>
@@ -109,6 +143,44 @@
                             </div>
                         </div>
 
+                    </div>
+
+                    <div id="headline">
+                        <h3>Awards</h3>
+                        <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
+        
+                        <div class="project-description" style="margin-top: 20px;">
+        
+                            <div id="skill" *ngFor="let award of userDetails?.awards">
+                               {{award?.issuer}}    <span class="teal">{{award?.title}} </span>
+                                {{award?.desc}}<br />
+                                Awarded on - {{award?.issue_month}}/{{award?.issue_year}}                        <hr />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="headline">
+                        <h3>Hobbies</h3>
+                        <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
+        
+                        <div class="project-description" style="margin-top: 20px;">
+        
+                            <div id="skill" *ngFor="let hobby of userDetails?.hobbies">
+                                {{hobby.title}} ({{hobby.desc}})
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="headline">
+                        <h3>Languages</h3>
+                        <!-- <img src="/assets/icons/1x/Edit.png" width="22px" class="edit-icon1"></h3> -->
+        
+                        <div class="project-description" style="margin-top: 20px;">
+        
+                            <div id="skill" *ngFor="let language of userDetails?.languages">
+                                {{language.language}} ({{language.proficiency}})
+                                <hr />
+                            </div>
+                        </div>
                     </div>
                     <!-- <div id="headline">
                         <h3>Upload Resume <img src="/assets/icons/1x/video.png" width="35px" class="edit-icon1"></h3>
