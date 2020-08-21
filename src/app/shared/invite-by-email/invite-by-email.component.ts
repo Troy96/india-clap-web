@@ -16,7 +16,7 @@ export class InviteByEmailComponent implements OnInit {
     console.log("in component")
   }
   isExpire: boolean = true;
-  link:any= "http://angular-holagraph.herokuapp.com/";
+  link:any= "https://www.holagraph.com";
   profileId:any;
   receivedItems:any;
   constructor(
@@ -32,7 +32,7 @@ export class InviteByEmailComponent implements OnInit {
         name:[this.receivedItems.first_name+' '+this.receivedItems.last_name],
         from: [this.receivedItems.email],
         to: [''],
-        message: ['Please visit '+this.link+' to explore unlimited opportunities'],
+        message: ['Join '+this.link+' now to expand your world'],
       })
     })
    
